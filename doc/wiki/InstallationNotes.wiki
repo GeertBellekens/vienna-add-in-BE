@@ -1,0 +1,18 @@
+#summary Installation notes for the VIENNA Add-In
+
+= Requirements =
+
+ # Windows 2000/XP/Vista
+ # .NET Framework 3.5 ([http://www.microsoft.com/downloads/details.aspx?FamilyId=333325FD-AE52-4E35-B531-508D977D32A6&displaylang=en Download from Microsoft.com])
+ # Enterprise Architect 7.1 or higher (a 30 day trial version can be downloaded from [http://www.sparxsystems.com.au Sparx Systems's website])
+   * Note for developers: For running the unit tests, you need version 7.5 (there have been some minor API changes).
+
+
+= How to install the Add-In using the Installation Package =
+
+ # Go to [http://code.google.com/p/vienna-add-in/downloads/list Downloads] and download the latest version of the VIENNA Add-In Installer.
+ # Follow the instructions given by the Installer
+ # Load the most recent UPCC 3.0/UMM 2.0 profile on every EA startup: Select the menu item “Settings” and “MDG Technologies” in Enterprise Architect. In the opening dialog as shown in figure 2 select “Advanced”, “Add” and “Add URL”. Enter the following URL: http://www.umm-dev.org/ea/upcc3.xml (UPCC 3.0) or  http://www.umm-dev.org/ea/umm2.xml (UMM 2.0)
+= Checkout from SVN = 
+
+If you want to checkout the latest source from SVN in order to participate in development please refer to [http://code.google.com/p/vienna-add-in/wiki/CheckoutfromSVN the the checkout section]

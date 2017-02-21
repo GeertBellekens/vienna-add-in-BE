@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== -->
+<!-- =====  Business Data Type Schema Module                                                          ===== -->
+<!-- ====================================================================== -->
+<!--
+  	Schema agency: 	UN/CEFACT 
+  	Schema version:	3.0
+  	Schema date: 	04 August 2008
+  	
+  	Copyright (C) UN/CEFACT (2008). All Rights Reserved.
+
+	This document and translations of it may be copied and furnished to others, 
+	and derivative works that comment on or otherwise explain it or assist 
+	in its implementation may be prepared, copied, published and distributed, 
+	in whole or in part, without restriction of any kind, provided that the 
+	above copyright notice and this paragraph are included on all such copies 
+	and derivative works. However, this document itself may not be modified in 
+	any way, such as by removing the copyright notice or references to 
+	UN/CEFACT, except as needed for the purpose of developing UN/CEFACT 
+	specifications, in which case the procedures for copyrights defined in the 
+	UN/CEFACT Intellectual Property Rights document must be followed, or as 
+	required to translate it into languages other than English.
+
+	The limited permissions granted above are perpetual and will not be revoked 
+	by UN/CEFACT or its successors or assigns.
+
+	This document and the information contained herein is provided on an "AS IS"
+	basis and UN/CEFACT DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING 
+	BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL 
+	NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR 
+	FITNESS FOR A PARTICULAR PURPOSE.
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bdt="urn:un:unece:uncefact:data:standard:BusinessDataType:3" xmlns:clmIANACharacterSetCode="urn:un:unece:uncefact:codelist:standard:IANA:CharacterSetCode:2005-01-28" xmlns:clmIANAMIMEMediaType="urn:un:unece:uncefact:codelist:standard:IANA:MIMEMediaType:2006-01-10" xmlns:clm53166="urn:un:unece:uncefact:codelist:standard:5:3166:2004-09-14" xmlns:clm54217="urn:un:unece:uncefact:codelist:standard:5:4217:2001" xmlns:clm60133="urn:un:unece:uncefact:codelist:standard:6:0133:2005" xmlns:clm63055="urn:un:unece:uncefact:codelist:standard:6:3055:D05A" xmlns:clm6Recommendation20="urn:un:unece:uncefact:codelist:standard:6:Recommendation20:3" xmlns:doc="urn:un:unece:uncefact:documentation:standard:CoreComponentsTechnicalSpecification:3" xmlns:clm6ccts1="urn:un:unece:uncefact:codelist:standard:6:CCTS1:08B" xmlns:clm6ccts2="urn:un:unece:uncefact:codelist:standard:6:CCTS2:08B" xmlns:clm6ccts3="urn:un:unece:uncefact:codelist:standard:6:CCTS3:08B" xmlns:clm6ccts4="urn:un:unece:uncefact:codelist:standard:6:CCTS4:08B" xmlns:clm6ccts5="urn:un:unece:uncefact:codelist:standard:6:CCTS5:08B" xmlns:ism6ccts3="urn:un:unece:uncefact:identificationscheme:standard:6:CCTS3:08B" xmlns:ism6ccts4="urn:un:unece:uncefact:identificationscheme:standard:6:CCTS4:08B" xmlns:ism6ccts1="urn:un:unece:uncefact:identificationscheme:standard:6:CCTS1:08B" xmlns:ism6ccts2="urn:un:unece:uncefact:identificationscheme:standard:6:CCTS2:08B" xmlns:ism6ccts5="urn:un:unece:uncefact:identificationscheme:standard:6:CCTS5:08B" targetNamespace="urn:un:unece:uncefact:data:standard:BusinessDataType:3" elementFormDefault="qualified" attributeFormDefault="unqualified" version="3.0">
+	<!-- =================================================================== -->
+	<!-- ===== Imports                                                 ===== -->
+	<!-- =================================================================== -->
+	<!-- ===== Imports of Code Lists                                   ===== -->
+	<!-- =================================================================== -->
+	<xsd:import namespace="urn:un:unece:uncefact:codelist:standard:IANA:CharacterSetCode:2005-01-28" schemaLocation="..\..\codelist\standard\IANA_CharacterSetCode_20050128.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:codelist:standard:IANA:MIMEMediaType:2006-01-10" schemaLocation="..\..\codelist\standard\IANA_MIMEMediaType_20060110.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:codelist:standard:5:3166:2004-09-14" schemaLocation="..\..\codelist\standard\ISO_CountryCode_20040914.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:codelist:standard:5:4217:2001" schemaLocation="..\..\codelist\standard\ISO_CurrencyCode_2001.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:codelist:standard:6:0133:2005" schemaLocation="..\..\codelist\standard\UNECE_CharacterSetEncodingCode_2005.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:codelist:standard:6:3055:D05A" schemaLocation="..\..\codelist\standard\UNECE_AgencyIdentificationCode_D05A.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:codelist:standard:6:Recommendation20:3" schemaLocation="..\..\codelist\standard\UNECE_MeasurementUnitCommonCode_3.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:codelist:standard:6:CCTS1:08B" schemaLocation="..\..\codelist\standard\UNECE_CCTS1_DocumentationAcronymCodeList_08B.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:codelist:standard:6:CCTS2:08B" schemaLocation="..\..\codelist\standard\UNECE_CCTS2_AssociationTypeCodeList_08B.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:codelist:standard:6:CCTS3:08B" schemaLocation="..\..\codelist\standard\UNECE_CCTS3_PrimitiveTypeCodeList_08B.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:codelist:standard:6:CCTS4:08B" schemaLocation="..\..\codelist\standard\UNECE_CCTS4_FormalConstraintTypeCodeList_08B.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:codelist:standard:6:CCTS5:08B" schemaLocation="..\..\codelist\standard\UNECE_CCTS5_ConditionTypeCodeList_08B.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:identificationscheme:standard:6:CCTS1:08B" schemaLocation="..\..\identificationscheme\standard\UNECE_CCTS1_EntityUniqueIdentificationScheme_08B.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:identificationscheme:standard:6:CCTS2:08B" schemaLocation="..\..\identificationscheme\standard\UNECE_CCTS2_UsageRuleUniqueIdentificationScheme_08B.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:identificationscheme:standard:6:CCTS3:08B" schemaLocation="..\..\identificationscheme\standard\UNECE_CCTS3_SequencingKeyIdentificationScheme_08B.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:identificationscheme:standard:6:CCTS4:08B" schemaLocation="..\..\identificationscheme\standard\UNECE_CCTS4_VersioningIdentificationScheme_08B.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:identificationscheme:standard:6:CCTS5:08B" schemaLocation="..\..\identificationscheme\standard\UNECE_CCTS5_DataTypeUniqueIdentificationScheme_08B.xsd"/>
+	<!-- =================================================================== -->
+	<!-- ===== Type Definitions                                        ===== -->
+	<!-- =================================================================== -->
+	<!-- ===== Amount. Type                                            ===== -->
+	<!-- =================================================================== -->
+	<xsd:complexType name="AmountType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT000001</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Amount. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>A number of monetary units specified in a currency where the unit of the currency is explicit or implied.</doc:Definition>
+				<doc:PrimitiveTypeCode>decimal</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:decimal">
+				<xsd:attribute name="currencyCode" type="clm54217:CurrencyCodeContentType" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Amount. Currency. Code</doc:DictionaryEntryName>
+							<doc:Definition>The currency of the amount.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- =================================================================== -->
+	<!-- ===== Binary Object. Type                                     ===== -->
+	<!-- =================================================================== -->
+	<xsd:complexType name="BinaryObjectType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT000002</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Binary Object. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>A set of finite-length sequences of binary octets.</doc:Definition>
+				<doc:PrimitiveTypeCode>binary</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:base64Binary">
+				<xsd:attribute name="format" type="xsd:string" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Binary Object. Format. Text</doc:DictionaryEntryName>
+							<doc:Definition>The format of the binary content.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="mimeCode" type="clmIANAMIMEMediaType:MIMEMediaTypeContentType" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Binary Object. Mime. Code</doc:DictionaryEntryName>
+							<doc:Definition>The mime type of the binary object.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="encodingCode" type="clm60133:CharacterSetEncodingCodeContentType" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Binary Object. Encoding. Code</doc:DictionaryEntryName>
+							<doc:Definition>Specifies the decoding algorithm of the binary object.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="characterSetCode" type="clmIANACharacterSetCode:CharacterSetCodeContentType" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Binary Object. Character Set. Code</doc:DictionaryEntryName>
+							<doc:Definition>The character set of the binary object if the mime type is text.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="uri" type="xsd:anyURI" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Binary Object. Uniform Resource. Identifier</doc:DictionaryEntryName>
+							<doc:Definition>The Uniform Resource Identifier that identifies where the binary object is located.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="fileName" type="xsd:string" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Binary Object. File. Name</doc:DictionaryEntryName>
+							<doc:Definition>The fileName of the binary object.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- =================================================================== -->
+	<!-- ===== Graphic. Type                                           ===== -->
+	<!-- =================================================================== -->
+	<xsd:complexType name="GraphicType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT000003</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Graphic. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>A diagram, graph, mathematical curves, or similar representation.</doc:Definition>
+				<doc:PrimitiveTypeCode>binary</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:base64Binary">
+				<xsd:attribute name="format" type="xsd:string" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Graphic. Format. Text</doc:DictionaryEntryName>
+							<doc:Definition>The format of the graphic content.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="mimeCode" type="clmIANAMIMEMediaType:MIMEMediaTypeContentType" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Graphic. Mime. Code</doc:DictionaryEntryName>
+							<doc:Definition>The mime type of the graphic object.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="encodingCode" type="clm60133:CharacterSetEncodingCodeContentType" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Graphic. Encoding. Code</doc:DictionaryEntryName>
+							<doc:Definition>Specifies the decoding algorithm of the graphic object.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="uri" type="xsd:anyURI" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Graphic. Uniform Resource. Identifier</doc:DictionaryEntryName>
+							<doc:Definition>The Uniform Resource Identifier that identifies where the graphic object is located.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="fileName" type="xsd:string" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Graphic. File. Name</doc:DictionaryEntryName>
+							<doc:Definition>The fileName of the graphic object.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- =================================================================== -->
+	<!-- ===== Picture. Type                                           ===== -->
+	<!-- =================================================================== -->
+	<xsd:complexType name="PictureType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT000004</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Picture. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>A diagram, graph, mathematical curves, or similar representation.</doc:Definition>
+				<doc:PrimitiveTypeCode>binary</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:base64Binary">
+				<xsd:attribute name="format" type="xsd:string" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Picture. Format. Text</doc:DictionaryEntryName>
+							<doc:Definition>The format of the picture content.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="mimeCode" type="clmIANAMIMEMediaType:MIMEMediaTypeContentType" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Picture. Mime. Code</doc:DictionaryEntryName>
+							<doc:Definition>The mime type of the picture object.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="encodingCode" type="clm60133:CharacterSetEncodingCodeContentType" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Picture. Encoding. Code</doc:DictionaryEntryName>
+							<doc:Definition>Specifies the decoding algorithm of the picture object.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="uri" type="xsd:anyURI" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Picture. Uniform Resource. Identifier</doc:DictionaryEntryName>
+							<doc:Definition>The Uniform Resource Identifier that identifies where the picture object is located.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="fileName" type="xsd:string" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Picture. File. Name</doc:DictionaryEntryName>
+							<doc:Definition>The fileName of the picture object.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- =================================================================== -->
+	<!-- ===== Sound. Type                                             ===== -->
+	<!-- =================================================================== -->
+	<xsd:complexType name="SoundType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT000005</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Sound. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>A diagram, graph, mathematical curves, or similar representation.</doc:Definition>
+				<doc:PrimitiveTypeCode>binary</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:base64Binary">
+				<xsd:attribute name="format" type="xsd:string" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Sound. Format. Text</doc:DictionaryEntryName>
+							<doc:Definition>The format of the sound content.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="mimeCode" type="clmIANAMIMEMediaType:MIMEMediaTypeContentType" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Sound. Mime. Code</doc:DictionaryEntryName>
+							<doc:Definition>The mime type of the sound object.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="encodingCode" type="clm60133:CharacterSetEncodingCodeContentType" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Sound. Encoding. Code</doc:DictionaryEntryName>
+							<doc:Definition>Specifies the decoding algorithm of the sound object.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="uri" type="xsd:anyURI" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Sound. Uniform Resource. Identifier</doc:DictionaryEntryName>
+							<doc:Definition>The Uniform Resource Identifier that identifies where the sound object is located.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="fileName" type="xsd:string" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Sound. File. Name</doc:DictionaryEntryName>
+							<doc:Definition>The fileName of the sound object.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- =================================================================== -->
+	<!-- ===== Video. Type                                             ===== -->
+	<!-- =================================================================== -->
+	<xsd:complexType name="VideoType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT000006</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Video. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>A diagram, graph, mathematical curves, or similar representation.</doc:Definition>
+				<doc:PrimitiveTypeCode>binary</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:base64Binary">
+				<xsd:attribute name="format" type="xsd:string" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Video. Format. Text</doc:DictionaryEntryName>
+							<doc:Definition>The format of the video content.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="mimeCode" type="clmIANAMIMEMediaType:MIMEMediaTypeContentType" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Video. Mime. Code</doc:DictionaryEntryName>
+							<doc:Definition>The mime type of the video object.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="encodingCode" type="clm60133:CharacterSetEncodingCodeContentType" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Video. Encoding. Code</doc:DictionaryEntryName>
+							<doc:Definition>Specifies the decoding algorithm of the video object.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="uri" type="xsd:anyURI" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Video. Uniform Resource. Identifier</doc:DictionaryEntryName>
+							<doc:Definition>The Uniform Resource Identifier that identifies where the video object is located.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="fileName" type="xsd:string" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Video. File. Name</doc:DictionaryEntryName>
+							<doc:Definition>The fileName of the video object.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- =================================================================== -->
+	<!-- ===== Code. Type                                              ===== -->
+	<!-- =================================================================== -->
+	<xsd:complexType name="CodeType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT000007</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Code. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>A character string (letters, figures, or symbols) that for brevity and/or languange independence may be used to represent or replace a definitive value or text of an attribute together with relevant supplementary information.</doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:token">
+				<xsd:attribute name="listID" type="xsd:token" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Code List. Identifier</doc:DictionaryEntryName>
+							<doc:Definition>The identification of a list of codes.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="listAgencyID" type="clm63055:AgencyIdentificationCodeContentType" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Code List. Agency. Identifier</doc:DictionaryEntryName>
+							<doc:Definition>An agency that maintains one or more lists of codes.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="listVersionID" type="xsd:token" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Code List. Version. Identifier</doc:DictionaryEntryName>
+							<doc:Definition>The identification of a list of codes.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- =================================================================== -->
+	<!-- ===== Date Time. Type                                         ===== -->
+	<!-- =================================================================== -->
+	<xsd:simpleType name="DateTimeType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT000008</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Date Time. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>A particular point in the progression of time together with the relevant supplementary information.</doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:dateTime"/>
+	</xsd:simpleType>
+	<!-- =================================================================== -->
+	<!-- ===== Date. Type                                              ===== -->
+	<!-- =================================================================== -->
+	<xsd:simpleType name="DateType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT000009</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Date. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>One calendar day according the Gregorian calendar.</doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:date"/>
+	</xsd:simpleType>
+	<!-- =================================================================== -->
+	<!-- ===== Time. Type                                              ===== -->
+	<!-- =================================================================== -->
+	<xsd:simpleType name="TimeType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT0000010</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Time. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>The instance of time that occurs every day.</doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:time"/>
+	</xsd:simpleType>
+	<!-- =================================================================== -->
+	<!-- ===== Identifier. Type                                        ===== -->
+	<!-- =================================================================== -->
+	<xsd:complexType name="IDType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT0000011</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Identifier. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>A character string to identify and distinguish uniquely, one instance of an object in an identification scheme from all other objects in the same scheme together with relevant supplementary information.</doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:token">
+				<xsd:attribute name="schemeID" type="xsd:token" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Identification Scheme. Identifier</doc:DictionaryEntryName>
+							<doc:Definition>The identification of the identification scheme.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="schemeAgencyID" type="clm63055:AgencyIdentificationCodeContentType" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Identification Scheme. Agency. Identifier</doc:DictionaryEntryName>
+							<doc:Definition>The identification of the agency that maintains the identification scheme.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="schemeVersionID" type="xsd:token" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Identification Scheme. Version. Identifier</doc:DictionaryEntryName>
+							<doc:Definition>The version of the identification scheme.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- =================================================================== -->
+	<!-- ===== Indicator. Type                                         ===== -->
+	<!-- =================================================================== -->
+	<xsd:simpleType name="IndicatorType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT0000012</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Indicator. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>A list of two mutually exclusive Boolean values that express the only possible states of a property.</doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:boolean">
+			<xsd:pattern value="false"/>
+			<xsd:pattern value="true"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- =================================================================== -->
+	<!-- ===== Measure. Type                                           ===== -->
+	<!-- =================================================================== -->
+	<xsd:complexType name="MeasureType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT0000013</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Measure. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>A numeric value determined by measuring an object along with the specified unit of measure.</doc:Definition>
+				<doc:PropertyTermName>Type</doc:PropertyTermName>
+				<doc:PrimitiveTypeCode>decimal</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:decimal">
+				<xsd:attribute name="unitCode" type="clm6Recommendation20:MeasurementUnitCommonCodeContentType" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Measure. Unit. Code</doc:DictionaryEntryName>
+							<doc:Definition>The type of unit of measure.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- =================================================================== -->
+	<!-- ===== Numeric. Type                                           ===== -->
+	<!-- =================================================================== -->
+	<xsd:simpleType name="NumericType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT0000014</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Numeric. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>Numeric information that is assigned or is determined by calculation, counting, or sequencing. It does not require a unit of quantity or unit of measure.</doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:decimal"/>
+	</xsd:simpleType>
+	<!-- =================================================================== -->
+	<!-- ===== Value. Type                                             ===== -->
+	<!-- =================================================================== -->
+	<xsd:simpleType name="ValueType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT0000015</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:DictionaryEntryName>Value. Type</doc:DictionaryEntryName>
+				<doc:Definition>Numeric information that is assigned or is determined by calculation, counting, or sequencing. It does not require a unit of quantity or unit of measure.</doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:decimal"/>
+	</xsd:simpleType>
+	<!-- =================================================================== -->
+	<!-- ===== Percent. Type                                           ===== -->
+	<!-- =================================================================== -->
+	<xsd:simpleType name="PercentType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT0000016</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:DictionaryEntryName>Percent. Type</doc:DictionaryEntryName>
+				<doc:Definition>Numeric information that is assigned or is determined by calculation, counting, or sequencing. It does not require a unit of quantity or unit of measure.</doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:decimal"/>
+	</xsd:simpleType>
+	<!-- =================================================================== -->
+	<!-- ===== Rate. Type                                              ===== -->
+	<!-- =================================================================== -->
+	<xsd:simpleType name="RateType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT0000017</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:DictionaryEntryName>Rate. Type</doc:DictionaryEntryName>
+				<doc:Definition>Numeric information that is assigned or is determined by calculation, counting, or sequencing. It does not require a unit of quantity or unit of measure.</doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:decimal"/>
+	</xsd:simpleType>
+	<!-- =================================================================== -->
+	<!-- ===== Quantity. Type                                          ===== -->
+	<!-- =================================================================== -->
+	<xsd:complexType name="QuantityType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT0000018</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Quantity. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>A counted number of non-monetary units possibly including fractions.</doc:Definition>
+				<doc:PrimitiveTypeCode>decimal</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:decimal">
+				<xsd:attribute name="unitCode" type="clm6Recommendation20:MeasurementUnitCommonCodeContentType" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Quantity. Unit. Code</doc:DictionaryEntryName>
+							<doc:Definition>The unit of the quantity</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- =================================================================== -->
+	<!-- ===== Text. Type                                              ===== -->
+	<!-- =================================================================== -->
+	<xsd:complexType name="TextType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT0000019</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Text. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>A character string (i.e. a finite set of characters) generally in the form of words of a language.</doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="languageCode" type="xsd:language" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Language. Code</doc:DictionaryEntryName>
+							<doc:Definition>The identifier of the language used in the content component.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- =================================================================== -->
+	<!-- ===== Name. Type                                              ===== -->
+	<!-- =================================================================== -->
+	<xsd:complexType name="NameType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT0000020</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Name. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>A character string that consititues the distinctive designation of a person, place, thing or concept.</doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="languageCode" type="xsd:language" use="optional">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">
+							<doc:DictionaryEntryName>Language. Code</doc:DictionaryEntryName>
+							<doc:Definition>The identifier of the language used in the content component.</doc:Definition>
+							<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- =================================================================== -->
+	<!-- ===== Documenation_ Acronym_ Code. Type                                              ===== -->
+	<!-- =================================================================== -->
+	<xsd:simpleType name="DocumentationAcronymCodeType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT000021</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Documentation_ Acronym_ Code. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>This are the CCTS specific acronyms of the artefacts that are used in the documentation</doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="clm6ccts1:CCTSDocumentationAcronymCodeContentType"/>
+	</xsd:simpleType>
+	<!-- =================================================================== -->
+	<!-- ===== Association_ Type_ Code. Type                                              ===== -->
+	<!-- =================================================================== -->
+	<xsd:simpleType name="AssociationTypeCodeType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT000022</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Code. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>This are the codes representing the association types of an ASBIE.</doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="clm6ccts2:CCTSAssociationTypeCodeContentType"/>
+	</xsd:simpleType>
+	<!-- =================================================================== -->
+	<!-- ===== Primitive_ Type_ Code. Type                                              ===== -->
+	<!-- =================================================================== -->
+	<xsd:simpleType name="PrimitiveTypeCodeType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT000023</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Code. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>This is the primitive type that is used for a content component or a supplementary component</doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="clm6ccts3:CCTSPrimitiveTypeCodeContentType"/>
+	</xsd:simpleType>
+	<!-- =================================================================== -->
+	<!-- ===== Formal_ Constraint_ Type_ Code. Type                                              ===== -->
+	<!-- =================================================================== -->
+	<xsd:simpleType name="FormalConstraintTypeCodeType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT000024</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Code. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>This is the type code that represents the formal constraint languages.</doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="clm6ccts4:CCTSFormalConstraintTypeCodeContentType"/>
+	</xsd:simpleType>
+	<!-- =================================================================== -->
+	<!-- ===== Conditition_ Type_ Code. Type                                              ===== -->
+	<!-- =================================================================== -->
+	<xsd:simpleType name="ConditionTypeCodeType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT000025</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Code. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>A </doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="clm6ccts5:ConditionTypeCodeContentType"/>
+	</xsd:simpleType>
+	<!-- =================================================================== -->
+	<!-- ===== Sequencing_ Key_ Identifier. Type                                              ===== -->
+	<!-- =================================================================== -->
+	<xsd:simpleType name="SequencingKeyIdentifierType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT000026</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Code. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>A </doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="ism6ccts3:SequencingKeyIdentificationSchemeContentType"/>
+	</xsd:simpleType>
+	<!-- =================================================================== -->
+	<!-- ===== Entity_ Unique_ Identifier. Type                                              ===== -->
+	<!-- =================================================================== -->
+	<xsd:simpleType name="EntityUniqueIdentifierType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT000027</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Code. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>A </doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="ism6ccts1:EntityUniqueIdentificationSchemeContentType"/>
+	</xsd:simpleType>
+	<!-- =================================================================== -->
+	<!-- ===== Data Type_ Unique_ Identifier. Type                                              ===== -->
+	<!-- =================================================================== -->
+	<xsd:simpleType name="DataTypeUniqueIdentifierType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT000028</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Code. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>A </doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="ism6ccts5:DataTypeUniqueIdentificationSchemeContentType"/>
+	</xsd:simpleType>
+	<!-- =================================================================== -->
+	<!-- ===== Usage_ Rule_  Unique_ Identifier. Type                                              ===== -->
+	<!-- =================================================================== -->
+	<xsd:simpleType name="UsageRuleUniqueIdentifierType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT000029</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Code. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>A </doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="ism6ccts2:UsageRuleUniqueIdentificationSchemeContentType"/>
+	</xsd:simpleType>
+	<!-- =================================================================== -->
+	<!-- ===== Version_ Identifier. Type                                              ===== -->
+	<!-- =================================================================== -->
+	<xsd:simpleType name="VersionIdentifierType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">
+				<doc:UniqueID>BDT000030</doc:UniqueID>
+				<doc:AcronymCode>BDT</doc:AcronymCode>
+				<doc:DictionaryEntryName>Code. Type</doc:DictionaryEntryName>
+				<doc:VersionID>3.00</doc:VersionID>
+				<doc:Definition>A .</doc:Definition>
+				<doc:PrimitiveTypeCode>string</doc:PrimitiveTypeCode>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="ism6ccts4:VersioningIdentificationSchemeContentType"/>
+	</xsd:simpleType>
+</xsd:schema>

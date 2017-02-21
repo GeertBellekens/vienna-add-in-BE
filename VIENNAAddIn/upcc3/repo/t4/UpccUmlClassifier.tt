@@ -1,0 +1,316 @@
+<#@ assembly name="$(SolutionDir)/VIENNAAddInUtils/bin/Debug/VIENNAAddInUtils.dll" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="VIENNAAddInUtils"#>
+<#@ import namespace="VIENNAAddInUtils.t4"#>
+<#@ include file="../t4/CctsRepositoryNamespaces.tt" #>
+using System.Collections.Generic;
+using VIENNAAddIn.upcc3.uml;
+
+<# 
+	var library = MetaModel.GetPackageRelationsFor(metaClassifier).First().PackageType;
+
+	var classifierType = metaClassifier.Name;
+	var classifier = classifierType.FirstCharToLowerCase();
+	if (classifier == "enum") classifier = "@enum"; // dirty hack to avoid naming conflict with 'enum'
+	
+	var umlClassifierType = metaClassifier.GetType().Name.Substring(4);
+	var umlClassifier = "Uml" + umlClassifierType;
+#>
+namespace VIENNAAddIn.upcc3.repo.<#= MetaModel.GetPackageRelationsFor(metaClassifier).First().PackageType.Name #>
+{
+    internal class Upcc<#= classifierType #> : I<#= classifierType #>
+    {
+        public Upcc<#= classifierType #>(IUml<#= umlClassifierType #> <#= umlClassifier.FirstCharToLowerCase() #>)
+        {
+            <#= umlClassifier #> = <#= umlClassifier.FirstCharToLowerCase() #>;
+        }
+
+        public IUml<#= umlClassifierType #> <#= umlClassifier #> { get; private set; }
+
+        #region I<#= classifierType #> Members
+
+        public int Id
+        {
+            get { return <#= umlClassifier #>.Id; }
+        }
+
+        public string Name
+        {
+            get { return <#= umlClassifier #>.Name; }
+        }
+
+		public I<#= library.Name #> <#= library.Name #>
+        {
+            get { return new Upcc<#= library.Name #>(<#= umlClassifier #>.Package); }
+        }
+<# 
+///==========================================================================================================================
+/// Dependencies
+///==========================================================================================================================
+
+		foreach (var dependency in MetaModel.GetDependenciesFor(metaClassifier))
+		{
+#>
+
+		public I<#= dependency.TargetClassifierType.Name #> <#= dependency.Stereotype.ToString().FirstCharToUpperCase() #>
+        {
+            get
+            {
+                var dependency = <#= umlClassifier #>.GetFirstDependencyByStereotype("<#= dependency.Stereotype.ToString() #>");
+				if (dependency != null)
+				{
+					var target = dependency.Target as IUml<#= umlClassifierType #>;
+					if (target != null)
+					{
+						return new Upcc<#= dependency.TargetClassifierType.Name #>(target);
+					}
+				}
+				return null;
+            }
+        }
+<#
+		}
+
+
+///==========================================================================================================================
+/// Attributes
+///==========================================================================================================================
+
+		foreach (var attribute in MetaModel.GetAttributesFor(metaClassifier))
+		{
+			var attributePropertyType = (attribute.Cardinality == MetaCardinality.Many ? "IEnumerable<I" + attribute.ClassName + ">" : "I" + attribute.ClassName);
+#>
+
+		public <#= attributePropertyType #> <#= attribute.AttributeName #>
+        {
+            get
+            {
+<#
+			if (attribute.Cardinality == MetaCardinality.Many)
+			{
+#>
+                foreach (var attribute in <#= umlClassifier #>.GetAttributesByStereotype("<#= attribute.Stereotype #>"))
+                {
+                    yield return new Upcc<#= attribute.ClassName #>(attribute, this);
+                }
+<#
+			}
+			else
+			{
+#>
+                var attribute = <#= umlClassifier #>.GetFirstAttributeByStereotype("<#= attribute.Stereotype.ToString() #>");
+                return attribute == null ? null : new Upcc<#= attribute.ClassName #>(attribute, this);
+<# 
+			}
+#>
+            }
+        }
+<#
+			if (attribute.Cardinality == MetaCardinality.Many)
+			{
+				var attributeParamName = attribute.ClassName.FirstCharToLowerCase();
+#>
+
+		/// <summary>
+		/// Creates a(n) <#= attribute.Stereotype #> based on the given <paramref name="specification"/>.
+		/// <param name="specification">A specification for a(n) <#= attribute.Stereotype #>.</param>
+		/// <returns>The newly created <#= attribute.Stereotype #>.</returns>
+		/// </summary>
+		public I<#= attribute.ClassName #> Create<#= attribute.ClassName #>(<#= attribute.ClassName #>Spec specification)
+		{
+		    return new Upcc<#= attribute.ClassName #>(<#= umlClassifier #>.CreateAttribute(<#= attribute.ClassName #>SpecConverter.Convert(specification, Name)), this);
+		}
+
+		/// <summary>
+		/// Updates a(n) <#= attribute.Stereotype #> to match the given <paramref name="specification"/>.
+		/// <param name="<#= attributeParamName #>">A(n) <#= attribute.Stereotype #>.</param>
+		/// <param name="specification">A new specification for the given <#= attribute.Stereotype #>.</param>
+		/// <returns>The updated <#= attribute.Stereotype #>. Depending on the implementation, this might be the same updated instance or a new instance!</returns>
+		/// </summary>
+        public I<#= attribute.ClassName #> Update<#= attribute.ClassName #>(I<#= attribute.ClassName #> <#= attributeParamName #>, <#= attribute.ClassName #>Spec specification)
+		{
+		    return new Upcc<#= attribute.ClassName #>(<#= umlClassifier #>.UpdateAttribute(((Upcc<#= attribute.ClassName #>) <#= attributeParamName #>).UmlAttribute, <#= attribute.ClassName #>SpecConverter.Convert(specification, Name)), this);
+		}
+
+		/// <summary>
+		/// Removes a(n) <#= attribute.Stereotype #> from this <#= metaClassifier.Stereotype #>.
+		/// <param name="<#= attributeParamName #>">A(n) <#= attribute.Stereotype #>.</param>
+		/// </summary>
+        public void Remove<#= attribute.ClassName #>(I<#= attribute.ClassName #> <#= attributeParamName #>)
+		{
+            <#= umlClassifier #>.RemoveAttribute(((Upcc<#= attribute.ClassName #>) <#= attributeParamName #>).UmlAttribute);
+		}
+<#
+			}
+		}
+
+///==========================================================================================================================
+/// Associations
+///==========================================================================================================================
+
+		foreach (var association in MetaModel.GetAssociationsForAssociatingClassifier(metaClassifier))
+		{
+			var associationPropertyType = (association.Cardinality == MetaCardinality.Many ? "IEnumerable<I" + association.ClassName + ">" : "I" + association.ClassName);
+#>
+
+		public <#= associationPropertyType #> <#= association.Name #>
+        {
+            get
+            {
+                foreach (var association in <#= umlClassifier #>.GetAssociationsByStereotype("<#= association.Stereotype #>"))
+                {
+                    yield return new Upcc<#= association.ClassName #>(association, this);
+                }
+            }
+        }
+<#
+			if (association.Cardinality == MetaCardinality.Many)
+			{
+				var associationParamName = association.ClassName.FirstCharToLowerCase();
+#>
+
+		/// <summary>
+		/// Creates a(n) <#= association.Stereotype #> based on the given <paramref name="specification"/>.
+		/// <param name="specification">A specification for a(n) <#= association.Stereotype #>.</param>
+		/// <returns>The newly created <#= association.Stereotype #>.</returns>
+		/// </summary>
+		public I<#= association.ClassName #> Create<#= association.ClassName #>(<#= association.ClassName #>Spec specification)
+		{
+		    return new Upcc<#= association.ClassName #>(<#= umlClassifier #>.CreateAssociation(<#= association.ClassName #>SpecConverter.Convert(specification, Name)), this);
+		}
+
+		/// <summary>
+		/// Updates a(n) <#= association.Stereotype #> to match the given <paramref name="specification"/>.
+		/// <param name="<#= associationParamName #>">A(n) <#= association.Stereotype #>.</param>
+		/// <param name="specification">A new specification for the given <#= association.Stereotype #>.</param>
+		/// <returns>The updated <#= association.Stereotype #>. Depending on the implementation, this might be the same updated instance or a new instance!</returns>
+		/// </summary>
+        public I<#= association.ClassName #> Update<#= association.ClassName #>(I<#= association.ClassName #> <#= associationParamName #>, <#= association.ClassName #>Spec specification)
+		{
+		    return new Upcc<#= association.ClassName #>(<#= umlClassifier #>.UpdateAssociation(((Upcc<#= association.ClassName #>) <#= associationParamName #>).UmlAssociation, <#= association.ClassName #>SpecConverter.Convert(specification, Name)), this);
+		}
+
+		/// <summary>
+		/// Removes a(n) <#= association.Stereotype #> from this <#= metaClassifier.Stereotype #>.
+		/// <param name="<#= associationParamName #>">A(n) <#= association.Stereotype #>.</param>
+		/// </summary>
+        public void Remove<#= association.ClassName #>(I<#= association.ClassName #> <#= associationParamName #>)
+		{
+            <#= umlClassifier #>.RemoveAssociation(((Upcc<#= association.ClassName #>) <#= associationParamName #>).UmlAssociation);
+		}
+<#
+			}
+		}
+
+///==========================================================================================================================
+/// Enumeration Literals
+///==========================================================================================================================
+
+		foreach (var enumerationLiteral in MetaModel.GetEnumerationLiteralsFor(metaClassifier))
+		{
+			var enumerationLiteralPropertyType = (enumerationLiteral.Cardinality == MetaCardinality.Many ? "IEnumerable<I" + enumerationLiteral.ClassName + ">" : "I" + enumerationLiteral.ClassName);
+#>
+
+		public <#= enumerationLiteralPropertyType #> <#= enumerationLiteral.Name #>
+        {
+            get
+            {
+                foreach (var enumerationLiteral in <#= umlClassifier #>.GetEnumerationLiteralsByStereotype("<#= enumerationLiteral.Stereotype #>"))
+                {
+                    yield return new Upcc<#= enumerationLiteral.ClassName #>(enumerationLiteral, this);
+                }
+            }
+        }
+<#
+			if (enumerationLiteral.Cardinality == MetaCardinality.Many)
+			{
+				var enumerationLiteralParamName = enumerationLiteral.ClassName.FirstCharToLowerCase();
+#>
+
+		/// <summary>
+		/// Creates a(n) <#= enumerationLiteral.Stereotype #> based on the given <paramref name="specification"/>.
+		/// <param name="specification">A specification for a(n) <#= enumerationLiteral.Stereotype #>.</param>
+		/// <returns>The newly created <#= enumerationLiteral.Stereotype #>.</returns>
+		/// </summary>
+		public I<#= enumerationLiteral.ClassName #> Create<#= enumerationLiteral.ClassName #>(<#= enumerationLiteral.ClassName #>Spec specification)
+		{
+		    return new Upcc<#= enumerationLiteral.ClassName #>(<#= umlClassifier #>.CreateEnumerationLiteral(<#= enumerationLiteral.ClassName #>SpecConverter.Convert(specification)), this);
+		}
+
+		/// <summary>
+		/// Updates a(n) <#= enumerationLiteral.Stereotype #> to match the given <paramref name="specification"/>.
+		/// <param name="<#= enumerationLiteralParamName #>">A(n) <#= enumerationLiteral.Stereotype #>.</param>
+		/// <param name="specification">A new specification for the given <#= enumerationLiteral.Stereotype #>.</param>
+		/// <returns>The updated <#= enumerationLiteral.Stereotype #>. Depending on the implementation, this might be the same updated instance or a new instance!</returns>
+		/// </summary>
+        public I<#= enumerationLiteral.ClassName #> Update<#= enumerationLiteral.ClassName #>(I<#= enumerationLiteral.ClassName #> <#= enumerationLiteralParamName #>, <#= enumerationLiteral.ClassName #>Spec specification)
+		{
+		    return new Upcc<#= enumerationLiteral.ClassName #>(<#= umlClassifier #>.UpdateEnumerationLiteral(((Upcc<#= enumerationLiteral.ClassName #>) <#= enumerationLiteralParamName #>).UmlEnumerationLiteral, <#= enumerationLiteral.ClassName #>SpecConverter.Convert(specification)), this);
+		}
+
+		/// <summary>
+		/// Removes a(n) <#= enumerationLiteral.Stereotype #> from this <#= metaClassifier.Stereotype #>.
+		/// <param name="<#= enumerationLiteralParamName #>">A(n) <#= enumerationLiteral.Stereotype #>.</param>
+		/// </summary>
+        public void Remove<#= enumerationLiteral.ClassName #>(I<#= enumerationLiteral.ClassName #> <#= enumerationLiteralParamName #>)
+		{
+            <#= umlClassifier #>.RemoveEnumerationLiteral(((Upcc<#= enumerationLiteral.ClassName #>) <#= enumerationLiteralParamName #>).UmlEnumerationLiteral);
+		}
+<#
+			}
+		}
+
+///==========================================================================================================================
+/// Tagged Values
+///==========================================================================================================================
+
+		foreach (var metaTaggedValue in metaClassifier.TaggedValues)
+		{
+			var taggedValuePropertyType = (metaTaggedValue.Cardinality == MetaCardinality.Many ? "IEnumerable<" + metaTaggedValue.Type + ">" : metaTaggedValue.Type);
+#>
+
+        ///<summary>
+        /// Tagged value '<#= metaTaggedValue.Name #>'.
+        ///</summary>
+        public <#= taggedValuePropertyType #> <#= metaTaggedValue.AsPropertyName() #>
+        {
+            get { return <#= umlClassifier #>.GetTaggedValue("<#= metaTaggedValue.Name #>").<#= metaTaggedValue.Cardinality == MetaCardinality.Many ? "SplitValues" : "Value" #>; }
+        }
+<#
+		}
+#>
+
+        #endregion
+
+        public bool Equals(Upcc<#= classifierType #> other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return Equals(other.<#= umlClassifier #>, <#= umlClassifier #>);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof (Upcc<#= classifierType #>)) return false;
+            return Equals((Upcc<#= classifierType #>) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (<#= umlClassifier #> != null ? <#= umlClassifier #>.GetHashCode() : 0);
+        }
+
+        public static bool operator ==(Upcc<#= classifierType #> left, Upcc<#= classifierType #> right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(Upcc<#= classifierType #> left, Upcc<#= classifierType #> right)
+        {
+            return !Equals(left, right);
+        }
+	}
+}

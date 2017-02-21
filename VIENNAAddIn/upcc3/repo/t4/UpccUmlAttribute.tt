@@ -1,0 +1,200 @@
+<#@ assembly name="$(SolutionDir)/VIENNAAddInUtils/bin/Debug/VIENNAAddInUtils.dll" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="VIENNAAddInUtils"#>
+<#@ import namespace="VIENNAAddInUtils.t4"#>
+<#@ include file="../t4/CctsRepositoryNamespaces.tt" #>
+using System;
+using System.Collections.Generic;
+using VIENNAAddIn.upcc3.uml;
+
+<# 
+	var attributeInterface = "I" + metaAttribute.ClassName;
+	var attributeUpccClass = "Upcc" + metaAttribute.ClassName;
+	var containingClassifier = metaAttribute.ContainingClassifierType.Name;
+	var containingClassifierParamName = containingClassifier.FirstCharToLowerCase();
+#>
+namespace VIENNAAddIn.upcc3.repo.<#= MetaModel.GetPackageRelationsFor(metaAttribute.ContainingClassifierType).First().PackageType.Name #>
+{
+    internal class <#= attributeUpccClass #> : <#= attributeInterface #>
+    {
+        public <#= attributeUpccClass #>(IUmlAttribute umlAttribute, I<#= containingClassifier #> <#= containingClassifierParamName #>)
+        {
+            UmlAttribute = umlAttribute;
+			<#= containingClassifier #> = <#= containingClassifierParamName #>;
+        }
+
+        public IUmlAttribute UmlAttribute { get; private set; }
+
+        #region <#= attributeInterface #> Members
+
+        public int Id
+        {
+            get { return UmlAttribute.Id; }
+        }
+
+        public string Name
+        {
+            get { return UmlAttribute.Name; }
+        }
+
+        public string UpperBound
+		{
+            get { return UmlAttribute.UpperBound; }
+		}
+		
+        public string LowerBound
+		{
+            get { return UmlAttribute.LowerBound; }
+		}
+		
+        public bool IsOptional()
+        {
+            int i;
+            return Int32.TryParse(LowerBound, out i) && i == 0;
+        }
+
+        public I<#= containingClassifier #> <#= containingClassifier #> { get; private set; }
+
+<#
+///==========================================================================================================================
+/// Attribute Type
+///==========================================================================================================================
+
+		if (metaAttribute.Type is MetaMultiType)
+		{
+			var multiType = (MetaMultiType) metaAttribute.Type;
+#>
+		public <#= multiType.Name #> <#= multiType.Name #>
+		{
+			get
+			{
+				var type = UmlAttribute.Type;
+                switch (type.Stereotype)
+                {
+<#
+			foreach (var classifier in multiType.Classifiers)
+			{
+#>
+                    case "<#= classifier.Stereotype.ToString() #>":
+                    	return new <#= multiType.Name #>(new Upcc<#= classifier.Name #>((IUml<#= classifier.GetType().Name.Substring(4) #>) type));
+<#
+			}
+#>
+                    default:
+                        return null;
+                }
+			}
+		}
+<#
+		}
+		else
+		{
+#>
+		public I<#= metaAttribute.Type.Name #> <#= metaAttribute.Type.Name #>
+		{
+			get
+			{
+				var type = UmlAttribute.Type;
+				return new Upcc<#= metaAttribute.Type.Name #>((IUml<#= metaAttribute.Type.GetType().Name.Substring(4) #>) type);
+			}
+		}
+<#
+		}
+		
+///==========================================================================================================================
+/// Dependencies
+/// 
+/// Since UML does not support dependencies between attributes, UPCC attribute dependencies are resolved by name:
+/// The depending attribute must either have the same name as the attribute it depends on or that attribute's name with
+/// qualifiers.
+///==========================================================================================================================
+
+		foreach (var dependency in MetaModel.GetDependenciesFor(metaAttribute))
+		{
+			var dependencyProperty = dependency.Stereotype.ToString().FirstCharToUpperCase();
+			var dependencyTargetInterface = "I" + dependency.TargetAttribute.ClassName;
+			var dependencyTarget = dependency.TargetAttribute.ClassName.FirstCharToLowerCase();
+			var containerDependency = dependency.TargetAttribute.ContainingClassifierType.Name.FirstCharToLowerCase();
+#>
+
+		public <#= dependencyTargetInterface #> <#= dependencyProperty #>
+        {
+            get
+            {
+                if (<#= containingClassifier #> == null)
+                {
+                    return null;
+                }
+                var <#= containerDependency #> = <#= containingClassifier #>.<#= dependencyProperty #>;
+                if (<#= containerDependency #> == null)
+                {
+                    return null;
+                }
+                string nameWithoutQualifiers = Name.Substring(Name.LastIndexOf('_') + 1);
+                foreach (var <#= dependencyTarget #> in <#= containerDependency #>.<#= dependencyTarget.FirstCharToUpperCase().Plural() #>)
+                {
+                    if (nameWithoutQualifiers == <#= dependencyTarget #>.Name)
+                    {
+                        return <#= dependencyTarget #>;
+                    }
+                }
+                return null;
+            }
+        }
+<#
+		}
+
+///==========================================================================================================================
+/// Tagged Values
+///==========================================================================================================================
+
+		foreach (var metaTaggedValue in metaAttribute.TaggedValues)
+		{
+			var taggedValuePropertyType = (metaTaggedValue.Cardinality == MetaCardinality.Many ? "IEnumerable<" + metaTaggedValue.Type + ">" : metaTaggedValue.Type);
+#>
+
+        ///<summary>
+        /// Tagged value '<#= metaTaggedValue.Name #>'.
+        ///</summary>
+        public <#= taggedValuePropertyType #> <#= metaTaggedValue.AsPropertyName() #>
+        {
+            get { return UmlAttribute.GetTaggedValue("<#= metaTaggedValue.Name #>").<#= metaTaggedValue.Cardinality == MetaCardinality.Many ? "SplitValues" : "Value" #>; }
+        }
+<#
+		}
+#>
+
+		#endregion
+
+        public bool Equals(<#= attributeUpccClass #> other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return Equals(other.UmlAttribute, UmlAttribute);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof (<#= attributeUpccClass #>)) return false;
+            return Equals((<#= attributeUpccClass #>) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (UmlAttribute != null ? UmlAttribute.GetHashCode() : 0);
+        }
+
+        public static bool operator ==(<#= attributeUpccClass #> left, <#= attributeUpccClass #> right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(<#= attributeUpccClass #> left, <#= attributeUpccClass #> right)
+        {
+            return !Equals(left, right);
+        }
+	}
+}

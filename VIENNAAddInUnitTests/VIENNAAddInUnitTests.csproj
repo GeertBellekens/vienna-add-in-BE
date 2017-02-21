@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EC78D79A-6F78-4FA8-88E6-807F57A96AEA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VIENNAAddInUnitTests</RootNamespace>
+    <AssemblyName>VIENNAAddInUnitTests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\VIENNAAddIn\ext\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\VIENNAAddIn\ext\Castle.DynamicProxy2.dll</HintPath>
+    </Reference>
+    <Reference Include="IBM.Data.DB2, Version=9.0.0.2, Culture=neutral, PublicKeyToken=7c307b91aa13d208, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\VIENNAAddIn\ext\IBM.Data.DB2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Moq, Version=3.0.308.2, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ext\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ext\nunit\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework.extensions, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ext\nunit\nunit.framework.extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsFormsIntegration">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EAPerformanceTest.cs" />
+    <Compile Include="EARepositoryExtensionTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SynchTaggedValuesTest\HasTaggedValuesConstraint.cs" />
+    <Compile Include="SynchTaggedValuesTest\SynchTaggedValuesTestsBase.cs" />
+    <Compile Include="SynchTaggedValuesTest\SynchTaggedValuesTests.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SynchTaggedValuesTests.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SynchTaggedValuesTest\SynchTaggedValuesTestRepository.cs" />
+    <Compile Include="TestRepository\EAAttributeExtensions.cs" />
+    <Compile Include="TestRepository\EAElementExtensions.cs" />
+    <Compile Include="TestRepository\EAPackageExtensions.cs" />
+    <Compile Include="TestRepository\EATaggedValueExtensions.cs" />
+    <Compile Include="upcc3\ea\CdtLibraryTestRepository.cs" />
+    <Compile Include="upcc3\ea\CdtLibraryTests.cs" />
+    <Compile Include="upcc3\ea\EaUmlRepositoryTest.cs" />
+    <Compile Include="upcc3\ea\EaCollectionTests.cs" />
+    <Compile Include="upcc3\export\transformer\TransformerTest.cs" />
+    <Compile Include="upcc3\export\mapping\SubsetExporterTest.cs" />
+    <Compile Include="upcc3\import\cctsndr\BDTXsdImporterTests.cs" />
+    <Compile Include="upcc3\import\cctsndr\XSDImporterTest.cs" />
+    <Compile Include="upcc3\import\mapping\MapForceMappingImporterTest.cs" />
+    <Compile Include="upcc3\import\mapping\MapForceSourceElementTreeTests.cs" />
+    <Compile Include="upcc3\import\mapping\MappingImporterTests.cs" />
+    <Compile Include="upcc3\import\mapping\MappingTestRepository.cs" />
+    <Compile Include="upcc3\import\mapping\SchemaMappingTests.cs" />
+    <Compile Include="upcc3\import\mapping\TargetElementStoreTests.cs" />
+    <Compile Include="upcc3\import\util\CustomSchemaReaderTest.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\abiemodel\TemporaryAbieModelTest.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\bdtmodel\TemporaryBdtModelTest.cs" />
+    <Compile Include="TestCategories.cs" />
+    <Compile Include="TestRepository\CCTSEAExtensions.cs" />
+    <Compile Include="TestRepository\EAConnectorEnd.cs" />
+    <Compile Include="TestRepository\EAProject.cs" />
+    <Compile Include="TestRepository\EmptyEARepository.cs" />
+    <Compile Include="TestRepository\IDFactory.cs" />
+    <Compile Include="TestRepository\TemporaryFileBasedRepository.cs" />
+    <Compile Include="upcc3\ccts\dra\CdtLibraryTests.cs" />
+    <Compile Include="upcc3\ccts\dra\CdtLibraryTestRepository.cs" />
+    <Compile Include="upcc3\ccts\util\AsbieAggregationKindTests.cs" />
+    <Compile Include="upcc3\ccts\otf\validators\BLibraryValidatorTests.cs" />
+    <Compile Include="upcc3\ccts\otf\validators\BusinessLibraryValidatorTests.cs" />
+    <Compile Include="upcc3\ccts\otf\validators\PRIMLibraryValidatorTests.cs" />
+    <Compile Include="upcc3\ccts\otf\validators\PRIMValidatorTests.cs" />
+    <Compile Include="upcc3\ccts\otf\RepositoryItemBuilder.cs" />
+    <Compile Include="upcc3\ccts\otf\validators\constraints\ConstraintTests.cs" />
+    <Compile Include="upcc3\ccts\otf\validators\constraints\ElementsMustHaveStereotypeConstraintTests.cs" />
+    <Compile Include="upcc3\ccts\otf\validators\constraints\MustNotContainAnyElementsConstraintTests.cs" />
+    <Compile Include="upcc3\ccts\otf\validators\constraints\MustNotContainAnyPackagesConstraintTests.cs" />
+    <Compile Include="upcc3\ccts\otf\validators\constraints\NameMustNotBeEmptyConstraintTests.cs" />
+    <Compile Include="upcc3\ccts\otf\validators\constraints\ParentMustBeModelOrBInformationVOrBLibraryConstraintTests.cs" />
+    <Compile Include="upcc3\ccts\otf\validators\constraints\ParentPackageMustHaveStereotypeConstraintTests.cs" />
+    <Compile Include="upcc3\ccts\otf\validators\constraints\SubPackagesMustBeBusinessLibrariesConstraintTests.cs" />
+    <Compile Include="upcc3\ccts\otf\validators\constraints\TaggedValuesMustBeDefinedConstraintTests.cs" />
+    <Compile Include="upcc3\ccts\otf\validators\constraints\TaggedValuesMustNotBeEmptyConstraintTests.cs" />
+    <Compile Include="upcc3\ccts\otf\validators\ValidatorTests.cs" />
+    <Compile Include="upcc3\ccts\otf\CCItemWrapperTests.cs" />
+    <Compile Include="upcc3\ccts\otf\HierarchicalRepositoryTests.cs" />
+    <Compile Include="upcc3\ccts\otf\CCRepositoryTests.cs" />
+    <Compile Include="upcc3\ccts\otf\ValidationServiceTests.cs" />
+    <Compile Include="upcc3\ccts\otf\ValidationServiceWithOneValidatedItemTests.cs" />
+    <Compile Include="upcc3\ccts\otf\validators\ElementLibraryValidatorTests.cs" />
+    <Compile Include="upcc3\ccts\otf\RepositoryContentLoaderTests.cs" />
+    <Compile Include="upcc3\ccts\otf\ValidatingCCRepositoryIntegrationTests.cs" />
+    <Compile Include="upcc3\ccts\util\MultiPartTaggedValueTests.cs" />
+    <Compile Include="upcc3\Wizards\dev\TestRepository\EARepositoryBdtEditor.cs" />
+    <Compile Include="upcc3\Wizards\dev\ui\AbieEditorFormTest.cs" />
+    <Compile Include="upcc3\Wizards\dev\cache\CcCacheTest.cs" />
+    <Compile Include="upcc3\Wizards\dev\ui\BdtEditorFormTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="upcc3\Wizards\dev\ui\XsltGeneratorTest.cs" />
+    <Compile Include="upcc3\Wizards\dev\ui\WSDLGeneratorTest.cs" />
+    <Compile Include="upcc3\Wizards\dev\ui\SubSettingWizardTest.cs" />
+    <Compile Include="upcc3\Wizards\dev\ui\ExporterFormTest.cs" />
+    <Compile Include="upcc3\Wizards\dev\ui\SchemaAnalyzerTest.cs" />
+    <Compile Include="upcc3\Wizards\dev\ui\StandardLibraryImporterFormTest.cs" />
+    <Compile Include="upcc3\Wizards\dev\ui\TransformerUITest.cs" />
+    <Compile Include="upcc3\Wizards\dev\ui\UpccModelCreatorFormTest.cs" />
+    <Compile Include="upcc3\Wizards\dev\TestRepository\EARepositoryAbieEditor.cs" />
+    <Compile Include="upcc3\Wizards\dev\util\XmlSchemaReaderTest.cs" />
+    <Compile Include="upcc3\Wizards\TestRepository\EARepositoryLibraryImporter.cs" />
+    <Compile Include="upcc3\Wizards\TestRepository\EARepositoryModelCreator.cs" />
+    <Compile Include="upcc3\Wizards\dev\TestRepository\EARepositoryCcCache.cs" />
+    <Compile Include="upcc3\Wizards\TestRepository\EARepositoryResourceHandler.cs" />
+    <Compile Include="upcc3\Wizards\dev\ui\XsdImporterFormTest.cs" />
+    <Compile Include="upcc3\Wizards\UPCCModelWizardFormTest.cs" />
+    <Compile Include="upcc3\Wizards\util\ResourceDescriptorTest.cs" />
+    <Compile Include="upcc3\Wizards\util\ResourceHandlerTest.cs" />
+    <Compile Include="upcc3\Wizards\util\DatabaseHandlerTest.cs" />
+    <Compile Include="upcc3\Wizards\util\LibraryImporterTest.cs" />
+    <Compile Include="upcc3\Wizards\StandardLibraryImporterFormTest.cs" />
+    <Compile Include="upcc3\Wizards\util\VersionDescriptorTest.cs" />
+    <Compile Include="upcc3\Wizards\util\VersionHandlerTest.cs" />
+    <Compile Include="Utils\EAAssert.cs" />
+    <Compile Include="Utils\PropertyEqualityAssertion.cs" />
+    <Compile Include="Utils\PropertyEqualityAssertionTest.cs" />
+    <Compile Include="Utils\RepositoryCopierTest.cs" />
+    <Compile Include="TestUtils.cs" />
+    <Compile Include="upcc3\ccts\dra\DRACCRepositoryTest.cs" />
+    <Compile Include="upcc3\ccts\util\AggregationKindTest.cs" />
+    <Compile Include="upcc3\Wizards\util\ModelCreatorTest.cs" />
+    <Compile Include="upcc3\export\cctsndr\DictionaryExtensionsTest.cs" />
+    <Compile Include="upcc3\export\cctsndr\StringExtensionsTest.cs" />
+    <Compile Include="TestRepository\EAAttribute.cs" />
+    <Compile Include="TestRepository\EAAttributeTag.cs" />
+    <Compile Include="TestRepository\EAConnector.cs" />
+    <Compile Include="TestRepository\EAConnectorTag.cs" />
+    <Compile Include="TestRepository\EADiagram.cs" />
+    <Compile Include="TestRepository\EADiagramObject.cs" />
+    <Compile Include="TestRepository\EAElement.cs" />
+    <Compile Include="TestRepository\EARepository2.cs" />
+    <Compile Include="TestRepository\EAPackage.cs" />
+    <Compile Include="TestRepository\EATaggedValue.cs" />
+    <Compile Include="TestRepository\EACollection.cs" />
+    <Compile Include="TestRepository\EARepository.cs" />
+    <Compile Include="TestRepository\EARepository1.cs" />
+    <Compile Include="TestRepository\EARepositoryTest.cs" />
+    <Compile Include="upcc3\export\cctsndr\XSDGeneratorTest.cs" />
+    <Compile Include="menu\MenuManagerTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AuthoringTests.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CctsRepository\CctsRepository.csproj">
+      <Project>{D788A632-CD92-4C8A-AE54-A37CD5871368}</Project>
+      <Name>CctsRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UpccModel\Upcc.csproj">
+      <Project>{45CFA9B7-56EC-4986-BEAF-079F86A56B0C}</Project>
+      <Name>Upcc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VIENNAAddInUtils\VIENNAAddInUtils.csproj">
+      <Project>{3C1352B8-1B53-46F9-BC18-BFF48115A606}</Project>
+      <Name>VIENNAAddInUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VIENNAAddInWpfUserControls\VIENNAAddInWpfUserControls.csproj">
+      <Project>{D2B72E74-9717-42E0-9D43-0964D8B781BD}</Project>
+      <Name>VIENNAAddInWpfUserControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VIENNAAddIn\VIENNAAddIn.csproj">
+      <Project>{5642201A-D4A3-4F3B-9BC5-71C3A0DB7EA3}</Project>
+      <Name>VIENNAAddIn</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="EA">
+      <Guid>{64FB2BF4-9EFA-11D2-8307-C45586000000}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>10</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SynchTaggedValuesTest\resources\RepositoryWithoutTaggedValues.eap" />
+    <None Include="SynchTaggedValuesTest\SynchTaggedValuesTests.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SynchTaggedValuesTests.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\import\cctsndr\BDTImporterTestResources\BusinessDataType_BDTCanProhibitInheritanceOfSUPFromParentBDT.xsd" />
+    <None Include="upcc3\import\cctsndr\BDTImporterTestResources\BusinessDataType_BDTInheritsCONFromParentBDT.xsd" />
+    <None Include="upcc3\import\cctsndr\BDTImporterTestResources\BusinessDataType_BDTInheritsSUPsFromParentBDT.xsd" />
+    <None Include="upcc3\import\cctsndr\BDTImporterTestResources\BusinessDataType_complex_type.xsd" />
+    <None Include="upcc3\import\cctsndr\BDTImporterTestResources\BusinessDataType_CONFacetsAreAppliedToComplexTypes.xsd" />
+    <None Include="upcc3\import\cctsndr\BDTImporterTestResources\BusinessDataType_CONFacetsAreAppliedToSimpleTypes.xsd" />
+    <None Include="upcc3\import\cctsndr\BDTImporterTestResources\BusinessDataType_ResolvesBDTTypeNamesAccordingToTheNDR.xsd" />
+    <None Include="upcc3\import\cctsndr\BDTImporterTestResources\BusinessDataType_simple_type.xsd" />
+    <None Include="upcc3\import\cctsndr\BDTImporterTestResources\BusinessDataType_SUPBasicTypesAreDeterminedFromXsdTypes.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 und x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

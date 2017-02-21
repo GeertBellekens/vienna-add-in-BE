@@ -1,0 +1,68 @@
+﻿<Window x:Class="VIENNAAddIn.upcc3.Wizards.dev.ui.UpccModelCreator"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="610" Width="450" WindowStyle="SingleBorderWindow" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ShowInTaskbar="True" ResizeMode="NoResize" Title="Default UPCC Model Creator" FontSize="11">
+    <DockPanel Margin="2,5,5,5">
+        <DockPanel DockPanel.Dock="Top">
+            <Label DockPanel.Dock="Left" HorizontalAlignment="Left">Model Name:</Label>
+            <TextBox Name="textboxModelName" KeyboardNavigation.TabIndex="0" TextChanged="textboxModelName_TextChanged" />
+        </DockPanel>
+        <GroupBox DockPanel.Dock="Top" Header="Libraries within the Business Library" Margin="1,8,0,0">
+            <StackPanel Orientation="Vertical">
+                <CheckBox Name="checkboxDefaultValues" Margin="2,6,0,0" KeyboardNavigation.TabIndex="1" Checked="checkboxDefaultValues_Checked" Unchecked="checkboxDefaultValues_Unchecked">Use default names for generated Libraries (e.g. name of the  PRIM Library)</CheckBox>
+                <GroupBox Margin="18,7,0,0">
+                    <StackPanel Orientation="Vertical">
+                        <DockPanel Margin="0,6,0,0">
+                            <CheckBox DockPanel.Dock="Left" Margin="0,2,0,0" Name="checkboxPRIML" KeyboardNavigation.TabIndex="2" Width="90" Checked="checkboxPRIML_Checked" Unchecked="checkboxPRIML_Unchecked">PRIM Library:</CheckBox>
+                            <TextBox Name="textboxPRIMLName" KeyboardNavigation.TabIndex="3" TextChanged="textboxPRIMLName_TextChanged" />
+                        </DockPanel>
+                        <DockPanel Margin="0,5,0,0">
+                            <CheckBox DockPanel.Dock="Left" Margin="0,2,0,0" Name="checkboxENUML" KeyboardNavigation.TabIndex="4" Width="90" Checked="checkboxENUML_Checked" Unchecked="checkboxENUML_Unchecked">ENUM Library:</CheckBox>
+                            <TextBox Name="textboxENUMLName" KeyboardNavigation.TabIndex="5" TextChanged="textboxENUMLName_TextChanged" />
+                        </DockPanel>
+                        <DockPanel Margin="0,5,0,0">
+                            <CheckBox DockPanel.Dock="Left" Margin="0,2,0,0" Name="checkboxCDTL" KeyboardNavigation.TabIndex="6" Width="90" Checked="checkboxCDTL_Checked" Unchecked="checkboxCDTL_Unchecked">CDT Library:</CheckBox>
+                            <TextBox Name="textboxCDTLName" KeyboardNavigation.TabIndex="7" TextChanged="textboxCDTLName_TextChanged" />
+                        </DockPanel>
+                        <DockPanel Margin="0,5,0,0">
+                            <CheckBox DockPanel.Dock="Left" Margin="0,2,0,0" Name="checkboxCCL" KeyboardNavigation.TabIndex="8" Width="90" Checked="checkboxCCL_Checked" Unchecked="checkboxCCL_Unchecked">CC Library:</CheckBox>
+                            <TextBox Name="textboxCCLName" KeyboardNavigation.TabIndex="9" TextChanged="textboxCCLName_TextChanged" />
+                        </DockPanel>
+                        <DockPanel Margin="0,5,0,0">
+                            <CheckBox DockPanel.Dock="Left" Margin="0,2,0,0" Name="checkboxBDTL" KeyboardNavigation.TabIndex="10" Width="90" Checked="checkboxBDTL_Checked" Unchecked="checkboxBDTL_Unchecked">BDT Library:</CheckBox>
+                            <TextBox Name="textboxBDTLName" KeyboardNavigation.TabIndex="11" TextChanged="textboxBDTLName_TextChanged" />
+                        </DockPanel>
+                        <DockPanel Margin="0,5,0,0">
+                            <CheckBox DockPanel.Dock="Left" Margin="0,2,0,0" Name="checkboxBIEL" KeyboardNavigation.TabIndex="12" Width="90" Checked="checkboxBIEL_Checked" Unchecked="checkboxBIEL_Unchecked">BIE Library:</CheckBox>
+                            <TextBox Name="textboxBIELName" KeyboardNavigation.TabIndex="13" TextChanged="textboxBIELName_TextChanged" />
+                        </DockPanel>
+                        <DockPanel Margin="0,5,0,0">
+                            <CheckBox DockPanel.Dock="Left" Margin="0,2,0,0" Name="checkboxDOCL" KeyboardNavigation.TabIndex="14" Width="90" Checked="checkboxDOCL_Checked" Unchecked="checkboxDOCL_Unchecked">DOC Library:</CheckBox>
+                            <TextBox Name="textboxDOCLName" KeyboardNavigation.TabIndex="15" TextChanged="textboxDOCLName_TextChanged" />
+                        </DockPanel>
+                    </StackPanel>
+                </GroupBox>
+                <CheckBox Name="checkboxImportStandardLibraries" Margin="2,8,0,0" KeyboardNavigation.TabIndex="16" Checked="checkboxImportStandardLibraries_Checked" Unchecked="checkboxImportStandardLibraries_Unchecked">Import standard CC Libraries (e.g. PRIM Library containing standard PRIMs)</CheckBox>
+                <GroupBox Margin="18,8,0,0" Header="Core Component Library Version">
+                    <StackPanel Orientation="Vertical">
+                        <DockPanel Margin="0,5,0,0">
+                            <Label DockPanel.Dock="Left">Major</Label>
+                            <ComboBox Name="cbxMinor" KeyboardNavigation.TabIndex="18" Width="50" DockPanel.Dock="Right" SelectionChanged="cbxMinor_SelectionChanged"></ComboBox>
+                            <Label DockPanel.Dock="Right" Margin="10,0,0,0">Minor</Label>
+                            <ComboBox Name="cbxMajor" KeyboardNavigation.TabIndex="17" DockPanel.Dock="Right" SelectionChanged="cbxMajor_SelectionChanged"></ComboBox>
+                        </DockPanel>
+                        <Label>Comment</Label>
+                        <TextBox IsReadOnly="True" Background="#FFFFE1" Name="txtComment" Margin="2,-2,2,2" Height="58" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"></TextBox>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </GroupBox>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center">
+            <Button HorizontalAlignment="Center" Width="150" Height="23" Name="buttonGenerate" Margin="5,5,5,5" KeyboardNavigation.TabIndex="19" Click="buttonGenerate_Click">_Generate Default Model</Button>
+            <Button HorizontalAlignment="Center" Width="150" Height="23" Name="buttonClose" IsCancel="True" Margin="5,5,5,5" KeyboardNavigation.TabIndex="20" Click="buttonClose_Click">_Close</Button>
+        </StackPanel>
+        <GroupBox DockPanel.Dock="Bottom" Header="Status" Margin="1,8,0,3">
+            <TextBox IsReadOnly="True" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Name="rtxtStatus" Margin="2,2,2,2" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"></TextBox>
+        </GroupBox>
+    </DockPanel>
+</Window>

@@ -1,0 +1,59 @@
+﻿<Window x:Class="VIENNAAddIn.upcc3.Wizards.dev.ui.WSDLGenerator"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:VIENNAAddInWpfUserControls="clr-namespace:VIENNAAddInWpfUserControls;assembly=VIENNAAddInWpfUserControls"
+    Height="360" Width="405" WindowStyle="SingleBorderWindow" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ShowInTaskbar="True" ResizeMode="CanResize" Title="WSDL Generator" FontSize="11">
+    <DockPanel Margin="5,5,5,5">
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5,10,5,5">
+            <Button KeyboardNavigation.TabIndex="9" HorizontalAlignment="Left" Height="23" Name="buttonGenerate" Width="100" IsEnabled="False" Click="buttonGenerate_Click">_Generate WSDL</Button>
+            <Button KeyboardNavigation.TabIndex="10" HorizontalAlignment="Left" Height="23" Name="buttonClose" Width="75" Margin="30,0,0,0" Click="buttonClose_Click">_Close</Button>
+        </StackPanel>
+        <TextBox Name="textBoxStatus" DockPanel.Dock="Bottom" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Height="60" IsReadOnly="True" IsUndoEnabled="False" TextWrapping="Wrap" />
+        <Label Margin="0,5,0,0" DockPanel.Dock="Bottom" Name="label2" Height="23"  HorizontalAlignment="Left">Status:</Label>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            <Label Height="23" Width="160">Business Choreography View:</Label>
+            <ComboBox KeyboardNavigation.TabIndex="0" Name="comboBoxBusinessChoreographyView" Width="200" SelectionChanged="comboBoxBusinessChoreographyView_SelectionChanged"></ComboBox>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,5,0,0">
+            <Label Height="23" Width="160">Business Collaboration View:</Label>
+            <ComboBox KeyboardNavigation.TabIndex="1" Name="comboBoxBusinessCollaborationView" Width="200" IsEnabled="False" SelectionChanged="comboBoxBusinessCollaborationView_SelectionChanged"></ComboBox>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Vertical" Margin="0,5,0,0">
+            <StackPanel Orientation="Horizontal"><Label Height="23" Width="160">XML Schema output directory:</Label>
+            <VIENNAAddInWpfUserControls:DirectorySelector KeyboardNavigation.TabIndex="3" Name="textboxOutputDirectory" Width="200" DirectoryNameChanged="textboxOutputDirectory_DirectoryNameChanged" />
+            </StackPanel>
+            <ListView Name="targetXSDs" Height="107">
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn Header="Message Name">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=messageName}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="XML Schema">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                        <TextBlock Text="{Binding Path=messageName}" Visibility="Collapsed"/>
+                                        <VIENNAAddInWpfUserControls:FileSelector FileNameChanged="FileSelector_DirectoryNameChanged" FileName="{Binding Path=filePath}" />
+                                        </StackPanel>
+                                        </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Target Namespace">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=targetNamespace}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+    </DockPanel>
+</Window>

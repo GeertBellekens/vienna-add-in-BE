@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:eb="http://foo.bar/doc" xmlns:ccts="urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3" targetNamespace="http://foo.bar/doc" version="1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="CodeStringType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="NameString" type="xsd:string" />
+        <xsd:attribute name="LanguageString" type="xsd:string" />
+        <xsd:attribute name="CodeListString" type="xsd:string" />
+        <xsd:attribute name="CodeListAgencyString" type="xsd:string" />
+        <xsd:attribute name="CodeListAgencyNameString" type="xsd:string" />
+        <xsd:attribute name="CodeListNameString" type="xsd:string" />
+        <xsd:attribute name="CodeListUniformResourceIdentifierString" type="xsd:string" />
+        <xsd:attribute name="CodeListVersionString" type="xsd:string" />
+        <xsd:attribute name="CodeListSchemeUniformResourceIdentifierString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="DateTimeStringType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="FormatString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="IdentifierStringType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="IdentificationSchemeString" type="xsd:string" />
+        <xsd:attribute name="IdentificationSchemeAgencyNameString" type="xsd:string" />
+        <xsd:attribute name="IdentificationSchemeNameString" type="xsd:string" />
+        <xsd:attribute name="IdentificationSchemeUniformResourceIdentifierString" type="xsd:string" />
+        <xsd:attribute name="IdentificationSchemeVersionString" type="xsd:string" />
+        <xsd:attribute name="IdentificationSchemeAgencyString" type="xsd:string" />
+        <xsd:attribute name="IdentificationSchemeDataUniformResourceIdentifierString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="TextStringType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="LanguageString" type="xsd:string" />
+        <xsd:attribute name="LanguageLocaleString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

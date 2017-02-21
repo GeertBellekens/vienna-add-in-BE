@@ -1,0 +1,11 @@
+#summary Information about T4 templates and related tools.
+
+= Info =
+
+ * [http://www.hanselman.com/blog/T4TextTemplateTransformationToolkitCodeGenerationBestKeptVisualStudioSecret.aspx T4 Code Generation - Best Kept Visual Studio Secret]
+ * [http://damieng.com/blog/2009/11/06/multiple-outputs-from-t4-made-easy-revisited Multiple outputs from T4 made easy - revisited]
+
+= Tools =
+
+ * [http://www.olegsych.com/2009/04/t4-editor-by-tangible-engineering/ T4 Editor]
+ * [http://www.codeplex.com/t4toolbox T4 Toolbox]

@@ -1,0 +1,42 @@
+<#@ include file="../t4/helpers.tt" #>
+<#@ include file="../t4/Copyright.tt" #>
+using System.Collections.Generic;
+<#@ include file="../t4/CctsRepositoryNamespaces.tt" #>
+
+<# 
+	var library = MetaModel.GetPackageRelationsFor(metaEnumerationLiteral.ContainingEnumerationType).First().PackageType;
+#>
+namespace CctsRepository.<#= library.Name #>
+{
+    public interface I<#= metaEnumerationLiteral.ClassName #>
+    {
+		int Id { get; }
+		
+		string Name { get; }
+		
+        I<#= metaEnumerationLiteral.ContainingEnumerationType.Name #> <#= metaEnumerationLiteral.ContainingEnumerationType.Name #> { get; }
+<#
+		if (metaEnumerationLiteral.HasTaggedValues)
+		{
+#>
+
+		#region Tagged Values
+<# 
+			foreach (var taggedValue in metaEnumerationLiteral.TaggedValues)
+			{
+#>
+
+        ///<summary>
+        /// Tagged value '<#= taggedValue.Name #>'.
+        ///</summary>
+		<#= TaggedValuePropertyType(taggedValue) #> <#= TaggedValuePropertyName(taggedValue) #> { get; }
+<#
+			}
+#>
+
+		#endregion
+<#
+		}
+#>
+    }
+}

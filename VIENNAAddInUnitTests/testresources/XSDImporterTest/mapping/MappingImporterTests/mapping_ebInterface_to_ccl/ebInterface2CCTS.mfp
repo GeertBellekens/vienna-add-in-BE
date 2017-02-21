@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  MapForce Project File  -->
+<Project Expanded="Yes" Type="Root" language="xslt2" OutputDir="output\" Title="ebInterface2CCTS" OutputName="ebInterface2CCTS" Version="6">
+	<Folder FolderName="Ordner Mapping" Expanded="Yes" Type="MappingFolder">
+		<File Type="Mapping" FilePath="ebInterface2CCTS_1_1.mfd"/>
+		<File Type="Mapping" FilePath="ebInterface2CCTS_2_1.mfd"/>
+		<File Type="Mapping" FilePath="ebInterface2CCTS_3_1.mfd"/>
+		<File Type="Mapping" FilePath="ebInterface2CCTS_4_1.mfd"/>
+		<File Type="Mapping" FilePath="ebInterface2CCTS_5_1.mfd"/>
+		<File Type="Mapping" FilePath="ebInterface2CCTS_6_1.mfd"/>
+		<File Type="Mapping" FilePath="ebInterface2CCTS_7_1.mfd"/>
+		<File Type="Mapping" FilePath="ebInterface2CCTS_8_1.mfd"/>
+	</Folder>
+</Project>

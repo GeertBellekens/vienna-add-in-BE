@@ -1,0 +1,32 @@
+= Developer Meeting 2009-02-18 =
+
+*1 Code development
+******************
+
+T1.1: Development of the UPCC compliant C# repository including CRUD interfaces
+(CE + PL + ALL)
+
+
+T1.2: Implementing the ATG2 Naming and Design Rules in a UPCC 2 XSD generator
+(PL)
+
+
+T1.3: Implement a synchronize tagged values function. (depending on Sparx Systems' answer) (FK - AK)
+
+T1.4: Wizards for creating artifacts (ABIE, ACC etc.) (CP)
+
+
+*2 Conceptual development
+************************
+
+2.1. Development of a UPCC compliant reference model with realistic assumptions (multiple BIELibraries, CDTLibraries etc.) (MS)
+
+2.2. Development of a ebInterface compliant Core Component Library (MS)
+
+2.3. Implementation of dynamic MDG loading for UPCC (PL)
+
+
+*3 Scientific development
+**********************
+
+3.1: eChallenges Abstract Submission (ALL) 

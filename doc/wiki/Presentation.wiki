@@ -1,0 +1,42 @@
+#summary Outline for a VIENNA Add-In Tool Presentation
+
+= Storyboard =
+
+
+Storyboard for UPCC Tutorial, Rome, 23rd April 2009
+
+1. Create a new UPCC Model Structure
+
+2. Define PRIMs (Decimal, String, TimePoint, Boolean)
+
+3. Define ENUMs 
+
+- ISO 3166-1 Country Codes
+
+- ISO4217 Currency Codes
+
+4. Define CDTs
+
+- Amount
+
+- BinaryObject
+
+- DateTime
+
+- Identifier
+
+- Indicator
+
+- Quantity
+
+- Text
+
+5. Define CCs
+
+- Order, Item, Party, Address
+
+6. Define new ABIEs using the wizard
+
+7. Define new Business Document in the DOCLibrary
+
+8. Generate a new XML Scheme from the DOCLibrary

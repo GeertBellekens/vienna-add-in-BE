@@ -1,0 +1,174 @@
+<#@ template language="C#v3.5" hostspecific="True" debug="True" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="$(SolutionDir)/UpccModel/bin/Debug/Upcc.dll" #>
+<#@ import namespace="Upcc"#>
+<#@ import namespace="System.Text"#>
+/*******************************************************************************
+This file is part of the VIENNAAddIn project
+
+Licensed under GNU General Public License V3 http://gplv3.fsf.org/
+
+For further information on the VIENNAAddIn project please visit 
+http://vienna-add-in.googlecode.com
+*******************************************************************************/
+using EA;
+using VIENNAAddInUtils;
+using Attribute=EA.Attribute;
+using Stereotype=VIENNAAddIn.upcc3.Stereotype;
+
+namespace VIENNAAddIn.Settings
+{
+    public partial class SynchTaggedValues
+    {
+        private void FixPackage(Path path, Package package)
+        {
+            switch (package.Element.Stereotype)
+            {
+<#
+			foreach (var package in MetaModel.GetAllPackages())
+			{
+#>
+                case Stereotype.<#= package.Stereotype #>:
+                    Fix<#= package.Name #>(path/package.Name, package);
+                    break;
+<#
+			}
+#>
+            }
+        }
+<#
+			foreach (var package in MetaModel.GetAllPackages())
+			{
+#>
+
+        private void Fix<#= package.Name #>(Path path, Package package)
+        {
+            AddMissingTaggedValues(path, package<#= CollectTaggedValues(package.TaggedValues) #>);
+<#
+				if (MetaModel.HasSubPackages(package))
+				{
+#>
+            foreach (Package subPackage in package.Packages)
+            {
+                FixPackage(path/subPackage.Name, subPackage);
+            }
+<#
+				}
+				if (MetaModel.HasClassifiers(package))
+				{
+#>
+            foreach (Element element in package.Elements)
+            {
+                switch (element.Stereotype)
+                {
+<#
+					foreach (var relation in MetaModel.GetClassifierRelationsFor(package))
+					{
+						var classifier = relation.ClassifierType;
+						if (classifier.HasTaggedValues)
+						{
+#>
+                    case Stereotype.<#= classifier.Stereotype #>:
+                        AddMissingTaggedValues(path/element.Name, element<#= CollectTaggedValues(classifier.TaggedValues) #>);
+<#
+							if (MetaModel.HasAttributes(classifier))
+							{
+#>
+						foreach (Attribute attribute in element.Attributes)
+						{
+							switch (attribute.Stereotype)
+							{
+<#
+								foreach (var attribute in MetaModel.GetAttributesFor(classifier))
+								{
+									if (attribute.HasTaggedValues)
+									{
+#>
+								case Stereotype.<#= attribute.Stereotype #>:
+									AddMissingTaggedValues(path/element.Name/attribute.Name, attribute<#= CollectTaggedValues(attribute.TaggedValues) #>);
+									break;
+<#
+									}
+								}
+#>
+							}
+						}
+<#
+							}
+							if (MetaModel.HasEnumerationLiterals(classifier))
+							{
+#>
+						foreach (Attribute attribute in element.Attributes)
+						{
+							switch (attribute.Stereotype)
+							{
+<#
+								foreach (var enumerationLiteral in MetaModel.GetEnumerationLiteralsFor(classifier))
+								{
+									if (enumerationLiteral.HasTaggedValues)
+									{
+#>
+								case Stereotype.<#= enumerationLiteral.Stereotype #>:
+									AddMissingTaggedValues(path/element.Name/attribute.Name, attribute<#= CollectTaggedValues(enumerationLiteral.TaggedValues) #>);
+									break;
+<#
+									}
+								}
+#>
+							}
+						}
+<#
+							}
+							if (MetaModel.IsAssociatingClassifier(classifier))
+							{
+#>
+						foreach (Connector connector in element.Connectors)
+						{
+							switch (connector.Stereotype)
+							{
+<#
+								foreach (var association in MetaModel.GetAssociationsForAssociatingClassifier(classifier))
+								{
+									if (association.HasTaggedValues)
+									{
+#>
+								case Stereotype.<#= association.Stereotype #>:
+									AddMissingTaggedValues(path/element.Name/connector.Name, connector<#= CollectTaggedValues(association.TaggedValues) #>);
+									break;
+<#
+									}
+								}
+#>
+							}
+						}
+<#
+							}
+#>
+                        break;
+<#
+						}
+					}
+#>
+                }
+            }
+<#
+				}
+#>
+        }
+<#
+			}
+#>
+	}
+}
+
+<#+
+    string CollectTaggedValues(MetaTaggedValue[] taggedValues)
+	{
+		var packageTaggedValuesBuilder = new StringBuilder();
+		foreach (var taggedValue in taggedValues)
+		{
+			packageTaggedValuesBuilder.Append(", \"").Append(taggedValue.Name).Append("\"");
+		}
+		return packageTaggedValuesBuilder.ToString();
+	}
+#>

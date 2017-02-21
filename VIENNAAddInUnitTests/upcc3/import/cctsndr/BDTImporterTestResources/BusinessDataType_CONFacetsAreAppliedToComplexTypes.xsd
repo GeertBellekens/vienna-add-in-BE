@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ccts="urn:un:unece:uncefact:documentation:common:3:standard:CoreComponentsTechnicalSpecification:3" xmlns:bdt="http://test" targetNamespace="http://test" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="TextType_123456">
+		<xs:simpleContent>
+			<xs:extension base="xs:string"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="ARestrictedTextType_123457">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+				<ccts:DataTypeQualifierTermName>A</ccts:DataTypeQualifierTermName>
+				<ccts:DataTypeQualifierTermName>Restricted</ccts:DataTypeQualifierTermName>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:restriction base="bdt:TextType_123456">
+				<xs:length value="7"/>
+				<xs:pattern value="[abc]*"/>
+				<xs:whiteSpace value="replace"/>
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="AnotherRestrictedTextType_123457">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+				<ccts:DataTypeQualifierTermName>Another</ccts:DataTypeQualifierTermName>
+				<ccts:DataTypeQualifierTermName>Restricted</ccts:DataTypeQualifierTermName>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:restriction base="bdt:TextType_123456">
+				<xs:minLength value="5"/>
+				<xs:maxLength value="9" />
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="NumberType_123458">
+		<xs:simpleContent>
+			<xs:extension base="xs:decimal"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="ARestrictedNumberType_123459">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+				<ccts:DataTypeQualifierTermName>A</ccts:DataTypeQualifierTermName>
+				<ccts:DataTypeQualifierTermName>Restricted</ccts:DataTypeQualifierTermName>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:restriction base="bdt:NumberType_123458">
+				<xs:minInclusive value="4"/>
+				<xs:maxInclusive value="6"/>
+				<xs:fractionDigits value="3"/>
+				<xs:totalDigits value="5"/>
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="FurtherARestrictedNumberType_123476">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+				<ccts:DataTypeQualifierTermName>Further</ccts:DataTypeQualifierTermName>
+				<ccts:DataTypeQualifierTermName>A</ccts:DataTypeQualifierTermName>
+				<ccts:DataTypeQualifierTermName>Restricted</ccts:DataTypeQualifierTermName>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:restriction base="bdt:ARestrictedNumberType_123459">
+				<xs:minInclusive value="5"/>
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="AnotherRestrictedNumberType_123459">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+				<ccts:DataTypeQualifierTermName>Another</ccts:DataTypeQualifierTermName>
+				<ccts:DataTypeQualifierTermName>Restricted</ccts:DataTypeQualifierTermName>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:restriction base="bdt:NumberType_123458">
+				<xs:minExclusive value="6"/>
+				<xs:maxExclusive value="8" />
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>

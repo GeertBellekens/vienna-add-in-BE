@@ -1,0 +1,50 @@
+<#@ template language="C#v3.5" hostspecific="True" debug="True" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="$(SolutionDir)/UpccModel/bin/Debug/Upcc.dll" #>
+<#@ import namespace="Upcc"#>
+// *******************************************************************************
+// This file is part of the VIENNAAddIn project
+// 
+// Licensed under GNU General Public License V3 http://gplv3.fsf.org/
+// 
+// For further information on the VIENNAAddIn project please visit 
+// http://vienna-add-in.googlecode.com
+// *******************************************************************************
+using System.Collections.Generic;
+
+namespace VIENNAAddIn.upcc3
+{
+    ///<summary>
+    /// Definition of stereotype strings for UPCC elements.
+    ///</summary>
+    public static class Stereotype
+    {
+<#
+	foreach (var stereotype in Enum.GetNames(typeof(Upcc.MetaStereotype)))
+	{
+#>
+		public const string <#= stereotype #> = "<#= stereotype #>";
+<#
+	}
+#>
+
+        private static readonly List<string> BusinessLibraryStereotypes = new List<string>
+                                                                          {
+<#
+	foreach (var package in Upcc.MetaModel.GetAllPackages())
+	{
+		var stereotype = package.Stereotype;
+#>
+																			  <#= stereotype #>,
+<#
+	}
+#>
+                                                                          };
+
+        /// <returns>True if the given stereotype is one of the stereotypes for business libraries, false otherwise.</returns>
+        public static bool IsBusinessLibraryStereotype(string stereotype)
+        {
+            return BusinessLibraryStereotypes.Contains(stereotype);
+        }
+    }
+}

@@ -1,0 +1,67 @@
+<#@ include file="../t4/helpers.tt" #>
+<#@ include file="../t4/Copyright.tt" #>
+using System.Collections.Generic;
+<#@ include file="../t4/CctsRepositoryNamespaces.tt" #>
+
+<# 
+	var library = MetaModel.GetPackageRelationsFor(metaAttribute.ContainingClassifierType).First().PackageType;
+    var typeClassName = (metaAttribute.Type is MetaMultiType ? "" : "I" ) + metaAttribute.Type.Name;
+#>
+namespace CctsRepository.<#= library.Name #>
+{
+    public interface I<#= metaAttribute.ClassName #>
+    {
+		int Id { get; }
+		
+		string Name { get; }
+		
+        string UpperBound { get; }
+		
+        string LowerBound { get; }
+		
+        bool IsOptional();
+		
+        I<#= metaAttribute.ContainingClassifierType.Name #> <#= metaAttribute.ContainingClassifierType.Name #> { get; }
+		
+		<#= typeClassName #> <#= metaAttribute.Type.Name #> { get; }
+<#
+///==========================================================================================================================
+/// Dependencies
+///==========================================================================================================================
+
+		foreach (var dependency in MetaModel.GetDependenciesFor(metaAttribute))
+		{
+#>
+
+		I<#= dependency.TargetAttribute.ClassName #> <#= FirstCharToUpperCase(dependency.Stereotype.ToString()) #> { get; }
+<#
+		}
+
+///==========================================================================================================================
+/// Tagged Values
+///==========================================================================================================================
+
+		if (metaAttribute.HasTaggedValues)
+		{
+#>
+
+		#region Tagged Values
+<# 
+			foreach (var taggedValue in metaAttribute.TaggedValues)
+			{
+#>
+
+        ///<summary>
+        /// Tagged value '<#= taggedValue.Name #>'.
+        ///</summary>
+		<#= TaggedValuePropertyType(taggedValue) #> <#= TaggedValuePropertyName(taggedValue) #> { get; }
+<#
+			}
+#>
+
+		#endregion
+<#
+		}
+#>
+    }
+}

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<xmi:XMI xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:UPCC3_-_Model_Management_Abstract_Syntax="http://www.sparxsystems.com/profiles/UPCC3_-_Model_Management_Abstract_Syntax/1.0">
+	<xmi:Documentation exporter="Enterprise Architect" exporterVersion="6.5"/>
+	<uml:Model xmi:type="uml:Model" name="EA_Model" visibility="public">
+		<packagedElement xmi:type="uml:Package" xmi:id="EAPK_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3" name="ENUMLibrary" visibility="public"/>
+		<UPCC3_-_Model_Management_Abstract_Syntax:ENUMLibrary base_Package="EAPK_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3"/>
+	</uml:Model>
+	<xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+		<elements>
+			<element xmi:idref="EAPK_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3" xmi:type="uml:Package" name="ENUMLibrary" scope="public">
+				<model package2="EAID_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3" package="EAPK_CC0B2365_2404_4780_811C_17802F3C38C8" tpos="0" ea_localid="3" ea_eleType="package"/>
+				<properties isSpecification="false" sType="Package" nType="0" scope="public" stereotype="ENUMLibrary"/>
+				<project author="cschollum" version="1.0" phase="1.0" created="2010-01-04 20:27:22" modified="2010-01-04 20:27:22" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<modelDocument/>
+				<tags>
+					<tag xmi:id="EAID_9E6EB875_7428_4739_A42B_95167E3DE897" name="baseURN" modelElement="EAID_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3"/>
+					<tag xmi:id="EAID_3FF92CE4_53F7_1b53_882A_7DDED5B667EB" name="businessTerm" modelElement="EAID_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3"/>
+					<tag xmi:id="EAID_4CB00AB9_52CC_1e52_98F9_0DA92DE033DC" name="copyright" modelElement="EAID_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3"/>
+					<tag xmi:id="EAID_081BC26B_F8FE_7af8_9947_4A82E28DAB46" name="owner" modelElement="EAID_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3"/>
+					<tag xmi:id="EAID_B4F8B86F_0082_6700_A8F6_44A482F75CA1" name="reference" modelElement="EAID_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3"/>
+					<tag xmi:id="EAID_14AB8884_9177_f191_BB55_A981E5410DFD" name="status" modelElement="EAID_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3"/>
+					<tag xmi:id="EAID_98C070FA_618D_de61_ADB7_E5EEB4EB5B6B" name="uniqueIdentifier" modelElement="EAID_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3"/>
+					<tag xmi:id="EAID_731219A9_A09C_32a0_8279_5BCEF356211D" name="versionIdentifier" modelElement="EAID_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3"/>
+				</tags>
+				<xrefs value="$XREFPROP=$XID={10074185-4AC4-4949-AC7B-BB9559579815}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=ENUMLibrary;@ENDSTEREO;$DES;$CLT={D69A75A5-A260-4c29-9FF3-25E55E1CEFE3}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="Default Model"/>
+				<packageproperties version="1.0" tpos="0"/>
+				<paths/>
+				<times created="2009-02-09 00:00:00" modified="2009-02-09 00:00:00" lastloaddate="2010-01-04 20:27:22" lastsavedate="2010-01-04 20:27:22"/>
+				<flags iscontrolled="FALSE" isprotected="FALSE" batchsave="0" batchload="0" usedtd="FALSE" logxml="FALSE"/>
+			</element>
+		</elements>
+		<connectors/>
+		<primitivetypes>
+			<packagedElement xmi:type="uml:Package" xmi:id="EAPrimitiveTypesPackage" name="EA_PrimitiveTypes_Package" visibility="public"/>
+		</primitivetypes>
+		<profiles>
+			<uml:Profile xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1/" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmi:id="49AA3A7C-6" nsPrefix="UPCC3_-_Model_Management_Abstract_Syntax" name="UPCC3 - Model Management Abstract Syntax" metamodelReference="mmref01">
+				<ownedComment xmi:type="uml:Comment" xmi:id="comment01" annotatedElement="49AA3A7C-6">
+					<body>UPCC3 - Model Management Abstract Syntax Version:1.0</body>
+				</ownedComment>
+				<packageImport xmi:id="mmref01">
+					<importedPackage href="http://schema.omg.org/spec/UML/2.1/"/>
+				</packageImport>
+				<packagedElement xmi:type="uml:Stereotype" xmi:id="ENUMLibrary" name="ENUMLibrary">
+					<generalization xmi:type="uml:Generalization" xmi:id="ENUMLibrary_generalization" general="bLibrary"/>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="ENUMLibrary-namespacePrefix" name="namespacePrefix">
+						<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="ENUMLibrary-baseURN" name="baseURN">
+						<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+					</ownedAttribute>
+				</packagedElement>
+				<packagedElement xmi:type="uml:Stereotype" xmi:id="BIELibrary" name="BIELibrary">
+					<generalization xmi:type="uml:Generalization" xmi:id="BIELibrary_generalization" general="bLibrary"/>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="BIELibrary-namespacePrefix" name="namespacePrefix">
+						<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="BIELibrary-baseURN" name="baseURN">
+						<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+					</ownedAttribute>
+				</packagedElement>
+				<packagedElement xmi:type="uml:Stereotype" xmi:id="CCLibrary" name="CCLibrary">
+					<generalization xmi:type="uml:Generalization" xmi:id="CCLibrary_generalization" general="bLibrary"/>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="CCLibrary-namespacePrefix" name="namespacePrefix">
+						<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="CCLibrary-baseURN" name="baseURN">
+						<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+					</ownedAttribute>
+				</packagedElement>
+				<packagedElement xmi:type="uml:Stereotype" xmi:id="CDTLibrary" name="CDTLibrary">
+					<generalization xmi:type="uml:Generalization" xmi:id="CDTLibrary_generalization" general="bLibrary"/>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="CDTLibrary-namespacePrefix" name="namespacePrefix">
+						<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="CDTLibrary-baseURN" name="baseURN">
+						<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+					</ownedAttribute>
+				</packagedElement>
+				<packagedElement xmi:type="uml:Stereotype" xmi:id="DOCLibrary" name="DOCLibrary">
+					<generalization xmi:type="uml:Generalization" xmi:id="DOCLibrary_generalization" general="bLibrary"/>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="DOCLibrary-namespacePrefix" name="namespacePrefix">
+						<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="DOCLibrary-baseURN" name="baseURN">
+						<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+					</ownedAttribute>
+				</packagedElement>
+				<packagedElement xmi:type="uml:Stereotype" xmi:id="bLibrary" name="bLibrary">
+					<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-base_Package" name="base_Package" association="Package_bLibrary">
+						<type href="http://schema.omg.org/spec/UML/2.1/#Package"/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-versionIdentifier" name="versionIdentifier">
+						<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-owner" name="owner">
+						<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-businessTerm" name="businessTerm">
+						<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-uniqueIdentifier" name="uniqueIdentifier">
+						<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-status" name="status">
+						<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-reference" name="reference">
+						<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-copyright" name="copyright">
+						<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+					</ownedAttribute>
+				</packagedElement>
+				<packagedElement xmi:type="uml:Extension" xmi:id="Package_bLibrary" name="A_Package_bLibrary" memberEnd="extension_bLibrary bLibrary-base_Package">
+					<ownedEnd xmi:id="extension_bLibrary" name="extension_bLibrary" type="bLibrary" isComposite="true" lower="0" upper="1" memberEnd="extension_bLibrary bLibrary-base_Package"/>
+				</packagedElement>
+				<packagedElement xmi:type="uml:Stereotype" xmi:id="BDTLibrary" name="BDTLibrary">
+					<generalization xmi:type="uml:Generalization" xmi:id="BDTLibrary_generalization" general="bLibrary"/>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="BDTLibrary-namespacePrefix" name="namespacePrefix">
+						<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="BDTLibrary- baseURN" name=" baseURN">
+						<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+					</ownedAttribute>
+				</packagedElement>
+				<packagedElement xmi:type="uml:Stereotype" xmi:id="PRIMLibrary" name="PRIMLibrary">
+					<generalization xmi:type="uml:Generalization" xmi:id="PRIMLibrary_generalization" general="bLibrary"/>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="PRIMLibrary-namespacePrefix" name="namespacePrefix">
+						<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="PRIMLibrary-baseURN" name="baseURN">
+						<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+					</ownedAttribute>
+				</packagedElement>
+			</uml:Profile>
+		</profiles>
+		<diagrams/>
+	</xmi:Extension>
+</xmi:XMI>

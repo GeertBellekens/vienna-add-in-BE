@@ -1,0 +1,95 @@
+<#@ template language="C#v3.5" hostspecific="True" debug="True" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="$(SolutionDir)/UpccModel/bin/Debug/Upcc.dll" #>
+<#@ import namespace="Upcc"#>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ include file="t4/helpers.tt" #>
+// *******************************************************************************
+// This file is part of the VIENNAAddIn project
+// 
+// Licensed under GNU General Public License V3 http://gplv3.fsf.org/
+// 
+// For further information on the VIENNAAddIn project please visit 
+// http://vienna-add-in.googlecode.com
+// *******************************************************************************
+using System;
+using System.Collections.Generic;
+<#@ include file="t4/CctsRepositoryNamespaces.tt" #>
+using VIENNAAddInUtils;
+
+namespace CctsRepository
+{
+    public interface ICctsRepository
+    {
+		#region Libraries
+		
+		IEnumerable<Object> GetAllLibraries();
+<#
+	foreach (var package in MetaModel.GetAllPackages())
+	{
+#>
+
+		/// <returns>
+		/// All <#= Plural(package.Stereotype.ToString()) #> contained in this repository.
+		/// </returns>
+        IEnumerable<I<#= package.Name #>> Get<#= Plural(package.Name) #>();
+
+		/// <summary>
+		/// Retrieves a <#= package.Stereotype #> by ID.
+		/// <param name="id">A <#= package.Stereotype #>'s ID.</param>
+		/// <returns>The <#= package.Stereotype #> with the given <paramref name="id"/> or <c>null</c> if no such <#= package.Stereotype #> is found.</returns>
+		/// </summary>
+		I<#= package.Name #> Get<#= package.Name #>ById(int id);
+
+		/// <summary>
+		/// Retrieves a <#= package.Stereotype #> by <see cref="Path"/>.
+		/// <param name="path">A <#= package.Stereotype #>'s <see cref="Path"/>.</param>
+		/// <returns>The <#= package.Stereotype #> with the given <paramref name="path"/> or <c>null</c> if no such <#= package.Stereotype #> is found.</returns>
+		/// </summary>
+        I<#= package.Name #> Get<#= package.Name #>ByPath(Path path);
+<#
+	}
+#>
+
+		#endregion
+		#region Elements
+<#
+	foreach (var classifier in MetaModel.GetAllConcreteClassifiers())
+	{
+#>
+
+		/// <summary>
+		/// Retrieves a <#= classifier.Stereotype #> by ID.
+		/// <param name="id">A <#= classifier.Stereotype #>'s ID.</param>
+		/// <returns>The <#= classifier.Stereotype #> with the given <paramref name="id"/> or <c>null</c> if no such <#= classifier.Stereotype #> is found.</returns>
+		/// </summary>
+        I<#= classifier.Name #> Get<#= classifier.Name #>ById(int id);
+
+		/// <summary>
+		/// Retrieves a <#= classifier.Stereotype #> by <see cref="Path"/>.
+		/// <param name="path">A <#= classifier.Stereotype #>'s <see cref="Path"/>.</param>
+		/// <returns>The <#= classifier.Stereotype #> with the given <paramref name="path"/> or <c>null</c> if no such <#= classifier.Stereotype #> is found.</returns>
+		/// </summary>
+		I<#= classifier.Name #> Get<#= classifier.Name #>ByPath(Path path);
+<#
+	}
+#>
+
+		#endregion
+
+        /// <summary>
+        /// Root locations are places in the repository where root-level bLibraries can be created.
+        /// </summary>
+        /// <returns>The root locations currently available in this repository.</returns>
+        IEnumerable<Path> GetRootLocations();
+
+        /// <summary>
+        /// Creates a bLibrary in the given <paramref name="rootLocation"/>.
+        /// </summary>
+        /// <param name="rootLocation">A root location (<see cref="GetRootLocations"/>).</param>
+        /// <param name="specification">A specification for a bLibrary.</param>
+        /// <returns>The newly created bLibrary.</returns>
+        /// <returns></returns>
+		IBLibrary CreateRootBLibrary(Path rootLocation, BLibrarySpec specification);
+    }
+}

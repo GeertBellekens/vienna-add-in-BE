@@ -1,0 +1,97 @@
+<#@ assembly name="$(SolutionDir)/VIENNAAddInUtils/bin/Debug/VIENNAAddInUtils.dll" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="VIENNAAddInUtils"#>
+<#@ import namespace="VIENNAAddInUtils.t4"#>
+<#@ include file="../t4/CctsRepositoryNamespaces.tt" #>
+using System;
+using System.Collections.Generic;
+using VIENNAAddIn.upcc3.uml;
+
+<# 
+	var enumerationLiteralInterface = "I" + metaEnumerationLiteral.ClassName;
+	var enumerationLiteralUpccClass = "Upcc" + metaEnumerationLiteral.ClassName;
+	var containingEnumeration = metaEnumerationLiteral.ContainingEnumerationType.Name;
+	var containingEnumerationParamName = containingEnumeration.FirstCharToLowerCase();
+	if (containingEnumerationParamName == "enum") containingEnumerationParamName = "@enum"; // dirty hack to avoid naming conflict with 'enum'
+#>
+namespace VIENNAAddIn.upcc3.repo.<#= MetaModel.GetPackageRelationsFor(metaEnumerationLiteral.ContainingEnumerationType).First().PackageType.Name #>
+{
+    internal class <#= enumerationLiteralUpccClass #> : <#= enumerationLiteralInterface #>
+    {
+        public <#= enumerationLiteralUpccClass #>(IUmlEnumerationLiteral umlEnumerationLiteral, I<#= containingEnumeration #> <#= containingEnumerationParamName #>)
+        {
+            UmlEnumerationLiteral = umlEnumerationLiteral;
+			<#= containingEnumeration #> = <#= containingEnumerationParamName #>;
+        }
+
+        public IUmlEnumerationLiteral UmlEnumerationLiteral { get; private set; }
+
+        #region <#= enumerationLiteralInterface #> Members
+
+        public int Id
+        {
+            get { return UmlEnumerationLiteral.Id; }
+        }
+
+        public string Name
+        {
+            get { return UmlEnumerationLiteral.Name; }
+        }
+
+        public I<#= containingEnumeration #> <#= containingEnumeration #> { get; private set; }
+
+<#
+///==========================================================================================================================
+/// Tagged Values
+///==========================================================================================================================
+
+		foreach (var metaTaggedValue in metaEnumerationLiteral.TaggedValues)
+		{
+			var taggedValuePropertyType = (metaTaggedValue.Cardinality == MetaCardinality.Many ? "IEnumerable<" + metaTaggedValue.Type + ">" : metaTaggedValue.Type);
+#>
+
+        ///<summary>
+        /// Tagged value '<#= metaTaggedValue.Name #>'.
+        ///</summary>
+        public <#= taggedValuePropertyType #> <#= metaTaggedValue.AsPropertyName() #>
+        {
+            get { return UmlEnumerationLiteral.GetTaggedValue("<#= metaTaggedValue.Name #>").<#= metaTaggedValue.Cardinality == MetaCardinality.Many ? "SplitValues" : "Value" #>; }
+        }
+<#
+		}
+#>
+
+		#endregion
+
+        public bool Equals(<#= enumerationLiteralUpccClass #> other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return Equals(other.UmlEnumerationLiteral, UmlEnumerationLiteral);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof (<#= enumerationLiteralUpccClass #>)) return false;
+            return Equals((<#= enumerationLiteralUpccClass #>) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (UmlEnumerationLiteral != null ? UmlEnumerationLiteral.GetHashCode() : 0);
+        }
+
+        public static bool operator ==(<#= enumerationLiteralUpccClass #> left, <#= enumerationLiteralUpccClass #> right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(<#= enumerationLiteralUpccClass #> left, <#= enumerationLiteralUpccClass #> right)
+        {
+            return !Equals(left, right);
+        }
+	}
+}

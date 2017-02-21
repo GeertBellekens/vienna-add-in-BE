@@ -1,0 +1,211 @@
+<#@ assembly name="$(SolutionDir)/VIENNAAddInUtils/bin/Debug/VIENNAAddInUtils.dll" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="VIENNAAddInUtils"#>
+<#@ import namespace="VIENNAAddInUtils.t4"#>
+<#@ include file="../t4/CctsRepositoryNamespaces.tt" #>
+using System;
+using System.Collections.Generic;
+using VIENNAAddIn.upcc3.uml;
+
+<# 
+	var associationInterface = "I" + metaAssociation.ClassName;
+	var associationUpccClass = "Upcc" + metaAssociation.ClassName;
+	var associatingClassifier = metaAssociation.AssociatingClassifierType.Name;
+	var associatingClassifierParamName = "associating" + associatingClassifier;
+#>
+namespace VIENNAAddIn.upcc3.repo.<#= MetaModel.GetPackageRelationsFor(metaAssociation.AssociatingClassifierType).First().PackageType.Name #>
+{
+    internal class <#= associationUpccClass #> : <#= associationInterface #>
+    {
+        public <#= associationUpccClass #>(IUmlAssociation umlAssociation, I<#= associatingClassifier #> <#= associatingClassifierParamName #>)
+        {
+            UmlAssociation = umlAssociation;
+			Associating<#= associatingClassifier #> = <#= associatingClassifierParamName #>;
+        }
+
+        public IUmlAssociation UmlAssociation { get; private set; }
+
+        #region <#= associationInterface #> Members
+
+        public int Id
+        {
+            get { return UmlAssociation.Id; }
+        }
+
+        public string Name
+        {
+            get { return UmlAssociation.Name; }
+        }
+
+        public string UpperBound
+		{
+            get { return UmlAssociation.UpperBound; }
+		}
+		
+        public string LowerBound
+		{
+            get { return UmlAssociation.LowerBound; }
+		}
+		
+        public bool IsOptional()
+        {
+            int i;
+            return Int32.TryParse(LowerBound, out i) && i == 0;
+        }
+<#
+		if (metaAssociation.AggregationKind == MetaAggregationKind.SharedOrComposite)
+		{
+#>
+
+		public AggregationKind AggregationKind
+        {
+            get { return UmlAssociation.AggregationKind; }
+        }
+<#
+		}
+#>
+		
+        public I<#= associatingClassifier #> Associating<#= associatingClassifier #> { get; private set; }
+		
+<#
+///==========================================================================================================================
+/// Associated Classifier
+///==========================================================================================================================
+
+		if (metaAssociation.AssociatedClassifierType is MetaMultiType)
+		{
+			var multiType = (MetaMultiType) metaAssociation.AssociatedClassifierType;
+#>
+		public <#= multiType.Name #> Associated<#= multiType.Name #>
+		{
+			get
+			{
+				var associatedClassifier = UmlAssociation.AssociatedClassifier;
+                switch (associatedClassifier.Stereotype)
+                {
+<#
+			foreach (var classifier in multiType.Classifiers)
+			{
+#>
+                    case "<#= classifier.Stereotype.ToString() #>":
+                    	return new <#= multiType.Name #>(new Upcc<#= classifier.Name #>((IUml<#= classifier.GetType().Name.Substring(4) #>) associatedClassifier));
+<#
+			}
+#>
+                    default:
+                        return null;
+                }
+			}
+		}
+<#
+		}
+		else
+		{
+#>
+		public I<#= metaAssociation.AssociatedClassifierType.Name #> Associated<#= metaAssociation.AssociatedClassifierType.Name #>
+		{
+			get
+			{
+				return new Upcc<#= metaAssociation.AssociatedClassifierType.Name #>((IUml<#= metaAssociation.AssociatedClassifierType.GetType().Name.Substring(4) #>) UmlAssociation.AssociatedClassifier);
+			}
+		}
+<#
+		}
+		
+///==========================================================================================================================
+/// Dependencies
+/// 
+/// Since UML does not support dependencies between associations, UPCC association dependencies are resolved by name:
+/// The depending association must either have the same name as the association it depends on or that association's name with
+/// qualifiers.
+///==========================================================================================================================
+
+		foreach (var dependency in MetaModel.GetDependenciesFor(metaAssociation))
+		{
+			var dependencyProperty = dependency.Stereotype.ToString().FirstCharToUpperCase();
+			var dependencyTargetInterface = "I" + dependency.TargetAssociation.ClassName;
+			var dependencyTarget = dependency.TargetAssociation.ClassName.FirstCharToLowerCase();
+			var containerDependency = dependency.TargetAssociation.AssociatingClassifierType.Name.FirstCharToLowerCase();
+#>
+
+		public <#= dependencyTargetInterface #> <#= dependencyProperty #>
+        {
+            get
+            {
+                if (Associating<#= associatingClassifier #> == null)
+                {
+                    return null;
+                }
+                var <#= containerDependency #> = Associating<#= associatingClassifier #>.<#= dependencyProperty #>;
+                if (<#= containerDependency #> == null)
+                {
+                    return null;
+                }
+                string nameWithoutQualifiers = Name.Substring(Name.LastIndexOf('_') + 1);
+                foreach (var <#= dependencyTarget #> in <#= containerDependency #>.<#= dependencyTarget.FirstCharToUpperCase().Plural() #>)
+                {
+                    if (nameWithoutQualifiers == <#= dependencyTarget #>.Name)
+                    {
+                        return <#= dependencyTarget #>;
+                    }
+                }
+                return null;
+            }
+        }
+<#
+		}
+
+///==========================================================================================================================
+/// Tagged Values
+///==========================================================================================================================
+
+		foreach (var metaTaggedValue in metaAssociation.TaggedValues)
+		{
+			var taggedValuePropertyType = (metaTaggedValue.Cardinality == MetaCardinality.Many ? "IEnumerable<" + metaTaggedValue.Type + ">" : metaTaggedValue.Type);
+#>
+
+        ///<summary>
+        /// Tagged value '<#= metaTaggedValue.Name #>'.
+        ///</summary>
+        public <#= taggedValuePropertyType #> <#= metaTaggedValue.AsPropertyName() #>
+        {
+            get { return UmlAssociation.GetTaggedValue("<#= metaTaggedValue.Name #>").<#= metaTaggedValue.Cardinality == MetaCardinality.Many ? "SplitValues" : "Value" #>; }
+        }
+<#
+		}
+#>
+
+		#endregion
+
+        public bool Equals(<#= associationUpccClass #> other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return Equals(other.UmlAssociation, UmlAssociation);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof (<#= associationUpccClass #>)) return false;
+            return Equals((<#= associationUpccClass #>) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (UmlAssociation != null ? UmlAssociation.GetHashCode() : 0);
+        }
+
+        public static bool operator ==(<#= associationUpccClass #> left, <#= associationUpccClass #> right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(<#= associationUpccClass #> left, <#= associationUpccClass #> right)
+        {
+            return !Equals(left, right);
+        }
+	}
+}

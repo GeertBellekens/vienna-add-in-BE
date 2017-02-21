@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<xmi:XMI xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:UPCC3_-_CDTLibrary_Abstract_Syntax="http://www.sparxsystems.com/profiles/UPCC3_-_CDTLibrary_Abstract_Syntax/1.0" xmlns:thecustomprofile="http://www.sparxsystems.com/profiles/thecustomprofile/1.0" xmlns:UPCC3_-_Model_Management_Abstract_Syntax="http://www.sparxsystems.com/profiles/UPCC3_-_Model_Management_Abstract_Syntax/1.0">
+	<xmi:Documentation exporter="Enterprise Architect" exporterVersion="6.5"/>
+	<uml:Model xmi:type="uml:Model" name="EA_Model" visibility="public">
+		<packagedElement xmi:type="uml:Package" xmi:id="EAPK_F6350FC5_FEFE_4e9b_96D6_09E7AB611F15" name="CDTLibrary" visibility="public">
+			<packagedElement xmi:type="uml:Class" xmi:id="EAID_E9836BC7_CB57_4890_BDA7_0264F1062422" name="DateTime" visibility="public">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_AEA82A79_0342_4677_81A9_C0E37BBC366B" name="Content" visibility="public" isDerived="false" isOrdered="false" isUnique="true">
+					<type xmi:idref="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000001_0342_4677_81A9_C0E37BBC366B" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000002_0342_4677_81A9_C0E37BBC366B" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_ECE082DA_D3EF_4200_8721_1C6BC82F56C4" name="Format" visibility="public" isDerived="false" isOrdered="false" isUnique="true">
+					<type xmi:idref="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000003_D3EF_4200_8721_1C6BC82F56C4" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000004_D3EF_4200_8721_1C6BC82F56C4" value="1"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Class" xmi:id="EAID_C42734B0_5BC0_4eb8_B3FC_780DC774EE11" name="Name" visibility="public">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_84190B02_94F9_415b_A0DD_8AC2B9D22161" name="Content" visibility="public" isDerived="false" isOrdered="false" isUnique="true">
+					<type xmi:idref="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000005_94F9_415b_A0DD_8AC2B9D22161" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000006_94F9_415b_A0DD_8AC2B9D22161" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_F620E1A8_8C9F_4f0d_A044_74344788D2AD" name="Language" visibility="public" isDerived="false" isOrdered="false" isUnique="true">
+					<type xmi:idref="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000007_8C9F_4f0d_A044_74344788D2AD" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000008_8C9F_4f0d_A044_74344788D2AD" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_52393979_A206_43ed_BB85_831E54EE66F6" name="Language.Locale" visibility="public" isDerived="false" isOrdered="false" isUnique="true">
+					<type xmi:idref="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000009_A206_43ed_BB85_831E54EE66F6" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000010_A206_43ed_BB85_831E54EE66F6" value="1"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Class" xmi:id="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21" name="Text" visibility="public">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_64035916_47BF_4cea_9048_C52676FD3715" name="Content" visibility="public" isDerived="false" isOrdered="false" isUnique="true">
+					<type xmi:idref="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000011_47BF_4cea_9048_C52676FD3715" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000012_47BF_4cea_9048_C52676FD3715" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_C3D9D10B_6BA6_407c_ACF7_C6D10F91E392" name="Language" visibility="public" isDerived="false" isOrdered="false" isUnique="true">
+					<type xmi:idref="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000013_6BA6_407c_ACF7_C6D10F91E392" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000014_6BA6_407c_ACF7_C6D10F91E392" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_C7325FF1_28C3_44cd_85B4_E54984C22B6A" name="Language.Locale" visibility="public" isDerived="false" isOrdered="false" isUnique="true">
+					<type xmi:idref="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000015_28C3_44cd_85B4_E54984C22B6A" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000016_28C3_44cd_85B4_E54984C22B6A" value="1"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Class" xmi:id="EAID_6C60C892_A1CB_4e40_9097_14922265CA98" name="Time" visibility="public">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_FEAB583A_3340_4600_846C_785ABC21CE77" name="Content" visibility="public" isDerived="false" isOrdered="false" isUnique="true">
+					<type xmi:idref="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000017_3340_4600_846C_785ABC21CE77" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000018_3340_4600_846C_785ABC21CE77" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_AFCF861A_FA37_4f7d_B27B_40B7641CB29E" name="Format" visibility="public" isDerived="false" isOrdered="false" isUnique="true">
+					<type xmi:idref="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000019_FA37_4f7d_B27B_40B7641CB29E" value="1"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000020_FA37_4f7d_B27B_40B7641CB29E" value="1"/>
+				</ownedAttribute>
+			</packagedElement>
+			<EAStub xmi:id="EAID_4798FB9B_6728_47ee_857B_77514FFAB740" name="String" UMLType="Class"/>
+		</packagedElement>
+		<UPCC3_-_CDTLibrary_Abstract_Syntax:CDT base_Class="EAID_E9836BC7_CB57_4890_BDA7_0264F1062422" businessTerm="Date Time" definition="A particular point in the progression of time together with relevant supplementary information." dictionaryEntryName="DateTime.Type"/>
+		<UPCC3_-_CDTLibrary_Abstract_Syntax:CON base_Attribute="EAID_AEA82A79_0342_4677_81A9_C0E37BBC366B"/>
+		<UPCC3_-_CDTLibrary_Abstract_Syntax:SUP base_Attribute="EAID_ECE082DA_D3EF_4200_8721_1C6BC82F56C4"/>
+		<UPCC3_-_CDTLibrary_Abstract_Syntax:CDT base_Class="EAID_C42734B0_5BC0_4eb8_B3FC_780DC774EE11" businessTerm="Text" definition="A character string (i.e. a finite set of characters) generally in the form of words of a language." languageCode="en-GB" dictionaryEntryName="Text.Type"/>
+		<UPCC3_-_CDTLibrary_Abstract_Syntax:CON base_Attribute="EAID_84190B02_94F9_415b_A0DD_8AC2B9D22161"/>
+		<UPCC3_-_CDTLibrary_Abstract_Syntax:SUP base_Attribute="EAID_F620E1A8_8C9F_4f0d_A044_74344788D2AD"/>
+		<UPCC3_-_CDTLibrary_Abstract_Syntax:SUP base_Attribute="EAID_52393979_A206_43ed_BB85_831E54EE66F6"/>
+		<UPCC3_-_CDTLibrary_Abstract_Syntax:CDT base_Class="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21" businessTerm="Text" definition="A character string (i.e. a finite set of characters) generally in the form of words of a language." languageCode="en-GB" dictionaryEntryName="Text.Type"/>
+		<UPCC3_-_CDTLibrary_Abstract_Syntax:CON base_Attribute="EAID_64035916_47BF_4cea_9048_C52676FD3715"/>
+		<UPCC3_-_CDTLibrary_Abstract_Syntax:SUP base_Attribute="EAID_C3D9D10B_6BA6_407c_ACF7_C6D10F91E392"/>
+		<UPCC3_-_CDTLibrary_Abstract_Syntax:SUP base_Attribute="EAID_C7325FF1_28C3_44cd_85B4_E54984C22B6A"/>
+		<UPCC3_-_CDTLibrary_Abstract_Syntax:CDT base_Class="EAID_6C60C892_A1CB_4e40_9097_14922265CA98" businessTerm="Time" definition="A time is a particular point in the progression of time of a day together with relevant supplementary information." dictionaryEntryName="Time.Type"/>
+		<UPCC3_-_CDTLibrary_Abstract_Syntax:CON base_Attribute="EAID_FEAB583A_3340_4600_846C_785ABC21CE77"/>
+		<UPCC3_-_CDTLibrary_Abstract_Syntax:SUP base_Attribute="EAID_AFCF861A_FA37_4f7d_B27B_40B7641CB29E"/>
+		<thecustomprofile:baseURN base_Package="EAPK_F6350FC5_FEFE_4e9b_96D6_09E7AB611F15" baseURN="http://foo.bar/"/>
+		<UPCC3_-_Model_Management_Abstract_Syntax:CDTLibrary base_Package="EAPK_F6350FC5_FEFE_4e9b_96D6_09E7AB611F15"/>
+		<uml:Profile xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1/" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmi:id="465E6C1D-1" nsPrefix="UPCC3_-_CDTLibrary_Abstract_Syntax" name="UPCC3 - CDTLibrary Abstract Syntax" metamodelReference="mmref01">
+			<ownedComment xmi:type="uml:Comment" xmi:id="comment01" annotatedElement="465E6C1D-1">
+				<body>UPCC3 - CDTLibrary Abstract Syntax Version:1.0</body>
+			</ownedComment>
+			<packageImport xmi:id="mmref01">
+				<importedPackage href="http://schema.omg.org/spec/UML/2.1/"/>
+			</packageImport>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="SUP" name="SUP">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="SUP-base_Attribute" name="base_Attribute" association="Attribute_SUP">
+					<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="SUP-uniqueIdentifier" name="uniqueIdentifier">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="SUP-businessTerm" name="businessTerm">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="SUP-definition" name="definition">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="SUP-languageCode" name="languageCode">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="SUP-modificationAllowedIndicator" name="modificationAllowedIndicator">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="SUP-usageRule" name="usageRule">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="SUP-versionIdentifier" name="versionIdentifier">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="SUP-dictionaryEntryName" name="dictionaryEntryName">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_SUP" name="A_Attribute_SUP" memberEnd="extension_SUP SUP-base_Attribute">
+				<ownedEnd xmi:id="extension_SUP" name="extension_SUP" type="SUP" isComposite="true" lower="0" upper="1" memberEnd="extension_SUP SUP-base_Attribute"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="isEquivalentTo" name="isEquivalentTo">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="isEquivalentTo-base_Dependency" name="base_Dependency" association="Dependency_isEquivalentTo">
+					<type href="http://schema.omg.org/spec/UML/2.1/#Dependency"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Extension" xmi:id="Dependency_isEquivalentTo" name="A_Dependency_isEquivalentTo" memberEnd="extension_isEquivalentTo isEquivalentTo-base_Dependency">
+				<ownedEnd xmi:id="extension_isEquivalentTo" name="extension_isEquivalentTo" type="isEquivalentTo" isComposite="true" lower="0" upper="1" memberEnd="extension_isEquivalentTo isEquivalentTo-base_Dependency"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="CON" name="CON">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="CON-base_Attribute" name="base_Attribute" association="Attribute_CON">
+					<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="CON-uniqueIdentifier" name="uniqueIdentifier">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="CON-businessTerm" name="businessTerm">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="CON-definition" name="definition">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="CON-languageCode" name="languageCode">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="CON-modificationAllowedIndicator" name="modificationAllowedIndicator">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="CON-usageRule" name="usageRule">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="CON-versionIdentifier" name="versionIdentifier">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="CON-dictionaryEntryName" name="dictionaryEntryName">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_CON" name="A_Attribute_CON" memberEnd="extension_CON CON-base_Attribute">
+				<ownedEnd xmi:id="extension_CON" name="extension_CON" type="CON" isComposite="true" lower="0" upper="1" memberEnd="extension_CON CON-base_Attribute"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="CDT" name="CDT">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="CDT-base_Class" name="base_Class" association="Class_CDT">
+					<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="CDT-uniqueIdentifier" name="uniqueIdentifier">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="CDT-businessTerm" name="businessTerm">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="CDT-definition" name="definition">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="CDT-languageCode" name="languageCode">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="CDT-usageRule" name="usageRule">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="CDT-versionIdentifier" name="versionIdentifier">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="CDT-dictionaryEntryName" name="dictionaryEntryName">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Extension" xmi:id="Class_CDT" name="A_Class_CDT" memberEnd="extension_CDT CDT-base_Class">
+				<ownedEnd xmi:id="extension_CDT" name="extension_CDT" type="CDT" isComposite="true" lower="0" upper="1" memberEnd="extension_CDT CDT-base_Class"/>
+			</packagedElement>
+		</uml:Profile>
+		<uml:Profile xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1/" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmi:id="thecustomprofile" nsPrefix="thecustomprofile" name="thecustomprofile" metamodelReference="mmref01">
+			<ownedComment xmi:type="uml:Comment" xmi:id="comment01" annotatedElement="thecustomprofile">
+				<body> Version:1.0</body>
+			</ownedComment>
+			<packageImport xmi:id="mmref01">
+				<importedPackage href="http://schema.omg.org/spec/UML/2.1/"/>
+			</packageImport>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="baseURN" name="baseURN">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="baseURN-base_Package" name="base_Package" association="Package_baseURN">
+					<type href="http://schema.omg.org/spec/UML/2.1/#Package"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="baseURN-baseURN" name="baseURN">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Extension" xmi:id="Package_baseURN" name="A_Package_baseURN" memberEnd="extension_baseURN baseURN-base_Package">
+				<ownedEnd xmi:id="extension_baseURN" name="extension_baseURN" type="baseURN" isComposite="true" lower="0" upper="1" memberEnd="extension_baseURN baseURN-base_Package"/>
+			</packagedElement>
+		</uml:Profile>
+		<uml:Profile xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1/" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmi:id="B4E9032E-0" nsPrefix="UPCC3_-_Model_Management_Abstract_Syntax" name="UPCC3 - Model Management Abstract Syntax" metamodelReference="mmref01">
+			<ownedComment xmi:type="uml:Comment" xmi:id="comment01" annotatedElement="B4E9032E-0">
+				<body>UPCC3 - Model Management Abstract Syntax Version:1.0</body>
+			</ownedComment>
+			<packageImport xmi:id="mmref01">
+				<importedPackage href="http://schema.omg.org/spec/UML/2.1/"/>
+			</packageImport>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="bLibrary" name="bLibrary">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-base_Package" name="base_Package" association="Package_bLibrary">
+					<type href="http://schema.omg.org/spec/UML/2.1/#Package"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-status" name="status">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-uniqueIdentifier" name="uniqueIdentifier">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-businessTerm" name="businessTerm">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-copyright" name="copyright">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-reference" name="reference">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-owner" name="owner">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-versionIdentifier" name="versionIdentifier">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Extension" xmi:id="Package_bLibrary" name="A_Package_bLibrary" memberEnd="extension_bLibrary bLibrary-base_Package">
+				<ownedEnd xmi:id="extension_bLibrary" name="extension_bLibrary" type="bLibrary" isComposite="true" lower="0" upper="1" memberEnd="extension_bLibrary bLibrary-base_Package"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="BIELibrary" name="BIELibrary">
+				<generalization xmi:type="uml:Generalization" xmi:id="BIELibrary_generalization" general="bLibrary"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="CCLibrary" name="CCLibrary">
+				<generalization xmi:type="uml:Generalization" xmi:id="CCLibrary_generalization" general="bLibrary"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="BDTLibrary" name="BDTLibrary">
+				<generalization xmi:type="uml:Generalization" xmi:id="BDTLibrary_generalization" general="bLibrary"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="ENUMLibrary" name="ENUMLibrary">
+				<generalization xmi:type="uml:Generalization" xmi:id="ENUMLibrary_generalization" general="bLibrary"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="PRIMLibrary" name="PRIMLibrary">
+				<generalization xmi:type="uml:Generalization" xmi:id="PRIMLibrary_generalization" general="bLibrary"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="DOCLibrary" name="DOCLibrary">
+				<generalization xmi:type="uml:Generalization" xmi:id="DOCLibrary_generalization" general="bLibrary"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="CDTLibrary" name="CDTLibrary">
+				<generalization xmi:type="uml:Generalization" xmi:id="CDTLibrary_generalization" general="bLibrary"/>
+			</packagedElement>
+		</uml:Profile>
+	</uml:Model>
+	<xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+		<elements>
+			<element xmi:idref="EAPK_F6350FC5_FEFE_4e9b_96D6_09E7AB611F15" xmi:type="uml:Package" name="CDTLibrary" scope="public">
+				<model package2="EAID_F6350FC5_FEFE_4e9b_96D6_09E7AB611F15" package="EAPK_695D85BD_AABA_407e_B38C_CDA36E132DD7" tpos="0" ea_localid="6" ea_eleType="package"/>
+				<properties isSpecification="false" sType="Package" nType="0" scope="public" stereotype="CDTLibrary"/>
+				<project author="cschollum" version="1.0" phase="1.0" created="2009-02-09 11:52:25" modified="2009-02-09 11:52:25" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<modelDocument/>
+				<tags>
+					<tag xmi:id="EAID_E749AFF3_FD3E_4ab5_9E0E_7BBB508910AE" name="baseURN" value="http://foo.bar/" modelElement="EAID_F6350FC5_FEFE_4e9b_96D6_09E7AB611F15"/>
+					<tag xmi:id="EAID_3FF92CE4_53F7_1b53_8466_315E289834EB" name="businessTerm" modelElement="EAID_F6350FC5_FEFE_4e9b_96D6_09E7AB611F15"/>
+					<tag xmi:id="EAID_4CB00AB9_52CC_1e52_9F18_533839E49A3A" name="copyright" modelElement="EAID_F6350FC5_FEFE_4e9b_96D6_09E7AB611F15"/>
+					<tag xmi:id="EAID_081BC26B_F8FE_7af8_9BF5_FC1EDCD766A9" name="owner" modelElement="EAID_F6350FC5_FEFE_4e9b_96D6_09E7AB611F15"/>
+					<tag xmi:id="EAID_B4F8B86F_0082_6700_A284_A0CF834C6119" name="reference" modelElement="EAID_F6350FC5_FEFE_4e9b_96D6_09E7AB611F15"/>
+					<tag xmi:id="EAID_14AB8884_9177_f191_8FEC_FCC900B613B6" name="status" modelElement="EAID_F6350FC5_FEFE_4e9b_96D6_09E7AB611F15"/>
+					<tag xmi:id="EAID_98C070FA_618D_de61_B4AC_CCFF2D3F78E5" name="uniqueIdentifier" modelElement="EAID_F6350FC5_FEFE_4e9b_96D6_09E7AB611F15"/>
+					<tag xmi:id="EAID_731219A9_A09C_32a0_BC4B_55A7DE6A8504" name="versionIdentifier" modelElement="EAID_F6350FC5_FEFE_4e9b_96D6_09E7AB611F15"/>
+				</tags>
+				<xrefs value="$XREFPROP=$XID={270B5828-1F55-4b70-96E0-1BAEFDF28D4F}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@STEREO;Name=CDTLibrary;GUID={30028545-FBA0-4e65-BC81-F6F81AC0E4DC};@ENDSTEREO;$DES;$CLT={F6350FC5-FEFE-4e9b-96D6-09E7AB611F15}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="ebInterface Data Model"/>
+				<packageproperties version="1.0"/>
+				<paths/>
+				<times created="2009-02-09 00:00:00" modified="2009-02-09 00:00:00" lastloaddate="2009-02-18 15:36:36"/>
+				<flags iscontrolled="FALSE" isprotected="FALSE" usedtd="FALSE" logxml="FALSE"/>
+			</element>
+			<element xmi:idref="EAID_E9836BC7_CB57_4890_BDA7_0264F1062422" xmi:type="uml:Class" name="DateTime" scope="public">
+				<model package="EAPK_F6350FC5_FEFE_4e9b_96D6_09E7AB611F15" tpos="0" ea_localid="9" ea_eleType="element"/>
+				<properties isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CDT" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="cschollum" version="1.0" phase="1.0" created="2009-02-09 12:08:42" modified="2009-02-09 12:08:50" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<modelDocument/>
+				<tags>
+					<tag xmi:id="EAID_3FF92CE4_759D_9e75_BB02_987777778CDF" name="businessTerm" value="Date Time" modelElement="EAID_E9836BC7_CB57_4890_BDA7_0264F1062422"/>
+					<tag xmi:id="EAID_465BEE89_B922_75b9_A9EC_031BA4C75729" name="definition" value="A particular point in the progression of time together with relevant supplementary information." modelElement="EAID_E9836BC7_CB57_4890_BDA7_0264F1062422"/>
+					<tag xmi:id="EAID_18B187E9_A262_1fa2_BC55_727C8C5A7D39" name="dictionaryEntryName" value="DateTime.Type" modelElement="EAID_E9836BC7_CB57_4890_BDA7_0264F1062422"/>
+					<tag xmi:id="EAID_E5EE68BF_B178_93b1_ABDC_6DFC7B7BF36A" name="languageCode" modelElement="EAID_E9836BC7_CB57_4890_BDA7_0264F1062422"/>
+					<tag xmi:id="EAID_98C070FA_E633_c5e6_B3B7_4AC27E005162" name="uniqueIdentifier" modelElement="EAID_E9836BC7_CB57_4890_BDA7_0264F1062422"/>
+					<tag xmi:id="EAID_80EAD28D_A1E6_27a1_838C_5F8972E6BE1A" name="usageRule" modelElement="EAID_E9836BC7_CB57_4890_BDA7_0264F1062422"/>
+					<tag xmi:id="EAID_731219A9_BA02_0aba_B2CD_D56C9BF28EC0" name="versionIdentifier" modelElement="EAID_E9836BC7_CB57_4890_BDA7_0264F1062422"/>
+				</tags>
+				<xrefs value="$XREFPROP=$XID={845D9FAC-A4EF-4b0d-B17E-4BA6EC39A0A0}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@STEREO;Name=CDT;GUID={9EF8E0C7-8EDE-4582-BD75-10DF430B6909};@ENDSTEREO;$DES;$CLT={E9836BC7-CB57-4890-BDA7-0264F1062422}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={D8FB1582-CEA6-4c41-9E41-144B4643AC4D}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=isActive@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={E9836BC7-CB57-4890-BDA7-0264F1062422}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="CDTLibrary"/>
+				<attributes>
+					<attribute xmi:idref="EAID_AEA82A79_0342_4677_81A9_C0E37BBC366B" name="Content" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="127" ea_guid="{AEA82A79-0342-4677-81A9-C0E37BBC366B}"/>
+						<properties type="String" collection="false" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment position="0"/>
+						<stereotype stereotype="CON"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex/>
+						<tags>
+							<tag xmi:id="EAID_18B187E9_B4E7_63b4_A33C_1960C40AA33A" name="dictionaryEntryName"/>
+							<tag xmi:id="EAID_3FF92CE4_83C2_3a83_B426_B5F6DA556E20" name="businessTerm"/>
+							<tag xmi:id="EAID_4330859B_C859_02c8_934D_4410E8BAE8BF" name="modificationAllowedIndicator" notes="Values: true,false&#xA;"/>
+							<tag xmi:id="EAID_465BEE89_FA07_fdfa_8E4A_F6290D0DB8DA" name="definition"/>
+							<tag xmi:id="EAID_731219A9_6747_ae67_AFA0_F54885D9A10C" name="versionIdentifier"/>
+							<tag xmi:id="EAID_80EAD28D_DA2B_88da_93C6_B3B1B92A949D" name="usageRule"/>
+							<tag xmi:id="EAID_98C070FA_7ED8_567e_92C6_8EEBCAD90FB6" name="uniqueIdentifier"/>
+							<tag xmi:id="EAID_E5EE68BF_BF9D_2fbf_AD94_300CD6CA7DD8" name="languageCode"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_ECE082DA_D3EF_4200_8721_1C6BC82F56C4" name="Format" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="128" ea_guid="{ECE082DA-D3EF-4200-8721-1C6BC82F56C4}"/>
+						<properties type="String" collection="false" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment position="0"/>
+						<stereotype stereotype="SUP"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex/>
+						<tags>
+							<tag xmi:id="EAID_18B187E9_70BF_9570_BBC1_81CFDD9F5D34" name="dictionaryEntryName"/>
+							<tag xmi:id="EAID_3FF92CE4_629A_a662_9D63_0FB584846E97" name="businessTerm"/>
+							<tag xmi:id="EAID_4330859B_5731_4157_816C_6E895E2AB8C7" name="modificationAllowedIndicator" notes="Values: true,false&#xA;"/>
+							<tag xmi:id="EAID_465BEE89_42DF_b442_8587_2ABE8037EB4A" name="definition"/>
+							<tag xmi:id="EAID_731219A9_4D1F_0f4d_84B0_F01406934442" name="versionIdentifier"/>
+							<tag xmi:id="EAID_80EAD28D_6803_ad68_8097_6066315DB462" name="usageRule"/>
+							<tag xmi:id="EAID_98C070FA_09B0_c609_B8C4_B0BD3EBBCC1F" name="uniqueIdentifier"/>
+							<tag xmi:id="EAID_E5EE68BF_9E75_9b9e_96BF_6B2B5705F72D" name="languageCode"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+				</attributes>
+			</element>
+			<element xmi:idref="EAID_C42734B0_5BC0_4eb8_B3FC_780DC774EE11" xmi:type="uml:Class" name="Name" scope="public">
+				<model package="EAPK_F6350FC5_FEFE_4e9b_96D6_09E7AB611F15" tpos="0" ea_localid="118" ea_eleType="element"/>
+				<properties isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CDT" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="cschollum" version="1.0" phase="1.0" created="2009-02-09 11:57:32" modified="2009-02-09 11:57:37" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<modelDocument/>
+				<tags>
+					<tag xmi:id="EAID_9CE0DEE4_B764_4844_BCEE_979A5504D02F" name="businessTerm" value="Text" modelElement="EAID_C42734B0_5BC0_4eb8_B3FC_780DC774EE11"/>
+					<tag xmi:id="EAID_2C324D49_BA82_402d_8681_1C0490197A00" name="definition" value="A character string (i.e. a finite set of characters) generally in the form of words of a language." modelElement="EAID_C42734B0_5BC0_4eb8_B3FC_780DC774EE11"/>
+					<tag xmi:id="EAID_1402964B_A8E6_4187_8B00_6317FB83FB38" name="dictionaryEntryName" value="Text.Type" modelElement="EAID_C42734B0_5BC0_4eb8_B3FC_780DC774EE11"/>
+					<tag xmi:id="EAID_0345EF24_DF19_4bde_AF2D_1E5770BEB66B" name="languageCode" value="en-GB" modelElement="EAID_C42734B0_5BC0_4eb8_B3FC_780DC774EE11"/>
+					<tag xmi:id="EAID_DF2E86CD_9EB4_4033_8033_E4BFE699211E" name="uniqueIdentifier" modelElement="EAID_C42734B0_5BC0_4eb8_B3FC_780DC774EE11"/>
+					<tag xmi:id="EAID_10E39FFD_3E5D_46ad_B2A9_C23806F24CE1" name="usageRule" modelElement="EAID_C42734B0_5BC0_4eb8_B3FC_780DC774EE11"/>
+					<tag xmi:id="EAID_91573CED_3676_48b5_AC6B_FFA38C5DA36B" name="versionIdentifier" modelElement="EAID_C42734B0_5BC0_4eb8_B3FC_780DC774EE11"/>
+				</tags>
+				<xrefs value="$XREFPROP=$XID={7DF8E2C2-3DFA-4ce4-B87A-DCC8A3D0D37D}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@STEREO;Name=CDT;GUID={9EF8E0C7-8EDE-4582-BD75-10DF430B6909};@ENDSTEREO;$DES;$CLT={C42734B0-5BC0-4eb8-B3FC-780DC774EE11}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={4D9B3F42-38EF-476c-AE7F-6D833AB538DF}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=isActive@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={C42734B0-5BC0-4eb8-B3FC-780DC774EE11}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="CDTLibrary"/>
+				<attributes>
+					<attribute xmi:idref="EAID_84190B02_94F9_415b_A0DD_8AC2B9D22161" name="Content" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="241" ea_guid="{84190B02-94F9-415b-A0DD-8AC2B9D22161}"/>
+						<properties type="String" collection="false" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment position="0"/>
+						<stereotype stereotype="CON"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex/>
+						<tags>
+							<tag xmi:id="EAID_3210B385_8158_4164_B560_CBC91D2472D1" name="dictionaryEntryName"/>
+							<tag xmi:id="EAID_3A1CBBBB_F395_4882_80EF_634E0B853C3E" name="modificationAllowedIndicator" notes="Values: true,false&#xA;"/>
+							<tag xmi:id="EAID_6C023F28_3D8A_47cf_B944_4464FDFB3171" name="versionIdentifier"/>
+							<tag xmi:id="EAID_93873830_B8FD_488b_8431_3CF48F53F19C" name="usageRule"/>
+							<tag xmi:id="EAID_A03B3FA9_5F24_4148_8E86_C6CE1BF198D5" name="languageCode"/>
+							<tag xmi:id="EAID_A3980090_1300_49f3_B71B_CC26A7A9343E" name="uniqueIdentifier"/>
+							<tag xmi:id="EAID_E3661F8C_DC11_42dd_9594_0EEC2D53985F" name="definition"/>
+							<tag xmi:id="EAID_EDF28939_05A6_4de4_9296_4BAD93416A1D" name="businessTerm"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_F620E1A8_8C9F_4f0d_A044_74344788D2AD" name="Language" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="242" ea_guid="{F620E1A8-8C9F-4f0d-A044-74344788D2AD}"/>
+						<properties type="String" collection="false" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment position="0"/>
+						<stereotype stereotype="SUP"/>
+						<bounds lower="0" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags>
+							<tag xmi:id="EAID_1B20B30E_D6D3_4008_A2C7_AE37B8356276" name="versionIdentifier"/>
+							<tag xmi:id="EAID_1BBCB478_D051_45cb_BC1A_167F9520E181" name="usageRule"/>
+							<tag xmi:id="EAID_2421B87A_1742_4ac5_8EED_F7785CB32B60" name="modificationAllowedIndicator" notes="Values: true,false&#xA;"/>
+							<tag xmi:id="EAID_4971F32D_BFFA_4b64_A6EF_DD46D79F8537" name="dictionaryEntryName"/>
+							<tag xmi:id="EAID_4FDC033E_A84F_4606_89EF_CDBF51C2B028" name="definition"/>
+							<tag xmi:id="EAID_9C976AF7_7A16_447c_BDA6_32CFC5F7E72F" name="languageCode"/>
+							<tag xmi:id="EAID_C0A37CBB_9DD9_4a21_A830_6156DB8778BF" name="uniqueIdentifier"/>
+							<tag xmi:id="EAID_D92CED29_9D3F_4f19_BE95_2EC66ABF0D47" name="businessTerm"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_52393979_A206_43ed_BB85_831E54EE66F6" name="Language.Locale" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="243" ea_guid="{52393979-A206-43ed-BB85-831E54EE66F6}"/>
+						<properties type="String" collection="false" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment position="0"/>
+						<stereotype stereotype="SUP"/>
+						<bounds lower="0" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags>
+							<tag xmi:id="EAID_481A98AA_9F7E_4377_BB70_01DE3424A84A" name="languageCode"/>
+							<tag xmi:id="EAID_8B814857_088E_446d_8BB4_CA347DC3E40C" name="definition"/>
+							<tag xmi:id="EAID_AD1831F1_F1A6_48f4_B23D_2F2D47F6A0A1" name="dictionaryEntryName"/>
+							<tag xmi:id="EAID_AF34C291_7092_4516_972E_A28C7DFC6DB5" name="modificationAllowedIndicator" notes="Values: true,false&#xA;"/>
+							<tag xmi:id="EAID_C863840B_3295_4340_BDD9_E7708F37621C" name="uniqueIdentifier"/>
+							<tag xmi:id="EAID_EB933FAD_50DD_4803_9B8C_324F98AF4A4B" name="usageRule"/>
+							<tag xmi:id="EAID_F44EFE3F_DA8E_47b5_94DB_88EF1CC9E522" name="versionIdentifier"/>
+							<tag xmi:id="EAID_F54AD1D3_BB0A_4c3f_BA33_3E4314FDC5F9" name="businessTerm"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+				</attributes>
+			</element>
+			<element xmi:idref="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21" xmi:type="uml:Class" name="Text" scope="public">
+				<model package="EAPK_F6350FC5_FEFE_4e9b_96D6_09E7AB611F15" tpos="0" ea_localid="8" ea_eleType="element"/>
+				<properties isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CDT" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="cschollum" version="1.0" phase="1.0" created="2009-02-09 11:57:32" modified="2009-02-09 11:57:37" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<modelDocument/>
+				<tags>
+					<tag xmi:id="EAID_3FF92CE4_759D_9e75_A733_74ED340D72E2" name="businessTerm" value="Text" modelElement="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21"/>
+					<tag xmi:id="EAID_465BEE89_B922_75b9_8BFE_FDD231DDE735" name="definition" value="A character string (i.e. a finite set of characters) generally in the form of words of a language." modelElement="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21"/>
+					<tag xmi:id="EAID_18B187E9_A262_1fa2_A321_2EFFBF4F235D" name="dictionaryEntryName" value="Text.Type" modelElement="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21"/>
+					<tag xmi:id="EAID_E5EE68BF_B178_93b1_A15D_9E989AE7D451" name="languageCode" value="en-GB" modelElement="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21"/>
+					<tag xmi:id="EAID_98C070FA_E633_c5e6_B358_1436716D5CF7" name="uniqueIdentifier" modelElement="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21"/>
+					<tag xmi:id="EAID_80EAD28D_A1E6_27a1_B57E_A9EC98001BDD" name="usageRule" modelElement="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21"/>
+					<tag xmi:id="EAID_731219A9_BA02_0aba_9838_1D6E123E5DC2" name="versionIdentifier" modelElement="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21"/>
+				</tags>
+				<xrefs value="$XREFPROP=$XID={35326ADE-0262-4481-853D-FBB62B0F2E6E}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@STEREO;Name=CDT;GUID={9EF8E0C7-8EDE-4582-BD75-10DF430B6909};@ENDSTEREO;$DES;$CLT={635F3EC0-817B-4fff-B762-C040E1BF1D21}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={A0BABB5A-054D-441e-BDEB-6DFA9DE8D5CD}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=isActive@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={635F3EC0-817B-4fff-B762-C040E1BF1D21}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="CDTLibrary" ea_attsclassified="{E9BC92D1-9E92-4ace-B61C-FB696904A078},{7E19D067-4452-42e5-929C-0E326014B485},{91332F6B-7FD0-491f-A231-A61606F61DE4},{E076ED2A-6424-4fe2-B390-BB023A098EEE},{D8D7F9DA-61BF-4ead-8ADA-81925AC52CAC},{58FF7AEA-D9C9-4c6b-AEE2-C9163E31655F},{92E6D316-D442-4be4-A9A4-9AFE5EA39070},{7261339E-B425-4c1c-8D58-6533D5740FB8},{D25E1673-E135-462f-8783-3710D8252CC3},{0EA3F7BE-ADC5-4b7a-B9C1-733873B05F42}"/>
+				<attributes>
+					<attribute xmi:idref="EAID_64035916_47BF_4cea_9048_C52676FD3715" name="Content" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="129" ea_guid="{64035916-47BF-4cea-9048-C52676FD3715}"/>
+						<properties type="String" collection="false" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment position="0"/>
+						<stereotype stereotype="CON"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex/>
+						<tags>
+							<tag xmi:id="EAID_18B187E9_B4E7_63b4_83EB_966A2EAD09BC" name="dictionaryEntryName"/>
+							<tag xmi:id="EAID_3FF92CE4_83C2_3a83_B292_3C30871A2D1E" name="businessTerm"/>
+							<tag xmi:id="EAID_4330859B_C859_02c8_B016_C9EEDD4D5AA7" name="modificationAllowedIndicator" notes="Values: true,false&#xA;"/>
+							<tag xmi:id="EAID_465BEE89_FA07_fdfa_9D65_5B7B27CE999C" name="definition"/>
+							<tag xmi:id="EAID_731219A9_6747_ae67_83E1_306FB65F27E5" name="versionIdentifier"/>
+							<tag xmi:id="EAID_80EAD28D_DA2B_88da_A75A_EE82243D13E7" name="usageRule"/>
+							<tag xmi:id="EAID_98C070FA_7ED8_567e_9913_799B5A9D7200" name="uniqueIdentifier"/>
+							<tag xmi:id="EAID_E5EE68BF_BF9D_2fbf_9843_8EFA2BB323CA" name="languageCode"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_C3D9D10B_6BA6_407c_ACF7_C6D10F91E392" name="Language" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="130" ea_guid="{C3D9D10B-6BA6-407c-ACF7-C6D10F91E392}"/>
+						<properties type="String" collection="false" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment position="0"/>
+						<stereotype stereotype="SUP"/>
+						<bounds lower="0" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags>
+							<tag xmi:id="EAID_18B187E9_70BF_9570_9C41_5D487FE30DD6" name="dictionaryEntryName"/>
+							<tag xmi:id="EAID_3FF92CE4_629A_a662_9062_DEA493AF87EF" name="businessTerm"/>
+							<tag xmi:id="EAID_4330859B_5731_4157_9847_F71192B1B535" name="modificationAllowedIndicator" notes="Values: true,false&#xA;"/>
+							<tag xmi:id="EAID_465BEE89_42DF_b442_886E_B77366886F82" name="definition"/>
+							<tag xmi:id="EAID_731219A9_4D1F_0f4d_A9A6_B99F72146C28" name="versionIdentifier"/>
+							<tag xmi:id="EAID_80EAD28D_6803_ad68_8C61_BD079A2781D5" name="usageRule"/>
+							<tag xmi:id="EAID_98C070FA_09B0_c609_B7A1_5E08AFAFA64B" name="uniqueIdentifier"/>
+							<tag xmi:id="EAID_E5EE68BF_9E75_9b9e_A48C_CF77A2C0CB76" name="languageCode"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_C7325FF1_28C3_44cd_85B4_E54984C22B6A" name="Language.Locale" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="131" ea_guid="{C7325FF1-28C3-44cd-85B4-E54984C22B6A}"/>
+						<properties type="String" collection="false" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment position="0"/>
+						<stereotype stereotype="SUP"/>
+						<bounds lower="0" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags>
+							<tag xmi:id="EAID_18B187E9_70BF_9570_88BC_EBE2E5033803" name="dictionaryEntryName"/>
+							<tag xmi:id="EAID_3FF92CE4_629A_a662_90D1_4CDB5A59099D" name="businessTerm"/>
+							<tag xmi:id="EAID_4330859B_5731_4157_8DDA_A77CA65227E0" name="modificationAllowedIndicator" notes="Values: true,false&#xA;"/>
+							<tag xmi:id="EAID_465BEE89_42DF_b442_844F_2859EA4AAC10" name="definition"/>
+							<tag xmi:id="EAID_731219A9_4D1F_0f4d_8B0C_6150944C269F" name="versionIdentifier"/>
+							<tag xmi:id="EAID_80EAD28D_6803_ad68_8FB3_AAA573E6D97A" name="usageRule"/>
+							<tag xmi:id="EAID_98C070FA_09B0_c609_920E_CD83E2A4AFCE" name="uniqueIdentifier"/>
+							<tag xmi:id="EAID_E5EE68BF_9E75_9b9e_9305_A432B92909E5" name="languageCode"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+				</attributes>
+			</element>
+			<element xmi:idref="EAID_6C60C892_A1CB_4e40_9097_14922265CA98" xmi:type="uml:Class" name="Time" scope="public">
+				<model package="EAPK_F6350FC5_FEFE_4e9b_96D6_09E7AB611F15" tpos="0" ea_localid="13" ea_eleType="element"/>
+				<properties isSpecification="false" sType="Class" nType="0" scope="public" stereotype="CDT" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="cschollum" version="1.0" phase="1.0" created="2009-02-09 13:56:28" modified="2009-02-09 13:56:32" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<modelDocument/>
+				<tags>
+					<tag xmi:id="EAID_3FF92CE4_759D_9e75_84C0_B1B0D2FCA577" name="businessTerm" value="Time" modelElement="EAID_6C60C892_A1CB_4e40_9097_14922265CA98"/>
+					<tag xmi:id="EAID_465BEE89_B922_75b9_9B14_435BFE5CC59E" name="definition" value="A time is a particular point in the progression of time of a day together with relevant supplementary information." modelElement="EAID_6C60C892_A1CB_4e40_9097_14922265CA98"/>
+					<tag xmi:id="EAID_18B187E9_A262_1fa2_B6EF_A2DFABCD0865" name="dictionaryEntryName" value="Time.Type" modelElement="EAID_6C60C892_A1CB_4e40_9097_14922265CA98"/>
+					<tag xmi:id="EAID_E5EE68BF_B178_93b1_8AC6_4F410F016B20" name="languageCode" modelElement="EAID_6C60C892_A1CB_4e40_9097_14922265CA98"/>
+					<tag xmi:id="EAID_98C070FA_E633_c5e6_939B_F20ECB570C08" name="uniqueIdentifier" modelElement="EAID_6C60C892_A1CB_4e40_9097_14922265CA98"/>
+					<tag xmi:id="EAID_80EAD28D_A1E6_27a1_A1F3_D0393E8BC509" name="usageRule" modelElement="EAID_6C60C892_A1CB_4e40_9097_14922265CA98"/>
+					<tag xmi:id="EAID_731219A9_BA02_0aba_88C8_B42433651D96" name="versionIdentifier" modelElement="EAID_6C60C892_A1CB_4e40_9097_14922265CA98"/>
+				</tags>
+				<xrefs value="$XREFPROP=$XID={C875E4D9-437F-402a-ADDF-9D43CE336A50}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@STEREO;Name=CDT;GUID={9EF8E0C7-8EDE-4582-BD75-10DF430B6909};@ENDSTEREO;$DES;$CLT={6C60C892-A1CB-4e40-9097-14922265CA98}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={D271A2C2-56D3-44c6-BE5C-BEB7BEE84318}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=isActive@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={6C60C892-A1CB-4e40-9097-14922265CA98}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="CDTLibrary"/>
+				<attributes>
+					<attribute xmi:idref="EAID_FEAB583A_3340_4600_846C_785ABC21CE77" name="Content" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="162" ea_guid="{FEAB583A-3340-4600-846C-785ABC21CE77}"/>
+						<properties type="String" collection="false" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment position="0"/>
+						<stereotype stereotype="CON"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex/>
+						<tags>
+							<tag xmi:id="EAID_18B187E9_B4E7_63b4_A6E6_512DAB76590F" name="dictionaryEntryName"/>
+							<tag xmi:id="EAID_3FF92CE4_83C2_3a83_87C7_A7EDF90278AF" name="businessTerm"/>
+							<tag xmi:id="EAID_4330859B_C859_02c8_9C49_2FE44BD194F1" name="modificationAllowedIndicator" notes="Values: true,false&#xA;"/>
+							<tag xmi:id="EAID_465BEE89_FA07_fdfa_8132_24AAB879C136" name="definition"/>
+							<tag xmi:id="EAID_731219A9_6747_ae67_890D_19ED27027127" name="versionIdentifier"/>
+							<tag xmi:id="EAID_80EAD28D_DA2B_88da_B952_C582FE86CE76" name="usageRule"/>
+							<tag xmi:id="EAID_98C070FA_7ED8_567e_AA5C_C2F2B83B5ED4" name="uniqueIdentifier"/>
+							<tag xmi:id="EAID_E5EE68BF_BF9D_2fbf_999B_7D7A9297C542" name="languageCode"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_AFCF861A_FA37_4f7d_B27B_40B7641CB29E" name="Format" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="163" ea_guid="{AFCF861A-FA37-4f7d-B27B-40B7641CB29E}"/>
+						<properties type="String" collection="false" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment position="0"/>
+						<stereotype stereotype="SUP"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex/>
+						<tags>
+							<tag xmi:id="EAID_18B187E9_70BF_9570_9B0E_AA0EFAF28917" name="dictionaryEntryName"/>
+							<tag xmi:id="EAID_3FF92CE4_629A_a662_8A69_D2E4C54183BC" name="businessTerm"/>
+							<tag xmi:id="EAID_4330859B_5731_4157_8ECE_0698721DB98C" name="modificationAllowedIndicator" notes="Values: true,false&#xA;"/>
+							<tag xmi:id="EAID_465BEE89_42DF_b442_AE47_C3480121A0AC" name="definition"/>
+							<tag xmi:id="EAID_731219A9_4D1F_0f4d_8ECE_CF645617F3D7" name="versionIdentifier"/>
+							<tag xmi:id="EAID_80EAD28D_6803_ad68_B145_7FA9E911CBAA" name="usageRule"/>
+							<tag xmi:id="EAID_98C070FA_09B0_c609_B44E_9E4A592787A8" name="uniqueIdentifier"/>
+							<tag xmi:id="EAID_E5EE68BF_9E75_9b9e_B162_9C22B5D4AF92" name="languageCode"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+				</attributes>
+			</element>
+		</elements>
+		<connectors/>
+		<diagrams>
+			<diagram xmi:id="EAID_E49B8B3F_D8DA_4d6e_8B97_A73B2D47B8B4">
+				<model package="EAPK_F6350FC5_FEFE_4e9b_96D6_09E7AB611F15" localID="3" owner="EAPK_F6350FC5_FEFE_4e9b_96D6_09E7AB611F15"/>
+				<properties name="CDTLibrary" type="Logical"/>
+				<project author="cschollum" version="1.0" created="2009-02-09 11:53:21" modified="2009-02-26 15:22:15"/>
+				<style1 value="ShowPrivate=1;ShowProtected=1;ShowPublic=1;HideRelationships=0;Locked=0;Border=1;HighlightForeign=1;PackageContents=1;SequenceNotes=0;ScalePrintImage=0;PPgs.cx=2;PPgs.cy=2;DocSize.cx=795;DocSize.cy=1130;ShowDetails=0;Orientation=P;Zoom=100;ShowTags=0;OpParams=1;VisibleAttributeDetail=0;ShowOpRetType=1;ShowIcons=1;CollabNums=0;HideProps=0;ShowReqs=0;ShowCons=0;PaperSize=9;HideParents=0;UseAlias=0;HideAtts=0;HideOps=0;HideStereo=0;HideElemStereo=0;ShowTests=0;ShowMaint=0;ConnectorNotation=UML 2.1;ExplicitNavigability=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;ShowNotes=0;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;"/>
+				<style2 value="ExcludeRTF=0;DocAll=0;HideQuals=0;AttPkg=1;ShowTests=0;ShowMaint=0;SuppressFOC=1;MatrixActive=0;SwimlanesActive=1;MatrixLineWidth=1;MatrixLocked=0;TConnectorNotation=UML 2.1;TExplicitNavigability=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;ProfileData=;MDGDgm=;STBLDgm=;ShowNotes=0;VisibleAttributeDetail=0;ShowOpRetType=1;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;"/>
+				<swimlanes value="locked=false;orientation=0;width=0;inbar=false;names=false;color=0;bold=false;fcol=0;;cls=0;"/>
+				<matrixitems value="locked=false;matrixactive=false;swimlanesactive=true;width=1;"/>
+				<extendedProperties/>
+				<elements>
+					<element geometry="Left=871;Top=891;Right=1043;Bottom=1014;" subject="EAID_C42734B0_5BC0_4eb8_B3FC_780DC774EE11" seqno="1" style="DUID=377BA52C;HideIcon=0;"/>
+					<element geometry="Left=671;Top=389;Right=789;Bottom=493;" subject="EAID_6C60C892_A1CB_4e40_9097_14922265CA98" seqno="2" style="DUID=88BDAB44;HideIcon=0;"/>
+					<element geometry="Left=672;Top=640;Right=790;Bottom=750;" subject="EAID_E9836BC7_CB57_4890_BDA7_0264F1062422" seqno="3" style="DUID=9E10D219;HideIcon=0;"/>
+					<element geometry="Left=69;Top=398;Right=241;Bottom=521;" subject="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21" seqno="4" style="DUID=377BA52C;HideIcon=0;"/>
+				</elements>
+			</diagram>
+		</diagrams>
+	</xmi:Extension>
+</xmi:XMI>

@@ -1,0 +1,88 @@
+﻿<Window x:Class="VIENNAAddIn.upcc3.Wizards.dev.ui.XsdImporterForm"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:viennaaddin="clr-namespace:VIENNAAddInWpfUserControls;assembly=VIENNAAddInWpfUserControls"
+    Height="530" Width="509" WindowStyle="SingleBorderWindow" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ShowInTaskbar="True" ResizeMode="NoResize" Title="XML Schema Importer Wizard" FontSize="11">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5,5,5,5">
+            <Button KeyboardNavigation.TabIndex="16" HorizontalAlignment="Left" Height="23" Name="buttonImport" Width="175" Click="buttonImport_Click">_Import XML Schemas</Button>
+            <Button KeyboardNavigation.TabIndex="17" HorizontalAlignment="Left" Height="23" Name="buttonClose" Width="75" Margin="30,0,0,0" Click="buttonClose_Click">_Close</Button>
+        </StackPanel>
+        <TextBox DockPanel.Dock="Bottom" Height="66" Margin="22,5,5,0" Name="textboxStatus" IsReadOnly="True" IsUndoEnabled="False" TextWrapping="Wrap"/>
+        <Label DockPanel.Dock="Bottom" Name="label2" Margin="22,5,5,0" Height="23"  HorizontalAlignment="Left">Status:</Label>
+        <TabControl Name="tabControl1" TabStripPlacement="Left" Margin="5,5,5,0">
+            <TabItem KeyboardNavigation.TabIndex="1" Name="tabEbInterface" Header="XSD">
+                <TabItem.LayoutTransform>
+                    <RotateTransform Angle="270"></RotateTransform>
+                </TabItem.LayoutTransform>
+                <TabItem.Content>
+                    <DockPanel>
+                        <Label DockPanel.Dock="Top" Height="23" Name="label12">Select XML Schema:</Label>
+                        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                            <viennaaddin:FileSelector KeyboardNavigation.TabIndex="2" Name="mappedSchemaFileSelector" DockPanel.Dock="Top" Width="420" Margin="5,0,5,0" DefaultExt=".xsd" Filter="XML Schema files (.xsd)|*.xsd" />
+                            <Button KeyboardNavigation.TabIndex="3" Margin="1,0,0,0" ToolTip="Show in Schema Analyzer" Name="ButtonSchemaAnalyzer" Click="ButtonSchemaAnalyzer_Click"><Image Name="ButtonSchemaAnalyzerImage" Width="16" Height="16" Source="./../../../../Resources/IconAnalyze.png" /></Button>
+                        </StackPanel>
+                        <StackPanel Name="mappedSchemaFileSelectorPanel" DockPanel.Dock="Top" VerticalAlignment="Stretch" Margin="5,0,5,0" />
+                        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                            <Label DockPanel.Dock="Top" Name="label3" Height="23">Select mapping files:</Label>
+                            <Button KeyboardNavigation.TabIndex="4" Click="Add_Click" Padding="3,0">+</Button>
+                            <Button KeyboardNavigation.TabIndex="6" Click="RemoveSelection_Click" Padding="4,0">-</Button>
+                        </StackPanel>
+                        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                            <Label Height="23" Width="150">Qualifier:</Label>
+                            <TextBox KeyboardNavigation.TabIndex="13" Name="qualifierTextBox" Width="305">Qualifier</TextBox>
+                        </StackPanel>
+                        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                            <Label Height="23" Width="150">Message Assembly Name:</Label>
+                            <TextBox KeyboardNavigation.TabIndex="12" Name="rootElementNameTextBox" Width="305">Document name</TextBox>
+                        </StackPanel>
+                        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                            <Label Height="23" Width="150">BDT Library Name:</Label>
+                            <TextBox KeyboardNavigation.TabIndex="11" Name="bdtLibraryNameTextBox" Width="305">BDTLibrary</TextBox>
+                        </StackPanel>
+                        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                            <Label Height="23" Width="150">BIE Library Name:</Label>
+                            <TextBox KeyboardNavigation.TabIndex="10" Name="bieLibraryNameTextBox" Width="305">BIELibrary</TextBox>
+                        </StackPanel>
+                        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                            <Label Height="23" Width="150">DOC Library Name:</Label>
+                            <TextBox KeyboardNavigation.TabIndex="9" Name="docLibraryNameTextBox" Width="305">DOCLibrary</TextBox>
+                        </StackPanel>
+                        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                            <Label Height="23" Width="150">bLibrary:</Label>
+                            <ComboBox KeyboardNavigation.TabIndex="8" Name="bLibraryComboBox" Width="305" ItemsSource="{Binding Path=Model.BLibraries}" SelectionChanged="bLibraryComboBox_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <ComboBoxItem Content="{Binding Path=Name}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="0,5,0,0">
+                            <Label Height="23" Width="150">CC Library:</Label>
+                            <ComboBox KeyboardNavigation.TabIndex="7" Name="ccLibraryComboBox" Width="305" ItemsSource="{Binding Path=Model.CcLibraries}" SelectionChanged="ccLibraryComboBox_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <ComboBoxItem Content="{Binding Path=Name}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                        <ListBox KeyboardNavigation.TabIndex="5" ItemsSource="{Binding Path=Model.MappingFiles}" Name="mappingFilesListBox" Margin="5,0,5,0" SelectionMode="Single" />
+                    </DockPanel>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Name="tabCCTS" Header="CCTS">
+                <TabItem.LayoutTransform>
+                    <RotateTransform Angle="270"></RotateTransform>
+                </TabItem.LayoutTransform>
+                <TabItem.Content>
+                    <StackPanel HorizontalAlignment="Stretch">
+                        <Label Height="23" Name="label1">Select root XML Schema:</Label>
+                        <viennaaddin:FileSelector KeyboardNavigation.TabIndex="15" Name="cctsSchemaFileSelector" DockPanel.Dock="Top" Height="21" Width="{Binding}" Margin="5,0,5,0" DefaultExt=".xsd" Filter="XML Schema files (.xsd)|*.xsd" />
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>

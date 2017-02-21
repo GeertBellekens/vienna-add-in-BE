@@ -1,0 +1,13 @@
+The following changes have been made to the original UBL
+MapForce files in order to get them through the importer:
+
+ubl2ccl_1_1.mfd:
+================
+- Adapted component value from "root = Invoice" to "Root:Invoice".
+- Removed mapping for Invoice/OrderReference/CopyIndicator
+
+ubl2ccl_3_1.mfd:
+================
+- Removed merge: 
+  - OrderReference/IssueDate mapped to Document/IssuesDateTime
+  - OrderReference/IssueTime mapped to Document/IssuesDateTime

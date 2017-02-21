@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!DOCTYPE XMI SYSTEM "UML_EA.dtd">
+<XMI xmi.version="1.1" xmlns:UML="omg.org/UML1.3" timestamp="2011-07-08 11:31:51">
+	<XMI.header>
+		<XMI.documentation>
+			<XMI.exporter>Enterprise Architect</XMI.exporter>
+			<XMI.exporterVersion>2.5</XMI.exporterVersion>
+		</XMI.documentation>
+	</XMI.header>
+	<XMI.content>
+		<UML:Model name="EA Model" xmi.id="MX_EAID_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3">
+			<UML:Namespace.ownedElement>
+				<UML:Class name="EARootClass" xmi.id="EAID_11111111_5487_4080_A7F4_41526CB0AA00" isRoot="true" isLeaf="false" isAbstract="false"/>
+				<UML:Package name="ENUMLibrary" xmi.id="EAPK_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3" isRoot="false" isLeaf="false" isAbstract="false" visibility="public">
+					<UML:ModelElement.stereotype>
+						<UML:Stereotype xmi.idref="EAID_0CC2C9A6_E498_4c12_82DF_504B0F767C22"/>
+					</UML:ModelElement.stereotype>
+					<UML:ModelElement.taggedValue>
+						<UML:TaggedValue tag="parent" value="EAPK_695D85BD_AABA_407e_B38C_CDA36E132DD7"/>
+						<UML:TaggedValue tag="created" value="2009-02-09 00:00:00"/>
+						<UML:TaggedValue tag="modified" value="2009-02-09 00:00:00"/>
+						<UML:TaggedValue tag="iscontrolled" value="FALSE"/>
+						<UML:TaggedValue tag="version" value="1.0"/>
+						<UML:TaggedValue tag="isprotected" value="FALSE"/>
+						<UML:TaggedValue tag="usedtd" value="FALSE"/>
+						<UML:TaggedValue tag="logxml" value="FALSE"/>
+						<UML:TaggedValue tag="packageFlags" value="CRC=0;"/>
+						<UML:TaggedValue tag="phase" value="1.0"/>
+						<UML:TaggedValue tag="status" value="Proposed"/>
+						<UML:TaggedValue tag="author" value="cschollum"/>
+						<UML:TaggedValue tag="complexity" value="1"/>
+						<UML:TaggedValue tag="stereotype" value="ENUMLibrary"/>
+						<UML:TaggedValue tag="ea_stype" value="Public"/>
+						<UML:TaggedValue tag="tpos" value="0"/>
+						<UML:TaggedValue tag="gentype" value="Java"/>
+					</UML:ModelElement.taggedValue>
+					<UML:Namespace.ownedElement/>
+				</UML:Package>
+				<UML:Stereotype xmi.id="EAID_0CC2C9A6_E498_4c12_82DF_504B0F767C22" name="ENUMLibrary" isRoot="false" isLeaf="false" isAbstract="false">
+					<UML:Stereotype.baseClass>Package</UML:Stereotype.baseClass>
+				</UML:Stereotype>
+			</UML:Namespace.ownedElement>
+		</UML:Model>
+		<UML:TaggedValue tag="baseURN" xmi.id="EAID_9E6EB875_7428_4739_A42B_95167E3DE897" modelElement="MX_EAID_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3"/>
+		<UML:TaggedValue tag="businessTerm" xmi.id="EAID_3FF92CE4_53F7_1b53_882A_7DDED5B667EB" modelElement="MX_EAID_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3"/>
+		<UML:TaggedValue tag="copyright" xmi.id="EAID_4CB00AB9_52CC_1e52_98F9_0DA92DE033DC" modelElement="MX_EAID_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3"/>
+		<UML:TaggedValue tag="owner" xmi.id="EAID_081BC26B_F8FE_7af8_9947_4A82E28DAB46" modelElement="MX_EAID_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3"/>
+		<UML:TaggedValue tag="reference" xmi.id="EAID_B4F8B86F_0082_6700_A8F6_44A482F75CA1" modelElement="MX_EAID_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3"/>
+		<UML:TaggedValue tag="status" xmi.id="EAID_14AB8884_9177_f191_BB55_A981E5410DFD" modelElement="MX_EAID_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3"/>
+		<UML:TaggedValue tag="uniqueIdentifier" xmi.id="EAID_98C070FA_618D_de61_ADB7_E5EEB4EB5B6B" modelElement="MX_EAID_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3"/>
+		<UML:TaggedValue tag="versionIdentifier" xmi.id="EAID_731219A9_A09C_32a0_8279_5BCEF356211D" modelElement="MX_EAID_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3"/>
+		<UML:DiagramElement geometry="Left=250;Top=34;Right=380;Bottom=114;" subject="EAID_D69A75A5_A260_4c29_9FF3_25E55E1CEFE3" seqno="6" style="DUID=30ADDE8F;NSL=0;HideIcon=0;">
+			<UML:ModelElement.taggedValue>
+				<UML:TaggedValue tag="diagram_guid" value="EAID_007D5154_5CEA_441e_84A1_1E991AA4FE80"/>
+			</UML:ModelElement.taggedValue>
+		</UML:DiagramElement>
+	</XMI.content>
+	<XMI.difference/>
+	<XMI.extensions xmi.extender="Enterprise Architect 2.5"/>
+</XMI>

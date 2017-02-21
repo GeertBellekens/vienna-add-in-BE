@@ -1,0 +1,80 @@
+<#@ assembly name="System.Core.dll" #>
+<#@ import namespace="System.Linq" #>
+<#+ 
+	string FirstCharToUpperCase(string str)
+	{
+		if (string.IsNullOrEmpty(str))
+		{
+			return str;
+		}
+		return str.Substring(0, 1).ToUpper() + str.Substring(1, str.Length - 1);
+	}
+	
+	string FirstCharToLowerCase(string str)
+	{
+		if (string.IsNullOrEmpty(str))
+		{
+			return str;
+		}
+		return str.Substring(0, 1).ToLower() + str.Substring(1, str.Length - 1);
+	}
+	
+	string TaggedValuePropertyName(MetaTaggedValue taggedValue)
+	{
+		string propertyName;
+		switch (taggedValue.Cardinality)
+		{
+			case MetaCardinality.Many:
+				propertyName = Plural(taggedValue.Name);
+				break;
+			default:
+				propertyName = taggedValue.Name;
+				break;
+		}
+		return FirstCharToUpperCase(propertyName);
+	}
+	
+	string TaggedValuePropertyType(MetaTaggedValue taggedValue)
+	{
+		return (taggedValue.Cardinality == MetaCardinality.Many ? "IEnumerable<" + taggedValue.Type + ">" : taggedValue.Type);
+	}
+	
+	string EmptyTaggedValue(MetaTaggedValue taggedValue)
+	{
+		return (taggedValue.Cardinality == MetaCardinality.Many ? "new string[0]" : "string.Empty");
+	}
+	
+	string CopyTaggedValue(MetaTaggedValue taggedValue, string source)
+	{
+		var propertyName = TaggedValuePropertyName(taggedValue);
+		return propertyName + " = " + (taggedValue.Cardinality == MetaCardinality.Many ? "new List<string>(" + source + "." + propertyName + ")" : source + "." + propertyName);
+	}
+	
+	string AttributePropertyType(MetaAttribute attribute)
+	{
+		return (attribute.Cardinality == MetaCardinality.Many ? "IEnumerable<I" + attribute.ClassName + ">" : "I" + attribute.ClassName);
+	}
+	
+	string AssociationPropertyType(MetaAssociation association)
+	{
+		return (association.Cardinality == MetaCardinality.Many ? "IEnumerable<I" + association.ClassName + ">" : "I" + association.ClassName);
+	}
+	
+	string EnumerationLiteralPropertyType(MetaEnumerationLiteral enumerationLiteral)
+	{
+		return (enumerationLiteral.Cardinality == MetaCardinality.Many ? "IEnumerable<I" + enumerationLiteral.ClassName + ">" : "I" + enumerationLiteral.ClassName);
+	}
+	
+	string Plural(string str)
+	{
+		if (str.EndsWith("s") || str.EndsWith("x"))
+		{
+			return str + "es";
+		}
+		else if (str.EndsWith("y"))
+		{
+			return str.Substring(0, str.Length - 1) + "ies";
+		}
+		return str + "s";
+	}
+#>

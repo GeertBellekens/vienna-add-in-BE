@@ -1,0 +1,265 @@
+<#@ assembly name="$(SolutionDir)/VIENNAAddInUtils/bin/Debug/VIENNAAddInUtils.dll" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="VIENNAAddInUtils"#>
+<#@ import namespace="VIENNAAddInUtils.t4"#>
+<#@ include file="../t4/CctsRepositoryNamespaces.tt" #>
+using System;
+using System.Collections.Generic;
+using VIENNAAddIn.upcc3.uml;
+
+namespace VIENNAAddIn.upcc3.repo.<#= metaPackage.Name #>
+{
+    internal <#= extendManually ? "partial " : "" #>class Upcc<#= metaPackage.Name #> : I<#= metaPackage.Name #>
+    {
+        public Upcc<#= metaPackage.Name #>(IUmlPackage umlPackage)
+        {
+            UmlPackage = umlPackage;
+        }
+
+        public IUmlPackage UmlPackage { get; private set; }
+
+        #region I<#= metaPackage.Name #> Members
+
+		/// <summary>
+		/// The <#= metaPackage.Stereotype #>'s unique ID.
+		/// </summary>
+        public int Id
+        {
+            get { return UmlPackage.Id; }
+        }
+
+		/// <summary>
+		/// The <#= metaPackage.Stereotype #>'s name.
+		/// </summary>
+        public string Name
+        {
+            get { return UmlPackage.Name; }
+        }
+<#
+///==========================================================================================================================
+/// Parent packages
+///==========================================================================================================================
+
+		foreach (var relation in MetaModel.GetParentPackageRelationsFor(metaPackage))
+		{
+#>
+
+		/// <summary>
+		/// The <#= relation.ParentPackageType.Stereotype #> containing this <#= metaPackage.Stereotype #>.
+		/// </summary>
+		public I<#= relation.ParentPackageType.Name #> <#= relation.ParentPackageRole #>
+        {
+            get { return new Upcc<#= relation.ParentPackageType.Name #>(UmlPackage.Parent); }
+        }
+<#
+		}
+
+///==========================================================================================================================
+/// Sub-packages
+///==========================================================================================================================
+
+		foreach (var relation in MetaModel.GetSubPackageRelationsFor(metaPackage))
+		{
+			var subPackage = relation.SubPackageType.Name;
+			var subPackageParamName = subPackage.FirstCharToLowerCase();
+			var subPackageStereotype = relation.SubPackageType.Stereotype;
+			var subPackageInterface = "I" + relation.SubPackageType.Name;
+			var subPackageSpec = relation.SubPackageType.Name + "Spec";
+			var subPackageSpecConverter = subPackageSpec + "Converter";
+			var subPackageUpccClass = "Upcc" + relation.SubPackageType.Name;
+#>
+
+		/// <summary>
+		/// The <#= subPackageStereotype #>s contained in this <#= metaPackage.Stereotype #>.
+		/// </summary>
+		public IEnumerable<<#= subPackageInterface #>> Get<#= relation.SubPackageRole #>()
+		{
+            foreach (var package in UmlPackage.GetPackagesByStereotype("<#= subPackageStereotype #>"))
+            {
+                yield return new <#= subPackageUpccClass #>(package);
+            }
+		}
+
+		/// <summary>
+		/// Retrieves a <#= subPackageStereotype #> by name.
+		/// <param name="name">A <#= subPackageStereotype #>'s name.</param>
+		/// <returns>The <#= subPackageStereotype #> with the given <paramref name="name"/> or <c>null</c> if no such <#= subPackageStereotype #> is found.</returns>
+		/// </summary>
+        public <#= subPackageInterface #> Get<#= subPackage #>ByName(string name)
+		{
+			if (string.IsNullOrEmpty(name))
+			{
+				return null;
+			}
+            foreach (var package in UmlPackage.GetPackagesByStereotype("<#= subPackageStereotype #>"))
+            {
+				if (name == package.Name)
+				{
+                    return new <#= subPackageUpccClass #>(package);
+				}
+            }
+			return null;
+		}
+
+		/// <summary>
+		/// Creates a <#= subPackageStereotype #> based on the given <paramref name="specification"/>.
+		/// <param name="specification">A specification for a <#= subPackageStereotype #>.</param>
+		/// <returns>The newly created <#= subPackageStereotype #>.</returns>
+		/// </summary>
+		public <#= subPackageInterface #> Create<#= subPackage #>(<#= subPackageSpec #> specification)
+		{
+		    return new <#= subPackageUpccClass #>(UmlPackage.CreatePackage(<#= subPackageSpecConverter #>.Convert(specification)));
+		}
+
+		/// <summary>
+		/// Updates a <#= subPackageStereotype #> to match the given <paramref name="specification"/>.
+		/// <param name="<#= subPackageParamName #>">A <#= subPackageStereotype #>.</param>
+		/// <param name="specification">A new specification for the given <#= subPackageStereotype #>.</param>
+		/// <returns>The updated <#= subPackageStereotype #>. Depending on the implementation, this might be the same updated instance or a new instance!</returns>
+		/// </summary>
+        public <#= subPackageInterface #> Update<#= subPackage #>(<#= subPackageInterface #> <#= subPackageParamName #>, <#= subPackageSpec #> specification)
+		{
+		    return new <#= subPackageUpccClass #>(UmlPackage.UpdatePackage(((<#= subPackageUpccClass #>) <#= subPackageParamName #>).UmlPackage, <#= subPackageSpecConverter #>.Convert(specification)));
+		}
+
+		/// <summary>
+		/// Removes a <#= subPackage #> from this <#= metaPackage.Stereotype #>.
+		/// <param name="<#= subPackageParamName #>">A <#= subPackage #>.</param>
+		/// </summary>
+        public void Remove<#= subPackage #>(<#= subPackageInterface #> <#= subPackageParamName #>)
+		{
+            UmlPackage.RemovePackage(((<#= subPackageUpccClass #>) <#= subPackageParamName #>).UmlPackage);
+		}
+<#
+		}
+		
+///==========================================================================================================================
+/// Classifiers
+///==========================================================================================================================
+
+		foreach (var relation in MetaModel.GetClassifierRelationsFor(metaPackage))
+		{
+			var element = relation.ClassifierType.Stereotype;
+			var classifierType = relation.ClassifierType.Name;
+			var classifier = classifierType.FirstCharToLowerCase();
+			if (classifier == "enum") classifier = "@enum"; // dirty hack to avoid naming conflict with 'enum'
+			var umlClassifierType = relation.ClassifierType.GetType().Name.Substring(4);
+			var umlClassifier = "uml" + umlClassifierType;
+#>
+
+		/// <summary>
+		/// The <#= element #>s contained in this <#= metaPackage.Stereotype #>.
+		/// </summary>
+		public IEnumerable<I<#= classifierType #>> <#= classifierType.Plural() #>
+		{
+            get
+            {
+                foreach (var <#= umlClassifier #> in UmlPackage.Get<#= umlClassifierType.Plural() #>ByStereotype("<#= relation.ClassifierType.Stereotype #>"))
+                {
+                    yield return new Upcc<#= classifierType #>(<#= umlClassifier #>);
+                }
+            }
+		}
+
+		/// <summary>
+		/// Retrieves a <#= element #> by name.
+		/// <param name="name">A <#= element #>'s name.</param>
+		/// <returns>The <#= element #> with the given <paramref name="name"/> or <c>null</c> if no such <#= element #> is found.</returns>
+		/// </summary>
+        public I<#= classifierType #> Get<#= classifierType #>ByName(string name)
+		{
+            foreach (I<#= classifierType #> <#= classifier #> in <#= classifierType.Plural() #>)
+            {
+                if (<#= classifier #>.Name == name)
+                {
+                    return <#= classifier #>;
+                }
+            }
+            return null;
+		}
+
+		/// <summary>
+		/// Creates a <#= element #> based on the given <paramref name="specification"/>.
+		/// <param name="specification">A specification for a <#= element #>.</param>
+		/// <returns>The newly created <#= element #>.</returns>
+		/// </summary>
+		public I<#= classifierType #> Create<#= classifierType #>(<#= classifierType #>Spec specification)
+		{
+		    return new Upcc<#= classifierType #>(UmlPackage.Create<#= umlClassifierType #>(<#= classifierType #>SpecConverter.Convert(specification)));
+		}
+
+		/// <summary>
+		/// Updates a <#= element #> to match the given <paramref name="specification"/>.
+		/// <param name="<#= classifier #>">A <#= element #>.</param>
+		/// <param name="specification">A new specification for the given <#= element #>.</param>
+		/// <returns>The updated <#= element #>. Depending on the implementation, this might be the same updated instance or a new instance!</returns>
+		/// </summary>
+        public I<#= classifierType #> Update<#= classifierType #>(I<#= classifierType #> <#= classifier #>, <#= classifierType #>Spec specification)
+		{
+		    return new Upcc<#= classifierType #>(UmlPackage.Update<#= umlClassifierType #>(((Upcc<#= classifierType #>) <#= classifier #>).Uml<#= umlClassifierType #>, <#= classifierType #>SpecConverter.Convert(specification)));
+		}
+
+		/// <summary>
+		/// Removes a <#= element #> from this <#= metaPackage.Stereotype #>.
+		/// <param name="<#= classifier #>">A <#= element #>.</param>
+		/// </summary>
+        public void Remove<#= relation.ClassifierType.Name #>(I<#= relation.ClassifierType.Name #> <#= classifier #>)
+		{
+            UmlPackage.Remove<#= umlClassifierType #>(((Upcc<#= classifierType #>) <#= classifier #>).Uml<#= umlClassifierType #>);
+		}
+<#
+		}
+
+///==========================================================================================================================
+/// Tagged Values
+///==========================================================================================================================
+
+		foreach (var metaTaggedValue in metaPackage.TaggedValues)
+		{
+#>
+
+        ///<summary>
+        /// Tagged value '<#= metaTaggedValue.Name #>'.
+        ///</summary>
+        public <#= metaTaggedValue.Cardinality == MetaCardinality.Many ? "IEnumerable<string>" : "string" #> <#= metaTaggedValue.AsPropertyName() #>
+        {
+            get { return UmlPackage.GetTaggedValue("<#= metaTaggedValue.Name #>").<#= metaTaggedValue.Cardinality == MetaCardinality.Many ? "SplitValues" : "Value" #>; }
+        }
+<#
+		}
+#>
+
+        #endregion
+
+        public bool Equals(Upcc<#= metaPackage.Name #> other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return Equals(other.UmlPackage, UmlPackage);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof (Upcc<#= metaPackage.Name #>)) return false;
+            return Equals((Upcc<#= metaPackage.Name #>) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (UmlPackage != null ? UmlPackage.GetHashCode() : 0);
+        }
+
+        public static bool operator ==(Upcc<#= metaPackage.Name #> left, Upcc<#= metaPackage.Name #> right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(Upcc<#= metaPackage.Name #> left, Upcc<#= metaPackage.Name #> right)
+        {
+            return !Equals(left, right);
+        }
+	}
+}

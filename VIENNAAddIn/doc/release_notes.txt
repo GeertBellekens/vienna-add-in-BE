@@ -1,0 +1,189 @@
+**************************************************************************************
+* Government Information Exchange Methodology Add-In for Sparx Enterprise Architect  *
+*   NEEDS TO BE UPDATED                                                              *
+* web: http://www.   mail:   *
+********************************************************************************
+
+********************************************************************************
+* UN/CEFACTs Modeling Methodology (UMM2) Add-In for Sparx Enterprise Architect  *
+*                                                                              *
+* web: http://www.ifs.univie.ac.at/UMM2addin    mail: UMM2addin@cs.univie.ac.at  *
+********************************************************************************
+
+This document contains the release notes for the 'UN/CEFACTs Modeling Methodology 
+(UMM2) Add-In for Sparx Enterprise Architect' (in the following called UMM2AddIn).
+
+Version: 0.5.0
+
+--------------------------------------------------------------------------------
+Contents: 
+
+1. About UMM2AddIn
+2. Release informations
+3. Requirements
+4. Installation instructions
+5. Features of this release
+6. Changelog/Blog
+7. Contact
+8. Bugreports
+8. Known Bugs
+********************************************************************************
+
+1. About UMM2 Add-In
+
+This software is an add-in for the UML modeling tool 'Enterprise
+Architect' from Sparx Systems, which allows a comfortable and standard compliant
+modeling process using UN/CEFACTs Modeling Methodology (UMM2). The supported UMM2 
+version is the current candidate for v1.0. 
+UMM2AddIn is currently developed in a research project of the University of Vienna
+and the Resarch Studios Austria. 
+
+--------------------------------------------------------------------------------
+
+2. Release informations
+
+This version of UMM2AddIn is NOT intended for public use, but for testing and 
+evaluation purpose only. Further versions of UMM2AddIn will be released 
+in infrequent intervals - major version increments will contain new features,
+minor version or build increments will incorporate bugfixes and smaller 
+enhancements.
+All new releases will be announced on the UMM2AddIn mailinglist (see section 7). 
+Also please use the contact information in section 7 to submit any comments. 
+
+--------------------------------------------------------------------------------
+
+3. Requirements
+
+    technical requirements:
+    *) Microsoft Windows 2000/XP
+    *) .NET Framework v2.0.50727
+    *) Sparx Enterprise Architect 6.1 Build 788 or higher
+    *) Microsoft Word 2003 (optional)
+    *) Administrative rights on the target system
+    
+    knowledge requirements:
+    *) UML 1.4.2
+    *) UMM2 Candidate for v1.0
+
+--------------------------------------------------------------------------------
+
+4. Installation instructions
+
+UMM2AddIn comes with an automated installer, thus installation is quite easy. 
+First please make sure, that you fulfill the technical requirements denoted in
+section 3. Then run 'setup.exe' as an user with administrative rights and follow 
+the instructions of the installer. If you choose to install UMM2AddIn for 
+everyone, each user who wants to enable UMM2AddIn has to add the information
+contained in 'UMM2AddInReg-if_installed_for_everyone.reg' to the registry (double
+click on the file). 'UMM2AddInReg-if_installed_for_everyone.reg' is contained
+in the folder 'res' in the installation directory.
+
+Note: If you don't see a menu 'Add-Ins' (next to 'Tools') containing an entry 
+'UMM2' in the main menu bar, you have to reset it ( (MainMenu)->Tools->Customize
+->Menu Tab->Reset button )
+
+--------------------------------------------------------------------------------
+
+5. Features
+
+As already depicted in section 1, this version is a preliminary release for 
+testing and evaluation purpose. Thus this version covers only a subset of the 
+final release features of UMM2AddIn
+
+
+    Features:
+    
+    *) UML Profile: The UMM2 is defined as UML-Profile according to the UMM2 meta model
+    (UMM2 Meta Model - Foundation Module, Candidate for 1.0). This means that all 
+    stereotypes (along with their tagged values) are available as model elements in the
+    UML toolbox of Enterprise Architect.
+    *) UMM2 Business Transaction Patterns: UMM2 uses transactions to model information 
+    exchange. In order to support the modeling process different approaches to model
+    a business transaction are available. Business transactions may be either generated
+    using worksheet input or created from scratch using the six predefined patterns.
+    *) Validator: The validator ensures the compliance of a model to the UMM2 meta model. 
+    The modeler is provided with two different validation approaches namely the top
+    down validation (full model check) and the bottom up (part model check) validation.    
+    *) Worksheet Editor: built-in worksheet editor to support the requirements
+    and information gathering process. Worksheets are defined for every step in the 
+    UMM2 process. The worksheet input used during the modeling process can be
+	exported in several formats (e.g. Microsoft Word, HTML) for documentation
+	purpose. Hence the complete business information is kept in one place. 
+    *) BPSS Transformation: supports the transformation of UMM2 binary collaborations  
+    to BPSS v1.10 compliant instances.
+    *) BPEL Transformation
+    *) Guard Condition Editor: sets either BPSS v1.10 compliant condition
+    expressions or OCL compliant objectstate expressions as guard conditions. 
+    To use objectstate expressions the behavior of a BusinessEntity must be 
+    prior described through a BusinessEntityLifecycle
+    *) Model Structure Creation: creation of an initial UMM2 compliant model
+    structure and context sensitive adding of "subviews" to BRV and BTV.
+    A BDV classification structure can be automatically created according to UN/CEFACTs 
+    Common Business Catalogue.
+    *) Pattern creation: The six business transaction patterns can be created 
+    automatically using a transaction generation wizard.
+    *) Association Wizard: menu-based setting of mapsTo associations between
+    BusinessCollaborationProtocols and BusinessCollaborationUseCases and 
+    BusinessTransactions and BusinessTransactionUseCases.
+    *) BCSS Plugin
+    
+
+--------------------------------------------------------------------------------
+
+6. Changelog/Blog
+
+    *) Please see our blog: http://UMM2addin.blogspot.com
+
+
+--------------------------------------------------------------------------------
+
+7. Contact
+
+We have a project website running at [http://www.ifs.univie.ac.at/UMM2addin] which
+contains additional information about the project as well as related stuff like
+modeling guides (coming soon), example UMM2 models and flash-based tutorials. 
+The latest version of UMM2AddIn will also be available for downloading at 
+the project website.
+    
+If you have any comments or suggestions please drop us a mail 
+                      
+                      UMM2addin@cs.univie.ac.at
+                      
+We are also running a mailinglist, which should be the primary place for 
+discussion about the UMM2AddIn. The adress of this mailinglist is:
+                    
+                    UMM2addin-list@cs.univie.ac.at
+                    
+To post on the list you need to be subscribed. To subscribe please send a mail
+to Majordomo@cs.univie.ac.at with "subscribe UMM2addin-list" in the body of the 
+mail. If you experience any problems with the list, please drop a mail to 
+marco@mminf.univie.ac.at.
+
+--------------------------------------------------------------------------------
+
+8. Bugreports
+
+Please submit bugs you have found to the following email address:
+
+UMM2addin@cs.univie.ac.at
+
+--------------------------------------------------------------------------------
+
+9. Known Bugs
+
+The following issues are known bugs in this version:
+
+    none ;-)
+
+
+********************************************************************************
+The UMM2AddIn project team; Vienna 2006, Austria
+                      
+                      
+                      
+    
+
+
+
+
+

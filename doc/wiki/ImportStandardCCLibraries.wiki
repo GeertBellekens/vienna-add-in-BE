@@ -1,0 +1,34 @@
+#summary Import Standard Core Component Libraries
+
+=Standard CC Libraries=
+
+The VIENNA Add-In helps you to automatically download several versions of the standard Core Component Libraries (CCL) and import them into a UPCC model.
+
+=Import standard CC Libraries into an existing UPCC3 model=
+
+  # Prepare an Enterprise Architect model and set it as UPCC3 model
+  # In the _Project Browser_, select the model and right-click on the bLibrary
+  # Select _Add-In / VIENNAAddIn / Import Standard CC Libraries_ from the context menu:
+    http://vienna-add-in.googlecode.com/svn/wiki/images/ImportStandardCCLibraries_01.gif
+  # In the _Standard Core Component Library Importer_ dialog, you can choose the desired version of the CCL from two drop-down lists
+  # After choosing the CCL version, detailed information about the selected version is shown in the _Comments_ section:
+    http://vienna-add-in.googlecode.com/svn/wiki/images/ImportStandardCCLibraries_02.gif
+  # Finally, click _Import_
+  # If there are existing libraries in the current project with the same name as the Core Components Libraries, you will need to confirm that these old liberaries may be overwritten:
+    http://vienna-add-in.googlecode.com/svn/wiki/images/ImportStandardCCLibraries_03.gif
+  # The Add-In will now download the Core Component Libraries as XMI files and import them into the current project
+  # You can observe the import process by watching the status messages that are printed to the _Status_ section regularly:
+    http://vienna-add-in.googlecode.com/svn/wiki/images/ImportStandardCCLibraries_04.gif
+
+
+=References=
+(1) UMM Development Site http://umm-dev.org/
+
+(2) CCTS standard http://www.untmg.org/wp-content/uploads/2008/06/specification_ccts3p0odp620080207.pdf
+
+=Related Tasks=
+[CreateaModelinEA Create a model in Enterprise Architect]: This page explains how to open a project file and create a model in Enterprise Architect
+
+[CreateaUpccModel Create your first UPCC model]: This page explains how to create a UPCC model
+
+[GettingStartedVideos Getting Started Videos]: This page contains a few videos explaining common tasks using the VIENNA Add-In

@@ -1,0 +1,13 @@
+#summary Storyboard for modeling typical Passport Information using the VIENNA Add-In.
+
+= Passport Modeling Storyboard =
+
+An example for exchanging information electronically using Core Components is the following scenario: Two neighbouring countries decide to implement additional security standards on the border. When inhabitants move from one of the two countries to the other, their passports should be compared to a central database to check the document's authenticity and therefore prohibit the use of forged passport documents.
+
+To establish such a central database, the two countries need to exchange the passport data of all inhibitants. They decide to exchange this data electronically using Core Components. For modeling a business document containing passport data, the two parties must agree on which information is included in the passport model and how this information is organised.
+
+The next pages show how to create such a sample passport model using Enterprise Architect and the VIENNA Add-In in three steps. Sample images are included, as well as video tutorials.
+
+  * [PassportModelStep1 Passport Model - Step 1] shows how to open an Enterprise Architect project file, create a UPCC model and import the standard libraries needed for Core Component compliance.<br>
+  * [PassportModelStep2 Passport Model - Step 2] explains which ABIE elements are needed for modeling the passport data and how they are created.<br>
+  * [PassportModelStep3 Passport Model - Step 3] illustrates how to combine these elements in order to create a complete business document.

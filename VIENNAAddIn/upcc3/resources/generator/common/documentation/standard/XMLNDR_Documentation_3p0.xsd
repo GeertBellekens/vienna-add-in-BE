@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== -->
+<!-- =====  XMLNDR Dcoumentation Schema File                                                               ===== -->
+<!-- ====================================================================== -->
+<!--
+  	Schema agency: 	UN/CEFACT 
+  	Schema version:	3.0
+  	Schema date: 		04 August 2008
+  	
+  	Copyright (C) UN/CEFACT (2008). All Rights Reserved.
+
+	This document and translations of it may be copied and furnished to others, 
+	and derivative works that comment on or otherwise explain it or assist 
+	in its implementation may be prepared, copied, published and distributed, 
+	in whole or in part, without restriction of any kind, provided that the 
+	above copyright notice and this paragraph are included on all such copies 
+	and derivative works. However, this document itself may not be modified in 
+	any way, such as by removing the copyright notice or references to 
+	UN/CEFACT, except as needed for the purpose of developing UN/CEFACT 
+	specifications, in which case the procedures for copyrights defined in the 
+	UN/CEFACT Intellectual Property Rights document must be followed, or as 
+	required to translate it into languages other than English.
+
+	The limited permissions granted above are perpetual and will not be revoked 
+	by UN/CEFACT or its successors or assigns.
+
+	This document and the information contained herein is provided on an "AS IS"
+	basis and UN/CEFACT DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING 
+	BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL 
+	NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR 
+	FITNESS FOR A PARTICULAR PURPOSE.
+-->
+<xsd:schema xmlns:ccts="urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bdt="urn:un:unece:uncefact:data:standard:BusinessDataType:3" xmlns:clm54217="urn:un:unece:uncefact:codelist:standard:5:4217:2001" targetNamespace="urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- =================================================================== -->
+	<!-- ===== Imports                                                													  ===== -->
+	<!-- =================================================================== -->
+	<!-- ===== Import of Common Business Data Type                                   					  ===== -->
+	<!-- =================================================================== -->
+	<xsd:import namespace="urn:un:unece:uncefact:data:standard:BusinessDataType:3" schemaLocation="../../data/standard/BusinessDataType_3p0.xsd"/>
+	<!-- =================================================================== -->
+	<!-- ===== Import of Code Lists                                   												  ===== -->
+	<!-- =================================================================== -->	
+	<xsd:import namespace="urn:un:unece:uncefact:codelist:standard:5:4217:2001" schemaLocation="../../codelist/standard/ISO_CurrencyCode_2001.xsd"/>
+	<!---->
+	<!---->
+	<xsd:group name="RootSchema_Documentation">
+		<xsd:sequence>
+			<xsd:element name="UniqueID" type="bdt:EntityUniqueIdentifierType"/>
+			<xsd:element name="VersionID" type="bdt:VersionIdentifierType"/>
+			<xsd:element name="AcronymCode" type="bdt:DocumentationAcronymCodeType" fixed="RootSchema"/>
+			<xsd:element name="Name" type="bdt:NameType"/>
+			<xsd:element name="Definition" type="bdt:TextType"/>
+			<xsd:element name="BusinessTermName" type="bdt:NameType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:group name="ABIE_Documentation">
+		<xsd:sequence>
+			<xsd:element name="UniqueID" type="bdt:EntityUniqueIdentifierType"/>
+			<xsd:element name="VersionID" type="bdt:VersionIdentifierType"/>
+			<xsd:element name="AcronymCode" type="bdt:DocumentationAcronymCodeType" fixed="ABIE"/>
+			<xsd:element name="DictionaryEntryName" type="bdt:NameType"/>
+			<xsd:element name="Definition" type="bdt:TextType"/>
+			<xsd:element name="ObjectClassQualifierName" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="bdt:TextType">
+							<xsd:attribute name="orderKey" type="xsd:positiveInteger" use="required"/>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ObjectClassName" type="bdt:NameType"/>
+			<xsd:element name="UsageRule" type="ccts:UsageRuleType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="BusinessTermName" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Example" type="bdt:TextType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:group name="BBIE_Documentation">
+		<xsd:sequence>
+			<xsd:element name="UniqueID" type="bdt:EntityUniqueIdentifierType"/>
+			<xsd:element name="VersionID" type="bdt:VersionIdentifierType"/>
+			<xsd:element name="SequencingKeyID" type="bdt:SequencingKeyIdentifierType"/>
+			<xsd:element name="AcronymCode" type="bdt:DocumentationAcronymCodeType" fixed="BBIE"/>
+			<xsd:element name="DictionaryEntryName" type="bdt:NameType"/>
+			<xsd:element name="Definition" type="bdt:TextType"/>
+			<xsd:element name="Cardinality" type="bdt:TextType"/>
+			<xsd:element name="ObjectClassQualifierName" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="bdt:TextType">
+							<xsd:attribute name="orderKey" type="xsd:positiveInteger" use="required"/>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ObjectClassName" type="bdt:NameType"/>
+			<xsd:element name="PropertyQualifierName" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="bdt:NameType">
+							<xsd:attribute name="orderKey" type="xsd:positiveInteger" use="required"/>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PropertyTermName" type="bdt:NameType"/>
+			<xsd:element name="RepresentationTermName" type="bdt:NameType"/>
+			<xsd:element name="UsageRule" type="ccts:UsageRuleType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="BusinessTermName" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Example" type="bdt:TextType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:group name="ASBIE_Documentation">
+		<xsd:sequence>
+			<xsd:element name="UniqueID" type="bdt:EntityUniqueIdentifierType"/>
+			<xsd:element name="VersionID" type="bdt:VersionIdentifierType"/>
+			<xsd:element name="SequencingKeyID" type="bdt:SequencingKeyIdentifierType"/>
+			<xsd:element name="AcronymCode" type="bdt:DocumentationAcronymCodeType" fixed="ASBIE"/>
+			<xsd:element name="DictionaryEntryName" type="bdt:NameType"/>
+			<xsd:element name="Definition" type="bdt:TextType"/>
+			<xsd:element name="Cardinality" type="bdt:TextType"/>
+			<xsd:element name="ObjectClassQualifierName" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="bdt:TextType">
+							<xsd:attribute name="orderKey" type="xsd:positiveInteger" use="required"/>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ObjectClassName" type="bdt:NameType"/>
+			<xsd:element name="AssociatedObjectClassQualifierName" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="bdt:NameType">
+							<xsd:attribute name="orderKey" type="xsd:positiveInteger" use="required"/>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="AssociatedObjectClassTermName" type="bdt:NameType"/>
+			<xsd:element name="AssociationTypeCode" type="bdt:AssociationTypeCodeType"/>
+			<xsd:element name="UsageRule" type="ccts:UsageRuleType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="BusinessTermName" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Example" type="bdt:AmountType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:group name="BDT_Documentation">
+		<xsd:sequence>
+			<xsd:element name="UniqueID" type="bdt:DataTypeUniqueIdentifierType"/>
+			<xsd:element name="VersionID" type="bdt:VersionIdentifierType"/>
+			<xsd:element name="AcronymCode" type="bdt:DocumentationAcronymCodeType" fixed="BDT"/>
+			<xsd:element name="DictionaryEntryName" type="bdt:NameType"/>
+			<xsd:element name="Definition" type="bdt:TextType"/>
+			<xsd:element name="DataTypeQualifierName" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="bdt:TextType">
+							<xsd:attribute name="orderKey" type="xsd:positiveInteger" use="required"/>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="DataTypeName" type="bdt:NameType"/>
+			<xsd:element name="PrimitiveTypeCode" type="bdt:PrimitiveTypeCodeType" maxOccurs="unbounded"/>
+			<xsd:element name="UsageRule" type="ccts:UsageRuleType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="BusinessTermName" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Example" type="bdt:TextType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:group name="BDT_SC_Documentation">
+		<xsd:sequence>
+			<xsd:element name="UniqueID" type="bdt:DataTypeUniqueIdentifierType"/>
+			<xsd:element name="VersionID" type="bdt:VersionIdentifierType"/>
+			<xsd:element name="SequencingKeyID" type="bdt:SequencingKeyIdentifierType"/>
+			<xsd:element name="AcronymCode" type="bdt:DocumentationAcronymCodeType" fixed="BDT_SC"/>
+			<xsd:element name="DictionaryEntryName" type="bdt:NameType"/>
+			<xsd:element name="Definition" type="bdt:TextType"/>
+			<xsd:element name="DataTypeQualifierName" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="bdt:TextType">
+							<xsd:attribute name="orderKey" type="xsd:positiveInteger" use="required"/>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="DataTypeName" type="bdt:NameType"/>
+			<xsd:element name="PropertyTermName" type="bdt:NameType"/>
+			<xsd:element name="RepresentationTermName" type="bdt:NameType"/>
+			<xsd:element name="PrimitiveTypeCode" type="bdt:PrimitiveTypeCodeType" maxOccurs="unbounded"/>
+			<xsd:element name="UsageRule" type="ccts:UsageRuleType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="BusinessTermName" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Example" type="bdt:TextType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:group name="CodeList_Documentation">
+		<xsd:sequence>
+			<xsd:element name="ID" type="bdt:IDType"/>
+			<xsd:element name="VersionID" type="bdt:IDType"/>
+			<xsd:element name="Name" type="bdt:NameType" minOccurs="0"/>
+			<xsd:element name="AgencyID" type="bdt:IDType"/>
+			<xsd:element name="AgencyName" type="bdt:NameType" minOccurs="0"/>
+			<xsd:element name="AcronymCode" type="bdt:DocumentationAcronymCodeType" fixed="CodeList"/>
+			<xsd:element name="Description" type="bdt:TextType"/>
+			<xsd:element name="PrimitiveTypeCode" type="bdt:PrimitiveTypeCodeType"/>
+			<xsd:element name="ModificationAllowedIndicator" type="bdt:IndicatorType" minOccurs="0"/>
+			<xsd:element name="DefaultIndicator" type="bdt:IndicatorType" minOccurs="0"/>
+			<xsd:element name="UsageRule" type="ccts:UsageRuleType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="BusinessTermName" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:group name="CodeValue_Documentation">
+		<xsd:sequence>
+			<xsd:element name="AcronymCode" type="bdt:DocumentationAcronymCodeType" fixed="CodeValue"/>
+			<xsd:element name="Content" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Name" type="bdt:NameType" minOccurs="0"/>
+			<xsd:element name="Description" type="bdt:TextType"/>
+			<xsd:element name="UsageRule" type="ccts:UsageRuleType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="BusinessTermName" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:group name="IdentifierScheme_Documentation">
+		<xsd:sequence>
+			<xsd:element name="ID" type="bdt:IDType"/>
+			<xsd:element name="VersionID" type="bdt:IDType"/>
+			<xsd:element name="Name" type="bdt:NameType" minOccurs="0"/>
+			<xsd:element name="AgencyID" type="bdt:IDType"/>
+			<xsd:element name="AgencyName" type="bdt:NameType" minOccurs="0"/>
+			<xsd:element name="AcronymCode" type="bdt:DocumentationAcronymCodeType" fixed="IdentifierScheme"/>
+			<xsd:element name="Description" type="bdt:TextType"/>
+			<xsd:element name="PrimitiveTypeCode" type="bdt:PrimitiveTypeCodeType"/>
+			<xsd:element name="ModificationAllowedIndicator" type="bdt:IndicatorType" minOccurs="0"/>
+			<xsd:element name="DefaultIndicator" minOccurs="0"/>
+			<xsd:element name="UsageRule" type="ccts:UsageRuleType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="BusinessTermName" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:complexType name="UsageRuleType">
+		<xsd:sequence>
+			<xsd:element name="UniqueID" type="bdt:IDType" minOccurs="0"/>
+			<xsd:element name="Name" type="bdt:NameType" minOccurs="0"/>
+			<xsd:element name="Description" type="bdt:TextType"/>
+			<xsd:element name="FormalConstraint" type="bdt:TextType"/>
+			<xsd:element name="FormalConstraintTypeCode" type="bdt:FormalConstraintTypeCodeType" minOccurs="0"/>
+			<xsd:element name="ConditionTypeCode" type="bdt:ConditionTypeCodeType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!---->
+	<!---->
+	<xsd:element name="BusinessContext">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="ContextUnit" maxOccurs="unbounded">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="BusinessProcessContextCategory" type="ccts:BusinessProcessContextCategoryType" minOccurs="0" maxOccurs="unbounded"/>
+							<xsd:element name="BusinessProcessRoleContextCategory" type="ccts:BusinessProcessRoleContextCategoryType" minOccurs="0" maxOccurs="unbounded"/>
+							<xsd:element name="SupportingRoleContextCategory" type="ccts:SupportingRoleContextCategoryType" minOccurs="0" maxOccurs="unbounded"/>
+							<xsd:element name="IndustryClassificationContextCategory" type="ccts:IndustryClassificationContextCategoryType" minOccurs="0" maxOccurs="unbounded"/>
+							<xsd:element name="ProductClassificationContextCategory" type="ccts:ProductClassificationContextCategoryType" minOccurs="0" maxOccurs="unbounded"/>
+							<xsd:element name="GeopoliticalContextCategory" type="ccts:GeopoliticalContextCategoryType" minOccurs="0" maxOccurs="unbounded"/>
+							<xsd:element name="OfficialConstraintsContextCategory" type="ccts:OfficialConstraintsContextCategoryType" minOccurs="0" maxOccurs="unbounded"/>
+							<xsd:element name="SystemCapabilitiesContextCategory" type="ccts:SystemCapabilitiesContextCategoryType" minOccurs="0" maxOccurs="unbounded"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="id" type="bdt:EntityUniqueIdentifierType"/>
+			<xsd:attribute name="versionID" type="bdt:VersionIdentifierType"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="BusinessInformationContextCategoryType">
+		<xsd:sequence>
+			<xsd:element name="BusinessInformationEntityID" type="bdt:IDType" maxOccurs="unbounded"/>
+			<xsd:element name="ContextExclusion" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="BusinessInformationEntityID" type="bdt:IDType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="inAllContextsIndicator" type="xsd:boolean"/>
+	</xsd:complexType>
+	<xsd:complexType name="BusinessProcessContextCategoryType">
+		<xsd:sequence>
+			<xsd:element name="BusinessProcessCode" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="bdt:CodeType"/>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ContextExclusion" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="BusinessProcessTypeCode" type="bdt:CodeType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="inAllContextsIndicator" type="xsd:boolean"/>
+	</xsd:complexType>
+	<xsd:complexType name="BusinessProcessRoleContextCategoryType">
+		<xsd:sequence>
+			<xsd:element name="BusinessProcessRoleCode" type="bdt:CodeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ContextExclusion" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="PartyFunctionCode" type="bdt:CodeType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="inAllContextsIndicator" type="xsd:boolean"/>
+	</xsd:complexType>
+	<xsd:complexType name="SupportingRoleContextCategoryType">
+		<xsd:sequence>
+			<xsd:element name="SupporterFunctionCode" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="bdt:CodeType"/>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ContextExclusion" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="SupporterFunctionCode" type="bdt:CodeType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="inAllContextsIndicator" type="xsd:boolean"/>
+	</xsd:complexType>
+	<xsd:complexType name="IndustryClassificationContextCategoryType">
+		<xsd:sequence>
+			<xsd:element name="IndustryClassificationCode" type="bdt:CodeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ContextExclusion" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="IndustryTypeCode" type="bdt:CodeType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="inAllContextsIndicator" type="xsd:boolean"/>
+	</xsd:complexType>
+	<xsd:complexType name="ProductClassificationContextCategoryType">
+		<xsd:sequence>
+			<xsd:element name="ProductClassificationCode" type="bdt:CodeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ContextExclusion" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ProductTypeCode" type="bdt:CodeType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="inAllContextsIndicator" type="xsd:boolean"/>
+	</xsd:complexType>
+	<xsd:complexType name="GeopoliticalContextCategoryType">
+		<xsd:sequence>
+			<xsd:element name="GeopoliticalCode" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ContextExclusion" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="clm54217:CurrencyCode" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="inAllContextsIndicator" type="xsd:boolean"/>
+	</xsd:complexType>
+	<xsd:complexType name="OfficialConstraintsContextCategoryType">
+		<xsd:sequence>
+			<xsd:element name="OfficialConstraintsCode" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="bdt:CodeType"/>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ContextExclusion" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="LawTypeCode" type="bdt:CodeType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="inAllContextsListIndicator" type="xsd:boolean"/>
+	</xsd:complexType>
+	<xsd:complexType name="SystemCapabilitiesContextCategoryType">
+		<xsd:sequence>
+			<xsd:element name="SystemCapabilitiesID" type="bdt:IDType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ContextExclusion" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="SoftwareSolutionID" type="bdt:IDType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="inAllContextsIndicator" type="xsd:boolean"/>
+	</xsd:complexType>
+</xsd:schema>

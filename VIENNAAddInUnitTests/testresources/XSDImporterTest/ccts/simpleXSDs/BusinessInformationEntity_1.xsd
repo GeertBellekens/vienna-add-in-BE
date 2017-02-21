@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:tns="http://foo.bar/doc" xmlns:ccts="urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3" xmlns:eb="http://foo.bar/doc" xmlns:bdt="http://foo.bar/doc" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://foo.bar/doc" version="1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="BusinessDataType_1.xsd" />
+  <xsd:element name="Included_PersonPerson" type="tns:PersonType" />
+  <xsd:complexType name="AddressType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="BuildingNumber" type="bdt:TextStringType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Town_CityName" type="bdt:TextStringType" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Country_CountryName" type="bdt:TextStringType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="AddressExtension_LineOne" type="bdt:TextStringType" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="ZIP_PostcodeCode" type="bdt:CodeStringType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="POBox_PostOfficeBox" type="bdt:TextStringType" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="StreetName" type="bdt:TextStringType" />
+      <xsd:element ref="tns:Included_PersonPerson" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="Address" type="tns:AddressType" />
+  <xsd:element name="Delivery_AddressAddress" type="tns:AddressType" />
+  <xsd:element name="PeriodPeriod" type="tns:PeriodType" />
+  <xsd:element name="IncludedDeliveryTermsDeliveryTerms" type="tns:DeliveryTermsType" />
+  <xsd:complexType name="DeliveryType">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="DeliveredDateTime" type="bdt:DateTimeStringType" />
+      <xsd:element ref="tns:Delivery_AddressAddress" />
+      <xsd:element ref="tns:PeriodPeriod" />
+      <xsd:element ref="tns:IncludedDeliveryTermsDeliveryTerms" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="Delivery" type="tns:DeliveryType" />
+  <xsd:complexType name="DeliveryTermsType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Description" type="bdt:TextStringType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="DeliveryTerms" type="tns:DeliveryTermsType" />
+  <xsd:complexType name="FinancialAccountType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="Comment_Type" type="bdt:TextStringType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="BankAccountNr_Identifer" type="bdt:IdentifierStringType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="FinancialAccount" type="tns:FinancialAccountType" />
+  <xsd:complexType name="PeriodType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="ToDate_EndDateTime" type="bdt:DateTimeStringType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="FromDate_StartDateTime" type="bdt:DateTimeStringType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="Period" type="tns:PeriodType" />
+  <xsd:complexType name="PersonType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Name" type="bdt:TextStringType" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Salutation_Title" type="bdt:TextStringType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="Person" type="tns:PersonType" />
+</xsd:schema>

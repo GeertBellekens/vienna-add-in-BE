@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<xmi:XMI xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:thecustomprofile="http://www.sparxsystems.com/profiles/thecustomprofile/1.0" xmlns:UPCC3_-_Model_Management_Abstract_Syntax="http://www.sparxsystems.com/profiles/UPCC3_-_Model_Management_Abstract_Syntax/1.0" xmlns:UPCC3_-_CCLibrary_Abstract_Syntax="http://www.sparxsystems.com/profiles/UPCC3_-_CCLibrary_Abstract_Syntax/1.0">
+	<xmi:Documentation exporter="Enterprise Architect" exporterVersion="6.5"/>
+	<uml:Model xmi:type="uml:Model" name="EA_Model" visibility="public">
+		<packagedElement xmi:type="uml:Package" xmi:id="EAPK_716A1470_ADD6_4df9_8D53_975867D14056" name="CCLibrary" visibility="public">
+			<packagedElement xmi:type="uml:Class" xmi:id="EAID_2189B7C1_12E6_471c_B68D_BDB71A18927F" name="Address" visibility="public">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_92E6D316_D442_4be4_A9A4_9AFE5EA39070" name="AttentionOf" visibility="public" isDerived="false" isOrdered="false" isUnique="true">
+					<type xmi:idref="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000001_D442_4be4_A9A4_9AFE5EA39070" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000002_D442_4be4_A9A4_9AFE5EA39070" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_7E19D067_4452_42e5_929C_0E326014B485" name="BuildingNumber" visibility="public" isDerived="false" isOrdered="false" isUnique="true">
+					<type xmi:idref="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000003_4452_42e5_929C_0E326014B485" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000004_4452_42e5_929C_0E326014B485" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_91332F6B_7FD0_491f_A231_A61606F61DE4" name="CityName" visibility="public" isDerived="false" isOrdered="false" isUnique="true">
+					<type xmi:idref="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000005_7FD0_491f_A231_A61606F61DE4" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000006_7FD0_491f_A231_A61606F61DE4" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_E076ED2A_6424_4fe2_B390_BB023A098EEE" name="CountryName" visibility="public" isDerived="false" isOrdered="false" isUnique="true">
+					<type xmi:idref="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000007_6424_4fe2_B390_BB023A098EEE" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000008_6424_4fe2_B390_BB023A098EEE" value="-1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_58FF7AEA_D9C9_4c6b_AEE2_C9163E31655F" name="DepartmentName" visibility="public" isDerived="false" isOrdered="false" isUnique="true">
+					<type xmi:idref="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000009_D9C9_4c6b_AEE2_C9163E31655F" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000010_D9C9_4c6b_AEE2_C9163E31655F" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_D8D7F9DA_61BF_4ead_8ADA_81925AC52CAC" name="LineOne" visibility="public" isDerived="false" isOrdered="false" isUnique="true">
+					<type xmi:idref="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000011_61BF_4ead_8ADA_81925AC52CAC" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000012_61BF_4ead_8ADA_81925AC52CAC" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_E20EB550_C594_4117_AE08_34267C72EABA" name="Postcode" visibility="public" isDerived="false" isOrdered="false" isUnique="true">
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000013_C594_4117_AE08_34267C72EABA" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000014_C594_4117_AE08_34267C72EABA" value="-1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_0EA3F7BE_ADC5_4b7a_B9C1_733873B05F42" name="PostOfficeBox" visibility="public" isDerived="false" isOrdered="false" isUnique="true">
+					<type xmi:idref="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000015_ADC5_4b7a_B9C1_733873B05F42" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000016_ADC5_4b7a_B9C1_733873B05F42" value="1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_E9BC92D1_9E92_4ace_B61C_FB696904A078" name="StreetName" visibility="public" isDerived="false" isOrdered="false" isUnique="true">
+					<type xmi:idref="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000017_9E92_4ace_B61C_FB696904A078" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000018_9E92_4ace_B61C_FB696904A078" value="-1"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Association" xmi:id="EAID_A742BFA0_F476_4fdb_8DC5_1ED06F74AF54" visibility="public">
+				<memberEnd xmi:idref="EAID_dst42BFA0_F476_4fdb_8DC5_1ED06F74AF54"/>
+				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dst42BFA0_F476_4fdb_8DC5_1ED06F74AF54" visibility="public" association="EAID_A742BFA0_F476_4fdb_8DC5_1ED06F74AF54" isOrdered="false" isDerived="false" isDerivedUnion="false" isUnique="true" aggregation="shared">
+					<type xmi:idref="EAID_5C619250_DF39_4dc2_BCC4_4409C56A7F71"/>
+				</ownedEnd>
+				<memberEnd xmi:idref="EAID_src42BFA0_F476_4fdb_8DC5_1ED06F74AF54"/>
+				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src42BFA0_F476_4fdb_8DC5_1ED06F74AF54" name="Information" visibility="public" association="EAID_A742BFA0_F476_4fdb_8DC5_1ED06F74AF54" isOrdered="false" isDerived="false" isDerivedUnion="false" isUnique="true" aggregation="none">
+					<type xmi:idref="EAID_2189B7C1_12E6_471c_B68D_BDB71A18927F"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_SL000000_F476_4fdb_8DC5_1ED06F74AF54" value="0"/>
+					<upperValue xmi:type="uml:LiteralInteger" xmi:id="EAID_SU000000_F476_4fdb_8DC5_1ED06F74AF54" value="1"/>
+				</ownedEnd>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Association" xmi:id="EAID_D7FC1A81_30D5_4f23_9D1B_8C2B3856AEFF" visibility="public">
+				<memberEnd xmi:idref="EAID_dstFC1A81_30D5_4f23_9D1B_8C2B3856AEFF"/>
+				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dstFC1A81_30D5_4f23_9D1B_8C2B3856AEFF" visibility="public" association="EAID_D7FC1A81_30D5_4f23_9D1B_8C2B3856AEFF" isOrdered="false" isDerived="false" isDerivedUnion="false" isUnique="true" aggregation="shared">
+					<type xmi:idref="EAID_5C619250_DF39_4dc2_BCC4_4409C56A7F71"/>
+				</ownedEnd>
+				<memberEnd xmi:idref="EAID_srcFC1A81_30D5_4f23_9D1B_8C2B3856AEFF"/>
+				<ownedEnd xmi:type="uml:Property" xmi:id="EAID_srcFC1A81_30D5_4f23_9D1B_8C2B3856AEFF" name="Residence" visibility="public" association="EAID_D7FC1A81_30D5_4f23_9D1B_8C2B3856AEFF" isOrdered="false" isDerived="false" isDerivedUnion="false" isUnique="true" aggregation="none">
+					<type xmi:idref="EAID_2189B7C1_12E6_471c_B68D_BDB71A18927F"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_SL000000_30D5_4f23_9D1B_8C2B3856AEFF" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_SU000000_30D5_4f23_9D1B_8C2B3856AEFF" value="-1"/>
+				</ownedEnd>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Class" xmi:id="EAID_5C619250_DF39_4dc2_BCC4_4409C56A7F71" name="Person" visibility="public">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_7261339E_B425_4c1c_8D58_6533D5740FB8" name="Name" visibility="public" isDerived="false" isOrdered="false" isUnique="true">
+					<type xmi:idref="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000019_B425_4c1c_8D58_6533D5740FB8" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000020_B425_4c1c_8D58_6533D5740FB8" value="-1"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_D25E1673_E135_462f_8783_3710D8252CC3" name="Title" visibility="public" isDerived="false" isOrdered="false" isUnique="true">
+					<type xmi:idref="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21"/>
+					<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000021_E135_462f_8783_3710D8252CC3" value="0"/>
+					<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000022_E135_462f_8783_3710D8252CC3" value="-1"/>
+				</ownedAttribute>
+			</packagedElement>
+			<EAStub xmi:id="EAID_635F3EC0_817B_4fff_B762_C040E1BF1D21" name="Text" UMLType="Class"/>
+		</packagedElement>
+		<UPCC3_-_CCLibrary_Abstract_Syntax:ACC base_Class="EAID_2189B7C1_12E6_471c_B68D_BDB71A18927F" definition="The location at which a particular organization or person may be found or reached." dictionaryEntryName="Address.Details"/>
+		<UPCC3_-_CCLibrary_Abstract_Syntax:BCC base_Attribute="EAID_92E6D316_D442_4be4_A9A4_9AFE5EA39070" definition="The name, expressed as text, of a person or department in the organization to whom incoming mail is marked with words such as 'for the attention of' or 'FAO' or 'ATTN' for this address." dictionaryEntryName="Address.AttentionOf.Text"/>
+		<UPCC3_-_CCLibrary_Abstract_Syntax:BCC base_Attribute="EAID_7E19D067_4452_42e5_929C_0E326014B485" definition="The number, expressed as text, of a building or house on a street at this address." dictionaryEntryName="Address.BuildingNumber.Text"/>
+		<UPCC3_-_CCLibrary_Abstract_Syntax:BCC base_Attribute="EAID_91332F6B_7FD0_491f_A231_A61606F61DE4" definition="The name, expressed as text, of the city, town or village of this address." dictionaryEntryName="Address.CityName.Text"/>
+		<UPCC3_-_CCLibrary_Abstract_Syntax:BCC base_Attribute="EAID_E076ED2A_6424_4fe2_B390_BB023A098EEE" definition="A name, expressed as text, of the country for this address." dictionaryEntryName="Address.CountryName.Text"/>
+		<UPCC3_-_CCLibrary_Abstract_Syntax:BCC base_Attribute="EAID_58FF7AEA_D9C9_4c6b_AEE2_C9163E31655F" definition="The name, expressed as text, of a department within this address." dictionaryEntryName="Address.DepartmentName.Text"/>
+		<UPCC3_-_CCLibrary_Abstract_Syntax:BCC base_Attribute="EAID_D8D7F9DA_61BF_4ead_8ADA_81925AC52CAC" definition="The first free form line, expressed as text, of an address." dictionaryEntryName="Address.LineOne.Text"/>
+		<UPCC3_-_CCLibrary_Abstract_Syntax:BCC base_Attribute="EAID_E20EB550_C594_4117_AE08_34267C72EABA" definition="A code specifying the postcode of the address." dictionaryEntryName="Address.Postcode.Code"/>
+		<UPCC3_-_CCLibrary_Abstract_Syntax:BCC base_Attribute="EAID_0EA3F7BE_ADC5_4b7a_B9C1_733873B05F42" definition="The unique identifier, expressed as text, of a container commonly referred to as a box, in a post office or other postal service location, assigned to a person or organization, where postal items may be kept for this address." dictionaryEntryName="Address.PostOfficeBox.Text"/>
+		<UPCC3_-_CCLibrary_Abstract_Syntax:BCC base_Attribute="EAID_E9BC92D1_9E92_4ace_B61C_FB696904A078" definition="A name, expressed as text, of a street or thoroughfare." dictionaryEntryName="Address.StreetName.Text"/>
+		<UPCC3_-_CCLibrary_Abstract_Syntax:ASCC base_Association="EAID_A742BFA0_F476_4fdb_8DC5_1ED06F74AF54"/>
+		<UPCC3_-_CCLibrary_Abstract_Syntax:ASCC base_Association="EAID_D7FC1A81_30D5_4f23_9D1B_8C2B3856AEFF"/>
+		<UPCC3_-_CCLibrary_Abstract_Syntax:ACC base_Class="EAID_5C619250_DF39_4dc2_BCC4_4409C56A7F71" definition="An individual human being." dictionaryEntryName="Person.Details"/>
+		<UPCC3_-_CCLibrary_Abstract_Syntax:BCC base_Attribute="EAID_7261339E_B425_4c1c_8D58_6533D5740FB8" definition="A name or set of names, expressed as text, by which this person is known." dictionaryEntryName="Person.Name.Text"/>
+		<UPCC3_-_CCLibrary_Abstract_Syntax:BCC base_Attribute="EAID_D25E1673_E135_462f_8783_3710D8252CC3" definition="A textual expression of the title associated with a specific person, such as Doctor, Mr., Mrs., Ms.." dictionaryEntryName="Person.Title.Text"/>
+		<UPCC3_-_Model_Management_Abstract_Syntax:CCLibrary base_Package="EAPK_716A1470_ADD6_4df9_8D53_975867D14056"/>
+		<thecustomprofile:baseURN base_Package="EAPK_716A1470_ADD6_4df9_8D53_975867D14056" baseURN="http://foo.bar/"/>
+		<uml:Profile xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1/" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmi:id="thecustomprofile" nsPrefix="thecustomprofile" name="thecustomprofile" metamodelReference="mmref01">
+			<ownedComment xmi:type="uml:Comment" xmi:id="comment01" annotatedElement="thecustomprofile">
+				<body> Version:1.0</body>
+			</ownedComment>
+			<packageImport xmi:id="mmref01">
+				<importedPackage href="http://schema.omg.org/spec/UML/2.1/"/>
+			</packageImport>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="baseURN" name="baseURN">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="baseURN-base_Package" name="base_Package" association="Package_baseURN">
+					<type href="http://schema.omg.org/spec/UML/2.1/#Package"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="baseURN-baseURN" name="baseURN">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Extension" xmi:id="Package_baseURN" name="A_Package_baseURN" memberEnd="extension_baseURN baseURN-base_Package">
+				<ownedEnd xmi:id="extension_baseURN" name="extension_baseURN" type="baseURN" isComposite="true" lower="0" upper="1" memberEnd="extension_baseURN baseURN-base_Package"/>
+			</packagedElement>
+		</uml:Profile>
+		<uml:Profile xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1/" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmi:id="B4E9032E-0" nsPrefix="UPCC3_-_Model_Management_Abstract_Syntax" name="UPCC3 - Model Management Abstract Syntax" metamodelReference="mmref01">
+			<ownedComment xmi:type="uml:Comment" xmi:id="comment01" annotatedElement="B4E9032E-0">
+				<body>UPCC3 - Model Management Abstract Syntax Version:1.0</body>
+			</ownedComment>
+			<packageImport xmi:id="mmref01">
+				<importedPackage href="http://schema.omg.org/spec/UML/2.1/"/>
+			</packageImport>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="bLibrary" name="bLibrary">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-base_Package" name="base_Package" association="Package_bLibrary">
+					<type href="http://schema.omg.org/spec/UML/2.1/#Package"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-status" name="status">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-uniqueIdentifier" name="uniqueIdentifier">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-businessTerm" name="businessTerm">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-copyright" name="copyright">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-reference" name="reference">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-owner" name="owner">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-versionIdentifier" name="versionIdentifier">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Extension" xmi:id="Package_bLibrary" name="A_Package_bLibrary" memberEnd="extension_bLibrary bLibrary-base_Package">
+				<ownedEnd xmi:id="extension_bLibrary" name="extension_bLibrary" type="bLibrary" isComposite="true" lower="0" upper="1" memberEnd="extension_bLibrary bLibrary-base_Package"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="BIELibrary" name="BIELibrary">
+				<generalization xmi:type="uml:Generalization" xmi:id="BIELibrary_generalization" general="bLibrary"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="CCLibrary" name="CCLibrary">
+				<generalization xmi:type="uml:Generalization" xmi:id="CCLibrary_generalization" general="bLibrary"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="BDTLibrary" name="BDTLibrary">
+				<generalization xmi:type="uml:Generalization" xmi:id="BDTLibrary_generalization" general="bLibrary"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="ENUMLibrary" name="ENUMLibrary">
+				<generalization xmi:type="uml:Generalization" xmi:id="ENUMLibrary_generalization" general="bLibrary"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="PRIMLibrary" name="PRIMLibrary">
+				<generalization xmi:type="uml:Generalization" xmi:id="PRIMLibrary_generalization" general="bLibrary"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="DOCLibrary" name="DOCLibrary">
+				<generalization xmi:type="uml:Generalization" xmi:id="DOCLibrary_generalization" general="bLibrary"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="CDTLibrary" name="CDTLibrary">
+				<generalization xmi:type="uml:Generalization" xmi:id="CDTLibrary_generalization" general="bLibrary"/>
+			</packagedElement>
+		</uml:Profile>
+		<uml:Profile xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1/" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmi:id="32929252-F" nsPrefix="UPCC3_-_CCLibrary_Abstract_Syntax" name="UPCC3 - CCLibrary Abstract Syntax" metamodelReference="mmref01">
+			<ownedComment xmi:type="uml:Comment" xmi:id="comment01" annotatedElement="32929252-F">
+				<body>UPCC3 - CCLibrary Abstract Syntax Version:1.0</body>
+			</ownedComment>
+			<packageImport xmi:id="mmref01">
+				<importedPackage href="http://schema.omg.org/spec/UML/2.1/"/>
+			</packageImport>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="ASCC" name="ASCC">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="ASCC-base_Association" name="base_Association" association="Association_ASCC">
+					<type href="http://schema.omg.org/spec/UML/2.1/#Association"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="ASCC-uniqueIdentifier" name="uniqueIdentifier">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="ASCC-businessTerm" name="businessTerm">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="ASCC-sequencingKey" name="sequencingKey">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="ASCC-definition" name="definition">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="ASCC-languageCode" name="languageCode">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="ASCC-usageRule" name="usageRule">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="ASCC-versionIdentifier" name="versionIdentifier">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="ASCC-dictionaryEntryName" name="dictionaryEntryName">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Extension" xmi:id="Association_ASCC" name="A_Association_ASCC" memberEnd="extension_ASCC ASCC-base_Association">
+				<ownedEnd xmi:id="extension_ASCC" name="extension_ASCC" type="ASCC" isComposite="true" lower="0" upper="1" memberEnd="extension_ASCC ASCC-base_Association"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="isEquivalentTo" name="isEquivalentTo">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="isEquivalentTo-base_Dependency" name="base_Dependency" association="Dependency_isEquivalentTo">
+					<type href="http://schema.omg.org/spec/UML/2.1/#Dependency"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Extension" xmi:id="Dependency_isEquivalentTo" name="A_Dependency_isEquivalentTo" memberEnd="extension_isEquivalentTo isEquivalentTo-base_Dependency">
+				<ownedEnd xmi:id="extension_isEquivalentTo" name="extension_isEquivalentTo" type="isEquivalentTo" isComposite="true" lower="0" upper="1" memberEnd="extension_isEquivalentTo isEquivalentTo-base_Dependency"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="ACC" name="ACC">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="ACC-base_Class" name="base_Class" association="Class_ACC">
+					<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="ACC-uniqueIdentifier" name="uniqueIdentifier">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="ACC-businessTerm" name="businessTerm">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="ACC-definition" name="definition">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="ACC-languageCode" name="languageCode">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="ACC-usageRule" name="usageRule">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="ACC-versionIdentifier" name="versionIdentifier">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="ACC-dictionaryEntryName" name="dictionaryEntryName">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Extension" xmi:id="Class_ACC" name="A_Class_ACC" memberEnd="extension_ACC ACC-base_Class">
+				<ownedEnd xmi:id="extension_ACC" name="extension_ACC" type="ACC" isComposite="true" lower="0" upper="1" memberEnd="extension_ACC ACC-base_Class"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="BCC" name="BCC">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="BCC-base_Attribute" name="base_Attribute" association="Attribute_BCC">
+					<type href="http://schema.omg.org/spec/UML/2.1/#Attribute"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="BCC-uniqueIdentifier" name="uniqueIdentifier">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="BCC-businessTerm" name="businessTerm">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="BCC-sequencingKey" name="sequencingKey">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="BCC-definition" name="definition">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="BCC-languageCode" name="languageCode">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="BCC-usageRule" name="usageRule">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="BCC-versionIdentifier" name="versionIdentifier">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="BCC-dictionaryEntryName" name="dictionaryEntryName">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Extension" xmi:id="Attribute_BCC" name="A_Attribute_BCC" memberEnd="extension_BCC BCC-base_Attribute">
+				<ownedEnd xmi:id="extension_BCC" name="extension_BCC" type="BCC" isComposite="true" lower="0" upper="1" memberEnd="extension_BCC BCC-base_Attribute"/>
+			</packagedElement>
+		</uml:Profile>
+	</uml:Model>
+	<xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+		<elements>
+			<element xmi:idref="EAPK_716A1470_ADD6_4df9_8D53_975867D14056" xmi:type="uml:Package" name="CCLibrary" scope="public">
+				<model package2="EAID_716A1470_ADD6_4df9_8D53_975867D14056" package="EAPK_695D85BD_AABA_407e_B38C_CDA36E132DD7" tpos="0" ea_localid="5" ea_eleType="package"/>
+				<properties isSpecification="false" sType="Package" nType="0" scope="public" stereotype="CCLibrary"/>
+				<project author="cschollum" version="1.0" phase="1.0" created="2009-02-09 11:52:17" modified="2009-03-23 14:59:05" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<modelDocument/>
+				<tags>
+					<tag xmi:id="EAID_4CFDEC34_6B28_492a_8C01_8300923437FA" name="baseURN" value="http://foo.bar/" modelElement="EAID_716A1470_ADD6_4df9_8D53_975867D14056"/>
+					<tag xmi:id="EAID_3FF92CE4_53F7_1b53_9F94_63273932891E" name="businessTerm" modelElement="EAID_716A1470_ADD6_4df9_8D53_975867D14056"/>
+					<tag xmi:id="EAID_4CB00AB9_52CC_1e52_9117_C5A122FB2190" name="copyright" modelElement="EAID_716A1470_ADD6_4df9_8D53_975867D14056"/>
+					<tag xmi:id="EAID_081BC26B_F8FE_7af8_820E_DD73B0DEDE28" name="owner" modelElement="EAID_716A1470_ADD6_4df9_8D53_975867D14056"/>
+					<tag xmi:id="EAID_B4F8B86F_0082_6700_9E9F_9A7454426060" name="reference" modelElement="EAID_716A1470_ADD6_4df9_8D53_975867D14056"/>
+					<tag xmi:id="EAID_14AB8884_9177_f191_8D02_FC1B8D6D7669" name="status" modelElement="EAID_716A1470_ADD6_4df9_8D53_975867D14056"/>
+					<tag xmi:id="EAID_98C070FA_618D_de61_8BB3_5D30B25A635D" name="uniqueIdentifier" modelElement="EAID_716A1470_ADD6_4df9_8D53_975867D14056"/>
+					<tag xmi:id="EAID_731219A9_A09C_32a0_AEB2_645D880D111D" name="versionIdentifier" modelElement="EAID_716A1470_ADD6_4df9_8D53_975867D14056"/>
+				</tags>
+				<xrefs value="$XREFPROP=$XID={E3C86D23-887A-40e3-B56A-38032A5874E3}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@STEREO;Name=CCLibrary;GUID={BFF318E7-1359-4c53-A971-E60658439BC3};@ENDSTEREO;$DES;$CLT={716A1470-ADD6-4df9-8D53-975867D14056}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="ebInterface Data Model"/>
+				<packageproperties version="1.0"/>
+				<paths/>
+				<times created="2009-02-09 00:00:00" modified="2009-02-09 00:00:00"/>
+				<flags iscontrolled="FALSE" isprotected="FALSE" usedtd="FALSE" logxml="FALSE"/>
+			</element>
+			<element xmi:idref="EAID_2189B7C1_12E6_471c_B68D_BDB71A18927F" xmi:type="uml:Class" name="Address" scope="public">
+				<model package="EAPK_716A1470_ADD6_4df9_8D53_975867D14056" tpos="0" ea_localid="21" ea_eleType="element"/>
+				<properties isSpecification="false" sType="Class" nType="0" scope="public" stereotype="ACC" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="cschollum" version="1.0" phase="1.0" created="2009-02-09 15:28:37" modified="2009-02-09 15:28:42" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<modelDocument/>
+				<tags>
+					<tag xmi:id="EAID_3FF92CE4_B114_45b1_A930_6AEE287021E6" name="businessTerm" modelElement="EAID_2189B7C1_12E6_471c_B68D_BDB71A18927F"/>
+					<tag xmi:id="EAID_465BEE89_AAD9_59aa_AD9D_D75F69767D15" name="definition" value="The location at which a particular organization or person may be found or reached." modelElement="EAID_2189B7C1_12E6_471c_B68D_BDB71A18927F"/>
+					<tag xmi:id="EAID_18B187E9_71F9_9071_99EF_9DEA342086A4" name="dictionaryEntryName" value="Address.Details" modelElement="EAID_2189B7C1_12E6_471c_B68D_BDB71A18927F"/>
+					<tag xmi:id="EAID_E5EE68BF_ECEF_3aec_9B64_2EEFC925C28E" name="languageCode" modelElement="EAID_2189B7C1_12E6_471c_B68D_BDB71A18927F"/>
+					<tag xmi:id="EAID_98C070FA_052A_fc05_82EC_F4F06639FDAC" name="uniqueIdentifier" modelElement="EAID_2189B7C1_12E6_471c_B68D_BDB71A18927F"/>
+					<tag xmi:id="EAID_80EAD28D_B8BD_e8b8_93F1_A4077FE29323" name="usageRule" modelElement="EAID_2189B7C1_12E6_471c_B68D_BDB71A18927F"/>
+					<tag xmi:id="EAID_731219A9_B7D9_04b7_BB15_DA7185D4A756" name="versionIdentifier" modelElement="EAID_2189B7C1_12E6_471c_B68D_BDB71A18927F"/>
+				</tags>
+				<xrefs value="$XREFPROP=$XID={1D4A0251-3FCA-44c8-BCC9-800C9C301DB0}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@STEREO;Name=ACC;GUID={AAEEFC5B-4C12-44a9-BF8E-538AF6154511};@ENDSTEREO;$DES;$CLT={2189B7C1-12E6-471c-B68D-BDB71A18927F}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={53573299-0113-4925-899E-544468E9BC6C}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=isActive@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={2189B7C1-12E6-471c-B68D-BDB71A18927F}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="CCLibrary"/>
+				<attributes>
+					<attribute xmi:idref="EAID_92E6D316_D442_4be4_A9A4_9AFE5EA39070" name="AttentionOf" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="62" ea_guid="{92E6D316-D442-4be4-A9A4-9AFE5EA39070}"/>
+						<properties type="Text" collection="false" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment position="0"/>
+						<stereotype stereotype="BCC"/>
+						<bounds lower="0" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags>
+							<tag xmi:id="EAID_18B187E9_E8DA_79e8_BECD_66BF6AA5071D" name="dictionaryEntryName" value="Address.AttentionOf.Text"/>
+							<tag xmi:id="EAID_3FF92CE4_9315_1f93_9C82_EFE7C6FC4CC4" name="businessTerm"/>
+							<tag xmi:id="EAID_465BEE89_189A_a118_A138_A1B911ADDA31" name="definition" value="The name, expressed as text, of a person or department in the organization to whom incoming mail is marked with words such as 'for the attention of' or 'FAO' or 'ATTN' for this address."/>
+							<tag xmi:id="EAID_731219A9_027A_b102_98D4_C3B1443B0656" name="versionIdentifier"/>
+							<tag xmi:id="EAID_80EAD28D_F25E_28f2_AC3D_A4A565560AE9" name="usageRule"/>
+							<tag xmi:id="EAID_98C070FA_FFAB_08ff_962D_3392C6B46F8B" name="uniqueIdentifier"/>
+							<tag xmi:id="EAID_E5EE68BF_CEF0_14ce_964F_AEB822445755" name="languageCode"/>
+							<tag xmi:id="EAID_E98B7FDB_342C_c134_A7B4_9B8E0C891784" name="sequencingKey"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_7E19D067_4452_42e5_929C_0E326014B485" name="BuildingNumber" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="53" ea_guid="{7E19D067-4452-42e5-929C-0E326014B485}"/>
+						<properties type="Text" collection="false" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment position="0"/>
+						<stereotype stereotype="BCC"/>
+						<bounds lower="0" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags>
+							<tag xmi:id="EAID_18B187E9_E8DA_79e8_9971_1C67607BF944" name="dictionaryEntryName" value="Address.BuildingNumber.Text"/>
+							<tag xmi:id="EAID_3FF92CE4_9315_1f93_B763_30F3331656D2" name="businessTerm"/>
+							<tag xmi:id="EAID_465BEE89_189A_a118_BDC2_332204BB2B19" name="definition" value="The number, expressed as text, of a building or house on a street at this address."/>
+							<tag xmi:id="EAID_731219A9_027A_b102_BAA8_4EBEB5D3B3B8" name="versionIdentifier"/>
+							<tag xmi:id="EAID_80EAD28D_F25E_28f2_A8D8_C1EDDF4C56C4" name="usageRule"/>
+							<tag xmi:id="EAID_98C070FA_FFAB_08ff_A0A9_8D0CF719D483" name="uniqueIdentifier"/>
+							<tag xmi:id="EAID_E5EE68BF_CEF0_14ce_B0E9_23CB09B15324" name="languageCode"/>
+							<tag xmi:id="EAID_E98B7FDB_342C_c134_AFCA_9C793DB994E6" name="sequencingKey"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_91332F6B_7FD0_491f_A231_A61606F61DE4" name="CityName" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="55" ea_guid="{91332F6B-7FD0-491f-A231-A61606F61DE4}"/>
+						<properties type="Text" collection="false" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment position="0"/>
+						<stereotype stereotype="BCC"/>
+						<bounds lower="0" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags>
+							<tag xmi:id="EAID_18B187E9_E8DA_79e8_8A89_B3E19156EF19" name="dictionaryEntryName" value="Address.CityName.Text"/>
+							<tag xmi:id="EAID_3FF92CE4_9315_1f93_A881_8C1EE1811A47" name="businessTerm"/>
+							<tag xmi:id="EAID_465BEE89_189A_a118_918C_9047EE81917B" name="definition" value="The name, expressed as text, of the city, town or village of this address."/>
+							<tag xmi:id="EAID_731219A9_027A_b102_ADDD_5794F354C50E" name="versionIdentifier"/>
+							<tag xmi:id="EAID_80EAD28D_F25E_28f2_8B69_23E2674D80D5" name="usageRule"/>
+							<tag xmi:id="EAID_98C070FA_FFAB_08ff_9C10_BA2BB7DE440F" name="uniqueIdentifier"/>
+							<tag xmi:id="EAID_E5EE68BF_CEF0_14ce_841A_C87A9DA55FFB" name="languageCode"/>
+							<tag xmi:id="EAID_E98B7FDB_342C_c134_A434_A9C972019CA8" name="sequencingKey"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_E076ED2A_6424_4fe2_B390_BB023A098EEE" name="CountryName" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="57" ea_guid="{E076ED2A-6424-4fe2-B390-BB023A098EEE}"/>
+						<properties type="Text" collection="false" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment position="0"/>
+						<stereotype stereotype="BCC"/>
+						<bounds lower="0" upper="*"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags>
+							<tag xmi:id="EAID_18B187E9_E8DA_79e8_85C6_654B8F123A09" name="dictionaryEntryName" value="Address.CountryName.Text"/>
+							<tag xmi:id="EAID_3FF92CE4_9315_1f93_9A23_474B9845AB9F" name="businessTerm"/>
+							<tag xmi:id="EAID_465BEE89_189A_a118_87B1_020142BC8310" name="definition" value="A name, expressed as text, of the country for this address."/>
+							<tag xmi:id="EAID_731219A9_027A_b102_BDFF_005EA138444C" name="versionIdentifier"/>
+							<tag xmi:id="EAID_80EAD28D_F25E_28f2_ACB2_962677F282D6" name="usageRule"/>
+							<tag xmi:id="EAID_98C070FA_FFAB_08ff_B4C2_BB31BD14210E" name="uniqueIdentifier"/>
+							<tag xmi:id="EAID_E5EE68BF_CEF0_14ce_8FF0_AD49B21E327B" name="languageCode"/>
+							<tag xmi:id="EAID_E98B7FDB_342C_c134_AB1A_AB1B82017B27" name="sequencingKey"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_58FF7AEA_D9C9_4c6b_AEE2_C9163E31655F" name="DepartmentName" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="59" ea_guid="{58FF7AEA-D9C9-4c6b-AEE2-C9163E31655F}"/>
+						<properties type="Text" collection="false" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment position="0"/>
+						<stereotype stereotype="BCC"/>
+						<bounds lower="0" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags>
+							<tag xmi:id="EAID_18B187E9_E8DA_79e8_8AE8_48D5DA14013D" name="dictionaryEntryName" value="Address.DepartmentName.Text"/>
+							<tag xmi:id="EAID_3FF92CE4_9315_1f93_8806_049AA9A95423" name="businessTerm"/>
+							<tag xmi:id="EAID_465BEE89_189A_a118_A71E_A06C55FAC1DE" name="definition" value="The name, expressed as text, of a department within this address."/>
+							<tag xmi:id="EAID_731219A9_027A_b102_B38D_379E59256452" name="versionIdentifier"/>
+							<tag xmi:id="EAID_80EAD28D_F25E_28f2_A8E6_37D49C46CF39" name="usageRule"/>
+							<tag xmi:id="EAID_98C070FA_FFAB_08ff_A67D_140A536B915F" name="uniqueIdentifier"/>
+							<tag xmi:id="EAID_E5EE68BF_CEF0_14ce_A98D_5470F33B6B88" name="languageCode"/>
+							<tag xmi:id="EAID_E98B7FDB_342C_c134_9404_A139B26194C0" name="sequencingKey"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_D8D7F9DA_61BF_4ead_8ADA_81925AC52CAC" name="LineOne" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="58" ea_guid="{D8D7F9DA-61BF-4ead-8ADA-81925AC52CAC}"/>
+						<properties type="Text" collection="false" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment position="0"/>
+						<stereotype stereotype="BCC"/>
+						<bounds lower="0" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags>
+							<tag xmi:id="EAID_18B187E9_E8DA_79e8_BABA_7FCD7EA63A54" name="dictionaryEntryName" value="Address.LineOne.Text"/>
+							<tag xmi:id="EAID_3FF92CE4_9315_1f93_B031_4C6B1154763C" name="businessTerm"/>
+							<tag xmi:id="EAID_465BEE89_189A_a118_A0E7_DD9F506939BD" name="definition" value="The first free form line, expressed as text, of an address."/>
+							<tag xmi:id="EAID_731219A9_027A_b102_A4E1_AD6B99409C60" name="versionIdentifier"/>
+							<tag xmi:id="EAID_80EAD28D_F25E_28f2_AD97_EED14A719C46" name="usageRule"/>
+							<tag xmi:id="EAID_98C070FA_FFAB_08ff_81E9_B6C6E551F8FC" name="uniqueIdentifier"/>
+							<tag xmi:id="EAID_E5EE68BF_CEF0_14ce_BFE2_971E2D566B99" name="languageCode"/>
+							<tag xmi:id="EAID_E98B7FDB_342C_c134_BA89_E39AC1428071" name="sequencingKey"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_E20EB550_C594_4117_AE08_34267C72EABA" name="Postcode" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="56" ea_guid="{E20EB550-C594-4117-AE08-34267C72EABA}"/>
+						<properties type="Code" collection="false" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment position="0"/>
+						<stereotype stereotype="BCC"/>
+						<bounds lower="0" upper="*"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags>
+							<tag xmi:id="EAID_18B187E9_E8DA_79e8_B3D7_D1E40D66CAF2" name="dictionaryEntryName" value="Address.Postcode.Code"/>
+							<tag xmi:id="EAID_3FF92CE4_9315_1f93_ABDF_3FEEA457D4E0" name="businessTerm"/>
+							<tag xmi:id="EAID_465BEE89_189A_a118_A2C6_291C21CB9343" name="definition" value="A code specifying the postcode of the address."/>
+							<tag xmi:id="EAID_731219A9_027A_b102_9395_B3C9A0940A3C" name="versionIdentifier"/>
+							<tag xmi:id="EAID_80EAD28D_F25E_28f2_B115_9A110F6BA6C6" name="usageRule"/>
+							<tag xmi:id="EAID_98C070FA_FFAB_08ff_92E4_DB4EFDB0833D" name="uniqueIdentifier"/>
+							<tag xmi:id="EAID_E5EE68BF_CEF0_14ce_A656_3185711F1B9D" name="languageCode"/>
+							<tag xmi:id="EAID_E98B7FDB_342C_c134_A694_987FDD08A558" name="sequencingKey"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_0EA3F7BE_ADC5_4b7a_B9C1_733873B05F42" name="PostOfficeBox" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="54" ea_guid="{0EA3F7BE-ADC5-4b7a-B9C1-733873B05F42}"/>
+						<properties type="Text" collection="false" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment position="0"/>
+						<stereotype stereotype="BCC"/>
+						<bounds lower="0" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags>
+							<tag xmi:id="EAID_18B187E9_E8DA_79e8_AB0A_9378090EB53A" name="dictionaryEntryName" value="Address.PostOfficeBox.Text"/>
+							<tag xmi:id="EAID_3FF92CE4_9315_1f93_AB72_F52F590406A6" name="businessTerm"/>
+							<tag xmi:id="EAID_465BEE89_189A_a118_90F2_B880345553B3" name="definition" value="The unique identifier, expressed as text, of a container commonly referred to as a box, in a post office or other postal service location, assigned to a person or organization, where postal items may be kept for this address."/>
+							<tag xmi:id="EAID_731219A9_027A_b102_BDAE_BA22C5820F78" name="versionIdentifier"/>
+							<tag xmi:id="EAID_80EAD28D_F25E_28f2_B077_C5C016BC7907" name="usageRule"/>
+							<tag xmi:id="EAID_98C070FA_FFAB_08ff_A30B_B32C1832DFED" name="uniqueIdentifier"/>
+							<tag xmi:id="EAID_E5EE68BF_CEF0_14ce_A5FD_2F8A300A8700" name="languageCode"/>
+							<tag xmi:id="EAID_E98B7FDB_342C_c134_9C41_5D1D329C2093" name="sequencingKey"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_E9BC92D1_9E92_4ace_B61C_FB696904A078" name="StreetName" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="52" ea_guid="{E9BC92D1-9E92-4ace-B61C-FB696904A078}"/>
+						<properties type="Text" collection="false" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment position="0"/>
+						<stereotype stereotype="BCC"/>
+						<bounds lower="0" upper="*"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags>
+							<tag xmi:id="EAID_18B187E9_E8DA_79e8_88BA_7E0F5786A389" name="dictionaryEntryName" value="Address.StreetName.Text"/>
+							<tag xmi:id="EAID_3FF92CE4_9315_1f93_826A_33DDCEF7182E" name="businessTerm"/>
+							<tag xmi:id="EAID_465BEE89_189A_a118_A4A0_5756F8AEEB5D" name="definition" value="A name, expressed as text, of a street or thoroughfare."/>
+							<tag xmi:id="EAID_731219A9_027A_b102_A69B_759E95104274" name="versionIdentifier"/>
+							<tag xmi:id="EAID_80EAD28D_F25E_28f2_88E9_263F77C5148A" name="usageRule"/>
+							<tag xmi:id="EAID_98C070FA_FFAB_08ff_912F_1BE8419D2AFD" name="uniqueIdentifier"/>
+							<tag xmi:id="EAID_E5EE68BF_CEF0_14ce_BD08_E84073C55216" name="languageCode"/>
+							<tag xmi:id="EAID_E98B7FDB_342C_c134_8317_4CDF8622D314" name="sequencingKey"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+				</attributes>
+				<links>
+					<Association xmi:id="EAID_A742BFA0_F476_4fdb_8DC5_1ED06F74AF54" start="EAID_2189B7C1_12E6_471c_B68D_BDB71A18927F" end="EAID_5C619250_DF39_4dc2_BCC4_4409C56A7F71"/>
+					<Association xmi:id="EAID_D7FC1A81_30D5_4f23_9D1B_8C2B3856AEFF" start="EAID_2189B7C1_12E6_471c_B68D_BDB71A18927F" end="EAID_5C619250_DF39_4dc2_BCC4_4409C56A7F71"/>
+				</links>
+			</element>
+			<element xmi:idref="EAID_5C619250_DF39_4dc2_BCC4_4409C56A7F71" xmi:type="uml:Class" name="Person" scope="public">
+				<model package="EAPK_716A1470_ADD6_4df9_8D53_975867D14056" tpos="0" ea_localid="23" ea_eleType="element"/>
+				<properties isSpecification="false" sType="Class" nType="0" scope="public" stereotype="ACC" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="cschollum" version="1.0" phase="1.0" created="2009-02-09 15:47:01" modified="2009-02-09 15:47:05" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<modelDocument/>
+				<tags>
+					<tag xmi:id="EAID_3FF92CE4_B114_45b1_85B3_8F75DA547F17" name="businessTerm" modelElement="EAID_5C619250_DF39_4dc2_BCC4_4409C56A7F71"/>
+					<tag xmi:id="EAID_465BEE89_AAD9_59aa_AB47_D3DE2202736E" name="definition" value="An individual human being." modelElement="EAID_5C619250_DF39_4dc2_BCC4_4409C56A7F71"/>
+					<tag xmi:id="EAID_18B187E9_71F9_9071_A096_7E0A346382F1" name="dictionaryEntryName" value="Person.Details" modelElement="EAID_5C619250_DF39_4dc2_BCC4_4409C56A7F71"/>
+					<tag xmi:id="EAID_E5EE68BF_ECEF_3aec_A8C6_41768A5F87F1" name="languageCode" modelElement="EAID_5C619250_DF39_4dc2_BCC4_4409C56A7F71"/>
+					<tag xmi:id="EAID_98C070FA_052A_fc05_9A72_C39CED709CEF" name="uniqueIdentifier" modelElement="EAID_5C619250_DF39_4dc2_BCC4_4409C56A7F71"/>
+					<tag xmi:id="EAID_80EAD28D_B8BD_e8b8_9238_DBEA89398045" name="usageRule" modelElement="EAID_5C619250_DF39_4dc2_BCC4_4409C56A7F71"/>
+					<tag xmi:id="EAID_731219A9_B7D9_04b7_97D9_0BAA0D97DD58" name="versionIdentifier" modelElement="EAID_5C619250_DF39_4dc2_BCC4_4409C56A7F71"/>
+				</tags>
+				<xrefs value="$XREFPROP=$XID={B5CFF110-31C1-4175-AE39-9D63AFD62A53}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@STEREO;Name=ACC;GUID={AAEEFC5B-4C12-44a9-BF8E-538AF6154511};@ENDSTEREO;$DES;$CLT={5C619250-DF39-4dc2-BCC4-4409C56A7F71}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={64755355-8D9E-42a1-96DC-86FCD0E2A198}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=isActive@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={5C619250-DF39-4dc2-BCC4-4409C56A7F71}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="CCLibrary"/>
+				<attributes>
+					<attribute xmi:idref="EAID_7261339E_B425_4c1c_8D58_6533D5740FB8" name="Name" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="63" ea_guid="{7261339E-B425-4c1c-8D58-6533D5740FB8}"/>
+						<properties type="Text" collection="false" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment position="0"/>
+						<stereotype stereotype="BCC"/>
+						<bounds lower="0" upper="*"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags>
+							<tag xmi:id="EAID_18B187E9_E8DA_79e8_A79E_3B04FC8B0D6F" name="dictionaryEntryName" value="Person.Name.Text"/>
+							<tag xmi:id="EAID_3FF92CE4_9315_1f93_B46C_8D0A94EEDE4B" name="businessTerm"/>
+							<tag xmi:id="EAID_465BEE89_189A_a118_B5F3_E92A1A3FCF3A" name="definition" value="A name or set of names, expressed as text, by which this person is known."/>
+							<tag xmi:id="EAID_731219A9_027A_b102_B470_5925547F5AC9" name="versionIdentifier"/>
+							<tag xmi:id="EAID_80EAD28D_F25E_28f2_820F_4B57038BB5A4" name="usageRule"/>
+							<tag xmi:id="EAID_98C070FA_FFAB_08ff_AF8F_3DA7A6C40FED" name="uniqueIdentifier"/>
+							<tag xmi:id="EAID_E5EE68BF_CEF0_14ce_9B3E_0EE2BA78C5EC" name="languageCode"/>
+							<tag xmi:id="EAID_E98B7FDB_342C_c134_84EB_342CEB81B516" name="sequencingKey"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_D25E1673_E135_462f_8783_3710D8252CC3" name="Title" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="64" ea_guid="{D25E1673-E135-462f-8783-3710D8252CC3}"/>
+						<properties type="Text" collection="false" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment position="0"/>
+						<stereotype stereotype="BCC"/>
+						<bounds lower="0" upper="*"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags>
+							<tag xmi:id="EAID_18B187E9_E8DA_79e8_91AD_239018849E9F" name="dictionaryEntryName" value="Person.Title.Text"/>
+							<tag xmi:id="EAID_3FF92CE4_9315_1f93_B538_F6E01DC10AB6" name="businessTerm"/>
+							<tag xmi:id="EAID_465BEE89_189A_a118_B5DF_4432BEB617B2" name="definition" value="A textual expression of the title associated with a specific person, such as Doctor, Mr., Mrs., Ms.."/>
+							<tag xmi:id="EAID_731219A9_027A_b102_83CB_742FA609B05F" name="versionIdentifier"/>
+							<tag xmi:id="EAID_80EAD28D_F25E_28f2_BF8A_2CD2B5D8E567" name="usageRule"/>
+							<tag xmi:id="EAID_98C070FA_FFAB_08ff_9AD8_C1F7FF155A79" name="uniqueIdentifier"/>
+							<tag xmi:id="EAID_E5EE68BF_CEF0_14ce_954B_003A6DC5AFDA" name="languageCode"/>
+							<tag xmi:id="EAID_E98B7FDB_342C_c134_8A21_5C74D705A507" name="sequencingKey"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+				</attributes>
+				<links>
+					<Association xmi:id="EAID_A742BFA0_F476_4fdb_8DC5_1ED06F74AF54" start="EAID_2189B7C1_12E6_471c_B68D_BDB71A18927F" end="EAID_5C619250_DF39_4dc2_BCC4_4409C56A7F71"/>
+					<Association xmi:id="EAID_D7FC1A81_30D5_4f23_9D1B_8C2B3856AEFF" start="EAID_2189B7C1_12E6_471c_B68D_BDB71A18927F" end="EAID_5C619250_DF39_4dc2_BCC4_4409C56A7F71"/>
+				</links>
+			</element>
+		</elements>
+		<connectors>
+			<connector xmi:idref="EAID_A742BFA0_F476_4fdb_8DC5_1ED06F74AF54">
+				<source xmi:idref="EAID_2189B7C1_12E6_471c_B68D_BDB71A18927F">
+					<model ea_localid="21" type="Class" name="Address"/>
+					<role name="Information" visibility="Public" targetScope="instance"/>
+					<type multiplicity="0..1" aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;"/>
+					<documentation/>
+					<xrefs value="$XREFPROP=$XID={06C8F58E-7BFE-4577-BB2A-26959F697E84}$XID;$NAM=CustomProperties$NAM;$TYP=connectorSrcEnd property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=isDerivedUnion@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=false@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=isDerived@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=false@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=default@ENDNAME;@TYPE=String@ENDTYPE;@VALU=@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=isReadOnly@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=false@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=isComposite@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=aggregation@ENDNAME;@TYPE=AggregationKind@ENDTYPE;@VALU=none@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={A742BFA0-F476-4fdb-8DC5-1ED06F74AF54}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_5C619250_DF39_4dc2_BCC4_4409C56A7F71">
+					<model ea_localid="23" type="Class" name="Person"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="shared" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;"/>
+					<documentation/>
+					<xrefs value="$XREFPROP=$XID={1F27D3BF-B562-45ba-8703-26D71193BE07}$XID;$NAM=CustomProperties$NAM;$TYP=connectorDestEnd property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=isDerivedUnion@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=false@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=isDerived@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=false@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=default@ENDNAME;@TYPE=String@ENDTYPE;@VALU=@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=isReadOnly@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=false@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=isComposite@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=aggregation@ENDNAME;@TYPE=AggregationKind@ENDTYPE;@VALU=none@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={A742BFA0-F476-4fdb-8DC5-1ED06F74AF54}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+					<tags/>
+				</target>
+				<model ea_localid="19"/>
+				<properties ea_type="Association" stereotype="ASCC" direction="Unspecified"/>
+				<modifiers isRoot="false" isLeaf="false"/>
+				<documentation/>
+				<appearance linemode="3" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels lb="0..1" lt="+Information" mb=" &#xA;«ASCC»"/>
+				<extendedProperties conditional=" &#xA;«ASCC»" virtualInheritance="0"/>
+				<style/>
+				<xrefs value="$XREFPROP=$XID={87E48745-B114-4ffc-8B3E-7A859D30219C}$XID;$NAM=Stereotypes$NAM;$TYP=connector property$TYP;$VIS=Public$VIS;$DES=@STEREO;Name=ASCC;GUID={FD82F680-DCB3-4bfe-AA3D-877C3E5B3D4D};@ENDSTEREO;$DES;$CLT={A742BFA0-F476-4fdb-8DC5-1ED06F74AF54}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={B9980751-AAFB-4191-915C-35E1FE29E9F0}$XID;$NAM=CustomProperties$NAM;$TYP=connector property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=isDerived@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=false@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={A742BFA0-F476-4fdb-8DC5-1ED06F74AF54}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<tags>
+					<tag xmi:id="EAID_18B187E9_CBAC_e9cb_A21E_DEB2BCC1391A" name="dictionaryEntryName"/>
+					<tag xmi:id="EAID_3FF92CE4_DE27_b0de_87DF_FA3CD80C8FE0" name="businessTerm"/>
+					<tag xmi:id="EAID_465BEE89_772C_e077_97F8_B8E8E4F3BA8E" name="definition"/>
+					<tag xmi:id="EAID_731219A9_08CC_c608_8186_56776A49BBEB" name="versionIdentifier"/>
+					<tag xmi:id="EAID_80EAD28D_C6B0_cdc6_8F22_7262414D9929" name="usageRule"/>
+					<tag xmi:id="EAID_98C070FA_83BD_8d83_AF45_0C23DC794428" name="uniqueIdentifier"/>
+					<tag xmi:id="EAID_E5EE68BF_1A02_a61a_8AD7_C20205BC1CF9" name="languageCode"/>
+					<tag xmi:id="EAID_E98B7FDB_E17E_7be1_A78B_DB01CB34FD84" name="sequencingKey"/>
+				</tags>
+			</connector>
+			<connector xmi:idref="EAID_D7FC1A81_30D5_4f23_9D1B_8C2B3856AEFF">
+				<source xmi:idref="EAID_2189B7C1_12E6_471c_B68D_BDB71A18927F">
+					<model ea_localid="21" type="Class" name="Address"/>
+					<role name="Residence" visibility="Public" targetScope="instance"/>
+					<type multiplicity="0..*" aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;"/>
+					<documentation/>
+					<xrefs value="$XREFPROP=$XID={F176D5D0-8ED6-4d4a-8C3E-F5844C9A8B70}$XID;$NAM=CustomProperties$NAM;$TYP=connectorSrcEnd property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=isDerivedUnion@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=false@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=isDerived@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=false@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=default@ENDNAME;@TYPE=String@ENDTYPE;@VALU=@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=isReadOnly@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=false@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=isComposite@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=aggregation@ENDNAME;@TYPE=AggregationKind@ENDTYPE;@VALU=none@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={D7FC1A81-30D5-4f23-9D1B-8C2B3856AEFF}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_5C619250_DF39_4dc2_BCC4_4409C56A7F71">
+					<model ea_localid="23" type="Class" name="Person"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="shared" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;"/>
+					<documentation/>
+					<xrefs value="$XREFPROP=$XID={CA6A854A-EA6D-4458-ADEA-F655CB6902D3}$XID;$NAM=CustomProperties$NAM;$TYP=connectorDestEnd property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=isDerivedUnion@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=false@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=isDerived@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=false@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=default@ENDNAME;@TYPE=String@ENDTYPE;@VALU=@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=isReadOnly@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=false@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=isComposite@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=aggregation@ENDNAME;@TYPE=AggregationKind@ENDTYPE;@VALU=none@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={D7FC1A81-30D5-4f23-9D1B-8C2B3856AEFF}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+					<tags/>
+				</target>
+				<model ea_localid="18"/>
+				<properties ea_type="Association" stereotype="ASCC" direction="Unspecified"/>
+				<modifiers isRoot="false" isLeaf="false"/>
+				<documentation/>
+				<appearance linemode="3" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels lb="0..*" lt="+Residence" mb=" &#xA;«ASCC»"/>
+				<extendedProperties conditional=" &#xA;«ASCC»" virtualInheritance="0"/>
+				<style/>
+				<xrefs value="$XREFPROP=$XID={D1D00B0E-D018-4e04-8D85-E4ABB89A6FA1}$XID;$NAM=Stereotypes$NAM;$TYP=connector property$TYP;$VIS=Public$VIS;$DES=@STEREO;Name=ASCC;GUID={FD82F680-DCB3-4bfe-AA3D-877C3E5B3D4D};@ENDSTEREO;$DES;$CLT={D7FC1A81-30D5-4f23-9D1B-8C2B3856AEFF}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={E246367C-6BD6-4908-B49B-95B3674FC534}$XID;$NAM=CustomProperties$NAM;$TYP=connector property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=isDerived@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=false@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={D7FC1A81-30D5-4f23-9D1B-8C2B3856AEFF}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<tags>
+					<tag xmi:id="EAID_18B187E9_CBAC_e9cb_AB2E_AC219B8B4BE7" name="dictionaryEntryName"/>
+					<tag xmi:id="EAID_3FF92CE4_DE27_b0de_99CB_9EA63E5DA6A0" name="businessTerm"/>
+					<tag xmi:id="EAID_465BEE89_772C_e077_BAB0_22BCDFA56174" name="definition"/>
+					<tag xmi:id="EAID_731219A9_08CC_c608_9AA8_9F19DD4F0BA9" name="versionIdentifier"/>
+					<tag xmi:id="EAID_80EAD28D_C6B0_cdc6_AA4B_0D5B6A649222" name="usageRule"/>
+					<tag xmi:id="EAID_98C070FA_83BD_8d83_8863_36A5803C61C0" name="uniqueIdentifier"/>
+					<tag xmi:id="EAID_E5EE68BF_1A02_a61a_A94E_AD7CE7A4ADD5" name="languageCode"/>
+					<tag xmi:id="EAID_E98B7FDB_E17E_7be1_BA45_5A690FD71FEB" name="sequencingKey"/>
+				</tags>
+			</connector>
+		</connectors>
+		<diagrams>
+			<diagram xmi:id="EAID_F2187357_730D_4a8c_A9A7_E0BCC02B3C19">
+				<model package="EAPK_716A1470_ADD6_4df9_8D53_975867D14056" localID="4" owner="EAPK_716A1470_ADD6_4df9_8D53_975867D14056"/>
+				<properties name="CCLibrary" type="Logical"/>
+				<project author="cschollum" version="1.0" created="2009-02-09 14:02:59" modified="2009-04-29 15:41:13"/>
+				<style1 value="ShowPrivate=1;ShowProtected=1;ShowPublic=1;HideRelationships=0;Locked=0;Border=1;HighlightForeign=1;PackageContents=1;SequenceNotes=0;ScalePrintImage=0;PPgs.cx=1;PPgs.cy=1;DocSize.cx=795;DocSize.cy=1130;ShowDetails=0;Orientation=P;Zoom=100;ShowTags=0;OpParams=1;VisibleAttributeDetail=0;ShowOpRetType=1;ShowIcons=1;CollabNums=0;HideProps=0;ShowReqs=0;ShowCons=0;PaperSize=9;HideParents=0;UseAlias=0;HideAtts=0;HideOps=0;HideStereo=0;HideElemStereo=0;ShowTests=0;ShowMaint=0;ConnectorNotation=UML 2.1;ExplicitNavigability=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;ShowNotes=0;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;"/>
+				<style2 value="ExcludeRTF=0;DocAll=0;HideQuals=0;AttPkg=1;ShowTests=0;ShowMaint=0;SuppressFOC=1;MatrixActive=0;SwimlanesActive=1;MatrixLineWidth=1;MatrixLocked=0;TConnectorNotation=UML 2.1;TExplicitNavigability=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;ProfileData=;MDGDgm=;STBLDgm=;ShowNotes=0;VisibleAttributeDetail=0;ShowOpRetType=1;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;"/>
+				<swimlanes value="locked=false;orientation=0;width=0;inbar=false;names=false;color=0;bold=false;fcol=0;;cls=0;"/>
+				<matrixitems value="locked=false;matrixactive=false;swimlanesactive=true;width=1;"/>
+				<extendedProperties/>
+				<elements>
+					<element geometry="Left=119;Top=483;Right=283;Bottom=663;" subject="EAID_2189B7C1_12E6_471c_B68D_BDB71A18927F" seqno="1" style="DUID=6E2A7039;NSL=0;"/>
+					<element geometry="Left=320;Top=214;Right=428;Bottom=377;" subject="EAID_5C619250_DF39_4dc2_BCC4_4409C56A7F71" seqno="2" style="DUID=89AB9971;HideIcon=0;"/>
+					<element geometry="EDGE=1;$LLB=CX=19:CY=14:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:DIR=0:ROT=0;LLT=CX=59:CY=14:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:DIR=0:ROT=0;LMT=;LMB=CX=41:CY=14:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:DIR=0:ROT=0;LRT=;LRB=;IRHS=;ILHS=;Path=;" subject="EAID_A742BFA0_F476_4fdb_8DC5_1ED06F74AF54" style="Mode=3;EOID=89AB9971;SOID=6E2A7039;Color=-1;LWidth=0;Hidden=0;"/>
+					<element geometry="EDGE=1;$LLB=CX=17:CY=14:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:DIR=0:ROT=0;LLT=CX=56:CY=14:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:DIR=0:ROT=0;LMT=;LMB=CX=41:CY=14:OX=0:OY=0:HDN=0:BLD=0:ITA=0:UND=0:CLR=-1:ALN=0:DIR=0:ROT=0;LRT=;LRB=;IRHS=;ILHS=;Path=;" subject="EAID_D7FC1A81_30D5_4f23_9D1B_8C2B3856AEFF" style="Mode=3;EOID=89AB9971;SOID=6E2A7039;Color=-1;LWidth=0;Hidden=0;"/>
+				</elements>
+			</diagram>
+		</diagrams>
+	</xmi:Extension>
+</xmi:XMI>

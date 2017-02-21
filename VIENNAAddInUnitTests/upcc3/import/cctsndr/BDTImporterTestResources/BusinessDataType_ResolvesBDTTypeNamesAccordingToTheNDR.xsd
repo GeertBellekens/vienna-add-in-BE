@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ccts="urn:un:unece:uncefact:documentation:common:3:standard:CoreComponentsTechnicalSpecification:3" xmlns:bdt="http://test" targetNamespace="http://test" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:simpleType name="SimpleTextType_123456">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="QualifiedSimpleTextType_123457">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+				<ccts:DataTypeQualifierTermName>Qualified</ccts:DataTypeQualifierTermName>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bdt:SimpleTextType_123456"/>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Qualifier1Qualifier2SimpleTextType_123458">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+				<ccts:DataTypeQualifierTermName>Qualifier1</ccts:DataTypeQualifierTermName>
+				<ccts:DataTypeQualifierTermName>Qualifier2</ccts:DataTypeQualifierTermName>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bdt:QualifiedSimpleTextType_123457"/>
+	</xs:simpleType>
+	
+	
+	<xs:complexType name="ComplexTextType_987654">
+      <xs:simpleContent>
+        <xs:extension base="xs:string" />
+      </xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:complexType name="QualifiedComplexTextType_987653">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+				<ccts:DataTypeQualifierTermName>Qualified</ccts:DataTypeQualifierTermName>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:restriction base="bdt:ComplexTextType_987654"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:complexType name="Qualifier1Qualifier2ComplexTextType_987652">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+				<ccts:DataTypeQualifierTermName>Qualifier1</ccts:DataTypeQualifierTermName>
+				<ccts:DataTypeQualifierTermName>Qualifier2</ccts:DataTypeQualifierTermName>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:restriction base="bdt:QualifiedComplexTextType_987653"/>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>

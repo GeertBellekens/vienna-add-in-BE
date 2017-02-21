@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.ebinterface.at/schema/3p0/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" targetNamespace="http://www.ebinterface.at/schema/3p0/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:element name="InternationalAddressBook" type="AddressBookType"/>
+
+
+	<xs:complexType name="AddressBookType">
+		<xs:sequence>
+			<xs:element ref="AustrianAddress"/>
+			<xs:element ref="IndianAddress"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="AustrianAddress" type="AustrianAddressType"/>
+	<xs:element name="IndianAddress" type="IndianAddressType"/>
+
+	<xs:complexType name="AustrianAddressType">
+		<xs:sequence>
+			<xs:element name="CityName" type="TextType"/>
+			<xs:element name="CountryName" type="TextType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IndianAddressType">
+		<xs:sequence>
+			<xs:element name="CityName" type="TextType"/>
+			<xs:element name="DistrictName" type="TextType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TextType">
+		<xs:sequence>
+			<xs:element name="Language" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,17 @@
+#summary Detailed description of the Standard Core Component Library Importer dialog
+
+=Standard Core Component Library Importer=
+
+The _Standard Core Component Library Importer_ dialog downloads the standard CC libraries as XMI files and imports them into a UPCC model. _Only available if the model has been set as a UPCC3/UMM2 model, and the model contains the default UPCC libraries._
+
+http://vienna-add-in.googlecode.com/svn/wiki/images/ReferenceStandardCCLImporter_01.gif
+
+(1) Choose the desired version of the CCL to be imported from these two drop-down lists.
+
+(2) After choosing a CCL version from the drop-down lists (1), a detailed description of the selected version is shown in ths section.
+
+(3) During the import process, status messages are shown in this section regularly.
+
+(4) Click this button to start the import process.
+
+(5) Click this button to close the dialog without importing any libraries.

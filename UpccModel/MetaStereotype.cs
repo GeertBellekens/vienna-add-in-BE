@@ -1,0 +1,33 @@
+namespace Upcc
+{
+    public enum MetaStereotype
+    {
+        ABIE,
+        ACC,
+        ASBIE,
+        ASCC,
+        ASMA,
+        BBIE,
+        BCC,
+        BDT,
+        BDTLibrary,
+        BIELibrary,
+        CCLibrary,
+        CDT,
+        CDTLibrary,
+        CON,
+        CodelistEntry,
+        DOCLibrary,
+        ENUM,
+        ENUMLibrary,
+        IDSCHEME,
+        MA,
+        PRIM,
+        PRIMLibrary,
+        SUP,
+        bInformationV,
+        bLibrary,
+        basedOn,
+        isEquivalentTo,
+    }
+}

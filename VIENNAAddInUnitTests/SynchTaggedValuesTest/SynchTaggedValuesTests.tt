@@ -1,0 +1,151 @@
+<#@ template language="C#v3.5" hostspecific="True" debug="True" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="$(SolutionDir)/UpccModel/bin/Debug/Upcc.dll" #>
+<#@ import namespace="Upcc"#>
+<#@ import namespace="System.Text"#>
+using EA;
+using NUnit.Framework;
+using NUnit.Framework.SyntaxHelpers;
+using VIENNAAddIn;
+using VIENNAAddIn.Settings;
+using VIENNAAddInUtils;
+
+namespace VIENNAAddInUnitTests.SynchTaggedValuesTest
+{
+    [TestFixture]
+    public class SynchTaggedValuesTests : SynchTaggedValuesTestsBase
+    {
+<#	
+	foreach (var package in MetaModel.GetAllPackages())
+	{
+		var pathFromModel = "\"" + MetaStereotype.bLibrary + "\"";
+		if (package != MetaModel.BLibrary)
+		{
+			pathFromModel += "/\"" + package.Stereotype + "\"";
+		}
+		if (package.HasTaggedValues)
+		{
+#>
+
+		[Test]
+		public void ShouldCreateMissingTaggedValuesFor<#= package.Name #>()
+		{
+            Repository repo = CreateRepositoryWithoutTaggedValues();
+
+            var synchStereotypes = new SynchTaggedValues(repo);
+            synchStereotypes.FixTaggedValues();
+
+            var package = repo.Resolve<Package>((Path) "Model"/<#= pathFromModel #>);
+			Assert.That(package, Is.Not.Null, "Package not found");
+            Assert.That(package, HasTaggedValues(new[]{<#= CollectTaggedValues(package.TaggedValues) #>}), "missing tagged values");
+		}
+<#
+		}
+		foreach (var relation in MetaModel.GetClassifierRelationsFor(package))
+		{
+			var classifier = relation.ClassifierType;
+			if (classifier.HasTaggedValues)
+			{
+#>
+
+		[Test]
+		public void ShouldCreateMissingTaggedValuesFor<#= classifier.Name #>()
+		{
+            Repository repo = CreateRepositoryWithoutTaggedValues();
+
+            var synchStereotypes = new SynchTaggedValues(repo);
+            synchStereotypes.FixTaggedValues();
+
+            var element = repo.Resolve<Element>((Path) "Model"/<#= pathFromModel #>/"<#= classifier.Stereotype #>");
+			Assert.That(element, Is.Not.Null, "Element not found");
+            Assert.That(element, HasTaggedValues(new[]{<#= CollectTaggedValues(classifier.TaggedValues) #>}), "missing tagged values");
+		}
+<#
+			}
+			foreach (var attribute in MetaModel.GetAttributesFor(classifier))
+			{
+				if (attribute.HasTaggedValues)
+				{
+#>
+
+		[Test]
+		public void ShouldCreateMissingTaggedValuesFor<#= attribute.ClassName #>()
+		{
+            Repository repo = CreateRepositoryWithoutTaggedValues();
+
+            var synchStereotypes = new SynchTaggedValues(repo);
+            synchStereotypes.FixTaggedValues();
+
+            var element = repo.Resolve<Element>((Path) "Model"/<#= pathFromModel #>/"<#= classifier.Stereotype #>");
+			Assert.That(element, Is.Not.Null, "Element not found");
+			var attribute = (Attribute) element.Attributes.GetByName("<#= attribute.Stereotype #>");
+			Assert.That(attribute, Is.Not.Null, "Attribute not found");
+            Assert.That(attribute, HasTaggedValues(new[]{<#= CollectTaggedValues(attribute.TaggedValues) #>}), "missing tagged values");
+		}
+<#
+				}
+			}
+
+			foreach (var enumerationLiteral in MetaModel.GetEnumerationLiteralsFor(classifier))
+			{
+				if (enumerationLiteral.HasTaggedValues)
+				{
+#>
+
+		[Test]
+		public void ShouldCreateMissingTaggedValuesFor<#= enumerationLiteral.Name #>()
+		{
+            Repository repo = CreateRepositoryWithoutTaggedValues();
+
+            var synchStereotypes = new SynchTaggedValues(repo);
+            synchStereotypes.FixTaggedValues();
+
+            var element = repo.Resolve<Element>((Path) "Model"/<#= pathFromModel #>/"<#= classifier.Stereotype #>");
+			Assert.That(element, Is.Not.Null, "Element not found");
+			var attribute = (Attribute) element.Attributes.GetByName("<#= enumerationLiteral.Stereotype #>");
+			Assert.That(attribute, Is.Not.Null, "Attribute not found");
+            Assert.That(attribute, HasTaggedValues(new[]{<#= CollectTaggedValues(enumerationLiteral.TaggedValues) #>}), "missing tagged values");
+		}
+<#
+				}
+			}
+
+			foreach (var association in MetaModel.GetAssociationsForAssociatingClassifier(classifier))
+			{
+				if (association.HasTaggedValues)
+				{
+#>
+
+		[Test]
+		public void ShouldCreateMissingTaggedValuesFor<#= association.ClassName #>()
+		{
+            Repository repo = CreateRepositoryWithoutTaggedValues();
+
+            var synchStereotypes = new SynchTaggedValues(repo);
+            synchStereotypes.FixTaggedValues();
+
+            var element = repo.Resolve<Element>((Path) "Model"/<#= pathFromModel #>/"<#= classifier.Stereotype #>");
+			Assert.That(element, Is.Not.Null, "Element not found");
+			var connector = (Connector) element.Connectors.GetByName("<#= association.Stereotype #>");
+			Assert.That(connector, Is.Not.Null, "Connector not found");
+            Assert.That(connector, HasTaggedValues(new[]{<#= CollectTaggedValues(association.TaggedValues) #>}), "missing tagged values");
+		}
+<#
+				}
+			}
+		}
+	}
+#>
+	}
+}
+<#+
+    string CollectTaggedValues(MetaTaggedValue[] taggedValues)
+	{
+		var packageTaggedValuesBuilder = new StringBuilder();
+		foreach (var taggedValue in taggedValues)
+		{
+			packageTaggedValuesBuilder.Append("\"").Append(taggedValue.Name).Append("\", ");
+		}
+		return packageTaggedValuesBuilder.ToString();
+	}
+#>

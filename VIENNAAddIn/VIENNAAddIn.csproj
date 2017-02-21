@@ -1,0 +1,1297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5642201A-D4A3-4F3B-9BC5-71C3A0DB7EA3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VIENNAAddIn</RootNamespace>
+    <AssemblyName>VIENNAAddIn</AssemblyName>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <SignAssembly>False</SignAssembly>
+    <DelaySign>False</DelaySign>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <RunCodeAnalysis>False</RunCodeAnalysis>
+    <SourceAnalysisOverrideSettingsFile>C:\Users\LaptopGeert\AppData\Roaming\ICSharpCode\SharpDevelop5\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>True</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <DebugSymbols>true</DebugSymbols>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <Reference Include="IBM.Data.DB2, Version=9.0.0.2, Culture=neutral, PublicKeyToken=7c307b91aa13d208, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ext\IBM.Data.DB2.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.EA">
+      <HintPath>..\..\..\..\..\..\..\Program Files %28x86%29\Sparx Systems\EA\Interop.EA.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word" />
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Upcc">
+      <HintPath>..\UpccModel\bin\Debug\Upcc.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsFormsIntegration">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WPFVisifire.Charts, Version=3.0.1.0, Culture=neutral, PublicKeyToken=99d724542e4db593, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WPFVisifire.Charts.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="common\logging\ILogger.cs" />
+    <Compile Include="common\logging\Logger.cs" />
+    <Compile Include="common\logging\LogMessage.cs" />
+    <Compile Include="common\logging\LogMessageWriter.cs" />
+    <Compile Include="common\logging\LogType.cs" />
+    <Compile Include="common\Utility.cs" />
+    <Compile Include="constants\Constants.cs" />
+    <Compile Include="EARepositoryExtensions.cs" />
+    <Compile Include="ErrorReporter\ErrorReporterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="menu\AddInContext.cs" />
+    <Compile Include="menu\AddInContextPredicateExtensions.cs" />
+    <Compile Include="menu\MenuAction.cs" />
+    <Compile Include="menu\MenuItem.cs" />
+    <Compile Include="menu\MenuLocation.cs" />
+    <Compile Include="menu\MenuManager.cs" />
+    <Compile Include="menu\MenuStringExtensions.cs" />
+    <Compile Include="Settings\SynchTaggedValues.cs" />
+    <Compile Include="Settings\SynchTaggedValuesGenerated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SynchTaggedValuesGenerated.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\CctsRepositoryFactory.cs" />
+    <Compile Include="upcc3\export\mapping\SubsetExporter.cs" />
+    <Compile Include="upcc3\export\mapping\UpccModelDiff.cs" />
+    <Compile Include="upcc3\export\mapping\UpccModelXsdTypes.cs" />
+    <Compile Include="upcc3\export\transformer\Transformer.cs" />
+    <Compile Include="upcc3\import\mapping\AbstractMapping.cs" />
+    <Compile Include="upcc3\import\mapping\AsmaMapping.cs" />
+    <Compile Include="upcc3\import\mapping\AttributeOrSimpleElementOrComplexElementToBccMapping.cs" />
+    <Compile Include="upcc3\import\mapping\AttributeOrSimpleElementToSupMapping.cs" />
+    <Compile Include="upcc3\import\mapping\ComplexElementToAsccMapping.cs" />
+    <Compile Include="upcc3\import\mapping\ComplexTypeMapping.cs" />
+    <Compile Include="upcc3\import\mapping\ComplexTypeToAccMapping.cs" />
+    <Compile Include="upcc3\import\mapping\ComplexTypeToCdtMapping.cs" />
+    <Compile Include="upcc3\import\mapping\ComplexTypeToMaMapping.cs" />
+    <Compile Include="upcc3\import\mapping\ConstantComponent.cs" />
+    <Compile Include="upcc3\import\mapping\Edge.cs" />
+    <Compile Include="upcc3\import\mapping\ElementMapping.cs" />
+    <Compile Include="upcc3\import\mapping\Entry.cs" />
+    <Compile Include="upcc3\import\mapping\FunctionComponent.cs" />
+    <Compile Include="upcc3\import\mapping\Graph.cs" />
+    <Compile Include="upcc3\import\mapping\IMapping.cs" />
+    <Compile Include="upcc3\import\mapping\IMappingVisitor.cs" />
+    <Compile Include="upcc3\import\mapping\InputOutputKey.cs" />
+    <Compile Include="upcc3\import\mapping\LinqToXmlMapForceMappingImporter.cs" />
+    <Compile Include="upcc3\import\mapping\MapForceMapping.cs" />
+    <Compile Include="upcc3\import\mapping\MapForceSourceItemTree.cs" />
+    <Compile Include="upcc3\import\mapping\MappedLibraryGenerator.cs" />
+    <Compile Include="upcc3\import\mapping\MappingError.cs" />
+    <Compile Include="upcc3\import\mapping\MappingFunction.cs" />
+    <Compile Include="upcc3\import\mapping\MappingFunctionStore.cs" />
+    <Compile Include="upcc3\import\mapping\MappingImporter.cs" />
+    <Compile Include="upcc3\import\mapping\MappingPrettyPrinter.cs" />
+    <Compile Include="upcc3\import\mapping\Namespace.cs" />
+    <Compile Include="upcc3\import\mapping\NullComplexTypeMapping.cs" />
+    <Compile Include="upcc3\import\mapping\NullMapping.cs" />
+    <Compile Include="upcc3\import\mapping\SchemaComponent.cs" />
+    <Compile Include="upcc3\import\mapping\SchemaMapping.cs" />
+    <Compile Include="upcc3\import\mapping\SimpleTypeToCdtMapping.cs" />
+    <Compile Include="upcc3\import\mapping\SourceItem.cs" />
+    <Compile Include="upcc3\import\mapping\SplitMapping.cs" />
+    <Compile Include="upcc3\import\mapping\TargetElementStore.cs" />
+    <Compile Include="upcc3\import\mapping\Vertex.cs" />
+    <Compile Include="upcc3\import\mapping\XsdObjectType.cs" />
+    <Compile Include="upcc3\otf\AbstractEAItem.cs" />
+    <Compile Include="upcc3\otf\AbstractEAPackage.cs" />
+    <Compile Include="upcc3\otf\BDTLibrary.cs" />
+    <Compile Include="upcc3\otf\BIELibrary.cs" />
+    <Compile Include="upcc3\otf\BLibrary.cs" />
+    <Compile Include="upcc3\otf\BusinessLibrary.cs" />
+    <Compile Include="upcc3\otf\ItemId.cs" />
+    <Compile Include="upcc3\otf\validators\BusinessLibraryValidator.cs" />
+    <Compile Include="upcc3\otf\CCItemWrapper.cs" />
+    <Compile Include="upcc3\otf\CCLibrary.cs" />
+    <Compile Include="upcc3\otf\CDTLibrary.cs" />
+    <Compile Include="upcc3\otf\validators\ConstraintBasedValidator.cs" />
+    <Compile Include="upcc3\otf\ConstraintViolation.cs" />
+    <Compile Include="upcc3\otf\validators\constraints\NameMustNotBeEmpty.cs" />
+    <Compile Include="upcc3\otf\validators\constraints\TaggedValuesMustNotBeEmpty.cs" />
+    <Compile Include="upcc3\otf\validators\ElementLibaryValidator.cs" />
+    <Compile Include="upcc3\otf\validators\constraints\ElementsMustHaveStereotype.cs" />
+    <Compile Include="upcc3\otf\HierarchicalRepository.cs" />
+    <Compile Include="upcc3\otf\IConstraint.cs" />
+    <Compile Include="upcc3\otf\IValidator.cs" />
+    <Compile Include="upcc3\otf\validators\constraints\MustNotContainAnyElements.cs" />
+    <Compile Include="upcc3\otf\validators\constraints\MustNotContainAnyPackages.cs" />
+    <Compile Include="upcc3\otf\validators\constraints\ParentPackageMustHaveStereotype.cs" />
+    <Compile Include="upcc3\otf\RepositoryContentLoader.cs" />
+    <Compile Include="upcc3\otf\DOCLibrary.cs" />
+    <Compile Include="upcc3\otf\ENUMLibrary.cs" />
+    <Compile Include="upcc3\otf\IEAElement.cs" />
+    <Compile Include="upcc3\otf\IEAItem.cs" />
+    <Compile Include="upcc3\otf\IEAPackage.cs" />
+    <Compile Include="upcc3\otf\ValidationIssue.cs" />
+    <Compile Include="upcc3\otf\PRIMLibrary.cs" />
+    <Compile Include="upcc3\otf\RepositoryItem.cs" />
+    <Compile Include="upcc3\otf\validators\constraints\SafeConstraint.cs" />
+    <Compile Include="upcc3\otf\validators\PRIMValidator.cs" />
+    <Compile Include="upcc3\otf\validators\SafeValidator.cs" />
+    <Compile Include="upcc3\otf\validators\constraints\SubPackagesMustBeBusinessLibraries.cs" />
+    <Compile Include="upcc3\otf\validators\constraints\TaggedValuesMustBeDefined.cs" />
+    <Compile Include="upcc3\otf\ValidatingCCRepository.cs" />
+    <Compile Include="upcc3\otf\ValidationService.cs" />
+    <Compile Include="upcc3\otf\validators\BLibraryValidator.cs" />
+    <Compile Include="upcc3\otf\validators\constraints\ParentMustBeModelOrBInformationVOrBLibrary.cs" />
+    <Compile Include="upcc3\ea\EaAggregationKind.cs" />
+    <Compile Include="upcc3\repo\CcLibrary\AccSpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccSpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\uml\MultiPartTaggedValue.cs" />
+    <None Include="upcc3\Stereotype.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Stereotype.cs</LastGenOutput>
+    </None>
+    <Compile Include="upcc3\Stereotype.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Stereotype.tt</DependentUpon>
+    </Compile>
+    <None Include="upcc3\TaggedValues.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TaggedValues.cs</LastGenOutput>
+    </None>
+    <Compile Include="upcc3\TaggedValues.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaggedValues.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\ea\EaCardinality.cs" />
+    <Compile Include="upcc3\ea\EAConnectorTypes.cs" />
+    <Compile Include="upcc3\ea\EaUmlAssociation.cs" />
+    <Compile Include="upcc3\ea\EaUmlAttribute.cs" />
+    <Compile Include="upcc3\ea\EaUmlClassifier.cs" />
+    <Compile Include="upcc3\ea\EaUmlDependency.cs" />
+    <Compile Include="upcc3\ea\EaUmlEnumerationLiteral.cs" />
+    <Compile Include="upcc3\ea\EaUmlPackage.cs" />
+    <Compile Include="upcc3\ea\EaUmlRepository.cs" />
+    <Compile Include="upcc3\ea\EaUmlTaggedValue.cs" />
+    <Compile Include="upcc3\import\cctsndr\bdt\BDTComplexType.cs" />
+    <Compile Include="upcc3\import\cctsndr\bdt\BDTExtensionComplexType.cs" />
+    <Compile Include="upcc3\import\cctsndr\bdt\BDTRestrictionComplexType.cs" />
+    <Compile Include="upcc3\import\cctsndr\bdt\BDTSchema.cs" />
+    <Compile Include="upcc3\import\cctsndr\bdt\BDTSimpleType.cs" />
+    <Compile Include="upcc3\import\cctsndr\bdt\BDTXsdType.cs" />
+    <Compile Include="upcc3\import\cctsndr\bdt\SUPXsdAttributes.cs" />
+    <Compile Include="upcc3\NDR.cs" />
+    <Compile Include="upcc3\repo\BieLibrary\AbieSpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AbieSpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\BieLibrary\AbieSpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\CcLibrary\AccSpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\BieLibrary\AsbieSpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AsbieSpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\BieLibrary\AsbieSpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\CcLibrary\AsccSpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AsccSpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\CcLibrary\AsccSpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\DocLibrary\AsmaSpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AsmaSpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\BieLibrary\BbieSpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BbieSpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\BieLibrary\BbieSpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\CcLibrary\BccSpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BccSpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\CcLibrary\BccSpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\BdtLibrary\BdtConSpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BdtConSpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\BdtLibrary\BdtConSpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\BdtLibrary\BdtLibrarySpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BdtLibrarySpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\BdtLibrary\BdtLibrarySpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\BdtLibrary\BdtSpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BdtSpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\BdtLibrary\BdtSpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\BdtLibrary\BdtSupSpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BdtSupSpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\BdtLibrary\BdtSupSpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\BieLibrary\BieLibrarySpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BieLibrarySpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\BieLibrary\BieLibrarySpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\bLibrary\BLibrarySpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BLibrarySpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\bLibrary\BLibrarySpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\CcLibrary\CcLibrarySpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CcLibrarySpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\CcLibrary\CcLibrarySpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\CdtLibrary\CdtConSpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CdtConSpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\CdtLibrary\CdtConSpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\CdtLibrary\CdtLibrarySpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CdtLibrarySpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\CdtLibrary\CdtLibrarySpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\CdtLibrary\CdtSpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CdtSpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\CdtLibrary\CdtSpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\CdtLibrary\CdtSupSpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CdtSupSpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\CdtLibrary\CdtSupSpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\EnumLibrary\CodelistEntrySpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CodelistEntrySpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\DocLibrary\DocLibrarySpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DocLibrarySpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\DocLibrary\DocLibrarySpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\EnumLibrary\EnumLibrarySpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EnumLibrarySpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\EnumLibrary\EnumLibrarySpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\EnumLibrary\EnumSpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EnumSpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\EnumLibrary\EnumSpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\EnumLibrary\IdSchemeSpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IdSchemeSpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\EnumLibrary\IdSchemeSpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\DocLibrary\MaSpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MaSpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\PrimLibrary\PrimLibrarySpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrimLibrarySpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\PrimLibrary\PrimLibrarySpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\PrimLibrary\PrimSpecConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrimSpecConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\PrimLibrary\PrimSpecConverterManualExtensions.cs" />
+    <Compile Include="upcc3\repo\BieLibrary\UpccAbie.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccAbie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\CcLibrary\UpccAcc.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccAcc.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\BieLibrary\UpccAsbie.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccAsbie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\CcLibrary\UpccAscc.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccAscc.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\DocLibrary\UpccAsma.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccAsma.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\BieLibrary\UpccBbie.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccBbie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\CcLibrary\UpccBcc.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccBcc.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\BdtLibrary\UpccBdt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccBdt.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\BdtLibrary\UpccBdtCon.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccBdtCon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\BdtLibrary\UpccBdtLibrary.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccBdtLibrary.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\BdtLibrary\UpccBdtSup.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccBdtSup.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\BieLibrary\UpccBieLibrary.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccBieLibrary.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\bLibrary\UpccBLibrary.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccBLibrary.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\CcLibrary\UpccCcLibrary.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccCcLibrary.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\CdtLibrary\UpccCdt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccCdt.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\CdtLibrary\UpccCdtCon.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccCdtCon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\CdtLibrary\UpccCdtLibrary.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccCdtLibrary.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\CdtLibrary\UpccCdtSup.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccCdtSup.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\EnumLibrary\UpccCodelistEntry.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccCodelistEntry.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\DocLibrary\UpccDocLibrary.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccDocLibrary.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\DocLibrary\UpccDocLibraryManualExtensions.cs" />
+    <Compile Include="upcc3\repo\EnumLibrary\UpccEnum.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccEnum.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\EnumLibrary\UpccEnumLibrary.cs">
+      <DependentUpon>UpccEnumLibrary.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="upcc3\repo\EnumLibrary\UpccIdScheme.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccIdScheme.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\DocLibrary\UpccMa.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccMa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\repo\PrimLibrary\UpccPrim.cs">
+      <DependentUpon>UpccPrim.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="upcc3\repo\PrimLibrary\UpccPrimLibrary.cs">
+      <DependentUpon>UpccPrimLibrary.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="upcc3\repo\UpccRepository.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpccRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\uml\IUmlAssociation.cs" />
+    <Compile Include="upcc3\uml\IUmlAttribute.cs" />
+    <Compile Include="upcc3\uml\IUmlClass.cs" />
+    <Compile Include="upcc3\uml\IUmlClassifier.cs" />
+    <Compile Include="upcc3\uml\IUmlDataType.cs" />
+    <Compile Include="upcc3\uml\IUmlDependency.cs" />
+    <Compile Include="upcc3\uml\IUmlEnumeration.cs" />
+    <Compile Include="upcc3\uml\IUmlEnumerationLiteral.cs" />
+    <Compile Include="upcc3\uml\IUmlPackage.cs" />
+    <Compile Include="upcc3\uml\IUmlRepository.cs" />
+    <Compile Include="upcc3\uml\IUmlTaggedValue.cs" />
+    <Compile Include="upcc3\uml\UmlAssociationSpec.cs" />
+    <Compile Include="upcc3\uml\UmlAttributeSpec.cs" />
+    <Compile Include="upcc3\uml\UmlClassifierSpec.cs" />
+    <Compile Include="upcc3\uml\UmlClassSpec.cs" />
+    <Compile Include="upcc3\uml\UmlDataTypeSpec.cs" />
+    <Compile Include="upcc3\uml\UmlDependencySpec.cs" />
+    <Compile Include="upcc3\uml\UmlEnumerationLiteralSpec.cs" />
+    <Compile Include="upcc3\uml\UmlEnumerationSpec.cs" />
+    <Compile Include="upcc3\uml\UmlPackageSpec.cs" />
+    <Compile Include="upcc3\uml\UmlTaggedValueSpec.cs" />
+    <Compile Include="upcc3\Wizards\dev\cache\CacheItemDocLibrary.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\abiemodel\exceptions\TemporaryAbieModelException.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\bdtmodel\CandidateBdtLibrary.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\bdtmodel\CandidateCdt.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\bdtmodel\CandidateCdtLibrary.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\bdtmodel\PotentialCon.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\bdtmodel\exceptions\TemporaryBdtModelException.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\bdtmodel\PotentialSup.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\bdtmodel\TemporaryBdtModel.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\subsettingmodel\CandidateAbie.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\subsettingmodel\CandidateDocLibrary.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\subsettingmodel\CandidateRootElement.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\subsettingmodel\exceptions\TemporarySubSettingModelException.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\subsettingmodel\PotentialAsbie.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\subsettingmodel\PotentialBbie.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\subsettingmodel\TemporarySubSettingModel.cs" />
+    <Compile Include="upcc3\Wizards\dev\ui\AbieEditor.xaml.cs">
+      <DependentUpon>AbieEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\Wizards\dev\binding\BindingPropertyNames.cs" />
+    <Compile Include="upcc3\Wizards\dev\cache\CacheItemBdtLibrary.cs" />
+    <Compile Include="upcc3\Wizards\dev\cache\CacheItemBieLibrary.cs" />
+    <Compile Include="upcc3\Wizards\dev\cache\CacheItemCcLibrary.cs" />
+    <Compile Include="upcc3\Wizards\dev\cache\CacheItemCdtLibrary.cs" />
+    <Compile Include="upcc3\Wizards\dev\cache\CcCache.cs" />
+    <Compile Include="upcc3\Wizards\dev\ui\BdtEditor.xaml.cs">
+      <DependentUpon>BdtEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\Wizards\dev\ui\UmlClassCustomizer.xaml.cs">
+      <DependentUpon>UmlClassCustomizer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\Wizards\dev\ui\XsltGeneratorForm.xaml.cs">
+      <DependentUpon>XsltGeneratorForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\Wizards\dev\ui\WSDLGenerator.xaml.cs">
+      <DependentUpon>WSDLGenerator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\Wizards\dev\ui\SynchStereoTypes.xaml.cs">
+      <DependentUpon>SynchStereoTypes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\Wizards\dev\ui\ExporterForm.xaml.cs">
+      <DependentUpon>ExporterForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\Wizards\dev\ui\SubSettingWizard.xaml.cs">
+      <DependentUpon>SubSettingWizard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\Wizards\dev\ui\TransformerUI.xaml.cs">
+      <DependentUpon>TransformerUI.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="upcc3\Wizards\dev\ui\TransformerWizard.xaml.cs">
+      <DependentUpon>TransformerWizard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\Wizards\dev\ui\UmmInitialPackageStructureCreator.xaml.cs">
+      <DependentUpon>UmmInitialPackageStructureCreator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\Wizards\dev\ui\StereoTypeTransformer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="upcc3\Wizards\dev\ui\StereoTypeTransformer.Designer.cs">
+      <DependentUpon>StereoTypeTransformer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\Wizards\dev\util\XsltGenerator.cs" />
+    <Compile Include="upcc3\Wizards\dev\util\IOConnectionItem.cs" />
+    <Compile Include="upcc3\Wizards\util\LocalVersionsFile.cs" />
+    <Compile Include="upcc3\Wizards\dev\ui\SchemaAnalyzer.xaml.cs">
+      <DependentUpon>SchemaAnalyzer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\Wizards\dev\ui\StandardLibraryImporter.xaml.cs">
+      <DependentUpon>StandardLibraryImporter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\abiemodel\CandidateAbie.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\abiemodel\CandidateAcc.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\abiemodel\CandidateBcc.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\abiemodel\CandidateBdtLibrary.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\abiemodel\CandidateBieLibrary.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\abiemodel\CandidateCcLibrary.cs" />
+    <Compile Include="upcc3\Wizards\dev\util\CheckableItem.cs" />
+    <Compile Include="upcc3\Wizards\dev\util\CheckableTreeViewItem.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\abiemodel\PotentialAsbie.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\abiemodel\PotentialBbie.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\abiemodel\PotentialBdt.cs" />
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\TemporaryModel.cs" />
+    <Compile Include="upcc3\Wizards\dev\ui\UpccModelCreator.xaml.cs">
+      <DependentUpon>UpccModelCreator.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="upcc3\Wizards\dev\temporarymodel\abiemodel\TemporaryAbieModel.cs" />
+    <Compile Include="upcc3\Wizards\dev\util\AbieEditorModes.cs" />
+    <Compile Include="upcc3\Wizards\dev\util\XMLSchemaReader.cs" />
+    <Compile Include="upcc3\Wizards\dev\util\ProspectiveBdts.cs" />
+    <Compile Include="upcc3\Wizards\dev\ui\XsdImporterForm.xaml.cs">
+      <DependentUpon>XsdImporterForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\Wizards\dev\util\SchemaAnalyzerResults.cs" />
+    <Compile Include="upcc3\Wizards\util\FileSelector.cs" />
+    <Compile Include="upcc3\Wizards\ImporterWizardFormOld.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="upcc3\Wizards\ImporterWizardFormOld.Designer.cs">
+      <DependentUpon>ImporterWizardFormOld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\Wizards\StandardLibraryImporterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="upcc3\Wizards\StandardLibraryImporterForm.Designer.cs">
+      <DependentUpon>StandardLibraryImporterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\Wizards\util\FileBasedVersionHandler.cs" />
+    <Compile Include="upcc3\Wizards\util\DatabaseHandler.cs" />
+    <Compile Include="upcc3\Wizards\util\IVersionHandler.cs" />
+    <Compile Include="upcc3\Wizards\util\IVersionsFile.cs" />
+    <Compile Include="upcc3\Wizards\util\LibraryImporter.cs" />
+    <Compile Include="upcc3\Wizards\util\RemoteVersionsFile.cs" />
+    <Compile Include="upcc3\Wizards\util\ResourceDescriptor.cs" />
+    <Compile Include="upcc3\Wizards\util\ResourceHandler.cs" />
+    <Compile Include="upcc3\Wizards\util\VersionDescriptor.cs" />
+    <Compile Include="upcc3\export\cctsndr\CCSchemaGenerator.cs" />
+    <Compile Include="upcc3\export\cctsndr\CDTSchemaGenerator.cs" />
+    <Compile Include="upcc3\export\cctsndr\GeneratorContext.cs" />
+    <Compile Include="upcc3\import\cctsndr\bdt\BDTXsdImporter.cs" />
+    <Compile Include="upcc3\import\cctsndr\BIESchemaImporter.cs" />
+    <Compile Include="upcc3\import\cctsndr\RootSchemaImporter.cs" />
+    <Compile Include="upcc3\import\cctsndr\XSDImporter.cs" />
+    <Compile Include="upcc3\import\cctsndr\ImporterContext.cs" />
+    <Compile Include="upcc3\import\util\CustomSchemaReader.cs" />
+    <Compile Include="Utils\DictionaryExtensions.cs" />
+    <Compile Include="Settings\AddInSettings.cs" />
+    <None Include="Settings\SynchTaggedValuesGenerated.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SynchTaggedValuesGenerated.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\BieLibrary\AbieSpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AbieSpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\CcLibrary\AccSpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AccSpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\BieLibrary\AsbieSpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AsbieSpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\CcLibrary\AsccSpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AsccSpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\DocLibrary\AsmaSpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AsmaSpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\BieLibrary\BbieSpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BbieSpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\CcLibrary\BccSpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BccSpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\BdtLibrary\BdtConSpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BdtConSpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\BdtLibrary\BdtLibrarySpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BdtLibrarySpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\BdtLibrary\BdtSpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BdtSpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\BdtLibrary\BdtSupSpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BdtSupSpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\BieLibrary\BieLibrarySpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BieLibrarySpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\bLibrary\BLibrarySpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BLibrarySpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\CcLibrary\CcLibrarySpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CcLibrarySpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\CdtLibrary\CdtConSpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CdtConSpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\CdtLibrary\CdtLibrarySpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CdtLibrarySpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\CdtLibrary\CdtSpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CdtSpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\CdtLibrary\CdtSupSpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CdtSupSpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\EnumLibrary\CodelistEntrySpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CodelistEntrySpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\DocLibrary\DocLibrarySpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DocLibrarySpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\EnumLibrary\EnumLibrarySpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EnumLibrarySpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\EnumLibrary\EnumSpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EnumSpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\EnumLibrary\IdSchemeSpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IdSchemeSpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\DocLibrary\MaSpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MaSpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\PrimLibrary\PrimLibrarySpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PrimLibrarySpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\PrimLibrary\PrimSpecConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PrimSpecConverter.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\t4\CctsRepositoryNamespaces.tt">
+    </None>
+    <None Include="upcc3\repo\t4\ClassifierSpecConverter.tt">
+    </None>
+    <None Include="upcc3\repo\t4\AttributeSpecConverter.tt">
+    </None>
+    <None Include="upcc3\repo\t4\AssociationSpecConverter.tt">
+    </None>
+    <None Include="upcc3\repo\t4\PackageSpecConverter.tt">
+    </None>
+    <None Include="upcc3\repo\t4\EnumerationLiteralSpecConverter.tt">
+    </None>
+    <None Include="upcc3\repo\t4\UpccUmlEnumerationLiteral.tt">
+    </None>
+    <None Include="upcc3\repo\t4\UpccUmlAssociation.tt">
+    </None>
+    <None Include="upcc3\repo\t4\UpccUmlAttribute.tt">
+    </None>
+    <None Include="upcc3\repo\t4\UpccUmlClassifier.tt">
+    </None>
+    <None Include="upcc3\repo\BieLibrary\UpccAbie.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccAbie.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\CcLibrary\UpccAcc.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccAcc.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\BieLibrary\UpccAsbie.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccAsbie.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\CcLibrary\UpccAscc.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccAscc.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\DocLibrary\UpccAsma.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccAsma.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\BieLibrary\UpccBbie.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccBbie.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\CcLibrary\UpccBcc.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccBcc.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\BdtLibrary\UpccBdt.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccBdt.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\BdtLibrary\UpccBdtCon.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccBdtCon.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\BdtLibrary\UpccBdtLibrary.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccBdtLibrary.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\BdtLibrary\UpccBdtSup.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccBdtSup.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\BieLibrary\UpccBieLibrary.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccBieLibrary.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\bLibrary\UpccBLibrary.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccBLibrary.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\CcLibrary\UpccCcLibrary.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccCcLibrary.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\CdtLibrary\UpccCdt.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccCdt.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\CdtLibrary\UpccCdtCon.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccCdtCon.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\CdtLibrary\UpccCdtLibrary.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccCdtLibrary.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\CdtLibrary\UpccCdtSup.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccCdtSup.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\EnumLibrary\UpccCodelistEntry.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccCodelistEntry.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\DocLibrary\UpccDocLibrary.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccDocLibrary.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\EnumLibrary\UpccEnum.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccEnum.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\EnumLibrary\UpccEnumLibrary.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccEnumLibrary.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\EnumLibrary\UpccIdScheme.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccIdScheme.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\DocLibrary\UpccMa.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccMa.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\PrimLibrary\UpccPrim.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccPrim.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\PrimLibrary\UpccPrimLibrary.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccPrimLibrary.cs</LastGenOutput>
+    </None>
+    <None Include="upcc3\repo\t4\UpccUmlPackage.tt">
+    </None>
+    <None Include="upcc3\repo\UpccRepository.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UpccRepository.cs</LastGenOutput>
+    </None>
+    <Compile Include="Settings\SynchStereotypesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\SynchStereotypesForm.Designer.cs">
+      <DependentUpon>SynchStereotypesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\Wizards\ABIEWizardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="upcc3\Wizards\ABIEWizardForm.Designer.cs">
+      <DependentUpon>ABIEWizardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\Wizards\BDTWizardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="upcc3\Wizards\BDTWizardForm.Designer.cs">
+      <DependentUpon>BDTWizardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\Wizards\Cache.cs" />
+    <Compile Include="upcc3\Wizards\GeneratorWizardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="upcc3\Wizards\GeneratorWizardForm.Designer.cs">
+      <DependentUpon>GeneratorWizardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\Wizards\UPCCModelWizardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="upcc3\Wizards\UPCCModelWizardForm.Designer.cs">
+      <DependentUpon>UPCCModelWizardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="upcc3\Wizards\util\ModelCreator.cs" />
+    <Compile Include="upcc3\export\cctsndr\BDTSchemaGenerator.cs" />
+    <Compile Include="upcc3\export\cctsndr\BIESchemaGenerator.cs" />
+    <Compile Include="upcc3\export\cctsndr\RootSchemaGenerator.cs" />
+    <Compile Include="upcc3\export\cctsndr\StringExtensions.cs" />
+    <Compile Include="upcc3\export\cctsndr\ENUMLibraryGenerator.cs" />
+    <Compile Include="upcc3\export\cctsndr\XSDGenerator.cs" />
+    <Compile Include="Utils\EAElementWrapper.cs" />
+    <Compile Include="Utils\FormStyles.cs" />
+    <Compile Include="Utils\IssueUtil.cs" />
+    <Compile Include="Utils\Logger.cs" />
+    <Compile Include="Utils\LoggerCCTS.cs" />
+    <Compile Include="Utils\LogMessage.cs" />
+    <Compile Include="Utils\LogMessageCCTS.cs" />
+    <Compile Include="Utils\OptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\RepositoryCopier.cs" />
+    <Compile Include="Utils\SortConnector.cs" />
+    <Compile Include="Utils\UMMAddInLoggerWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\Writer.cs" />
+    <Compile Include="validator\AbstractValidator.cs" />
+    <Compile Include="validator\ErrorMessage.cs" />
+    <Compile Include="validator\ExceptionEventArgs.cs" />
+    <Compile Include="validator\IValidator.cs" />
+    <Compile Include="validator\ErrorCheckingValidationContext.cs" />
+    <Compile Include="validator\upcc3\BDTLibraryValidator.cs" />
+    <Compile Include="validator\upcc3\BIELibraryValidator.cs" />
+    <Compile Include="validator\upcc3\bLibraryValidator.cs" />
+    <Compile Include="validator\upcc3\CCLibraryValidator.cs" />
+    <Compile Include="validator\upcc3\CDTLibraryValidator.cs" />
+    <Compile Include="validator\upcc3\DOCLibraryValidator.cs" />
+    <Compile Include="validator\upcc3\ENUMLibraryValidator.cs" />
+    <Compile Include="validator\upcc3\PRIMLibraryValidator.cs" />
+    <Compile Include="validator\upcc3\UPCCValidator.cs" />
+    <Compile Include="validator\ValidationMessageAddedEventArgs.cs" />
+    <Compile Include="validator\ProgressEventArgs.cs" />
+    <Compile Include="validator\umm\bCollModelValidator.cs" />
+    <Compile Include="validator\umm\bcv\bChoreographyVValidator.cs" />
+    <Compile Include="validator\umm\bcv\bCollaborationVValidator.cs" />
+    <Compile Include="validator\umm\bcv\bRealizationVValidator.cs" />
+    <Compile Include="validator\umm\bcv\bTransactionVValidator.cs" />
+    <Compile Include="validator\umm\biv\bInformationVValidator.cs" />
+    <Compile Include="validator\umm\brv\bDomainVValidator.cs" />
+    <Compile Include="validator\umm\brv\bEntityVValidator.cs" />
+    <Compile Include="validator\umm\brv\bPartnerVValidator.cs" />
+    <Compile Include="validator\umm\brv\bRequirementsVValidator.cs" />
+    <Compile Include="validator\umm\TaggedValueValidator.cs" />
+    <Compile Include="validator\ValidationMessage.cs" />
+    <Compile Include="validator\ValidationContext.cs" />
+    <Compile Include="validator\Validator.cs" />
+    <Compile Include="validator\ValidatorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="validator\ValidatorForm.designer.cs">
+      <DependentUpon>ValidatorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIENNAAddIn.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\AboutWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\SortAttribute.cs" />
+    <Compile Include="VIENNAAddInEvents.cs" />
+    <Compile Include="VIENNAAddInInterface.cs" />
+    <Compile Include="workflow\InitialPackageStructureCreator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="workflow\InitialPackageStructureCreator.Designer.cs">
+      <DependentUpon>InitialPackageStructureCreator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="workflow\ModelStructureCreator.cs" />
+  </ItemGroup>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /Y /E /I "$(ProjectDir)images" "$(TargetDir)\images"
+</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+    <StartAction>Project</StartAction>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <BaseAddress>4194304</BaseAddress>
+    <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ErrorReporter\ErrorReporterForm.resx">
+      <DependentUpon>ErrorReporterForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\SynchStereotypesForm.resx">
+      <DependentUpon>SynchStereotypesForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="upcc3\Wizards\ABIEWizardForm.resx">
+      <DependentUpon>ABIEWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="upcc3\Wizards\BDTWizardForm.resx">
+      <DependentUpon>BDTWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="upcc3\Wizards\dev\ui\StereoTypeTransformer.resx">
+      <DependentUpon>StereoTypeTransformer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="upcc3\Wizards\GeneratorWizardForm.resx">
+      <DependentUpon>GeneratorWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="upcc3\Wizards\ImporterWizardFormOld.resx">
+      <DependentUpon>ImporterWizardFormOld.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="upcc3\Wizards\StandardLibraryImporterForm.resx">
+      <DependentUpon>StandardLibraryImporterForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="upcc3\Wizards\UPCCModelWizardForm.resx">
+      <DependentUpon>UPCCModelWizardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\AboutWindow.resx">
+      <DependentUpon>AboutWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\OptionsForm.resx">
+      <DependentUpon>OptionsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\UMMAddInLoggerWindow.resx">
+      <DependentUpon>UMMAddInLoggerWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="validator\ValidatorForm.resx">
+      <DependentUpon>ValidatorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="workflow\InitialPackageStructureCreator.resx">
+      <DependentUpon>InitialPackageStructureCreator.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="upcc3\Wizards\dev\ui\AbieEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="upcc3\Wizards\dev\ui\BdtEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="upcc3\Wizards\dev\ui\UmlClassCustomizer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="upcc3\Wizards\dev\ui\XsltGeneratorForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="upcc3\Wizards\dev\ui\WSDLGenerator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="upcc3\Wizards\dev\ui\SynchStereoTypes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="upcc3\Wizards\dev\ui\SubSettingWizard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="upcc3\Wizards\dev\ui\ExporterForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="upcc3\Wizards\dev\ui\SchemaAnalyzer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="upcc3\Wizards\dev\ui\StandardLibraryImporter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="upcc3\Wizards\dev\ui\TransformerUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="upcc3\Wizards\dev\ui\UmmInitialPackageStructureCreator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="upcc3\Wizards\dev\ui\UpccModelCreator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="upcc3\Wizards\dev\ui\XsdImporterForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="upcc3\Wizards\dev\ui\TransformerWizard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CctsRepository\CctsRepository.csproj">
+      <Project>{D788A632-CD92-4C8A-AE54-A37CD5871368}</Project>
+      <Name>CctsRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VIENNAAddInUtils\VIENNAAddInUtils.csproj">
+      <Project>{3C1352B8-1B53-46F9-BC18-BFF48115A606}</Project>
+      <Name>VIENNAAddInUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VIENNAAddInWpfUserControls\VIENNAAddInWpfUserControls.csproj">
+      <Project>{D2B72E74-9717-42E0-9D43-0964D8B781BD}</Project>
+      <Name>VIENNAAddInWpfUserControls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\open.png" />
+    <Resource Include="Resources\cancel.png" />
+    <Resource Include="Resources\warning.png" />
+    <Resource Include="Resources\close.png" />
+    <Resource Include="Resources\ok.png" />
+    <Resource Include="Resources\generate.png" />
+    <Resource Include="Resources\generate_sw.png" />
+    <Resource Include="Resources\arrow_right.png" />
+    <Resource Include="Resources\arrow_right_sw.png" />
+    <Resource Include="Resources\model.png" />
+    <Resource Include="Resources\directory.png" />
+    <Resource Include="Resources\directory_sw.png" />
+    <Resource Include="Resources\file.png" />
+    <Resource Include="Resources\file_sw.png" />
+    <Resource Include="Resources\model_sw.png" />
+    <Resource Include="Resources\IconAnalyze.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\arrow_incoming.png" />
+    <Resource Include="Resources\arrow_outgoing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="upcc3\export\mapping\resources\iso_svrl_for_xslt2.xsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="doc\" />
+    <Folder Include="images\" />
+  </ItemGroup>
+</Project>

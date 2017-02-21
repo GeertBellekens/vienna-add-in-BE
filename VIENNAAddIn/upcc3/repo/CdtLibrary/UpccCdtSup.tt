@@ -1,0 +1,9 @@
+<#@ template language="C#v3.5" hostspecific="True" debug="True" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="$(SolutionDir)/UpccModel/bin/Debug/Upcc.dll" #>
+<#@ import namespace="Upcc"#>
+<# 
+	var metaAttribute = MetaModel.CdtSup;
+	var extendManually = false;
+#>
+<#@ include file="../t4/UpccUmlAttribute.tt" #>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ccts="urn:un:unece:uncefact:documentation:common:3:standard:CoreComponentsTechnicalSpecification:3" xmlns:bdt="http://test" targetNamespace="http://test" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="BDTType_123456">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="stringSUPString" type="xs:string" use="optional"/>
+				<xs:attribute name="decimalSUPDecimal" type="xs:decimal" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>

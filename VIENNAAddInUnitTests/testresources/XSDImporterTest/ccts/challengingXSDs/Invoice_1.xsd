@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:eb="http://foo.bar/doc" xmlns:ccts="urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3" xmlns:bdt="http://foo.bar/doc" xmlns:bie="http://foo.bar/doc" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://foo.bar/doc" version="1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="documentation/standard/XMLNDR_Documentation_3p0.xsd" namespace="urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3" />
+  <xsd:include schemaLocation="BusinessDataType_1.xsd" />
+  <xsd:include schemaLocation="BusinessInformationEntity_1.xsd" />
+  <xsd:element name="Invoice" type="eb:InvoiceType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        <ccts:UniqueID></ccts:UniqueID>
+        <ccts:VersionID>1</ccts:VersionID>
+        <ccts:ObjectClassQualifierName>Invoice</ccts:ObjectClassQualifierName>
+        <ccts:ObjectClassTermName>Invoice</ccts:ObjectClassTermName>
+        <ccts:DictionaryEntryName>Invoice. Details</ccts:DictionaryEntryName>
+        <ccts:Definition>ebInterface Invoice</ccts:Definition>
+        <ccts:BusinessTermName></ccts:BusinessTermName>
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="ASBIE1SomeAdditional_ABIE" type="eb:SomeAdditional_ABIEType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        <ccts:UniqueID></ccts:UniqueID>
+        <ccts:VersionID></ccts:VersionID>
+        <ccts:Cardinality>1..1</ccts:Cardinality>
+        <ccts:SequencingKey></ccts:SequencingKey>
+        <ccts:DictionaryEntryName></ccts:DictionaryEntryName>
+        <ccts:Definition></ccts:Definition>
+        <ccts:BusinessTermName></ccts:BusinessTermName>
+        <ccts:AssociationType>Shared</ccts:AssociationType>
+        <ccts:PropertyTermName>ASBIE1</ccts:PropertyTermName>
+        <ccts:PropertyQualifierName></ccts:PropertyQualifierName>
+        <ccts:AssociatedObjectClassTermName>SomeAdditional_ABIE</ccts:AssociatedObjectClassTermName>
+        <ccts:AcronymCode>ASBIE</ccts:AcronymCode>
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="DeliveryDelivery" type="bie:DeliveryType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        <ccts:UniqueID></ccts:UniqueID>
+        <ccts:VersionID></ccts:VersionID>
+        <ccts:Cardinality>1..1</ccts:Cardinality>
+        <ccts:SequencingKey></ccts:SequencingKey>
+        <ccts:DictionaryEntryName></ccts:DictionaryEntryName>
+        <ccts:Definition></ccts:Definition>
+        <ccts:BusinessTermName></ccts:BusinessTermName>
+        <ccts:AssociationType>Shared</ccts:AssociationType>
+        <ccts:PropertyTermName>Delivery</ccts:PropertyTermName>
+        <ccts:PropertyQualifierName></ccts:PropertyQualifierName>
+        <ccts:AssociatedObjectClassTermName>Delivery</ccts:AssociatedObjectClassTermName>
+        <ccts:AcronymCode>ASBIE</ccts:AcronymCode>
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="AlternativeUS_Address" type="bie:US_AddressType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        <ccts:UniqueID></ccts:UniqueID>
+        <ccts:VersionID></ccts:VersionID>
+        <ccts:Cardinality>1..1</ccts:Cardinality>
+        <ccts:SequencingKey></ccts:SequencingKey>
+        <ccts:DictionaryEntryName></ccts:DictionaryEntryName>
+        <ccts:Definition></ccts:Definition>
+        <ccts:BusinessTermName></ccts:BusinessTermName>
+        <ccts:AssociationType>Shared</ccts:AssociationType>
+        <ccts:PropertyTermName>Alternative</ccts:PropertyTermName>
+        <ccts:PropertyQualifierName></ccts:PropertyQualifierName>
+        <ccts:AssociatedObjectClassTermName>US_Address</ccts:AssociatedObjectClassTermName>
+        <ccts:AcronymCode>ASBIE</ccts:AcronymCode>
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="InvoiceType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        <ccts:UniqueID></ccts:UniqueID>
+        <ccts:VersionID>1</ccts:VersionID>
+        <ccts:ObjectClassQualifierName>Invoice</ccts:ObjectClassQualifierName>
+        <ccts:ObjectClassTermName>Invoice</ccts:ObjectClassTermName>
+        <ccts:DictionaryEntryName>Invoice. Details</ccts:DictionaryEntryName>
+        <ccts:Definition>ebInterface Invoice</ccts:Definition>
+        <ccts:BusinessTermName></ccts:BusinessTermName>
+        <ccts:AcronymCode>ABIE</ccts:AcronymCode>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element ref="eb:ASBIE1SomeAdditional_ABIE" />
+      <xsd:element ref="bie:DeliveryDelivery" />
+      <xsd:element name="ASBIE3FinancialAccount" type="bie:FinancialAccountType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            <ccts:UniqueID></ccts:UniqueID>
+            <ccts:VersionID></ccts:VersionID>
+            <ccts:Cardinality>1..1</ccts:Cardinality>
+            <ccts:SequencingKey></ccts:SequencingKey>
+            <ccts:DictionaryEntryName></ccts:DictionaryEntryName>
+            <ccts:Definition></ccts:Definition>
+            <ccts:BusinessTermName></ccts:BusinessTermName>
+            <ccts:AssociationType>Composite</ccts:AssociationType>
+            <ccts:PropertyTermName>ASBIE3</ccts:PropertyTermName>
+            <ccts:PropertyQualifierName></ccts:PropertyQualifierName>
+            <ccts:AssociatedObjectClassTermName>FinancialAccount</ccts:AssociatedObjectClassTermName>
+            <ccts:AcronymCode>ASBIE</ccts:AcronymCode>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ASBIE4YetAnother_ABIE" type="eb:YetAnother_ABIEType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            <ccts:UniqueID></ccts:UniqueID>
+            <ccts:VersionID></ccts:VersionID>
+            <ccts:Cardinality>1..1</ccts:Cardinality>
+            <ccts:SequencingKey></ccts:SequencingKey>
+            <ccts:DictionaryEntryName></ccts:DictionaryEntryName>
+            <ccts:Definition></ccts:Definition>
+            <ccts:BusinessTermName></ccts:BusinessTermName>
+            <ccts:AssociationType>Composite</ccts:AssociationType>
+            <ccts:PropertyTermName>ASBIE4</ccts:PropertyTermName>
+            <ccts:PropertyQualifierName></ccts:PropertyQualifierName>
+            <ccts:AssociatedObjectClassTermName>YetAnother_ABIE</ccts:AssociatedObjectClassTermName>
+            <ccts:AcronymCode>ASBIE</ccts:AcronymCode>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element ref="bie:AlternativeUS_Address" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="Another_Additional_ABIE" type="eb:Another_Additional_ABIEType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        <ccts:UniqueID></ccts:UniqueID>
+        <ccts:VersionID></ccts:VersionID>
+        <ccts:ObjectClassQualifierName>Another_Additional</ccts:ObjectClassQualifierName>
+        <ccts:ObjectClassTermName>ABIE</ccts:ObjectClassTermName>
+        <ccts:DictionaryEntryName>Another_Additional_ABIE. Details</ccts:DictionaryEntryName>
+        <ccts:Definition></ccts:Definition>
+        <ccts:BusinessTermName></ccts:BusinessTermName>
+        <ccts:AcronymCode>ABIE</ccts:AcronymCode>
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="SomeAdditional_ABIE" type="eb:SomeAdditional_ABIEType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        <ccts:UniqueID></ccts:UniqueID>
+        <ccts:VersionID></ccts:VersionID>
+        <ccts:ObjectClassQualifierName>SomeAdditional</ccts:ObjectClassQualifierName>
+        <ccts:ObjectClassTermName>ABIE</ccts:ObjectClassTermName>
+        <ccts:DictionaryEntryName>SomeAdditional_ABIE. Details</ccts:DictionaryEntryName>
+        <ccts:Definition></ccts:Definition>
+        <ccts:BusinessTermName></ccts:BusinessTermName>
+        <ccts:AcronymCode>ABIE</ccts:AcronymCode>
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="YetAnother_ABIE" type="eb:YetAnother_ABIEType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        <ccts:UniqueID></ccts:UniqueID>
+        <ccts:VersionID></ccts:VersionID>
+        <ccts:ObjectClassQualifierName>YetAnother</ccts:ObjectClassQualifierName>
+        <ccts:ObjectClassTermName>ABIE</ccts:ObjectClassTermName>
+        <ccts:DictionaryEntryName>YetAnother_ABIE. Details</ccts:DictionaryEntryName>
+        <ccts:Definition></ccts:Definition>
+        <ccts:BusinessTermName></ccts:BusinessTermName>
+        <ccts:AcronymCode>ABIE</ccts:AcronymCode>
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="Another_Additional_ABIEType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        <ccts:UniqueID></ccts:UniqueID>
+        <ccts:VersionID></ccts:VersionID>
+        <ccts:ObjectClassQualifierName>Another_Additional</ccts:ObjectClassQualifierName>
+        <ccts:ObjectClassTermName>ABIE</ccts:ObjectClassTermName>
+        <ccts:DictionaryEntryName>Another_Additional_ABIE. Details</ccts:DictionaryEntryName>
+        <ccts:Definition></ccts:Definition>
+        <ccts:BusinessTermName></ccts:BusinessTermName>
+        <ccts:AcronymCode>ABIE</ccts:AcronymCode>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence />
+  </xsd:complexType>
+  <xsd:element name="ASBIE2Another_Additional_ABIE" type="eb:Another_Additional_ABIEType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        <ccts:UniqueID></ccts:UniqueID>
+        <ccts:VersionID></ccts:VersionID>
+        <ccts:Cardinality>1..1</ccts:Cardinality>
+        <ccts:SequencingKey></ccts:SequencingKey>
+        <ccts:DictionaryEntryName></ccts:DictionaryEntryName>
+        <ccts:Definition></ccts:Definition>
+        <ccts:BusinessTermName></ccts:BusinessTermName>
+        <ccts:AssociationType>Shared</ccts:AssociationType>
+        <ccts:PropertyTermName>ASBIE2</ccts:PropertyTermName>
+        <ccts:PropertyQualifierName></ccts:PropertyQualifierName>
+        <ccts:AssociatedObjectClassTermName>Another_Additional_ABIE</ccts:AssociatedObjectClassTermName>
+        <ccts:AcronymCode>ASBIE</ccts:AcronymCode>
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="SomeAdditional_ABIEType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        <ccts:UniqueID></ccts:UniqueID>
+        <ccts:VersionID></ccts:VersionID>
+        <ccts:ObjectClassQualifierName>SomeAdditional</ccts:ObjectClassQualifierName>
+        <ccts:ObjectClassTermName>ABIE</ccts:ObjectClassTermName>
+        <ccts:DictionaryEntryName>SomeAdditional_ABIE. Details</ccts:DictionaryEntryName>
+        <ccts:Definition></ccts:Definition>
+        <ccts:BusinessTermName></ccts:BusinessTermName>
+        <ccts:AcronymCode>ABIE</ccts:AcronymCode>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element ref="eb:ASBIE2Another_Additional_ABIE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="YetAnother_ABIEType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        <ccts:UniqueID></ccts:UniqueID>
+        <ccts:VersionID></ccts:VersionID>
+        <ccts:ObjectClassQualifierName>YetAnother</ccts:ObjectClassQualifierName>
+        <ccts:ObjectClassTermName>ABIE</ccts:ObjectClassTermName>
+        <ccts:DictionaryEntryName>YetAnother_ABIE. Details</ccts:DictionaryEntryName>
+        <ccts:Definition></ccts:Definition>
+        <ccts:BusinessTermName></ccts:BusinessTermName>
+        <ccts:AcronymCode>ABIE</ccts:AcronymCode>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Test" type="bdt:TextStringType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">
+            <ccts:UniqueID></ccts:UniqueID>
+            <ccts:VersionID></ccts:VersionID>
+            <ccts:Cardinality>1..1</ccts:Cardinality>
+            <ccts:SequencingKey></ccts:SequencingKey>
+            <ccts:DictionaryEntryName></ccts:DictionaryEntryName>
+            <ccts:Definition></ccts:Definition>
+            <ccts:BusinessTermName></ccts:BusinessTermName>
+            <ccts:PropertyTermName>Test</ccts:PropertyTermName>
+            <ccts:RepresentationTermName>Text</ccts:RepresentationTermName>
+            <ccts:AcronymCode>BBIE</ccts:AcronymCode>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

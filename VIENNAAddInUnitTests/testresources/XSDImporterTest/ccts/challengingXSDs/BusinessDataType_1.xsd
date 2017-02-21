@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:eb="http://foo.bar/doc" xmlns:ccts="urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3" targetNamespace="http://foo.bar/doc" version="1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="AmountDecimalType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        <ccts:DictionaryEntryName>Amount. Type</ccts:DictionaryEntryName>
+        <ccts:Definition>A measure is a numeric value determined by measuring an object along with the unit of measure specified or implied.</ccts:Definition>
+        <ccts:BusinessTermName>Amount</ccts:BusinessTermName>
+        <ccts:PropertyTermName>Amount</ccts:PropertyTermName>
+        <ccts:AcronymCode>BDT</ccts:AcronymCode>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="CurrencyString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>Currency</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Amount</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Amount. Currency. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="CurrencyCodeListVersionString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>CurrencyCodeListVersion</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Amount</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Amount. CurrencyCodeListVersion. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="CodeStringType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        <ccts:DictionaryEntryName>Code.Type</ccts:DictionaryEntryName>
+        <ccts:Definition>A code is a character string (letters, figures or symbols) that for brevity and/or language independence may be used to represent or replace a definitive value or text of an attribute together with relevant supplementary information.</ccts:Definition>
+        <ccts:BusinessTermName>Code</ccts:BusinessTermName>
+        <ccts:PropertyTermName>Code</ccts:PropertyTermName>
+        <ccts:AcronymCode>BDT</ccts:AcronymCode>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="NameString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>Name</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Code</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Code. Name. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="LanguageString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>Language</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Code</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Code. Language. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="CodeListString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>CodeList</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Code</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Code. CodeList. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="CodeListAgencyString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>CodeList.Agency</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Code</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Code. CodeList.Agency. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="CodeListAgencyNameString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>CodeList.AgencyName</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Code</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Code. CodeList.AgencyName. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="CodeListNameString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>CodeList.Name</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Code</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Code. CodeList.Name. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="CodeListUniformResourceIdentifierString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>CodeList.UniformResourceIdentifier</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Code</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Code. CodeList.UniformResourceIdentifier. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="CodeListVersionString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>CodeList.Version</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Code</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Code. CodeList.Version. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="CodeListSchemeUniformResourceIdentifierString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>CodeListScheme.UniformResourceIdentifier</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Code</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Code. CodeListScheme.UniformResourceIdentifier. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="DateTimeStringType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        <ccts:DictionaryEntryName>DateTime.Type</ccts:DictionaryEntryName>
+        <ccts:Definition>A particular point in the progression of time together with relevant supplementary information.</ccts:Definition>
+        <ccts:BusinessTermName>Date Time</ccts:BusinessTermName>
+        <ccts:PropertyTermName>DateTime</ccts:PropertyTermName>
+        <ccts:AcronymCode>BDT</ccts:AcronymCode>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="FormatString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>Format</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>DateTime</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>DateTime. Format. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="IdentifierStringType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        <ccts:DictionaryEntryName>Identifier.Type</ccts:DictionaryEntryName>
+        <ccts:Definition>An identifier is a character string to identify and distinguish uniquely, one instance of an object in an identification scheme from all other objects in the same scheme together with relevant supplementary information.</ccts:Definition>
+        <ccts:BusinessTermName>Identifier</ccts:BusinessTermName>
+        <ccts:PropertyTermName>Identifier</ccts:PropertyTermName>
+        <ccts:AcronymCode>BDT</ccts:AcronymCode>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="IdentificationSchemeString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>IdentificationScheme</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Identifier</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Identifier. IdentificationScheme. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="IdentificationSchemeAgencyNameString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>IdentificationSchemeAgency.Name</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Identifier</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Identifier. IdentificationSchemeAgency.Name. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="IdentificationSchemeNameString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>IdentificationScheme.Name</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Identifier</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Identifier. IdentificationScheme.Name. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="IdentificationSchemeUniformResourceIdentifierString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>IdentificationScheme.UniformResourceIdentifier</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Identifier</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Identifier. IdentificationScheme.UniformResourceIdentifier. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="IdentificationSchemeVersionString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>IdentificationScheme.Version</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Identifier</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Identifier. IdentificationScheme.Version. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="IdentificationSchemeAgencyString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>IdentificationSchemeAgency</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Identifier</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Identifier. IdentificationSchemeAgency. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="IdentificationSchemeDataUniformResourceIdentifierString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>IdentificationSchemeData.UniformResourceIdentifier</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Identifier</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Identifier. IdentificationSchemeData.UniformResourceIdentifier. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="MeasureDecimalType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        <ccts:DictionaryEntryName>Measure.Type</ccts:DictionaryEntryName>
+        <ccts:Definition>A measure is a numeric value determined by measuring an object along with the unit of measure specified or implied.</ccts:Definition>
+        <ccts:BusinessTermName>Measure</ccts:BusinessTermName>
+        <ccts:PropertyTermName>Measure</ccts:PropertyTermName>
+        <ccts:AcronymCode>BDT</ccts:AcronymCode>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="MeasureUnitString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>MeasureUnit</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Measure</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Measure. MeasureUnit. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="MeasureUnitCodeListVersionString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>MeasureUnit.CodeListVersion</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Measure</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Measure. MeasureUnit.CodeListVersion. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="NumericDecimalType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        <ccts:DictionaryEntryName>DateTime.Type</ccts:DictionaryEntryName>
+        <ccts:Definition>A particular point in the progression of time together with relevant supplementary information.</ccts:Definition>
+        <ccts:BusinessTermName>Date Time</ccts:BusinessTermName>
+        <ccts:PropertyTermName>Numeric</ccts:PropertyTermName>
+        <ccts:AcronymCode>BDT</ccts:AcronymCode>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="FormatString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>Format</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Numeric</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Numeric. Format. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="PercentDecimalType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        <ccts:DictionaryEntryName>DateTime.Type</ccts:DictionaryEntryName>
+        <ccts:Definition>A particular point in the progression of time together with relevant supplementary information.</ccts:Definition>
+        <ccts:BusinessTermName>Date Time</ccts:BusinessTermName>
+        <ccts:PropertyTermName>Percent</ccts:PropertyTermName>
+        <ccts:AcronymCode>BDT</ccts:AcronymCode>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="FormatString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>Format</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Percent</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Percent. Format. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="RateDecimalType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        <ccts:DictionaryEntryName>DateTime.Type</ccts:DictionaryEntryName>
+        <ccts:Definition>A particular point in the progression of time together with relevant supplementary information.</ccts:Definition>
+        <ccts:BusinessTermName>Date Time</ccts:BusinessTermName>
+        <ccts:PropertyTermName>Rate</ccts:PropertyTermName>
+        <ccts:AcronymCode>BDT</ccts:AcronymCode>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="FormatString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>Format</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Rate</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Rate. Format. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="TextStringType">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        <ccts:DictionaryEntryName>Text.Type</ccts:DictionaryEntryName>
+        <ccts:Definition>A character string (i.e. a finite set of characters) generally in the form of words of a language.</ccts:Definition>
+        <ccts:BusinessTermName>Text</ccts:BusinessTermName>
+        <ccts:PropertyTermName>Text</ccts:PropertyTermName>
+        <ccts:LanguageCode>en-GB</ccts:LanguageCode>
+        <ccts:AcronymCode>BDT</ccts:AcronymCode>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="LanguageString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>Language</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Text</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Text. Language. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="LanguageLocaleString" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+              <ccts:PropertyTermName>Language.Locale</ccts:PropertyTermName>
+              <ccts:RepresentationTermName>String</ccts:RepresentationTermName>
+              <ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+              <ccts:DataTypeName>Text</ccts:DataTypeName>
+              <ccts:DictionaryEntryName>Text. Language.Locale. String</ccts:DictionaryEntryName>
+              <ccts:ModificationAllowedIndicator>true</ccts:ModificationAllowedIndicator>
+              <ccts:AcronymCode>SUP</ccts:AcronymCode>
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

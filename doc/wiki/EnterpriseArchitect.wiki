@@ -1,0 +1,12 @@
+#summary What is Enterprise Architect
+
+Enterprise Architect is a UML modeling tool developed by [http://www.sparxsystems.com Sparx Systems]. The VIENNA Add-In extends Enterprise Architect to support inter-orgainzational business process modeling and business document modeling.
+
+The used technologies are UN/CEFACT's Modeling Methodology (UMM) and UN/CEFACT's Core Components Technical Specification (CCTS). 
+
+
+*Source/Target vs. Supplier/Client
+
+For beginners the concept of source and target of a connector may be confusing in Enterprise Architect. Enterprise Architect uses the terms supplier and client in order to define the source and the target of a connector. The following figure shows how EA denotes the two ends of a connector. Please note, that an aggregation/composition is always drawn from the aggregated element (on the right hand side) to the aggregating element (on the left hand side)!
+
+<img src="http://umm-dev.org/wp-content/uploads/2009/04/source_vs_client.png"/>

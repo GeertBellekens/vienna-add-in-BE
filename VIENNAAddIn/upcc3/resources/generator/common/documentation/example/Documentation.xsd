@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by Gunther (Gunther) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:group name="ABIE_Documentation">
+		<xsd:sequence>
+			<xsd:element name="A"/>
+			<xsd:element name="B"/>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:group name="BBIE_Documentation"/>
+	<xsd:group name="ASBIE_Documentation"/>
+	<xsd:group name="BDT_Documentation"/>
+	<xsd:group name="BDT_SC_Documentation"/>
+	<xsd:group name="CodeList_Documentation"/>
+	<xsd:group name="CodeValue_Documentation"/>
+	<xsd:group name="IdentifierScheme_Documentation"/>
+</xsd:schema>

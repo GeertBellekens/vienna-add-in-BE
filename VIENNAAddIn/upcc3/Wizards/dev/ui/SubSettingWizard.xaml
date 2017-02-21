@@ -1,0 +1,134 @@
+﻿<Window    
+    x:Class="VIENNAAddIn.upcc3.Wizards.dev.ui.SubSettingWizard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:VIENNAAddInWpfUserControls="clr-namespace:VIENNAAddInWpfUserControls;assembly=VIENNAAddInWpfUserControls"
+    Height="484" Width="589" WindowStyle="SingleBorderWindow" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ShowInTaskbar="True" ResizeMode="CanResize" Title="Sub-Setting Wizard" FontSize="11">
+    <Window.Resources>
+        <Storyboard x:Key="sbdRotation">
+            <DoubleAnimation
+            Storyboard.TargetName="popupGeneratingImage"
+            Storyboard.TargetProperty="(Image.RenderTransform).(RotateTransform.Angle)"
+            From="0" To="360" Duration="0:0:3"
+            RepeatBehavior="Forever"/>
+        </Storyboard>
+    </Window.Resources>
+    
+    <Canvas Name="canvas">
+        <DockPanel Margin="2,5,5,5" Canvas.Bottom="0" Canvas.Left="0" Canvas.Right="0" Canvas.Top="0" Width="{Binding ElementName=canvas, Path=ActualWidth}" Height="{Binding ElementName=canvas, Path=ActualHeight}">
+            <StackPanel DockPanel.Dock="Top">
+            <DockPanel HorizontalAlignment="Stretch" Margin="1,1,1,1">
+                <Label DockPanel.Dock="Left" HorizontalAlignment="Left" Height="23" Width="220" Name="labelDocLibrariess">Choose DOC Library:</Label>
+                <ComboBox ItemsSource="{Binding Path=Model.CandidateDocLibraryNames}" HorizontalAlignment="Stretch" Height="23" Name="comboboxDocLibraries" SelectionChanged="comboboxDocLibraries_SelectionChanged"></ComboBox>
+            </DockPanel>
+            <DockPanel HorizontalAlignment="Stretch" Margin="1,1,1,1">
+                <Label DockPanel.Dock="Left" HorizontalAlignment="Left" Height="23" Width="220" Name="labelRootElement">Root Element:</Label>
+                <TextBlock Text="{Binding Path=Model.RootElement}"/>
+                <!--<ComboBox ItemsSource="{Binding Path=Model.CandidateRootElementNames}" HorizontalAlignment="Stretch" Height="23" Name="comboboxRootElement" SelectionChanged="comboboxRootElement_SelectionChanged"></ComboBox>-->
+            </DockPanel>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom">
+                    <CheckBox Name="schematronCheckBox">Generate Schematron Rules?</CheckBox>
+                <StackPanel Orientation="Horizontal">
+                    <Label>Namespace Prefix:</Label>
+                    <TextBox Name="namespacePrefix" IsEnabled="{Binding ElementName=schematronCheckBox, Path=IsChecked}" Width="220" Margin="75,1,1,1"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label>Target Namespace:</Label>
+                    <TextBox Name="targetNamespace" IsEnabled="{Binding ElementName=schematronCheckBox, Path=IsChecked}" Width="220" Margin="70,1,1,1"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label>Output directory:</Label>
+                    <VIENNAAddInWpfUserControls:DirectorySelector KeyboardNavigation.TabIndex="3" Name="textboxOutputDirectory" Width="220" Margin="82,1,1,1" IsEnabled="{Binding ElementName=schematronCheckBox, Path=IsChecked}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="1,1,1,5">
+                <Button HorizontalAlignment="Center" Width="100" Name="buttonCreateSubSet" Margin="5,5,5,5" Click="buttonCreateSubSet_Click">C_reate Sub-Set</Button>
+                <Button HorizontalAlignment="Center" Width="100" Name="buttonClose" Margin="5,5,5,5" Click="buttonClose_Click" IsCancel="True">_Close</Button>
+            </StackPanel>
+            </StackPanel>
+            <DockPanel>
+                <UniformGrid Rows="1" Columns="3">
+                    <GroupBox Header="ABIEs" Margin="0,0,0,0">
+                        <DockPanel>
+                            <TreeView ItemsSource="{Binding Path=Model.CandidateAbieItems}" Name="treeviewAbies" SelectedItemChanged="treeviewAbies_ItemSelectionChanged" TreeViewItem.Expanded="treeviewAbies_Expanded" TreeViewItem.Collapsed="treeviewAbies_Expanded">
+                                <TreeView.ItemContainerStyle>
+                                    <Style TargetType="{x:Type TreeViewItem}">
+                                        <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded}" />
+                                    </Style>
+                                </TreeView.ItemContainerStyle>
+
+                                <TreeView.ItemTemplate>
+                                    <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <CheckBox IsChecked="{Binding Path=Checked}" Visibility="{Binding Path=visibility}" Checked="treeviewAbies_ItemCheckBoxChecked" Unchecked="treeviewAbies_ItemCheckBoxChecked"/>
+                                            <TextBlock Text="{Binding Path=Text}"/>
+                                            <TextBlock Text="{Binding Path=BindId}" Visibility="Collapsed"/>
+                                        </StackPanel>
+                                    </HierarchicalDataTemplate>
+                                </TreeView.ItemTemplate>
+                            </TreeView>
+
+                        </DockPanel>
+                    </GroupBox>
+                    <GroupBox Header="BBIEs" Margin="-2,0,0,0">
+                        <DockPanel>
+
+                            <ListBox Name="listboxBbies" ItemsSource="{Binding Path=Model.PotentialBbieItems}" Margin="0,0,0,0" SelectionChanged="listboxBbies_ItemSelectionChanged" Padding="0,1,0,0">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <CheckBox IsChecked="{Binding Path=Checked}" Checked="listboxBbies_ItemCheckBoxChecked" Unchecked="listboxBbies_ItemCheckBoxChecked" />
+                                            <TextBox  Text="{Binding Path=Text}" IsReadOnly="True" Focusable="False" Cursor="Arrow" IsEnabled="True" BorderThickness="0" Background="Transparent" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                                <ListBox.Resources>
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="LightBlue"/>
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="LightBlue"/>
+                                </ListBox.Resources>
+                            </ListBox>
+                        </DockPanel>
+                    </GroupBox>
+                    <GroupBox Header="ASBIEs" Margin="-2,0,0,0">
+                        <DockPanel>
+                            <ListBox ItemsSource="{Binding Path=Model.PotentialAsbieItems}" Name="listboxAsbies" Margin="0,0,0,0" SelectionChanged="listboxAsbies_ItemSelectionChanged" Padding="0,1,0,0">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="./../../../../Resources/arrow_incoming.png" Visibility="{Binding Path=Inbound}" ToolTip="This is an incoming ASBIE"/>
+                                            <Image Source="./../../../../Resources/arrow_outgoing.png" Visibility="{Binding Path=Outbound}" ToolTip="This is an outgoing ASBIE"/>
+                                            <CheckBox IsChecked="{Binding Path=Checked}" Checked="listboxAsbies_ItemCheckBoxChecked" Unchecked="listboxAsbies_ItemCheckBoxChecked" />
+                                            <TextBox Text="{Binding Path=Text}" BorderThickness="0" Background="Transparent" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                                <ListBox.Resources>
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="LightBlue"/>
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="LightBlue"/>
+                                </ListBox.Resources>
+                            </ListBox>
+                        </DockPanel>
+                    </GroupBox>
+                </UniformGrid>
+
+            </DockPanel>
+        </DockPanel>
+        <!-- Gray background shield -->
+        <Canvas Name="shield" Background="Black" Opacity="0.6" Width="{Binding ElementName=canvas,Path=ActualWidth}" Height="{Binding ElementName=canvas,Path=ActualHeight}" Visibility="Collapsed" />
+        <!-- Popup field for "generating" progress field -->
+        <Canvas Visibility="Collapsed" Name="popupGenerating" Canvas.Left="0" Canvas.Top="0" Width="{Binding ElementName=canvas, Path=ActualWidth}" Height="{Binding ElementName=canvas, Path=ActualHeight}">
+            <Grid Width="{Binding ElementName=canvas, Path=ActualWidth}" Height="{Binding ElementName=canvas, Path=ActualHeight}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Border CornerRadius="5,5,5,5" Background="LightGray" Height="70" Width="160">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Name="popupGeneratingImage" Margin="10,0,0,0" Width="45" Height="45" Source="./../../../../Resources/generate.png">
+                            <Image.RenderTransform>
+                                <RotateTransform Angle="0" CenterX="22.5" CenterY="22.5" />
+                            </Image.RenderTransform>
+                        </Image>
+                        <Label Margin="10,22,0,0">Loading...</Label>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Canvas>
+    </Canvas>
+</Window>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.ebinterface.at/schema/3p0/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ebinterface.at/schema/3p0/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:element name="Address" type="AddressType"/>
+
+	<xs:complexType name="AddressType">
+		<xs:attribute name="Town" type="xs:string" use="required"/>
+	</xs:complexType>
+
+</xs:schema>

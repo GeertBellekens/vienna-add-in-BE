@@ -1,0 +1,1 @@
+<wiki:gadget url="http://hosting.gmodules.com/ig/gadgets/file/113501407083818715381/jsLoader.xml" up_me="0" up_u1="http://vienna-add-in.googlecode.com/svn/wiki/videos/MovieLoader.js" up_s1="createFlashMarkup('800','625','http://vienna-add-in.googlecode.com/svn/wiki/videos/dropinacctocreateabie.swf');" width="800" height="625"/>

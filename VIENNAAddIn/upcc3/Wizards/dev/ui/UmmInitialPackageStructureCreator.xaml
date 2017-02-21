@@ -1,0 +1,40 @@
+﻿<Window x:Class="VIENNAAddIn.upcc3.Wizards.dev.ui.UmmInitialPackageStructureCreator"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="390" Width="400" WindowStyle="SingleBorderWindow" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ShowInTaskbar="True" ResizeMode="NoResize" Title="Create inital UMM2 package structure" FontSize="11" FocusManager.FocusedElement="{Binding ElementName=modelName}">
+    <DockPanel Margin="2,5,5,5">
+        <TextBlock Margin="5,0,0,0" DockPanel.Dock="Top" Width="Auto" Height="80">This wizard helps you to create the initial structure of your UMM 2 model.
+            <LineBreak/>First chose a name for the model and then define which views your model
+            <LineBreak/>should contain.
+            <LineBreak/>
+            <LineBreak/>WARNING: This will erase the entire content of your current model!
+        </TextBlock>
+        <DockPanel DockPanel.Dock="Bottom">
+            <GroupBox DockPanel.Dock="Top" Header="Name of the model" Height="60" Name="modelNameGroupBox" Width="Auto">
+                <StackPanel>
+                <TextBox Margin="10,0,10,0" Name="modelName" Height="23" Width="Auto" TabIndex="0" />
+                    <CheckBox Height="16" Name="checkBox1" Width="Auto" Margin="10,5,10,5" Checked="checkBox1_Checked" TabIndex="1">Use model name for all views</CheckBox>
+                </StackPanel>
+            </GroupBox>
+            <StackPanel DockPanel.Dock="Top">
+                <GroupBox Header="Views of the model" Height="170" Name="modelViews" Width="Auto">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                        <Label Height="28" Name="label1" Width="Auto">Business Requirements View (optional)</Label>
+                            <CheckBox VerticalAlignment="Center" Name="BusinessRequirementsViewCheckbox" Margin="5,0,0,0" TabIndex="2" IsChecked="True"></CheckBox>
+                        </StackPanel>
+                        <TextBox Height="23" Margin="10,0,10,0" Name="businessRequirementsView" TabIndex="3" IsEnabled="{Binding ElementName=BusinessRequirementsViewCheckbox, Path=IsChecked}"></TextBox>
+                        <Label>Business Choreography View</Label>
+                        <TextBox Height="23" Margin="10,0,10,0" Name="businessChoreographyView" TabIndex="4"></TextBox>
+                        <Label Height="28" Name="label2" Width="Auto">Business Information View</Label>
+                        <TextBox Height="23" Margin="10,0,10,0" Name="businessInformationView" Width="Auto" TabIndex="5" />
+                    </StackPanel>
+                </GroupBox>
+                <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" Height="30">
+                <Button Width="100" Margin="5,5,5,5" Click="Button_Create" TabIndex="6" Name="Create">Create</Button>
+                <Button Width="100" Margin="5,5,5,5" Click="Button_Close" TabIndex="7" Name="Close">Close</Button>
+                </StackPanel>
+            </StackPanel>
+        </DockPanel>
+    </DockPanel>
+</Window>

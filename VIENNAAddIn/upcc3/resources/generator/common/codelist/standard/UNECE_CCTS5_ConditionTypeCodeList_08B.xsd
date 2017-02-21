@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by Gunther (Gunther) -->
+<!-- ====================================================================== -->
+<!-- =====  6ccts5 - Codelist Schema Module                            ===== -->
+<!-- ====================================================================== -->
+<!--
+   Schema agency:		UN/CEFACT	
+   Schema version:		2.0
+   Schema date: 	      11 July 2008
+   
+   Code List Name:      CCTS5 Condition Type Code List
+   Code list agency:    UN/CEFACT
+   Code list version:   08B
+  	  	
+  	Copyright (C) UN/CEFACT (2008). All Rights Reserved.
+
+	This document and translations of it may be copied and furnished to others, 
+	and derivative works that comment on or otherwise explain it or assist 
+	in its implementation may be prepared, copied, published and distributed, 
+	in whole or in part, without restriction of any kind, provided that the 
+	above copyright notice and this paragraph are included on all such copies 
+	and derivative works. However, this document itself may not be modified in 
+	any way, such as by removing the copyright notice or references to 
+	UN/CEFACT, except as needed for the purpose of developing UN/CEFACT 
+	specifications, in which case the procedures for copyrights defined in the 
+	UN/CEFACT Intellectual Property Rights document must be followed, or as 
+	required to translate it into languages other than English.
+
+	The limited permissions granted above are perpetual and will not be revoked 
+	by UN/CEFACT or its successors or assigns.
+
+	This document and the information contained herein is provided on an "AS IS"
+	basis and UN/CEFACT DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING 
+	BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL 
+	NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR 
+	FITNESS FOR A PARTICULAR PURPOSE.
+-->
+<xsd:schema xmlns:clm6ccts5="urn:un:unece:uncefact:codelist:standard:6:CCTS5:08B" xmlns:ccts="urn:un:unece:uncefact:documentation:standard:CoreComponentsTechnicalSpecification:2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:un:unece:uncefact:codelist:standard:6:CCTS5:08B" elementFormDefault="qualified" attributeFormDefault="unqualified" version="3.0">
+	<!-- ================================================================== -->
+	<!-- =====  Element Declarations                                  ===== -->
+	<!-- ================================================================== -->
+	<!-- =====  Root element                                          ===== -->
+	<!-- ================================================================== -->
+	<xsd:element name="ConditionTypeCode" type="clm6ccts5:ConditionTypeCodeContentType"/>
+	<!-- ================================================================== -->
+	<!-- =====  Type Definitions                                      ===== -->
+	<!-- ================================================================== -->
+	<!-- =====  Type Definition:  Entity Unique Identification Scheme Content Type ===== -->
+	<!-- ================================================================== -->
+	<xsd:simpleType name="ConditionTypeCodeContentType">
+		<xsd:restriction base="xsd:token"/>
+	</xsd:simpleType>
+</xsd:schema>

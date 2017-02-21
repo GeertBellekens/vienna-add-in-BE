@@ -1,0 +1,72 @@
+#summary Release Notes.
+
+= VIENNAAddIn_0.1.2 =
+
+ * XSLT Generator for instance transformation added 
+ * Bug fixes
+
+
+= VIENNAAddIn_0.1.1 =
+
+ * Subsetting Wizard added
+ * Bug fixes
+
+
+= VIENNAAddIn_0.1.0 =
+
+ * WSDL Generator
+ * Bug fixes (C100 constraint fix!)
+
+
+= VIENNAAddIn_0.0.9 =
+
+ * Transformer Wizard
+ * XSD Importer improvements
+ * Bug fixes
+
+
+= VIENNAAddIn_0.0.8 =
+
+ * XSD Schema Analyzer
+ * XSD Importer
+ * Bug fixes
+
+
+= VIENNAAddIn_0.0.7 =
+
+ * Major improvements of the underlying EA Layer implementations
+ * New simplified Core Component Library included for demonstration purposes
+ * Improved ABIE Wizard performance
+ * Bug fixes
+
+
+= VIENNAAddIn_0.0.6 =
+
+ * Updated wizards for creation of ABIEs and BDTs
+ * Importer for Core Component Library CCL 09A and CCL 08B
+ * Major bugfixes
+
+
+= VIENNAAddIn_0.0.5 (build 659) =
+
+ * First implementation of on-the-fly validation of CCTS models (only parts of the CCTS model are currently validated). <br>The VIENNA Add-In constantly validates your modeling progress and reports any deviations from the UML Profile for Core Components Specification in a message window.
+ * Support for Core Component Library 08B and Core Component Library 09A
+ * Bug fixes
+
+
+= VIENNAAddIn_0.0.4 =
+
+ * CCTS Model validation
+ * ABIE creation wizard
+ * Initial package structure creator
+ * Enhanced XML Schema generator based on the UN/CEFACT Naming and Design Rules (NDR) 3.0
+ * Tagged value synchronization
+
+
+= VIENNAAddIn_0.0.1-beta =
+
+The first version of the VIENNA AddIn contains the merged feature from the coding efforts in Austria and Australia. Among the merged features are:
+
+ * UMM2 validation
+ * UMM2 model creation wizard
+ * Schema generation from CCTS models

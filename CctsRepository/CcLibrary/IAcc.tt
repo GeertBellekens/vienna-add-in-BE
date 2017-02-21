@@ -1,0 +1,8 @@
+<#@ template language="C#v3.5" hostspecific="True" debug="True" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="$(SolutionDir)/UpccModel/bin/Debug/Upcc.dll" #>
+<#@ import namespace="Upcc"#>
+<#
+	var metaClassifier = (MetaClassifier) MetaModel.Acc;
+#>
+<#@ include file="../t4/ClassifierInterface.tt" #>

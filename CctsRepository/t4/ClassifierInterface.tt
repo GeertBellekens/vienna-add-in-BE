@@ -1,0 +1,178 @@
+<#@ assembly name="System.Core.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ include file="../t4/helpers.tt" #>
+<#@ include file="../t4/Copyright.tt" #>
+using System.Collections.Generic;
+<#@ include file="../t4/CctsRepositoryNamespaces.tt" #>
+
+<# 
+	var library = MetaModel.GetPackageRelationsFor(metaClassifier).First().PackageType;
+#>
+namespace CctsRepository.<#= library.Name #>
+{
+    public interface I<#= metaClassifier.Name #>
+    {
+		int Id { get; }
+		
+		string Name { get; }
+		
+        I<#= library.Name #> <#= library.Name #> { get; }
+<# 
+
+///==========================================================================================================================
+/// Dependencies
+///==========================================================================================================================
+
+		foreach (var dependency in MetaModel.GetDependenciesFor(metaClassifier))
+		{
+#>
+
+		I<#= dependency.TargetClassifierType.Name #> <#= FirstCharToUpperCase(dependency.Stereotype.ToString()) #> { get; }
+<#
+		}
+
+///==========================================================================================================================
+/// Attributes
+///==========================================================================================================================
+
+		foreach (var attribute in MetaModel.GetAttributesFor(metaClassifier))
+		{
+#>
+
+		<#= AttributePropertyType(attribute) #> <#= attribute.AttributeName #> { get; }
+<#
+			if (attribute.Cardinality == MetaCardinality.Many)
+			{
+				var attributeParamName = FirstCharToLowerCase(attribute.ClassName);
+#>
+
+		/// <summary>
+		/// Creates a(n) <#= attribute.Stereotype #> based on the given <paramref name="specification"/>.
+		/// <param name="specification">A specification for a(n) <#= attribute.Stereotype #>.</param>
+		/// <returns>The newly created <#= attribute.Stereotype #>.</returns>
+		/// </summary>
+		I<#= attribute.ClassName #> Create<#= attribute.ClassName #>(<#= attribute.ClassName #>Spec specification);
+
+		/// <summary>
+		/// Updates a(n) <#= attribute.Stereotype #> to match the given <paramref name="specification"/>.
+		/// <param name="<#= attributeParamName #>">A(n) <#= attribute.Stereotype #>.</param>
+		/// <param name="specification">A new specification for the given <#= attribute.Stereotype #>.</param>
+		/// <returns>The updated <#= attribute.Stereotype #>. Depending on the implementation, this might be the same updated instance or a new instance!</returns>
+		/// </summary>
+        I<#= attribute.ClassName #> Update<#= attribute.ClassName #>(I<#= attribute.ClassName #> <#= attributeParamName #>, <#= attribute.ClassName #>Spec specification);
+
+		/// <summary>
+		/// Removes a(n) <#= attribute.Stereotype #> from this <#= metaClassifier.Stereotype #>.
+		/// <param name="<#= attributeParamName #>">A(n) <#= attribute.Stereotype #>.</param>
+		/// </summary>
+        void Remove<#= attribute.ClassName #>(I<#= attribute.ClassName #> <#= attributeParamName #>);
+<#
+			}
+		}
+
+///==========================================================================================================================
+/// Associations
+///==========================================================================================================================
+
+		foreach (var association in MetaModel.GetAssociationsForAssociatingClassifier(metaClassifier))
+		{
+#>
+
+		<#= AssociationPropertyType(association) #> <#= association.Name #> { get; }
+<#
+			if (association.Cardinality == MetaCardinality.Many)
+			{
+				var associationParamName = FirstCharToLowerCase(association.ClassName);
+#>
+
+		/// <summary>
+		/// Creates a(n) <#= association.Stereotype #> based on the given <paramref name="specification"/>.
+		/// <param name="specification">A specification for a(n) <#= association.Stereotype #>.</param>
+		/// <returns>The newly created <#= association.Stereotype #>.</returns>
+		/// </summary>
+		I<#= association.ClassName #> Create<#= association.ClassName #>(<#= association.ClassName #>Spec specification);
+
+		/// <summary>
+		/// Updates a(n) <#= association.Stereotype #> to match the given <paramref name="specification"/>.
+		/// <param name="<#= associationParamName #>">A(n) <#= association.Stereotype #>.</param>
+		/// <param name="specification">A new specification for the given <#= association.Stereotype #>.</param>
+		/// <returns>The updated <#= association.Stereotype #>. Depending on the implementation, this might be the same updated instance or a new instance!</returns>
+		/// </summary>
+        I<#= association.ClassName #> Update<#= association.ClassName #>(I<#= association.ClassName #> <#= associationParamName #>, <#= association.ClassName #>Spec specification);
+
+		/// <summary>
+		/// Removes a(n) <#= association.Stereotype #> from this <#= metaClassifier.Stereotype #>.
+		/// <param name="<#= associationParamName #>">A(n) <#= association.Stereotype #>.</param>
+		/// </summary>
+        void Remove<#= association.ClassName #>(I<#= association.ClassName #> <#= associationParamName #>);
+<#
+			}
+		}
+
+///==========================================================================================================================
+/// Enumeration Literals
+///==========================================================================================================================
+
+		foreach (var enumerationLiteral in MetaModel.GetEnumerationLiteralsFor(metaClassifier))
+		{
+#>
+
+		<#= EnumerationLiteralPropertyType(enumerationLiteral) #> <#= enumerationLiteral.Name #> { get; }
+<#
+			if (enumerationLiteral.Cardinality == MetaCardinality.Many)
+			{
+				var enumerationLiteralParamName = FirstCharToLowerCase(enumerationLiteral.ClassName);
+#>
+
+		/// <summary>
+		/// Creates a(n) <#= enumerationLiteral.Stereotype #> based on the given <paramref name="specification"/>.
+		/// <param name="specification">A specification for a(n) <#= enumerationLiteral.Stereotype #>.</param>
+		/// <returns>The newly created <#= enumerationLiteral.Stereotype #>.</returns>
+		/// </summary>
+		I<#= enumerationLiteral.ClassName #> Create<#= enumerationLiteral.ClassName #>(<#= enumerationLiteral.ClassName #>Spec specification);
+
+		/// <summary>
+		/// Updates a(n) <#= enumerationLiteral.Stereotype #> to match the given <paramref name="specification"/>.
+		/// <param name="<#= enumerationLiteralParamName #>">A(n) <#= enumerationLiteral.Stereotype #>.</param>
+		/// <param name="specification">A new specification for the given <#= enumerationLiteral.Stereotype #>.</param>
+		/// <returns>The updated <#= enumerationLiteral.Stereotype #>. Depending on the implementation, this might be the same updated instance or a new instance!</returns>
+		/// </summary>
+        I<#= enumerationLiteral.ClassName #> Update<#= enumerationLiteral.ClassName #>(I<#= enumerationLiteral.ClassName #> <#= enumerationLiteralParamName #>, <#= enumerationLiteral.ClassName #>Spec specification);
+
+		/// <summary>
+		/// Removes a(n) <#= enumerationLiteral.Stereotype #> from this <#= metaClassifier.Stereotype #>.
+		/// <param name="<#= enumerationLiteralParamName #>">A(n) <#= enumerationLiteral.Stereotype #>.</param>
+		/// </summary>
+        void Remove<#= enumerationLiteral.ClassName #>(I<#= enumerationLiteral.ClassName #> <#= enumerationLiteralParamName #>);
+<#
+			}
+		}
+
+///==========================================================================================================================
+/// Tagged Values
+///==========================================================================================================================
+
+		if (metaClassifier.HasTaggedValues)
+		{
+#>
+
+		#region Tagged Values
+<# 
+			foreach (var taggedValue in metaClassifier.TaggedValues)
+			{
+#>
+
+        ///<summary>
+        /// Tagged value '<#= taggedValue.Name #>'.
+        ///</summary>
+		<#= TaggedValuePropertyType(taggedValue) #> <#= TaggedValuePropertyName(taggedValue) #> { get; }
+<#
+			}
+#>
+
+		#endregion
+<#
+		}
+#>
+    }
+}

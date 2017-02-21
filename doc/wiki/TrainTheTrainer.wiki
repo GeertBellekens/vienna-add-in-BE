@@ -1,0 +1,11 @@
+The Train-the-Trainer education offers an in-depth introduction to the usage of the VIENNA Add-In and the principles of Core Components. The provided screencasts should enable trainers to successfully teach their trainees the concepts of UML modeling and the usage of the VIENNA Add-In.
+  # [InstallerVideo Installer]
+  # Setting up [UMMSetupVideo UMM] & [UPCCSetupVideo UPCC] environment in Enterprise Architect
+  # Create a default [http://umm-dev.org/wp-content/videos/getting_started_video_create_default_upcc_sample_model.htm UPCC sample model]
+  # Using the [http://umm-dev.org/wp-content/videos/tool-demo-2.htm toolbox] to create UPCC artifacts
+  # Create BDTs using the [http://umm-dev.org/wp-content/videos/getting_started_video_create_bdt_using_the_bdt_editor.htm BDT Editor]
+  # Create ABIEs using the [http://umm-dev.org/wp-content/videos/passport_part_2.htm ABIE Editor]
+  # Using the [http://umm-dev.org/wp-content/videos/passport_part_2.htm DOC Library] to assemble BIEs to a actual model
+  # Create a model subset using the [SubSettingWizardVideo Subsetting Wizard]
+  # Using Map Force mapping files with the [XmlSchemaImporterVideo XML Schema Importer]
+    # Create mappings using [MapForceMappingVideo Altova MapForce]

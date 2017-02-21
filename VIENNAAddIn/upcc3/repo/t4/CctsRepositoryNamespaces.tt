@@ -1,0 +1,20 @@
+// ReSharper disable RedundantUsingDirective
+using CctsRepository;
+<#
+	foreach (var package in MetaModel.GetAllPackages())
+	{
+#>
+using CctsRepository.<#= package.Name #>;
+<#
+	}
+#>
+using VIENNAAddIn.upcc3.repo;
+<#
+	foreach (var package in MetaModel.GetAllPackages())
+	{
+#>
+using VIENNAAddIn.upcc3.repo.<#= package.Name #>;
+<#
+	}
+#>
+// ReSharper restore RedundantUsingDirective

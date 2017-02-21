@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by Gunther (Gunther) -->
+<xsd:schema xmlns:ndrdoc="urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentationExample:1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:doc="urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3" targetNamespace="urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentationExample:1" elementFormDefault="unqualified" attributeFormDefault="unqualified">
+	<xsd:import namespace="urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3" schemaLocation="C:\Documents and Settings\D029024\My Documents\UN-CEFACT\ATG2\XMLNDR_V3p0\www.unece.org\uncefact\documentation\standard\XMLNDR_Documentation_3p0.xsd"/>
+	<xsd:element name="annotation">
+		<xsd:annotation>
+			<xsd:documentation>Comment describing your root element</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="abie_documentation">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">This is an example.
+</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:group ref="doc:ABIE_Documentation"/>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="bbie_documentation">
+					<xsd:complexType>
+						<xsd:group ref="doc:BBIE_Documentation"/>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="asbie_documentation">
+					<xsd:complexType>
+						<xsd:group ref="doc:ASBIE_Documentation"/>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="bdt_documentation">
+					<xsd:complexType>
+						<xsd:group ref="doc:BDT_Documentation"/>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="bdt_sc_documentation">
+					<xsd:complexType>
+						<xsd:group ref="doc:BDT_SC_Documentation"/>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="codelist_documentation">
+					<xsd:complexType>
+						<xsd:group ref="doc:CodeList_Documentation"/>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="codevalue_documentation">
+					<xsd:complexType>
+						<xsd:group ref="doc:CodeValue_Documentation"/>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

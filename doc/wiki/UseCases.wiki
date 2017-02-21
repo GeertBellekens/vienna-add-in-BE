@@ -1,0 +1,5 @@
+#summary Use cases.
+
+= Use Cases=
+
+  * [http://vienna-add-in.googlecode.com/files/xmlschema2ccts.pdf Mapping XML Schema to CCTS Whitepaper]

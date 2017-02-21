@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bie="http://christian/pichler" xmlns:bdt="http://christian/pichler" targetNamespace="http://christian/pichler" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="bdts.xsd"/>
+	<xs:complexType name="NameType">
+		<xs:sequence>
+			<xs:element name="FirstName" type="bdt:TextType"/>
+			<xs:element name="LastName" type="bdt:TextType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="A" type="bie:NameType"/>
+</xs:schema>

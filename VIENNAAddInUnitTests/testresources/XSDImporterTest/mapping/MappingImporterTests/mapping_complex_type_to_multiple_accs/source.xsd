@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.ebinterface.at/schema/3p0/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" targetNamespace="http://www.ebinterface.at/schema/3p0/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/xmldsig-core-schema.xsd"/>
+	<xs:annotation>
+		<xs:documentation>
+            schema version: 3.0
+            last update: 2008-11-05
+            documentation: http://www.ebinterface.at/download/documentation/ebInvoice_3p0.pdf (NOT YET)
+        </xs:documentation>
+	</xs:annotation>
+	<!-- === Root Element === -->
+	<xs:element name="Invoice" type="InvoiceType"/>
+	<!-- === Complex Types === -->
+	<xs:complexType name="AddressType">
+		<xs:sequence>
+			<xs:element name="Town" type="xs:string"/>
+			<xs:element name="PersonName" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InvoiceType">
+		<xs:sequence>
+			<xs:element name="Address" type="AddressType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

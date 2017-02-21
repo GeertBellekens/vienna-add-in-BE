@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ccts="urn:un:unece:uncefact:documentation:common:3:standard:CoreComponentsTechnicalSpecification:3" xmlns:bdt="http://test" targetNamespace="http://test" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:simpleType name="TextType_123456">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:simpleType name="QualifiedTextType_123457">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+				<ccts:UniqueID>BDT123457</ccts:UniqueID>
+				<ccts:VersionID>1.0</ccts:VersionID>
+				<ccts:DictionaryEntryName>Qualified_ Text. Type</ccts:DictionaryEntryName>
+				<ccts:Definition>A text string</ccts:Definition>
+				<ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+				<ccts:DataTypeTermName>Text</ccts:DataTypeTermName>
+				<ccts:DataTypeQualifierTermName>Qualified</ccts:DataTypeQualifierTermName>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="TextType_123456"/>
+	</xs:simpleType>
+	<xs:simpleType name="Qualifier1Qualifier2TextType_123458">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+				<ccts:UniqueID>BDT123458</ccts:UniqueID>
+				<ccts:VersionID>1.0</ccts:VersionID>
+				<ccts:DictionaryEntryName>Qualifier1_ Qualifier2_ Text. Type</ccts:DictionaryEntryName>
+				<ccts:Definition>A text string</ccts:Definition>
+				<ccts:PrimitiveTypeName>String</ccts:PrimitiveTypeName>
+				<ccts:DataTypeTermName>Text</ccts:DataTypeTermName>
+				<ccts:DataTypeQualifierTermName>Qualifier1</ccts:DataTypeQualifierTermName>
+				<ccts:DataTypeQualifierTermName>Qualifier2</ccts:DataTypeQualifierTermName>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="QualifiedTextType_123457"/>
+	</xs:simpleType>
+</xs:schema>

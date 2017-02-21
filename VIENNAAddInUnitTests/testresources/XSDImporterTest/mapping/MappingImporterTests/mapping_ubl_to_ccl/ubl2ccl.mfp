@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  MapForce Project File  -->
+<Project Expanded="Yes" Type="Root" language="xslt" OutputDir="output\" Title="ubl2ccl" OutputName="ubl2ccl" Version="6">
+	<Folder FolderName="Mapping Folder" Expanded="Yes" Type="MappingFolder">
+		<File Type="Mapping" FilePath="ubl2cll_10_1.mfd"/>
+		<File Type="Mapping" FilePath="ubl2cll_11_1.mfd"/>
+		<File Type="Mapping" FilePath="ubl2cll_12_1.mfd"/>
+		<File Type="Mapping" FilePath="ubl2cll_13_1.mfd"/>
+		<File Type="Mapping" FilePath="ubl2cll_1_1.mfd"/>
+		<File Type="Mapping" FilePath="ubl2cll_2_1.mfd"/>
+		<File Type="Mapping" FilePath="ubl2cll_3_1.mfd"/>
+		<File Type="Mapping" FilePath="ubl2cll_4_1.mfd"/>
+		<File Type="Mapping" FilePath="ubl2cll_5_1.mfd"/>
+		<File Type="Mapping" FilePath="ubl2cll_6_1.mfd"/>
+		<File Type="Mapping" FilePath="ubl2cll_7_1.mfd"/>
+		<File Type="Mapping" FilePath="ubl2cll_8_1.mfd"/>
+		<File Type="Mapping" FilePath="ubl2cll_9_1.mfd"/>
+	</Folder>
+</Project>

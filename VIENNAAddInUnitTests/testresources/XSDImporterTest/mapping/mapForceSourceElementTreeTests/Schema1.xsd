@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.ebinterface.at/schema/3p0/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" targetNamespace="http://www.ebinterface.at/schema/3p0/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Entry1" type="Entry1Type"/>
+	<xs:complexType name="Entry1Type">
+		<xs:sequence>
+			<xs:element name="Entry2" type="Entry2Type"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Entry2Type">
+		<xs:sequence>
+			<xs:element name="Entry3" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:eb="http://foo.bar/doc" xmlns:ccts="urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3" xmlns:bdt="http://foo.bar/doc" xmlns:bie="http://foo.bar/doc" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://foo.bar/doc" version="1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="documentation/standard/XMLNDR_Documentation_3p0.xsd" namespace="urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3" />
+  <xsd:include schemaLocation="BusinessDataType_1.xsd" />
+  <xsd:include schemaLocation="BusinessInformationEntity_1.xsd" />
+  <xsd:element name="Invoice" type="eb:InvoiceType" />
+  <xsd:element name="ASBIE1SomeAdditional_ABIE" type="eb:SomeAdditional_ABIEType" />
+  <xsd:element name="DeliveryDelivery" type="bie:DeliveryType" />
+  <xsd:complexType name="InvoiceType">
+    <xsd:sequence>
+      <xsd:element ref="eb:ASBIE1SomeAdditional_ABIE" />
+      <xsd:element ref="bie:DeliveryDelivery" />
+      <xsd:element name="ASBIE3FinancialAccount" type="bie:FinancialAccountType" />
+      <xsd:element name="ASBIE4YetAnother_ABIE" type="eb:YetAnother_ABIEType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="Another_Additional_ABIE" type="eb:Another_Additional_ABIEType" />
+  <xsd:element name="SomeAdditional_ABIE" type="eb:SomeAdditional_ABIEType" />
+  <xsd:element name="YetAnother_ABIE" type="eb:YetAnother_ABIEType" />
+  <xsd:complexType name="Another_Additional_ABIEType">
+    <xsd:sequence />
+  </xsd:complexType>
+  <xsd:element name="ASBIE2Another_Additional_ABIE" type="eb:Another_Additional_ABIEType" />
+  <xsd:complexType name="SomeAdditional_ABIEType">
+    <xsd:sequence>
+      <xsd:element ref="eb:ASBIE2Another_Additional_ABIE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="YetAnother_ABIEType">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="Test" type="bdt:TextStringType" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

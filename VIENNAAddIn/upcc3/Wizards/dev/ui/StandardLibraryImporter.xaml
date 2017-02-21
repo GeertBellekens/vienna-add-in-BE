@@ -1,0 +1,25 @@
+﻿<Window x:Class="VIENNAAddIn.upcc3.Wizards.dev.ui.StandardLibraryImporter"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="340" Width="344" WindowStyle="SingleBorderWindow" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ShowInTaskbar="True" ResizeMode="NoResize" Title="Standard Core Component Library Importer" FontSize="11">
+    <DockPanel Margin="2,5,5,5">
+        <GroupBox DockPanel.Dock="Top" Header="Core Component Library Version" Margin="1,5,0,0">
+            <DockPanel Margin="0,5,0,0">
+                <Label DockPanel.Dock="Left">Major</Label>
+                <ComboBox Name="cbxMinor" KeyboardNavigation.TabIndex="1" Width="50" DockPanel.Dock="Right" SelectionChanged="cbxMinor_SelectionChanged"></ComboBox>
+                <Label DockPanel.Dock="Right" Margin="10,0,0,0">Minor</Label>
+                <ComboBox Name="cbxMajor" KeyboardNavigation.TabIndex="0" DockPanel.Dock="Right" SelectionChanged="cbxMajor_SelectionChanged"></ComboBox>
+            </DockPanel>
+        </GroupBox>
+        <GroupBox DockPanel.Dock="Top" Header="Comment" Margin="1,3,0,0">
+            <TextBox IsReadOnly="True" Background="#FFFFE1" Name="txtComment" Height="58" Margin="2,2,2,2" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"></TextBox>
+        </GroupBox>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center">
+            <Button HorizontalAlignment="Center" Width="100" Height="23" Name="buttonImport" Margin="5,5,5,5" KeyboardNavigation.TabIndex="2" Click="buttonImport_Click">_Import</Button>
+            <Button HorizontalAlignment="Center" Width="100" Height="23" Name="buttonClose" Margin="5,5,5,5" IsCancel="True" KeyboardNavigation.TabIndex="3" Click="buttonClose_Click">_Close</Button>
+        </StackPanel>
+        <GroupBox DockPanel.Dock="Bottom" Header="Status" Margin="1,3,0,0">
+            <TextBox IsReadOnly="True" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Name="rtxtStatus" Margin="2,2,2,2" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"></TextBox>
+        </GroupBox>
+    </DockPanel>
+</Window>

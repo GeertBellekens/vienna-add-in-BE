@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:ccts="urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3" xmlns:cdt="ccts.org" xmlns:cc="ccts.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="ccts.org" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1">
+
+	<xsd:complexType name="TextStringType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="LanguageString" type="xsd:string"/>
+				<xsd:attribute name="LanguageLocaleString" type="xsd:string"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="AddressType">
+		<xsd:sequence>
+			<xsd:element name="BuildingName" type="cdt:TextStringType" minOccurs="0"/>
+			<xsd:element name="BuildingNumber" type="cdt:TextStringType" minOccurs="0"/>
+			<xsd:element name="CityName" type="cdt:TextStringType" minOccurs="0"/>
+			<xsd:element name="StreetName" type="cdt:TextStringType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="Address" type="cc:AddressType"/>
+	
+</xsd:schema>

@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="AmountDecimalType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="CurrencyString" type="xsd:string" />
+        <xsd:attribute name="CurrencyCodeListVersionString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="BinaryObjectStringType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="FormatString" type="xsd:string" />
+        <xsd:attribute name="FilenameString" type="xsd:string" />
+        <xsd:attribute name="MimeString" type="xsd:string" />
+        <xsd:attribute name="EncodingString" type="xsd:string" />
+        <xsd:attribute name="CharacterSetString" type="xsd:string" />
+        <xsd:attribute name="UniformResourceIdentifierString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="CodeStringType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="NameString" type="xsd:string" />
+        <xsd:attribute name="LanguageString" type="xsd:string" />
+        <xsd:attribute name="CodeListString" type="xsd:string" />
+        <xsd:attribute name="CodeListAgencyString" type="xsd:string" />
+        <xsd:attribute name="CodeListAgencyNameString" type="xsd:string" />
+        <xsd:attribute name="CodeListNameString" type="xsd:string" />
+        <xsd:attribute name="CodeListUniformResourceIdentifierString" type="xsd:string" />
+        <xsd:attribute name="CodeListVersionString" type="xsd:string" />
+        <xsd:attribute name="CodeListSchemeUniformResourceIdentifierString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="DateStringType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="FormatString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="DateTimeStringType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="FormatString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="GraphicStringType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="FormatString" type="xsd:string" />
+        <xsd:attribute name="FilenameString" type="xsd:string" />
+        <xsd:attribute name="MimeString" type="xsd:string" />
+        <xsd:attribute name="EncodingString" type="xsd:string" />
+        <xsd:attribute name="CharacterSetString" type="xsd:string" />
+        <xsd:attribute name="UniformresoruceIdentifierString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="IdentifierStringType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="IdentificationSchemeString" type="xsd:string" />
+        <xsd:attribute name="IdentificationSchemeAgencyNameString" type="xsd:string" />
+        <xsd:attribute name="IdentificationSchemeNameString" type="xsd:string" />
+        <xsd:attribute name="IdentificationSchemeUniformResourceIdentifierString" type="xsd:string" />
+        <xsd:attribute name="IdentificationSchemeVersionString" type="xsd:string" />
+        <xsd:attribute name="IdentificationSchemeAgencyString" type="xsd:string" />
+        <xsd:attribute name="IdentificationSchemeDataUniformResourceIdentifierString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="IndicatorStringType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="FormatString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="MeasureDecimalType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="MeasureUnitString" type="xsd:string" />
+        <xsd:attribute name="MeasureUnitCodeListVersionString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="NameDecimalType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="FormatString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="NameStringType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="LanguageString" type="xsd:string" />
+        <xsd:attribute name="LanguageLocaleString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="NumericDecimalType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="FormatString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="PercentDecimalType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="FormatString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="PictureStringType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="FormatString" type="xsd:string" />
+        <xsd:attribute name="FilenameString" type="xsd:string" />
+        <xsd:attribute name="MimeString" type="xsd:string" />
+        <xsd:attribute name="EncodingString" type="xsd:string" />
+        <xsd:attribute name="CharacterSetString" type="xsd:string" />
+        <xsd:attribute name="UniformresoruceIdentifierString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="QuantityDecimalType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="QuantityUnitCodeListString" type="xsd:string" />
+        <xsd:attribute name="QuantityUnitCodeListAgencyString" type="xsd:string" />
+        <xsd:attribute name="QuantityUnitCodeListAgencyNameString" type="xsd:string" />
+        <xsd:attribute name="UnitString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="RateDecimalType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="FormatString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="SoundStringType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="FormatString" type="xsd:string" />
+        <xsd:attribute name="FilenameString" type="xsd:string" />
+        <xsd:attribute name="MimeString" type="xsd:string" />
+        <xsd:attribute name="EncodingString" type="xsd:string" />
+        <xsd:attribute name="CharacterSetString" type="xsd:string" />
+        <xsd:attribute name="UniformresoruceIdentifierString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="TextStringType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="LanguageString" type="xsd:string" />
+        <xsd:attribute name="LanguageLocaleString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="TimeStringType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="FormatString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="ValueDecimalType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:decimal">
+        <xsd:attribute name="FormatString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="VideoStringType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="FormatString" type="xsd:string" />
+        <xsd:attribute name="FilenameString" type="xsd:string" />
+        <xsd:attribute name="MimeString" type="xsd:string" />
+        <xsd:attribute name="EncodingString" type="xsd:string" />
+        <xsd:attribute name="CharacterSetString" type="xsd:string" />
+        <xsd:attribute name="UniformresoruceIdentifierString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

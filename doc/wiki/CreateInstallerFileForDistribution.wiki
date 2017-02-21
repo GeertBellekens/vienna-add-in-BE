@@ -1,0 +1,20 @@
+#summary How to create an installer for the VIENNA-AddIn
+#labels Phase-Implementation
+
+* VIENNAAddIn project
+
+1. Edit the following entry in AssemblyInfo.cs (subfolder Properties)
+   {{{assembly: AssemblyVersion ("0.0.1.*")}}}
+   
+   Increment the version number.
+   
+2. Build the VIENNAAddIn project
+
+
+* VIENNAAddInInstaller
+
+1. Click on VIENNAAddInInstaller project and edit the version property. Use the same version number as for the VIENNAAddIn project. This will also change the product code of the installer.
+
+2. Build the Installer project.
+
+3. The final installer can be found under VIENNAInstaller\Debug (if you built in Debug mode) or VIENNAInstaller\Release (if you built it in Release mode)

@@ -1,0 +1,6 @@
+democcl|1|Simplified Core Component Library based on the Core Component Library v09A published by UN/CEFACT simplified by Research Studios Austria for demonstration purposes.
+democcl|2|Simplified Core Component Library based on the Core Component Library v09A published by UN/CEFACT simplified by Research Studios Austria for demonstration purposes. The simplified Core Component Library may especially be used to demonstrate Passport modeling.
+ccl08b|1|Core Component Library v08B published by UN/CEFACT.
+ccl08b|2|Core Component Library v08B published by UN/CEFACT which has been adapted by Research Studios Austria to fix modeling issues.
+ccl09a|1|Core Component Library v09A published by UN/CEFACT.
+ccl09a|2|Core Component Library v09A published by UN/CEFACT which has been adapted by Research Studios Austria to remove dots from SUP names.

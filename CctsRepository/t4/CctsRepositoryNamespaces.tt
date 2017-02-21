@@ -1,0 +1,10 @@
+// ReSharper disable RedundantUsingDirective
+<#
+	foreach (var package in MetaModel.GetAllPackages())
+	{
+#>
+using CctsRepository.<#= package.Name #>;
+<#
+	}
+#>
+// ReSharper restore RedundantUsingDirective

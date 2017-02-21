@@ -1,0 +1,43 @@
+#summary WSDL Generator Documentation
+The WSDL Generator can be used to generate WSDL files out of a UMM model.
+Please note that the sample models from http://umm-dev.org/ will not work with the _WSDL Generator_. We are going to publish a guideline on designing compatible UMM models soon.
+
+=Generate WSDL files=
+  # Prepare a UMM2 model in Enterprise Architect
+  # Select _Add-Ins / VIENNAAddIn / Wizards / WSDL Generator_ from the main menu:
+    http://vienna-add-in.googlecode.com/svn/wiki/images_wsdlgenerator/wsdlgenerator_EAmenuentry.png
+  # After launching the WSDL Generator, an empty form in which the target Business Choreography can be chosen is presented.
+    http://vienna-add-in.googlecode.com/svn/wiki/images_wsdlgenerator/wsdlgenerator_startscreen.png
+  # First the Business Choreography View can be selected from the available drop down list.
+    http://vienna-add-in.googlecode.com/svn/wiki/images_wsdlgenerator/wsdlgenerator_bchview.png
+  # After selecting the Business Choreography View, a corresponding Business Collaboration View can be chosen.
+    http://vienna-add-in.googlecode.com/svn/wiki/images_wsdlgenerator/wsdlgenerator_bcollview.png
+  # The directory where the final generated WSDL files will be saved to is set using a standard Windows folder selection dialog.
+    http://vienna-add-in.googlecode.com/svn/wiki/images_wsdlgenerator/wsdlgenerator_selectoutputdir.png
+  # After setting the output directory Message Names have to be assigned to the corresponding XML Schemas. These Schemas have to be generated in advance using the [XmlSchemaGenerator XML Schema Generator].
+    http://vienna-add-in.googlecode.com/svn/wiki/images_wsdlgenerator/wsdlgenerator_outputdirset.png
+  # When an Xml Schema is assigned to a Message Name it's target namespace is also displayed.
+    http://vienna-add-in.googlecode.com/svn/wiki/images_wsdlgenerator/wsdlgenerator_xmlschemaselected.png
+  # After clicking the "Generate WSDL" button, you can follow the generation process in the status bar.
+	http://vienna-add-in.googlecode.com/svn/wiki/images_wsdlgenerator/wsdlgenerator_finished.png
+
+=Troubleshooting=
+  * *Problem:* I can not generate wsdl files, the WSDL Generator either displays no Messages or shows an error message (depends on actual version). 
+  * *Solution:* Every bTransaction and bCollaboration must include an initial Activity with an InitFlow to the desired Initiator. An example from the official UMM 2.0 Specification is shown below:
+    http://vienna-add-in.googlecode.com/svn/wiki/images_wsdlgenerator/UMM_Spec_Initial.png
+  * *Problem:* Certain bTransactions are missing in the final wsdl files
+  * *Solution:* Please check if every desired bTransaction has an initial Activity and InitFlow. Otherwise it will not be included in the final wsdl file.
+
+=References=
+(1) UMM Development Site http://umm-dev.org/
+
+(2) CCTS standard http://www.untmg.org/wp-content/uploads/2008/06/specification_ccts3p0odp620080207.pdf
+
+(3) W3C XML Schema http://www.w3.org/XML/Schema.html
+
+=Related Tasks=
+[CreateaModelinEA Create a model in Enterprise Architect]: This page explains how to open a project file and create a model in Enterprise Architect
+
+[GettingStartedVideos Getting Started Videos]: This page contains a few videos explaining common tasks using the VIENNA Add-In
+
+[XmlSchemaGenerator Generate an XML Schema]: This page explains how to generate an XML Schema using the _XML Schema Generator_

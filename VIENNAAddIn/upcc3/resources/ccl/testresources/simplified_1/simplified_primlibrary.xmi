@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<xmi:XMI xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:thecustomprofile="http://www.sparxsystems.com/profiles/thecustomprofile/1.0" xmlns:UPCC3_-_PRIMLibrary_Abstract_Syntax="http://www.sparxsystems.com/profiles/UPCC3_-_PRIMLibrary_Abstract_Syntax/1.0" xmlns:UPCC3_-_Model_Management_Abstract_Syntax="http://www.sparxsystems.com/profiles/UPCC3_-_Model_Management_Abstract_Syntax/1.0">
+	<xmi:Documentation exporter="Enterprise Architect" exporterVersion="6.5"/>
+	<uml:Model xmi:type="uml:Model" name="EA_Model" visibility="public">
+		<packagedElement xmi:type="uml:Package" xmi:id="EAPK_781D357C_7447_413f_85DA_8D4E2BF5E3EE" name="PRIMLibrary" visibility="public">
+			<packagedElement xmi:type="uml:Class" xmi:id="EAID_59F50B42_CFB4_4edf_B2B9_96B4F8875FA0" name="Boolean" visibility="public"/>
+			<packagedElement xmi:type="uml:Class" xmi:id="EAID_D950759F_9990_4e8f_9DD0_54E786A4C5A2" name="Date" visibility="public"/>
+			<packagedElement xmi:type="uml:Class" xmi:id="EAID_B688CCF7_E12D_464b_8647_74A2E0A9816F" name="Decimal" visibility="public"/>
+			<packagedElement xmi:type="uml:Class" xmi:id="EAID_4798FB9B_6728_47ee_857B_77514FFAB740" name="String" visibility="public"/>
+		</packagedElement>
+		<UPCC3_-_PRIMLibrary_Abstract_Syntax:PRIM base_Class="EAID_59F50B42_CFB4_4edf_B2B9_96B4F8875FA0" businessTerm="Boolean" definition="A logical expression consisting of predefined values." dictionaryEntryName="Boolean"/>
+		<UPCC3_-_PRIMLibrary_Abstract_Syntax:PRIM base_Class="EAID_D950759F_9990_4e8f_9DD0_54E786A4C5A2" businessTerm="Date" definition="A point in time to a common resolution (year, month, day, hour,...)." dictionaryEntryName="Date"/>
+		<UPCC3_-_PRIMLibrary_Abstract_Syntax:PRIM base_Class="EAID_B688CCF7_E12D_464b_8647_74A2E0A9816F" businessTerm="Decimal" definition="A subset of the real numbers, which can be represented by decimal numerals" dictionaryEntryName="Decimal"/>
+		<UPCC3_-_PRIMLibrary_Abstract_Syntax:PRIM base_Class="EAID_4798FB9B_6728_47ee_857B_77514FFAB740" businessTerm="String" definition="A sequence of characters in some suitable character set" dictionaryEntryName="String"/>
+		<UPCC3_-_Model_Management_Abstract_Syntax:PRIMLibrary base_Package="EAPK_781D357C_7447_413f_85DA_8D4E2BF5E3EE"/>
+		<thecustomprofile:baseURN base_Package="EAPK_781D357C_7447_413f_85DA_8D4E2BF5E3EE" baseURN="http://foo.bar/"/>
+		<uml:Profile xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1/" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmi:id="thecustomprofile" nsPrefix="thecustomprofile" name="thecustomprofile" metamodelReference="mmref01">
+			<ownedComment xmi:type="uml:Comment" xmi:id="comment01" annotatedElement="thecustomprofile">
+				<body> Version:1.0</body>
+			</ownedComment>
+			<packageImport xmi:id="mmref01">
+				<importedPackage href="http://schema.omg.org/spec/UML/2.1/"/>
+			</packageImport>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="baseURN" name="baseURN">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="baseURN-base_Package" name="base_Package" association="Package_baseURN">
+					<type href="http://schema.omg.org/spec/UML/2.1/#Package"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="baseURN-baseURN" name="baseURN">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Extension" xmi:id="Package_baseURN" name="A_Package_baseURN" memberEnd="extension_baseURN baseURN-base_Package">
+				<ownedEnd xmi:id="extension_baseURN" name="extension_baseURN" type="baseURN" isComposite="true" lower="0" upper="1" memberEnd="extension_baseURN baseURN-base_Package"/>
+			</packagedElement>
+		</uml:Profile>
+		<uml:Profile xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1/" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmi:id="4E318D8B-F" nsPrefix="UPCC3_-_PRIMLibrary_Abstract_Syntax" name="UPCC3 - PRIMLibrary Abstract Syntax" metamodelReference="mmref01">
+			<ownedComment xmi:type="uml:Comment" xmi:id="comment01" annotatedElement="4E318D8B-F">
+				<body>UPCC3 - PRIMLibrary Abstract Syntax Version:1.0</body>
+			</ownedComment>
+			<packageImport xmi:id="mmref01">
+				<importedPackage href="http://schema.omg.org/spec/UML/2.1/"/>
+			</packageImport>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="PRIM" name="PRIM">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="PRIM-base_Class" name="base_Class" association="Class_PRIM">
+					<type href="http://schema.omg.org/spec/UML/2.1/#Class"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="PRIM-maxInclusive" name="maxInclusive">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="PRIM-uniqueIdentifier" name="uniqueIdentifier">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="PRIM-fractionDigits" name="fractionDigits">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="PRIM-whiteSpace" name="whiteSpace">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="PRIM-minLength" name="minLength">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="PRIM-businessTerm" name="businessTerm">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="PRIM-maxExclusive" name="maxExclusive">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="PRIM-length" name="length">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="PRIM-minInclusive" name="minInclusive">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="PRIM-definition" name="definition">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="PRIM-pattern" name="pattern">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="PRIM-totalDigits" name="totalDigits">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="PRIM-languageCode" name="languageCode">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="PRIM-minExclusive" name="minExclusive">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="PRIM-maxLength" name="maxLength">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="PRIM-versionIdentifier" name="versionIdentifier">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="PRIM-dictionaryEntryName" name="dictionaryEntryName">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Extension" xmi:id="Class_PRIM" name="A_Class_PRIM" memberEnd="extension_PRIM PRIM-base_Class">
+				<ownedEnd xmi:id="extension_PRIM" name="extension_PRIM" type="PRIM" isComposite="true" lower="0" upper="1" memberEnd="extension_PRIM PRIM-base_Class"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="isEquivalentTo" name="isEquivalentTo">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="isEquivalentTo-base_Dependency" name="base_Dependency" association="Dependency_isEquivalentTo">
+					<type href="http://schema.omg.org/spec/UML/2.1/#Dependency"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Extension" xmi:id="Dependency_isEquivalentTo" name="A_Dependency_isEquivalentTo" memberEnd="extension_isEquivalentTo isEquivalentTo-base_Dependency">
+				<ownedEnd xmi:id="extension_isEquivalentTo" name="extension_isEquivalentTo" type="isEquivalentTo" isComposite="true" lower="0" upper="1" memberEnd="extension_isEquivalentTo isEquivalentTo-base_Dependency"/>
+			</packagedElement>
+		</uml:Profile>
+		<uml:Profile xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1/" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmi:id="B4E9032E-0" nsPrefix="UPCC3_-_Model_Management_Abstract_Syntax" name="UPCC3 - Model Management Abstract Syntax" metamodelReference="mmref01">
+			<ownedComment xmi:type="uml:Comment" xmi:id="comment01" annotatedElement="B4E9032E-0">
+				<body>UPCC3 - Model Management Abstract Syntax Version:1.0</body>
+			</ownedComment>
+			<packageImport xmi:id="mmref01">
+				<importedPackage href="http://schema.omg.org/spec/UML/2.1/"/>
+			</packageImport>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="bLibrary" name="bLibrary">
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-base_Package" name="base_Package" association="Package_bLibrary">
+					<type href="http://schema.omg.org/spec/UML/2.1/#Package"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-status" name="status">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-uniqueIdentifier" name="uniqueIdentifier">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-businessTerm" name="businessTerm">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-copyright" name="copyright">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-reference" name="reference">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-owner" name="owner">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+				<ownedAttribute xmi:type="uml:Property" xmi:id="bLibrary-versionIdentifier" name="versionIdentifier">
+					<type href="http://schema.omg.org/spec/UML/2.1/#String"/>
+				</ownedAttribute>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Extension" xmi:id="Package_bLibrary" name="A_Package_bLibrary" memberEnd="extension_bLibrary bLibrary-base_Package">
+				<ownedEnd xmi:id="extension_bLibrary" name="extension_bLibrary" type="bLibrary" isComposite="true" lower="0" upper="1" memberEnd="extension_bLibrary bLibrary-base_Package"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="BIELibrary" name="BIELibrary">
+				<generalization xmi:type="uml:Generalization" xmi:id="BIELibrary_generalization" general="bLibrary"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="CCLibrary" name="CCLibrary">
+				<generalization xmi:type="uml:Generalization" xmi:id="CCLibrary_generalization" general="bLibrary"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="BDTLibrary" name="BDTLibrary">
+				<generalization xmi:type="uml:Generalization" xmi:id="BDTLibrary_generalization" general="bLibrary"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="ENUMLibrary" name="ENUMLibrary">
+				<generalization xmi:type="uml:Generalization" xmi:id="ENUMLibrary_generalization" general="bLibrary"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="PRIMLibrary" name="PRIMLibrary">
+				<generalization xmi:type="uml:Generalization" xmi:id="PRIMLibrary_generalization" general="bLibrary"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="DOCLibrary" name="DOCLibrary">
+				<generalization xmi:type="uml:Generalization" xmi:id="DOCLibrary_generalization" general="bLibrary"/>
+			</packagedElement>
+			<packagedElement xmi:type="uml:Stereotype" xmi:id="CDTLibrary" name="CDTLibrary">
+				<generalization xmi:type="uml:Generalization" xmi:id="CDTLibrary_generalization" general="bLibrary"/>
+			</packagedElement>
+		</uml:Profile>
+	</uml:Model>
+	<xmi:Extension extender="Enterprise Architect" extenderID="6.5">
+		<elements>
+			<element xmi:idref="EAPK_781D357C_7447_413f_85DA_8D4E2BF5E3EE" xmi:type="uml:Package" name="PRIMLibrary" scope="public">
+				<model package2="EAID_781D357C_7447_413f_85DA_8D4E2BF5E3EE" package="EAPK_695D85BD_AABA_407e_B38C_CDA36E132DD7" tpos="0" ea_localid="4" ea_eleType="package"/>
+				<properties isSpecification="false" sType="Package" nType="0" scope="public" stereotype="PRIMLibrary"/>
+				<project author="cschollum" version="1.0" phase="1.0" created="2009-02-09 11:39:49" modified="2009-02-09 11:39:49" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<modelDocument/>
+				<tags>
+					<tag xmi:id="EAID_6FACA0DD_4C15_485d_B7EC_F55D8EA706BD" name="baseURN" value="http://foo.bar/" modelElement="EAID_781D357C_7447_413f_85DA_8D4E2BF5E3EE"/>
+					<tag xmi:id="EAID_3FF92CE4_53F7_1b53_91A2_5B3467AFE938" name="businessTerm" modelElement="EAID_781D357C_7447_413f_85DA_8D4E2BF5E3EE"/>
+					<tag xmi:id="EAID_4CB00AB9_52CC_1e52_9E8A_A4602F276E41" name="copyright" modelElement="EAID_781D357C_7447_413f_85DA_8D4E2BF5E3EE"/>
+					<tag xmi:id="EAID_081BC26B_F8FE_7af8_818F_EC4D08E34893" name="owner" modelElement="EAID_781D357C_7447_413f_85DA_8D4E2BF5E3EE"/>
+					<tag xmi:id="EAID_B4F8B86F_0082_6700_BB30_41C83367BD0B" name="reference" modelElement="EAID_781D357C_7447_413f_85DA_8D4E2BF5E3EE"/>
+					<tag xmi:id="EAID_14AB8884_9177_f191_998F_7825B291CD12" name="status" modelElement="EAID_781D357C_7447_413f_85DA_8D4E2BF5E3EE"/>
+					<tag xmi:id="EAID_98C070FA_618D_de61_A247_255B6E98E717" name="uniqueIdentifier" modelElement="EAID_781D357C_7447_413f_85DA_8D4E2BF5E3EE"/>
+					<tag xmi:id="EAID_731219A9_A09C_32a0_999B_91EFAD5B1F1E" name="versionIdentifier" modelElement="EAID_781D357C_7447_413f_85DA_8D4E2BF5E3EE"/>
+				</tags>
+				<xrefs value="$XREFPROP=$XID={8A200E2D-BC33-4059-A0D8-B554244704D3}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@STEREO;Name=PRIMLibrary;GUID={20A6766F-7237-49b0-A04E-4CA80B358DB0};@ENDSTEREO;$DES;$CLT={781D357C-7447-413f-85DA-8D4E2BF5E3EE}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="ebInterface Data Model"/>
+				<packageproperties version="1.0"/>
+				<paths/>
+				<times created="2009-02-09 00:00:00" modified="2009-02-09 00:00:00"/>
+				<flags iscontrolled="FALSE" isprotected="FALSE" usedtd="FALSE" logxml="FALSE"/>
+			</element>
+			<element xmi:idref="EAID_59F50B42_CFB4_4edf_B2B9_96B4F8875FA0" xmi:type="uml:Class" name="Boolean" scope="public">
+				<model package="EAPK_781D357C_7447_413f_85DA_8D4E2BF5E3EE" tpos="0" ea_localid="104" ea_eleType="element"/>
+				<properties isSpecification="false" sType="Class" nType="0" scope="public" stereotype="PRIM" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="cschollum" version="1.0" phase="1.0" created="2009-02-09 11:48:37" modified="2009-02-09 11:49:06" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<modelDocument/>
+				<tags>
+					<tag xmi:id="EAID_A0076BD6_CBF9_4e55_B898_615AC5152C45" name="businessTerm" value="Boolean" modelElement="EAID_59F50B42_CFB4_4edf_B2B9_96B4F8875FA0"/>
+					<tag xmi:id="EAID_AB9707FD_E994_460d_9D1A_A4A573A8D9C4" name="definition" value="A logical expression consisting of predefined values." modelElement="EAID_59F50B42_CFB4_4edf_B2B9_96B4F8875FA0"/>
+					<tag xmi:id="EAID_1951AE70_559D_4609_9FAC_486ADDAAF52C" name="dictionaryEntryName" value="Boolean" modelElement="EAID_59F50B42_CFB4_4edf_B2B9_96B4F8875FA0"/>
+					<tag xmi:id="EAID_FC4443AD_2EAA_4896_B850_B15B4854D871" name="fractionDigits" modelElement="EAID_59F50B42_CFB4_4edf_B2B9_96B4F8875FA0"/>
+					<tag xmi:id="EAID_723DD6B5_5635_40bc_B5E5_01685BB54AD2" name="languageCode" modelElement="EAID_59F50B42_CFB4_4edf_B2B9_96B4F8875FA0"/>
+					<tag xmi:id="EAID_EAE1E3E0_97A7_4289_97D3_4CB77BFB53BC" name="length" modelElement="EAID_59F50B42_CFB4_4edf_B2B9_96B4F8875FA0"/>
+					<tag xmi:id="EAID_4BFE73B9_1019_47bf_A802_06081E8EC5D8" name="maxExclusive" modelElement="EAID_59F50B42_CFB4_4edf_B2B9_96B4F8875FA0"/>
+					<tag xmi:id="EAID_773365EC_C1B2_40e7_939E_EBC794DF04BA" name="maxInclusive" modelElement="EAID_59F50B42_CFB4_4edf_B2B9_96B4F8875FA0"/>
+					<tag xmi:id="EAID_89E7A52C_2348_43a6_8809_817B8D51A922" name="maxLength" modelElement="EAID_59F50B42_CFB4_4edf_B2B9_96B4F8875FA0"/>
+					<tag xmi:id="EAID_5DBC55F2_9ECD_45bf_86C4_D7768844A687" name="minExclusive" modelElement="EAID_59F50B42_CFB4_4edf_B2B9_96B4F8875FA0"/>
+					<tag xmi:id="EAID_666CA3D0_5AEC_4070_BAC7_E6C0F591C5C3" name="minInclusive" modelElement="EAID_59F50B42_CFB4_4edf_B2B9_96B4F8875FA0"/>
+					<tag xmi:id="EAID_88017B77_4E14_47f6_B33E_58936F3A5CAD" name="minLength" modelElement="EAID_59F50B42_CFB4_4edf_B2B9_96B4F8875FA0"/>
+					<tag xmi:id="EAID_DAB8447A_D64C_43ce_B491_3ED23DD8D627" name="pattern" modelElement="EAID_59F50B42_CFB4_4edf_B2B9_96B4F8875FA0"/>
+					<tag xmi:id="EAID_C7BD528D_EBC6_4683_B566_16B534F609A8" name="totalDigits" modelElement="EAID_59F50B42_CFB4_4edf_B2B9_96B4F8875FA0"/>
+					<tag xmi:id="EAID_789F6ECE_EDBC_4192_A95E_758E50E4C53A" name="uniqueIdentifier" modelElement="EAID_59F50B42_CFB4_4edf_B2B9_96B4F8875FA0"/>
+					<tag xmi:id="EAID_C2D14B7E_A3F7_454a_9115_52B0A41A477A" name="versionIdentifier" modelElement="EAID_59F50B42_CFB4_4edf_B2B9_96B4F8875FA0"/>
+					<tag xmi:id="EAID_30FA088D_5CF6_4f12_A91D_0BA61A5569F7" name="whiteSpace" modelElement="EAID_59F50B42_CFB4_4edf_B2B9_96B4F8875FA0"/>
+				</tags>
+				<xrefs value="$XREFPROP=$XID={346185F5-6AF0-4fbe-9402-C5F95606B71A}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@STEREO;Name=PRIM;GUID={CD9D0A58-1305-4e9b-A409-ACEF8E42901D};@ENDSTEREO;$DES;$CLT={59F50B42-CFB4-4edf-B2B9-96B4F8875FA0}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={6256FF93-D915-4b0b-848C-479F2161A9B9}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=isActive@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={59F50B42-CFB4-4edf-B2B9-96B4F8875FA0}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="PRIMLibrary"/>
+			</element>
+			<element xmi:idref="EAID_D950759F_9990_4e8f_9DD0_54E786A4C5A2" xmi:type="uml:Class" name="Date" scope="public">
+				<model package="EAPK_781D357C_7447_413f_85DA_8D4E2BF5E3EE" tpos="0" ea_localid="105" ea_eleType="element"/>
+				<properties isSpecification="false" sType="Class" nType="0" scope="public" stereotype="PRIM" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="cschollum" version="1.0" phase="1.0" created="2009-02-09 11:48:37" modified="2009-02-09 11:49:06" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<modelDocument/>
+				<tags>
+					<tag xmi:id="EAID_6495C3DE_05C0_4c7e_ADFE_C151ADCF32EA" name="businessTerm" value="Date" modelElement="EAID_D950759F_9990_4e8f_9DD0_54E786A4C5A2"/>
+					<tag xmi:id="EAID_A8C9C66F_3EC6_4c03_947B_CD1EE76BD1FA" name="definition" value="A point in time to a common resolution (year, month, day, hour,...)." modelElement="EAID_D950759F_9990_4e8f_9DD0_54E786A4C5A2"/>
+					<tag xmi:id="EAID_A4811141_714B_4666_9C23_08D65523D45B" name="dictionaryEntryName" value="Date" modelElement="EAID_D950759F_9990_4e8f_9DD0_54E786A4C5A2"/>
+					<tag xmi:id="EAID_6B70233A_F45C_489b_AD4B_1C1379767B9F" name="fractionDigits" modelElement="EAID_D950759F_9990_4e8f_9DD0_54E786A4C5A2"/>
+					<tag xmi:id="EAID_64541BE0_C4B9_4d64_9B5D_9FD801F73DE5" name="languageCode" modelElement="EAID_D950759F_9990_4e8f_9DD0_54E786A4C5A2"/>
+					<tag xmi:id="EAID_7C3F3111_53C5_40d8_904B_83503D45690F" name="length" modelElement="EAID_D950759F_9990_4e8f_9DD0_54E786A4C5A2"/>
+					<tag xmi:id="EAID_E3F5957D_0438_4ada_A093_ABC5D9111B79" name="maxExclusive" modelElement="EAID_D950759F_9990_4e8f_9DD0_54E786A4C5A2"/>
+					<tag xmi:id="EAID_4E2EE135_E9A2_4d2f_B847_2104C8F07A79" name="maxInclusive" modelElement="EAID_D950759F_9990_4e8f_9DD0_54E786A4C5A2"/>
+					<tag xmi:id="EAID_5870AA59_BFC3_420f_BEA5_B0D41B8F2A31" name="maxLength" modelElement="EAID_D950759F_9990_4e8f_9DD0_54E786A4C5A2"/>
+					<tag xmi:id="EAID_27A7AE0E_F360_4ed7_A532_ADDCE7EF94B9" name="minExclusive" modelElement="EAID_D950759F_9990_4e8f_9DD0_54E786A4C5A2"/>
+					<tag xmi:id="EAID_78028587_077C_478c_9562_8D85ECB93776" name="minInclusive" modelElement="EAID_D950759F_9990_4e8f_9DD0_54E786A4C5A2"/>
+					<tag xmi:id="EAID_0409FAE2_2829_4895_8AC5_FEAE2C90D925" name="minLength" modelElement="EAID_D950759F_9990_4e8f_9DD0_54E786A4C5A2"/>
+					<tag xmi:id="EAID_3B2042A9_A1AA_45f3_BFBC_B466BD7FD91A" name="pattern" modelElement="EAID_D950759F_9990_4e8f_9DD0_54E786A4C5A2"/>
+					<tag xmi:id="EAID_47B1D882_A671_49cc_80AA_FEF165BF9156" name="totalDigits" modelElement="EAID_D950759F_9990_4e8f_9DD0_54E786A4C5A2"/>
+					<tag xmi:id="EAID_320BBE64_326E_4ed6_A438_AE3366E49210" name="uniqueIdentifier" modelElement="EAID_D950759F_9990_4e8f_9DD0_54E786A4C5A2"/>
+					<tag xmi:id="EAID_081A06F9_BEE0_420d_99F0_0CB9DE05DB1D" name="versionIdentifier" modelElement="EAID_D950759F_9990_4e8f_9DD0_54E786A4C5A2"/>
+					<tag xmi:id="EAID_335BCB99_D13D_4ed1_BC7A_BED754A38F04" name="whiteSpace" modelElement="EAID_D950759F_9990_4e8f_9DD0_54E786A4C5A2"/>
+				</tags>
+				<xrefs value="$XREFPROP=$XID={988BE698-789B-4765-9F69-2B2BF1663846}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@STEREO;Name=PRIM;GUID={CD9D0A58-1305-4e9b-A409-ACEF8E42901D};@ENDSTEREO;$DES;$CLT={D950759F-9990-4e8f-9DD0-54E786A4C5A2}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={B477C5E3-9004-4fd0-94E9-6B34F0235883}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=isActive@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={D950759F-9990-4e8f-9DD0-54E786A4C5A2}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="PRIMLibrary"/>
+			</element>
+			<element xmi:idref="EAID_B688CCF7_E12D_464b_8647_74A2E0A9816F" xmi:type="uml:Class" name="Decimal" scope="public">
+				<model package="EAPK_781D357C_7447_413f_85DA_8D4E2BF5E3EE" tpos="0" ea_localid="11" ea_eleType="element"/>
+				<properties isSpecification="false" sType="Class" nType="0" scope="public" stereotype="PRIM" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="cschollum" version="1.0" phase="1.0" created="2009-02-09 12:14:45" modified="2009-02-09 12:14:53" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<modelDocument/>
+				<tags>
+					<tag xmi:id="EAID_3FF92CE4_4857_9e48_B820_35A1778D7C11" name="businessTerm" value="Decimal" modelElement="EAID_B688CCF7_E12D_464b_8647_74A2E0A9816F"/>
+					<tag xmi:id="EAID_465BEE89_955C_0d95_97A9_187092605ECC" name="definition" value="A subset of the real numbers, which can be represented by decimal numerals" modelElement="EAID_B688CCF7_E12D_464b_8647_74A2E0A9816F"/>
+					<tag xmi:id="EAID_18B187E9_DFDC_b3df_9046_098485395D0E" name="dictionaryEntryName" value="Decimal" modelElement="EAID_B688CCF7_E12D_464b_8647_74A2E0A9816F"/>
+					<tag xmi:id="EAID_23C9653A_296D_2329_8C30_138187F2C92B" name="fractionDigits" modelElement="EAID_B688CCF7_E12D_464b_8647_74A2E0A9816F"/>
+					<tag xmi:id="EAID_E5EE68BF_8432_9384_82A7_E2973EBFE16D" name="languageCode" modelElement="EAID_B688CCF7_E12D_464b_8647_74A2E0A9816F"/>
+					<tag xmi:id="EAID_034EE602_1B55_901b_897C_165BD6BF3291" name="length" modelElement="EAID_B688CCF7_E12D_464b_8647_74A2E0A9816F"/>
+					<tag xmi:id="EAID_C1E0899E_1111_0911_BF26_E13AD6848704" name="maxExclusive" modelElement="EAID_B688CCF7_E12D_464b_8647_74A2E0A9816F"/>
+					<tag xmi:id="EAID_593FFCD8_844B_6884_8AE6_105657358F06" name="maxInclusive" modelElement="EAID_B688CCF7_E12D_464b_8647_74A2E0A9816F"/>
+					<tag xmi:id="EAID_36892728_AB7B_c2ab_AD2C_1CC831C0D473" name="maxLength" modelElement="EAID_B688CCF7_E12D_464b_8647_74A2E0A9816F"/>
+					<tag xmi:id="EAID_C45C885C_0FCF_850f_9643_753F209217F6" name="minExclusive" modelElement="EAID_B688CCF7_E12D_464b_8647_74A2E0A9816F"/>
+					<tag xmi:id="EAID_5BBBFB96_8309_e483_9C78_04306FF0D00C" name="minInclusive" modelElement="EAID_B688CCF7_E12D_464b_8647_74A2E0A9816F"/>
+					<tag xmi:id="EAID_96D16EA6_F2F9_0af2_B9DC_C2FA90F99438" name="minLength" modelElement="EAID_B688CCF7_E12D_464b_8647_74A2E0A9816F"/>
+					<tag xmi:id="EAID_98336C9E_4C51_9b4c_8C7A_76636DEF33B1" name="pattern" modelElement="EAID_B688CCF7_E12D_464b_8647_74A2E0A9816F"/>
+					<tag xmi:id="EAID_E667C2C8_2FDB_a92f_BA62_8AB91F3AC16A" name="totalDigits" modelElement="EAID_B688CCF7_E12D_464b_8647_74A2E0A9816F"/>
+					<tag xmi:id="EAID_98C070FA_85ED_8485_AB1D_FEC293FB0922" name="uniqueIdentifier" modelElement="EAID_B688CCF7_E12D_464b_8647_74A2E0A9816F"/>
+					<tag xmi:id="EAID_731219A9_50FC_9d50_BE6F_351EDABF6832" name="versionIdentifier" modelElement="EAID_B688CCF7_E12D_464b_8647_74A2E0A9816F"/>
+					<tag xmi:id="EAID_EFD4542D_EAE0_42ea_B3C8_8CA489A102A3" name="whiteSpace" modelElement="EAID_B688CCF7_E12D_464b_8647_74A2E0A9816F"/>
+				</tags>
+				<xrefs value="$XREFPROP=$XID={3FF99738-E161-483f-BC17-CF37A87A3C8C}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@STEREO;Name=PRIM;GUID={CD9D0A58-1305-4e9b-A409-ACEF8E42901D};@ENDSTEREO;$DES;$CLT={B688CCF7-E12D-464b-8647-74A2E0A9816F}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={2AE1BF0E-9BCF-4cba-98D1-9D3C2F789B4A}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=isActive@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={B688CCF7-E12D-464b-8647-74A2E0A9816F}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="PRIMLibrary"/>
+			</element>
+			<element xmi:idref="EAID_4798FB9B_6728_47ee_857B_77514FFAB740" xmi:type="uml:Class" name="String" scope="public">
+				<model package="EAPK_781D357C_7447_413f_85DA_8D4E2BF5E3EE" tpos="0" ea_localid="4" ea_eleType="element"/>
+				<properties isSpecification="false" sType="Class" nType="0" scope="public" stereotype="PRIM" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="cschollum" version="1.0" phase="1.0" created="2009-02-09 11:48:37" modified="2009-02-09 11:49:06" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<modelDocument/>
+				<tags>
+					<tag xmi:id="EAID_3FF92CE4_4857_9e48_9291_51E2F5769A52" name="businessTerm" value="String" modelElement="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<tag xmi:id="EAID_465BEE89_955C_0d95_849A_A2820D70DB10" name="definition" value="A sequence of characters in some suitable character set" modelElement="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<tag xmi:id="EAID_18B187E9_DFDC_b3df_81CB_1BA5740512FA" name="dictionaryEntryName" value="String" modelElement="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<tag xmi:id="EAID_23C9653A_296D_2329_8442_CAECF4E6046B" name="fractionDigits" modelElement="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<tag xmi:id="EAID_E5EE68BF_8432_9384_B919_AB54067A1C3C" name="languageCode" modelElement="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<tag xmi:id="EAID_034EE602_1B55_901b_9455_E46DCF3EB14A" name="length" modelElement="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<tag xmi:id="EAID_C1E0899E_1111_0911_800F_F110985A3DF1" name="maxExclusive" modelElement="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<tag xmi:id="EAID_593FFCD8_844B_6884_AF93_9C322F1F28D6" name="maxInclusive" modelElement="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<tag xmi:id="EAID_36892728_AB7B_c2ab_B5DF_C486AE54E011" name="maxLength" modelElement="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<tag xmi:id="EAID_C45C885C_0FCF_850f_AA8F_705B3406132F" name="minExclusive" modelElement="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<tag xmi:id="EAID_5BBBFB96_8309_e483_96FB_DEC74ACC16E2" name="minInclusive" modelElement="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<tag xmi:id="EAID_96D16EA6_F2F9_0af2_A9D0_9640099F3B27" name="minLength" modelElement="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<tag xmi:id="EAID_98336C9E_4C51_9b4c_934E_ECCF39D962AA" name="pattern" modelElement="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<tag xmi:id="EAID_E667C2C8_2FDB_a92f_A0AA_FF336C4F2721" name="totalDigits" modelElement="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<tag xmi:id="EAID_98C070FA_85ED_8485_8B48_560D05E0B0AA" name="uniqueIdentifier" modelElement="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<tag xmi:id="EAID_731219A9_50FC_9d50_8A7E_174FEECAE7DD" name="versionIdentifier" modelElement="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+					<tag xmi:id="EAID_EFD4542D_EAE0_42ea_A2EB_C12F73FB78C2" name="whiteSpace" modelElement="EAID_4798FB9B_6728_47ee_857B_77514FFAB740"/>
+				</tags>
+				<xrefs value="$XREFPROP=$XID={5F22AF62-1C2F-492b-9DF6-074D71940E8C}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@STEREO;Name=PRIM;GUID={CD9D0A58-1305-4e9b-A409-ACEF8E42901D};@ENDSTEREO;$DES;$CLT={4798FB9B-6728-47ee-857B-77514FFAB740}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={45E72C92-FFC4-4ecd-A30A-E551B3C7EA16}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=isActive@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={4798FB9B-6728-47ee-857B-77514FFAB740}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="PRIMLibrary" ea_attsclassified="{F620E1A8-8C9F-4f0d-A044-74344788D2AD},{84190B02-94F9-415b-A0DD-8AC2B9D22161},{AFCF861A-FA37-4f7d-B27B-40B7641CB29E},{AEA82A79-0342-4677-81A9-C0E37BBC366B},{ECE082DA-D3EF-4200-8721-1C6BC82F56C4},{64035916-47BF-4cea-9048-C52676FD3715},{C3D9D10B-6BA6-407c-ACF7-C6D10F91E392},{C7325FF1-28C3-44cd-85B4-E54984C22B6A},{52393979-A206-43ed-BB85-831E54EE66F6},{FEAB583A-3340-4600-846C-785ABC21CE77}"/>
+			</element>
+		</elements>
+		<connectors/>
+		<diagrams>
+			<diagram xmi:id="EAID_D21B6645_EFAF_4dce_9002_4375BD448158">
+				<model package="EAPK_781D357C_7447_413f_85DA_8D4E2BF5E3EE" localID="2" owner="EAPK_781D357C_7447_413f_85DA_8D4E2BF5E3EE"/>
+				<properties name="PRIMLibrary" type="Logical"/>
+				<project author="cschollum" version="1.0" created="2009-02-09 11:46:10" modified="2009-02-26 14:44:21"/>
+				<style1 value="ShowPrivate=1;ShowProtected=1;ShowPublic=1;HideRelationships=0;Locked=0;Border=1;HighlightForeign=1;PackageContents=1;SequenceNotes=0;ScalePrintImage=0;PPgs.cx=1;PPgs.cy=1;DocSize.cx=795;DocSize.cy=1130;ShowDetails=0;Orientation=P;Zoom=100;ShowTags=0;OpParams=1;VisibleAttributeDetail=0;ShowOpRetType=1;ShowIcons=1;CollabNums=0;HideProps=0;ShowReqs=0;ShowCons=0;PaperSize=9;HideParents=0;UseAlias=0;HideAtts=0;HideOps=0;HideStereo=0;HideElemStereo=0;ShowTests=0;ShowMaint=0;ConnectorNotation=UML 2.1;ExplicitNavigability=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;ShowNotes=0;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;"/>
+				<style2 value="ExcludeRTF=0;DocAll=0;HideQuals=0;AttPkg=1;ShowTests=0;ShowMaint=0;SuppressFOC=1;MatrixActive=0;SwimlanesActive=1;MatrixLineWidth=1;MatrixLocked=0;TConnectorNotation=UML 2.1;TExplicitNavigability=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;ProfileData=;MDGDgm=;STBLDgm=;ShowNotes=0;VisibleAttributeDetail=0;ShowOpRetType=1;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;"/>
+				<swimlanes value="locked=false;orientation=0;width=0;inbar=false;names=false;color=0;bold=false;fcol=0;;cls=0;"/>
+				<matrixitems value="locked=false;matrixactive=false;swimlanesactive=true;width=1;"/>
+				<extendedProperties/>
+				<elements>
+					<element geometry="Left=212;Top=529;Right=302;Bottom=599;" subject="EAID_D950759F_9990_4e8f_9DD0_54E786A4C5A2" seqno="1" style="DUID=B0B3EE72;HideIcon=0;"/>
+					<element geometry="Left=396;Top=408;Right=486;Bottom=478;" subject="EAID_59F50B42_CFB4_4edf_B2B9_96B4F8875FA0" seqno="2" style="DUID=B0B3EE72;HideIcon=0;"/>
+					<element geometry="Left=399;Top=267;Right=489;Bottom=337;" subject="EAID_B688CCF7_E12D_464b_8647_74A2E0A9816F" seqno="3" style="DUID=3047A42A;HideIcon=0;"/>
+					<element geometry="Left=191;Top=267;Right=281;Bottom=337;" subject="EAID_4798FB9B_6728_47ee_857B_77514FFAB740" seqno="4" style="DUID=B0B3EE72;HideIcon=0;"/>
+				</elements>
+			</diagram>
+		</diagrams>
+	</xmi:Extension>
+</xmi:XMI>

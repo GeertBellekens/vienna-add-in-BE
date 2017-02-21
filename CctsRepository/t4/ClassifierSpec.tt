@@ -1,0 +1,203 @@
+<#@ assembly name="System.Core.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ include file="../t4/helpers.tt" #>
+<#@ include file="../t4/Copyright.tt" #>
+using System.Collections.Generic;
+using VIENNAAddInUtils;
+<#@ include file="../t4/CctsRepositoryNamespaces.tt" #>
+
+<# 
+	var library = MetaModel.GetPackageRelationsFor(metaClassifier).First().PackageType;
+#>
+namespace CctsRepository.<#= library.Name #>
+{
+    public partial class <#= metaClassifier.Name #>Spec
+    {
+		public string Name { get; set; }
+<# 
+///==========================================================================================================================
+/// Dependencies
+///==========================================================================================================================
+					
+		foreach (var dependency in MetaModel.GetDependenciesFor(metaClassifier))
+		{
+#>
+
+		public I<#= dependency.TargetClassifierType.Name #> <#= FirstCharToUpperCase(dependency.Stereotype.ToString()) #> { get; set; }
+<#
+		}
+		
+///==========================================================================================================================
+/// Attributes
+///==========================================================================================================================
+					
+		foreach (var attribute in MetaModel.GetAttributesFor(metaClassifier))
+		{
+			var specName = attribute.ClassName + "Spec";
+			var attributeType = attribute.Cardinality == MetaCardinality.Many ? "List<" + specName + ">" : specName;
+#>
+
+		public <#= attributeType #> <#= attribute.AttributeName #> { get; set; }
+<#
+		}
+
+///==========================================================================================================================
+/// Enumeration Literals
+///==========================================================================================================================
+					
+		foreach (var enumerationLiteral in MetaModel.GetEnumerationLiteralsFor(metaClassifier))
+		{
+			var specName = enumerationLiteral.ClassName + "Spec";
+			var enumerationLiteralType = enumerationLiteral.Cardinality == MetaCardinality.Many ? "List<" + specName + ">" : specName;
+#>
+
+		public <#= enumerationLiteralType #> <#= enumerationLiteral.Name #> { get; set; }
+<#
+		}
+		
+///==========================================================================================================================
+/// Associations
+///==========================================================================================================================
+					
+		foreach (var association in MetaModel.GetAssociationsForAssociatingClassifier(metaClassifier))
+		{
+			var specName = association.ClassName + "Spec";
+			var propertyType = association.Cardinality == MetaCardinality.Many ? "List<" + specName + ">" : specName;
+#>
+
+		public <#= propertyType #> <#= association.Name #> { get; set; }
+<#
+		}
+
+///==========================================================================================================================
+/// Tagged Values
+///==========================================================================================================================
+					
+		if (metaClassifier.HasTaggedValues)
+		{
+#>
+
+		#region Tagged Values
+<# 
+			foreach (var taggedValue in metaClassifier.TaggedValues)
+			{
+#>
+
+        ///<summary>
+        /// Tagged value '<#= taggedValue.Name #>'.
+        ///</summary>
+		public <#= TaggedValuePropertyType(taggedValue) #> <#= TaggedValuePropertyName(taggedValue) #> { get; set; }
+<#
+			}
+#>
+
+		#endregion
+<#
+		}
+
+///==========================================================================================================================
+/// Clone Method
+///==========================================================================================================================
+					
+		var cloned = FirstCharToLowerCase(metaClassifier.Name);
+		if (cloned == "enum")
+		{
+			cloned = "@enum";
+		}
+#>
+
+        public static <#= metaClassifier.Name #>Spec Clone<#= metaClassifier.Name #>(I<#= metaClassifier.Name #> <#= cloned #>)
+        {
+            return new <#= metaClassifier.Name #>Spec
+                   {
+                   	   Name = <#= cloned #>.Name,
+<#
+///==========================================================================================================================
+/// Clone Dependencies
+///==========================================================================================================================
+					
+		foreach (var dependency in MetaModel.GetDependenciesFor(metaClassifier))
+		{
+#>
+					   <#= FirstCharToUpperCase(dependency.Stereotype.ToString()) #> = <#= cloned #>.<#= FirstCharToUpperCase(dependency.Stereotype.ToString()) #>,
+<#
+		}
+
+///==========================================================================================================================
+/// Clone Attributes
+///==========================================================================================================================
+					
+		foreach (var attribute in MetaModel.GetAttributesFor(metaClassifier))
+		{
+			if (attribute.Cardinality == MetaCardinality.Many)
+			{
+#>
+					   <#= attribute.AttributeName #> = new List<<#= attribute.ClassName #>Spec>(<#= cloned #>.<#= attribute.AttributeName #>.Convert(o => <#= attribute.ClassName #>Spec.Clone<#= attribute.ClassName #>(o))),
+<#
+			}
+			else
+			{
+#>
+					   <#= attribute.AttributeName #> = <#= attribute.ClassName #>Spec.Clone<#= attribute.ClassName #>(<#= cloned #>.<#= attribute.AttributeName #>),
+<#
+			}
+		}
+		
+///==========================================================================================================================
+/// Clone Enumeration Literals
+///==========================================================================================================================
+					
+		foreach (var enumerationLiteral in MetaModel.GetEnumerationLiteralsFor(metaClassifier))
+		{
+			if (enumerationLiteral.Cardinality == MetaCardinality.Many)
+			{
+#>
+					   <#= enumerationLiteral.Name #> = new List<<#= enumerationLiteral.ClassName #>Spec>(<#= cloned #>.<#= enumerationLiteral.Name #>.Convert(o => <#= enumerationLiteral.ClassName #>Spec.Clone<#= enumerationLiteral.ClassName #>(o))),
+<#
+			}
+			else
+			{
+#>
+					   <#= enumerationLiteral.Name #> = <#= enumerationLiteral.ClassName #>Spec.Clone<#= enumerationLiteral.ClassName #>(<#= cloned #>.<#= enumerationLiteral.Name #>),
+<#
+			}
+		}
+		
+///==========================================================================================================================
+/// Clone Associations
+///==========================================================================================================================
+					
+		foreach (var association in MetaModel.GetAssociationsForAssociatingClassifier(metaClassifier))
+		{
+			if (association.Cardinality == MetaCardinality.Many)
+			{
+#>
+					   <#= association.Name #> = new List<<#= association.ClassName #>Spec>(<#= cloned #>.<#= association.Name #>.Convert(o => <#= association.ClassName #>Spec.Clone<#= association.ClassName #>(o))),
+<#
+			}
+			else
+			{
+#>
+					   <#= association.Name #> = <#= association.ClassName #>Spec.Clone<#= association.ClassName #>(<#= cloned #>.<#= association.Name #>),
+<#
+			}
+		}
+		
+///==========================================================================================================================
+/// Clone Tagged Values
+///==========================================================================================================================
+					
+		foreach (var taggedValue in metaClassifier.TaggedValues)
+		{
+			if (!(taggedValue.AutoGenerated))
+			{
+#>
+					   <#= CopyTaggedValue(taggedValue, cloned) #>,
+<#
+			}
+		}
+#>
+                   };
+        }
+	}
+}

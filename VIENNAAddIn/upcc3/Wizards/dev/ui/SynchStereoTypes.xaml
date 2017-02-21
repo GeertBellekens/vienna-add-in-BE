@@ -1,0 +1,22 @@
+﻿<Window x:Class="VIENNAAddIn.upcc3.Wizards.dev.ui.SynchStereoTypes"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="363" Width="484" WindowStyle="SingleBorderWindow" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ShowInTaskbar="True" ResizeMode="NoResize" Title="Synchronize Tagged Values" FontSize="11">
+    <DockPanel>
+        <GroupBox DockPanel.Dock="Top" Margin="5,5,5,5" Header="Configuration">
+        <StackPanel Orientation="Horizontal">
+            <Label>Remove Tagged Values which are not part of the CCTS?</Label>
+            <CheckBox Name="removeUnusedTaggedValues" VerticalAlignment="Center"></CheckBox>
+        </StackPanel>
+        </GroupBox>
+        <GroupBox Margin="5,5,5,5" Name="Status" Header="Status" DockPanel.Dock="Bottom">
+        <StackPanel>
+            <TextBox Height="200" IsReadOnly="True" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Name="rtxtStatus" Margin="2,2,2,2" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"></TextBox>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="Auto">
+                <Button Margin="5,5,5,0" Height="24" Name="FixAll" Width="100" Click="FixAll_Click">Start</Button>
+                <Button Margin="5,5,5,0" Height="24"  Name="Close" Width="100" Click="Close_Click">Close</Button>
+            </StackPanel>
+        </StackPanel>
+        </GroupBox>
+    </DockPanel>
+</Window>

@@ -1,0 +1,38 @@
+#summary Create a UPCC3 model in EA
+
+=UPCC models in Enterprise Architect=
+
+The UML Profile for Core Components is a representation of UN/CEFACT’s Core Components Technical Specification (CCTS) 3.0 in UML. The UML Profile for Core Components (UPCC) is based on the Unified Modeling Language (UML) and defined as a profile on top of it. To model business documents in EA following the UPCC standard, the model must be defined as a UPCC3 model, and must contain certain libraries defined in the UPCC3 standard.
+
+=Create your first UPCC model=
+
+  # Prepare a new Enterprise Architect project including one empty model
+  # In the _Project Browser_, select the model and define it as a UPCC3 Model by selecting _Add-Ins / VIENNAAddIn / Set Model as UMM2/UPCC3 Model_ from the main menu:
+    http://vienna-add-in.googlecode.com/svn/wiki/images/CreateaUpccModel_01.gif
+  # In the _Project Browser_, right-click on the model and select _Add-In / VIENNAAddIn / Create initial UPCC3 model structure_ from the context menu:
+    http://vienna-add-in.googlecode.com/svn/wiki/images/CreateaUpccModel_02.gif
+  # In the _Default UPCC Model Creator_ dialog, you can choose a name to be assigned to the new model:
+    http://vienna-add-in.googlecode.com/svn/wiki/images/CreateaUpccModel_03.gif
+  # Usually, default names are assigned to the libraries generated as members of the new model. If you want to assign custom names to some of the libraries, uncheck the _Use default names for generated Libraries_ checkbox and change the library names:
+    http://vienna-add-in.googlecode.com/svn/wiki/images/CreateaUpccModel_04.gif
+  # After unchecking _Use default names for generated Libraries_, you can also uncheck all libraries you do not want to be generated automatically
+  # When selecting the _Import standard CC libraries_ checkbox, the Add-In will automatically download the standard Core Component Libraries and import them into the newly created model. If you decide not to use this functionality at the moment, you can import the CC Libraries later using the Standard CC Library Importer - see section _Import standard Core Component Libraries_ for details!
+   # When using the automatic CCL import functionality, you can choose the desired version of the CCL from two drop-down lists
+   # After choosing the CCL version, detailed information to the selected version is shown in the _Comments_ section
+    http://vienna-add-in.googlecode.com/svn/wiki/images/CreateaUpccModel_05.gif
+  # Finally, click _Generate Default Model_
+  # You can observe process of model generation by watching the status messages that are printed to the _Status_ section regularly. After the process has been finished, a message box confirms that the model has been created successfully:
+    http://vienna-add-in.googlecode.com/svn/wiki/images/CreateaUpccModel_06.gif
+
+
+=References=
+(1) UMM Development Site http://umm-dev.org/
+
+(2) CCTS standard http://www.untmg.org/wp-content/uploads/2008/06/specification_ccts3p0odp620080207.pdf
+
+=Related Tasks=
+[CreateaModelinEA Create a model in Enterprise Architect]: This page explains how to open a project file and create a model in Enterprise Architect
+
+[ImportStandardCCLibraries Import standard CC Libraries]: This page explains how to download and import standard Core Component Libraries into an existing UPCC3 model
+
+[GettingStartedVideos Getting Started Videos]: This page contains a few videos explaining common tasks using the VIENNA Add-In

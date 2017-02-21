@@ -1,0 +1,98 @@
+NEEDS TO BE UPDATED
+
+SOFTWARE LICENSE AGREEMENT
+
+Definitions. Unless stated otherwise "you" (and "your") means the
+individual or legal entity to whom this license is granted, "we" (also
+"us", "our") means 
+
+ARC Seibersdorf research GmbH
+Research Studios Austria
+Studio Digital Memory Engineering
+
+copyright owners and licensors of the software, and "the software" or
+"our software" means the computer software application (or applications)
+known as "UMM Add-In", together with any associated computer files and
+documentation, whether in physical or electronic form.
+
+1. By downloading, installing, copying or using the software on any
+computer you agree to be bound by the terms of this license agreement,
+which both grants you rights and imposes obligations upon you. If you
+disagree with any of the terms of this agreement then you must
+immediately stop using the software and destroy all copies of the
+software in your possession or on your machines.
+
+2. This software is presently distributed as a free evaulation version
+and you are permitted to use the software for scientific, educational,
+and evaluation purposes only.
+
+3. The software and its constituent files and documentation are
+copyrighted and you may not copy the software or any part of the
+software except as explicitly stated in this agreement. You are
+permitted to install the software on one or more computer system hard
+disks, as specified under the terms of this license, and also to make
+copies of the software for backup purposes. 
+
+4. You are not permitted to make and distribute copies of the software
+to third parties. The software is licensed to you, not sold, and we
+reserve all rights not explicitly granted to you in this license. We
+and/or our licensors retain title to the software and all intellectual
+property rights therein.
+
+5. You agree that the internal workings of the software and any computer
+files provided as part of the software are confidential trade secrets of
+the copyright owner. You agree not to make any attempt to disassemble,
+decompile, or reverse engineer the software or any of its constituent
+parts. If you acquire knowledge about the internal workings of the
+software or any other related trade secrets you agree not to distribute,
+disseminate or publish any such information without our written
+agreement. You recognise that trade secrets are protected by law in many
+jurisdictions and infringement of these conditions (even for "personal"
+use) may be a criminal offence punishable by law.
+
+6. We may terminate this license at any time at our sole discretion by
+giving you notice in writing. A breach by you of any of the terms of this
+license will immediately terminate the license. You may terminate the
+license by deleting, destroying or returning all copies of the software
+in your possession. Any obligations made on you under this agreement not
+to reveal or distribute confidential or copyrighted information, including
+but not limited to registration codes or trade secrets related to the
+internal workings of the software, survive termination of this license.
+
+7. This software is not designed to be fault tolerant and is not
+approved for use in situations where malfunction could lead to death,
+personal injury, or environmental damage, including (but not limited to)
+nuclear facilities, air traffic control, aircraft navigation or
+communication systems, or medical life support machines.
+
+8. You recognise that this is "pre-release" software which is provided
+solely for scientific, educational, and evaluation purposes. You take full
+responsibility for making backup copies and safeguarding any files or data
+that may be damaged or destroyed through use of this software. This software
+has not yet been publicly announced and you agree not to disclose or
+discuss any details of the software to any third party, other than via
+discussion forums we may provide for this specific purpose. You recognise
+that the the capabilities provided by such software may vary without
+notice from release to release.
+
+9. This license agreement supersedes any or all previous versions of
+this license. By downloading or installing new versions of the software
+or by continuing to use the software after you receive a copy of this
+new license you agree to be bound by any new or altered terms in this
+license.
+
+10. This agreement is governed by the laws of the European Union. If any
+provision of this license agreement or portion thereof is found to be
+unenforceable you agree to be bound by the remainder of this license
+agreement.
+
+THE SOFTWARE IS PROVIDED STRICTLY "AS IS" WITH NO WARRANTY OR GUARANTEE
+OF ANY KIND GIVEN. TO THE MAXIMUM EXTENT PERMISSABLE BY LAW ARC SEIBERSDORF
+RESEARCH GMBH DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT
+NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTIBILITY OR FITNESS FOR A
+PARTICULAR PURPOSE. IN NO EVENT SHALL ARC SEIBERSDORF RESEARCH GMBH, ITS
+AGENTS OR DISTRIBUTORS BE LIABLE FOR ANY DAMAGES WHATSOEVER (INCLUDING BUT
+NOT LIMITED TO LOSS OF INFORMATION, INTERRUPTION OF BUSINESS OR ANY OTHER
+PECUNIARY LOSS OR CONSEQUENTIAL LOSS) ARISING FROM THE INSTALLATION,
+EVALUATION, OR USE (OR INABILITY TO USE) THE SOFTWARE, HOWEVER SUCH A
+LOSS MAY BE INCURRED.

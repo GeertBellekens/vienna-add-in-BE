@@ -1,0 +1,139 @@
+<#@ include file="t4/helpers.tt" #>
+// *******************************************************************************
+// This file is part of the VIENNAAddIn project
+// 
+// Licensed under GNU General Public License V3 http://gplv3.fsf.org/
+// 
+// For further information on the VIENNAAddIn project please visit 
+// http://vienna-add-in.googlecode.com
+// *******************************************************************************
+using System;
+using System.Collections.Generic;
+using CctsRepository.BdtLibrary;
+using CctsRepository.BieLibrary;
+using CctsRepository.BLibrary;
+using CctsRepository.CcLibrary;
+using CctsRepository.CdtLibrary;
+using CctsRepository.DocLibrary;
+using CctsRepository.EnumLibrary;
+using CctsRepository.PrimLibrary;
+
+namespace CctsRepository
+{
+    public class <#= multiType.Name #>
+    {
+        private readonly object actualType;
+
+        public <#= multiType.Name #>(object actualType)
+        {
+            this.actualType = actualType;
+        }
+
+		/// <summary>
+		/// The actual type's ID.
+		/// </summary>
+        public int Id
+		{ 
+			get
+			{
+<#
+			foreach (var classifier in multiType.Classifiers)
+			{
+#>
+				if (Is<#= classifier.Name #>)
+				{
+					return <#= classifier.Name #>.Id;
+				}
+<#
+			}
+#>
+				throw new Exception("Invalid <#= multiType.Name #>: " + actualType.GetType());
+			}
+		}
+		
+		/// <summary>
+		/// The actual type's name.
+		/// </summary>
+        public string Name
+		{ 
+			get
+			{
+<#
+			foreach (var classifier in multiType.Classifiers)
+			{
+#>
+				if (Is<#= classifier.Name #>)
+				{
+					return <#= classifier.Name #>.Name;
+				}
+<#
+			}
+#>
+				throw new Exception("Invalid <#= multiType.Name #>: " + actualType.GetType());
+			}
+		}
+		
+<#
+			foreach (var classifier in multiType.Classifiers)
+			{
+#>
+
+        /// <summary>
+        /// <c>true</c> if the actual type is a(n) <#= classifier.Stereotype #>.
+        /// </summary>
+		public bool Is<#= classifier.Name #>
+		{
+			get
+			{
+				return actualType is I<#= classifier.Name #>;
+			}
+		}
+		
+        /// <summary>
+        /// The actual type, if it is a(n) <#= classifier.Stereotype #>.
+        /// </summary>
+		public I<#= classifier.Name #> <#= classifier.Name #>
+		{
+			get
+			{
+				return actualType as I<#= classifier.Name #>;
+			}
+		}
+<#
+			}
+#>
+
+		#region Common Tagged Values
+<# 
+		foreach (var taggedValue in multiType.CommonTaggedValues)
+		{
+#>
+
+        /// <summary>
+        /// The actual type's tagged value '<#= taggedValue.Name #>'.
+        /// </summary>
+		public <#= TaggedValuePropertyType(taggedValue) #> <#= TaggedValuePropertyName(taggedValue) #> 
+		{
+			get
+			{
+<#
+			foreach (var classifier in multiType.Classifiers)
+			{
+#>
+				if (Is<#= classifier.Name #>)
+				{
+					return <#= classifier.Name #>.<#= TaggedValuePropertyName(taggedValue) #>;
+				}
+<#
+			}
+#>
+				throw new Exception("Invalid <#= multiType.Name #>: " + actualType.GetType());
+			}
+		}
+<#
+		}
+#>
+
+		#endregion
+	}
+}

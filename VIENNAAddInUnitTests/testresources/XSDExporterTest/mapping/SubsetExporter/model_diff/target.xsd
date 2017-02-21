@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="TextStringType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="LanguageString" type="xsd:string" />
+        <xsd:attribute name="LanguageLocaleString" type="xsd:string" />
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="AddressType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="StreetName" type="TextStringType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="CityName" type="TextStringType" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="AttentionOf" type="TextStringType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="Address" type="AddressType" />
+  <xsd:complexType name="PersonType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Name" type="TextStringType" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Title" type="TextStringType" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Salutation" type="TextStringType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="Person" type="PersonType" />
+</xsd:schema>

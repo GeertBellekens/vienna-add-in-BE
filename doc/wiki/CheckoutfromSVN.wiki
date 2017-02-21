@@ -1,0 +1,34 @@
+#summary Description how to checkout the latest source from SVN, build it in VS and start developing
+
+= Checkout the latest source =
+
+  * Use either TortoiseSVN or AnkhSVN to check out the latest source. The path to the complete VIENNA Add-In VS.NET solution is https://vienna-add-in.googlecode.com/svn/trunk/ . The solution contains three projects: VIENNAAddIn, VIENNAInstaller, and GIEMInstaller
+  * You may also follow the instructions as given by google code on http://code.google.com/p/vienna-add-in/source/browse/
+
+= Build it in Visual Studio =
+
+  * Open the solution file in Visual Studio
+  * Build the solution
+
+= Register the VIENNA Add-In  within EnterpriseArchitect = 
+
+  * The VIENNA Add-In requires some keys within the Windows Registry
+    * A key to register the Add-In with EnterpriseArchitect
+    * Some keys that the Add-In needs itself
+
+For your convenience, we included a registry file *createEAKeys.reg* within the source located in the \ext folder. The registry file assumes that you have checked out the whole solution under `C:\VIENNAAddIn`. This means that the VIENNAAddIn project is located a folder beneath at `C:\VIENNAAddIn\VIENNAAddIn`. If this is not the case, you have to edit the *createEAKeys.reg* file accordingly, in order to point to your installation directory. 
+  * Double-click the *createEAKeys.reg* file and confirm that you want to add the information to your Windows registry. This will add the necessary keys for the VIENNA Add-In itself.
+
+
+= Register the compiled VIENNA Add-In with your system = 
+
+  * Build the VIENNA Add-In solution in Visual Studio. It is not necessary to build the Installers in this step. The resulting DLL file now has to be registered with your system. If you have checked out the solution under `C:\VIENNAAddIn` the DLL is found under `C:\VIENNAAddIn\VIENNAAddIn\bin\Debug\VIENNAAddIn.dll`. If you chose a different path, locate the DLL now. 
+  * In general you should develop in Debug mode in Visual Studio and not in Release mode.
+  * Open a console (command line) window (if you run Windows Vista, you may need to open the console under elevated (Administrator) privileges.
+  * Type the following command `C:\>regsvr32 C:\VIENNAAddIn\VIENNAAddIn\bin\Debug\VIENNAAddIn.dll`
+(if you chose a different path, substitute the path to the DLL file accordingly). There may occur an error message that some entry-point DllRegisterServer was not found, or similar. You can ignore that. 
+
+
+*Congratulations, the VIENNA Add-In should now be available within EnterpriseArchitect*
+
+In case you experience any difficulties building the code or installing it please submit an issue using the issue tracker. We will provide a solution as quickly as possible.

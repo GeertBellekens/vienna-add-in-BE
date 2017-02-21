@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.ebinterface.at/schema/3p0/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" targetNamespace="http://www.ebinterface.at/schema/3p0/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Address" type="AddressType"/>
+
+	<xs:complexType name="AddressType">
+		<xs:sequence>
+			<xs:element name="Salutation" minOccurs="0" type="xs:string"/>
+			<xs:element name="Name" type="xs:string"/>
+			<xs:element name="Street" type="xs:string"/>
+			<xs:element name="POBox" minOccurs="0" type="xs:string"/>
+			<xs:element name="Town" type="xs:string"/>
+			<xs:element name="ZIP" type="xs:string"/>
+		</xs:sequence>
+
+	</xs:complexType>
+</xs:schema>

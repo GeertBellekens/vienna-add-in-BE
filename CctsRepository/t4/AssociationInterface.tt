@@ -1,0 +1,77 @@
+<#@ include file="../t4/helpers.tt" #>
+<#@ include file="../t4/Copyright.tt" #>
+using System.Collections.Generic;
+<#@ include file="../t4/CctsRepositoryNamespaces.tt" #>
+
+<# 
+	var library = MetaModel.GetPackageRelationsFor(metaAssociation.AssociatingClassifierType).First().PackageType;
+    var associatingClassifierClassName = (metaAssociation.AssociatingClassifierType is MetaMultiType ? "" : "I" ) + metaAssociation.AssociatingClassifierType.Name;
+    var associatedClassifierClassName = (metaAssociation.AssociatedClassifierType is MetaMultiType ? "" : "I" ) + metaAssociation.AssociatedClassifierType.Name;
+#>
+namespace CctsRepository.<#= library.Name #>
+{
+    public interface I<#= metaAssociation.ClassName #>
+    {
+		int Id { get; }
+		
+		string Name { get; }
+		
+        string UpperBound { get; }
+		
+        string LowerBound { get; }
+		
+        bool IsOptional();
+<#
+		if (metaAssociation.AggregationKind == MetaAggregationKind.SharedOrComposite)
+		{
+#>
+
+		AggregationKind AggregationKind { get; }
+<#
+		}
+#>
+		
+		<#= associatingClassifierClassName #> Associating<#= metaAssociation.AssociatingClassifierType.Name #> { get; }
+
+		<#= associatedClassifierClassName #> Associated<#= metaAssociation.AssociatedClassifierType.Name #> { get; }
+<#
+///==========================================================================================================================
+/// Dependencies
+///==========================================================================================================================
+
+		foreach (var dependency in MetaModel.GetDependenciesFor(metaAssociation))
+		{
+#>
+
+		I<#= dependency.TargetAssociation.ClassName #> <#= FirstCharToUpperCase(dependency.Stereotype.ToString()) #> { get; }
+<#
+		}
+
+///==========================================================================================================================
+/// Tagged Values
+///==========================================================================================================================
+
+		if (metaAssociation.HasTaggedValues)
+		{
+#>
+
+		#region Tagged Values
+<# 
+			foreach (var taggedValue in metaAssociation.TaggedValues)
+			{
+#>
+
+        ///<summary>
+        /// Tagged value '<#= taggedValue.Name #>'.
+        ///</summary>
+		<#= TaggedValuePropertyType(taggedValue) #> <#= TaggedValuePropertyName(taggedValue) #> { get; }
+<#
+			}
+#>
+
+		#endregion
+<#
+		}
+#>
+    }
+}

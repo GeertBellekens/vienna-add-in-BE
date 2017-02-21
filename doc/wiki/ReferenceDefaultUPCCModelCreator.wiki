@@ -1,0 +1,27 @@
+#summary Detailed description of the Default UPCC Model Creator dialog
+
+=Default UPCC Model Creator=
+
+The _Default UPCC model Creator_ dialog automatically adds libraries defined in the UPCC standard to an existing model. _Only available if the model has been set as a UPCC3/UMM2 model._
+
+http://vienna-add-in.googlecode.com/svn/wiki/images/ReferenceDefaultUPCCModelCreator_01.gif
+
+(1) In this textbox, enter the desired name to be assigned to the new model.
+
+(2) Select this checkbox if you want the Add-In to automatically assign default names to all the libraries generated as members of the new model.
+
+(3) These checkboxes allow you to define which libraries should be generated as members of the new model and which should be omitted. _Only available if checkbox (2) is selected; the first 4 items are only available if checkbox 5 is not selected._
+
+(4) If you want to assign custom names to the libraries generated as members of the new model, enter these names here. _Only available if checkbox (2) is selected; the first 4 items are only available if checkbox 5 is not selected._
+
+(5) Select this checkbox if you want the Add-In to automatically download the standard CC libraries and import them into the newly created model.
+
+(6) Choose the desired version of the CCL to be imported from these two drop-down lists. _Only available if checkbox (5) is selected._
+
+(7) After choosing a CCL version from the drop-down lists (6), a detailed description of the selected version is shown in ths section. _Only available if checkbox (5) is selected._
+
+(8) During the model generation process, status messages are shown in this section regularly.
+
+(9) Click this button to start the model generation process.
+
+(10) Click this button to close the dialog without generating a model.

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:tns="http://foo.bar/doc" xmlns:ccts="urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3" xmlns:eb="http://foo.bar/doc" xmlns:bdt="http://foo.bar/doc" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://foo.bar/doc" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1">
+	<xsd:include schemaLocation="BusinessDataType_1.xsd"/>
+	<xsd:element name="Included_PersonPerson" type="tns:PersonType"/>
+	<xsd:complexType name="AddressType">
+		<xsd:sequence>
+			<xsd:element name="BuildingNumber" type="bdt:TextStringType" minOccurs="0"/>
+			<xsd:element name="Town_CityName" type="bdt:TextStringType" minOccurs="0"/>
+			<xsd:element name="Country_CountryName" type="bdt:TextStringType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="AddressExtension_LineOne" type="bdt:TextStringType" minOccurs="0"/>
+			<xsd:element name="ZIP_PostcodeCode" type="bdt:CodeStringType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="POBox_PostOfficeBox" type="bdt:TextStringType" minOccurs="0"/>
+			<xsd:element name="StreetName" type="bdt:TextStringType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="tns:Included_PersonPerson"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="Address" type="tns:AddressType"/>
+	<xsd:complexType name="PersonType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="bdt:TextStringType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Salutation_Title" type="bdt:TextStringType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="Person" type="tns:PersonType"/>
+</xsd:schema>

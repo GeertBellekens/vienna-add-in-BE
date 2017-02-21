@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XMLSpy v2008 (http://www.altova.com) by XMLSpy 2007  Release 3, Partner License for 30 users (valid from 2007-09-06 to 2008-09-30) (Open Applications Group) -->
+<!--Created with Liquid XML Studio 2008 6.0.4.0 (http://www.liquid-technologies.com)-->
+<!-- Mit XMLSpy v2006 sp2 U bearbeitet (http://www.altova.com) von Gunther Stuhec (SAP AG) -->
+<xsd:schema xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:D06B" xmlns:cod="urn:unece:uncefact:dataschema:draft:ContextDrivers:0.1" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:2" xmlns:clm63035="urn:un:unece:uncefact:codelist:standard:6:3035:D05B" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ccts="urn:un:unece:uncefact:documentation:standard:CoreComponentsTechnicalSpecification:2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:q1="urn:un:unece:uncefact:codelist:standard:5:3166:2004-09-14" xmlns:q2="urn:un:unece:uncefact:codelist:standard:5:3166:2004-09-14" targetNamespace="urn:unece:uncefact:dataschema:draft:ContextDrivers:0.1" elementFormDefault="unqualified" attributeFormDefault="unqualified">
+	<xsd:import namespace="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:2" schemaLocation="C:\Documents and Settings\D029024\My Documents\CoreComponentProjects\ContextDrivenTechnology\UnqualifiedDataType_2p0.xsd"/>
+	<xsd:import namespace="urn:un:unece:uncefact:data:standard:QualifiedDataType:D06B" schemaLocation="C:\Documents and Settings\D029024\My Documents\CoreComponentProjects\ContextDrivenTechnology\QualifiedDataType_D06B.xsd"/>
+	<xsd:element name="BusinessContext">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="ContextUnit" maxOccurs="unbounded">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="BusinessProcessContextCategory" type="cod:BusinessProcessContextCategoryType" minOccurs="0" maxOccurs="unbounded"/>
+							<xsd:element name="BusinessProcessRoleContextCategory" type="cod:BusinessProcessRoleContextCategoryType" minOccurs="0" maxOccurs="unbounded"/>
+							<xsd:element name="SupportingRoleContextCategory" type="cod:SupportingRoleContextCategoryType" minOccurs="0" maxOccurs="unbounded"/>
+							<xsd:element name="IndustryClassificationContextCategory" type="cod:IndustryClassificationContextCategoryType" minOccurs="0" maxOccurs="unbounded"/>
+							<xsd:element name="ProductClassificationContextCategory" type="cod:ProductClassificationContextCategoryType" minOccurs="0" maxOccurs="unbounded"/>
+							<xsd:element name="GeopoliticalContextCategory" type="cod:GeopoliticalContextCategoryType" minOccurs="0" maxOccurs="unbounded"/>
+							<xsd:element name="OfficialConstraintsContextCategory" type="cod:OfficialConstraintsContextCategoryType" minOccurs="0" maxOccurs="unbounded"/>
+							<xsd:element name="SystemCapabilitiesContextCategory" type="cod:SystemCapabilitiesContextCategoryType" minOccurs="0" maxOccurs="unbounded"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="id" type="xsd:ID"/>
+			<xsd:attribute name="versionID" type="xsd:ID"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="BusinessInformationContextCategoryType">
+		<xsd:sequence>
+			<xsd:element name="BusinessInformationEntityID" type="udt:IDType" nillable="true" maxOccurs="unbounded"/>
+			<xsd:element name="ContextExclusion" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="BusinessInformationEntityID" type="udt:IDType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="inAllContextsIndicator" type="xsd:boolean"/>
+	</xsd:complexType>
+	<xsd:complexType name="BusinessProcessContextCategoryType">
+		<xsd:sequence>
+			<xsd:element name="BusinessProcessCode" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="udt:CodeType"/>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ContextExclusion" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="BusinessProcessTypeCode" type="udt:CodeType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="inAllContextsIndicator" type="xsd:boolean"/>
+	</xsd:complexType>
+	<xsd:complexType name="BusinessProcessRoleContextCategoryType">
+		<xsd:sequence>
+			<xsd:element name="BusinessProcessRoleCode" type="udt:CodeType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ContextExclusion" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="PartyFunctionCode" type="udt:CodeType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="inAllContextsIndicator" type="xsd:boolean"/>
+	</xsd:complexType>
+	<xsd:complexType name="SupportingRoleContextCategoryType">
+		<xsd:sequence>
+			<xsd:element name="SupporterFunctionCode" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="udt:CodeType"/>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ContextExclusion" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="SupporterFunctionCode" type="udt:CodeType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="inAllContextsIndicator" type="xsd:boolean"/>
+	</xsd:complexType>
+	<xsd:complexType name="IndustryClassificationContextCategoryType">
+		<xsd:sequence>
+			<xsd:element name="IndustryClassificationCode" type="udt:CodeType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ContextExclusion" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="IndustryTypeCode" type="udt:CodeType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="inAllContextsIndicator" type="xsd:boolean"/>
+	</xsd:complexType>
+	<xsd:complexType name="ProductClassificationContextCategoryType">
+		<xsd:sequence>
+			<xsd:element name="ProductClassificationCode" type="udt:CodeType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ContextExclusion" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ProductTypeCode" type="udt:CodeType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="inAllContextsIndicator" type="xsd:boolean"/>
+	</xsd:complexType>
+	<xsd:complexType name="GeopoliticalContextCategoryType">
+		<xsd:sequence>
+			<xsd:element name="GeopoliticalCode" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ContextExclusion" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="q2:CountryCode" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="inAllContextsIndicator" type="xsd:boolean"/>
+	</xsd:complexType>
+	<xsd:complexType name="OfficialConstraintsContextCategoryType">
+		<xsd:sequence>
+			<xsd:element name="OfficialConstraintsCode" nillable="true" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="udt:CodeType"/>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ContextExclusion" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="LawTypeCode" type="udt:CodeType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="inAllContextsListIndicator" type="xsd:boolean"/>
+	</xsd:complexType>
+	<xsd:complexType name="SystemCapabilitiesContextCategoryType">
+		<xsd:sequence>
+			<xsd:element name="SystemCapabilitiesID" type="udt:IDType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ContextExclusion" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="SoftwareSolutionID" type="udt:IDType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="inAllContextsIndicator" type="xsd:boolean"/>
+	</xsd:complexType>
+</xsd:schema>

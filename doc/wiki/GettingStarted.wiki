@@ -1,0 +1,28 @@
+#summary First-steps tutorial for users.
+
+=Creating a UPCC3 model=
+
+  # Create a new project.
+  # Select main menu: "Add-Ins / VIENNAAddIn / Set Model as UMM2/UPCC3 Model".
+  # Select main menu: "Add-Ins / VIENNAAddIn / Create initial UPCC3 model structure".
+
+==Generating default UPCC Model==
+
+This dialog lets you
+  * choose a name for the generated UPCC model
+  * select which libraries to create
+  * either choose to use standard names or assign custom names to the libraries to be created
+
+Furthermore you can choose whether to download and import the standard CCL libraries. See the next section for details.
+
+Finally, click "Generate Default Model" to create the model structure. The process of generating the model structure will take some time, you can observe this process by watching the status messages that are printed to the "status" field regularly. When finished, a message box confirms that the model has been created successfully.
+
+==Importing standard libraries==
+
+The standard Core Component Library importer will download the standard CC libraries and import them into the newly created model. There are two possibilities to use this functionality:
+  * When using the "Default UPCC Model Creator" dialog for creating a default model, you can use the "Import standard CC Libraries" section in this dialog.
+  * To import standard CC libraries to an existing model, you can use the Standard CCL Importer: In the Project Brwoser, right-click the bLibrary and choose "Import Standard CC Libraries" from the menu.
+
+Both dialogs look the same and provide the same functionality. They allow you to choose the desired version of the CCL from two drop-down lists. After that, detailed information to the selected version is shown in the "Comments" field.
+
+After clicking "Import" (or "Generate Default Model" in the "Generate default UPCC Model" dialog), the Add-In will download the CC libraries as XMI files and import them into the current project.

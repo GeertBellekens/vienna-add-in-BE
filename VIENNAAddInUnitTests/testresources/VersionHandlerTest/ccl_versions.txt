@@ -1,0 +1,3 @@
+simplified|1|Simplified Core Component Library v08B published by UN/CEFACT.
+simplified|2|Simplified Core Component Library v08B published by UN/CEFACT which has been adapted by Research Studios Austria to fix mistakes in the Core Component model. 
+complex|1|Complex Core Component Library v09A published by UN/CEFACT.

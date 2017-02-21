@@ -1,0 +1,41 @@
+#summary Storyboard for modeling typical Passport Information using the VIENNA Add-In.
+
+= Storyboard =
+
+  # Create a new project in Enterprise Architect named "passport_model.eap".
+  # Define the project as a UMM2/UPCC3 Model.
+  # Launch the "Default UPCC Model Creator" wizard and create a default model named "Passport Model". Furthermore, use the wizard to import the standard Core Component Library having the major version "democcl" and the minor version "2".
+  # Launch the "ABIE Editor" wizard and create the following ABIEs in the order listed. Note that the ABIEs are created based on the Core Components imported in previous step. It is also necessary to create appropriate BDTs. In the following all necessary steps are listed. 
+    # ABIE "Address"
+      * Choose the ACC "Address"
+      * Check the BCC "BuildingNumber" and rename the BDT from "New1Text" to "Text"
+      * Check the BCC "CityName"
+      * Check the BCC "CountryName"
+      * Check the BCC "Postcode" and rename the BDT from "New1Code" to "Code"
+      * Check the BCC "StreetName"
+      * Click "Create ABIE"
+    # ABIE "Country"
+      * Choose the ACC "Country"
+      * Check the BCC "Identification" and rename the BDT from "New1Identifier" to "Identifier"
+      * Check the BCC "Name"
+      * Click "Create ABIE"
+    # ABIE "Period"
+      * Choose the ACC "Period"
+      * Check the BCC "End", rename the BBIE from "End" to "DateOfExpiry_End", and rename the BDT from "New1DateTime" to "DateTime"
+      * Check the BCC "Start", rename the BBIE from "End" to "DateOfIssue_Start"
+      * Click "Create ABIE"
+    # ABIE "Person"
+      * Choose the ACC "Person"
+      * Check the BCC "Birth"
+      * Check the BCC "BirthCountry"
+      * Check the BCC "EyeColor" 
+      * Check the BCC "Gender"
+      * Check the BCC "GivenName"
+      * Check the BCC "Height" and rename the BDT from "New1Measure" to "Measure"
+      * Check the BCC "Name" and rename the BBIE from "Name" to "SurName_Name"
+      * Check the BCC "Passport" and add as well as check two additional BBIEs. Now rename the first BBIE from "Passport" to "Code_Passport", the second BBIE from "New1Passport" to "Number_Passport", and the third BBIE from "New2Passport" to "Type_Passport". 
+      * Switch to the Associations Tab and for the ABIE "Country" check the ASBIE "Nationality" and for the ABIE "Address" check the ASBIE "Residence". 
+      * Click "Create ABIE"
+  # Open the "DOCLibrary" and drag-and-drop the ABIEs created in previous step, namely "Address", "Country", "Period", and "Person" onto the canvas.
+  # From the toolbox drag-and-drop the UPCC Artefact "MA" onto the canvas and rename it to "Passport". 
+  # Finally, select the UPCC Artefact "ASMA" from the toolbox and drag it from the ABIE "Period" to the MA "Passport". Repeat previous step and drag-and-drop a MA from the ABIE "Person" to the MA "Passport". 

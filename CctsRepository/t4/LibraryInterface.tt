@@ -1,0 +1,145 @@
+<#@ include file="../t4/helpers.tt" #>
+<#@ include file="../t4/Copyright.tt" #>
+using System.Collections.Generic;
+<#@ include file="../t4/CctsRepositoryNamespaces.tt" #>
+
+namespace CctsRepository.<#= metaPackage.Name #>
+{
+	/// <summary>
+	/// Interface for CCTS/UPCC <#= metaPackage.Stereotype #>.
+	/// </summary>
+    public partial interface I<#= metaPackage.Name #>
+    {
+		/// <summary>
+		/// The <#= metaPackage.Stereotype #>'s unique ID.
+		/// </summary>
+        int Id { get; }
+		
+		/// <summary>
+		/// The <#= metaPackage.Stereotype #>'s name.
+		/// </summary>
+        string Name { get; }
+<# 
+///==========================================================================================================================
+/// Parent packages
+///==========================================================================================================================
+
+		foreach (var relation in MetaModel.GetParentPackageRelationsFor(metaPackage))
+		{
+#>
+
+		/// <summary>
+		/// The <#= relation.ParentPackageType.Stereotype #> containing this <#= metaPackage.Stereotype #>.
+		/// </summary>
+		I<#= relation.ParentPackageType.Name #> <#= relation.ParentPackageRole #> { get; }
+<#
+		}
+
+///==========================================================================================================================
+/// Sub-packages
+///==========================================================================================================================
+
+		foreach (var relation in MetaModel.GetSubPackageRelationsFor(metaPackage))
+		{
+			var subPackage = relation.SubPackageType.Stereotype;
+			var subPackageParamName = FirstCharToLowerCase(relation.SubPackageType.Name);
+#>
+
+		/// <summary>
+		/// The <#= subPackage #>s contained in this <#= metaPackage.Stereotype #>.
+		/// </summary>
+		IEnumerable<I<#= relation.SubPackageType.Name #>> Get<#= relation.SubPackageRole #>();
+
+		/// <summary>
+		/// Retrieves a <#= subPackage #> by name.
+		/// <param name="name">A <#= subPackage #>'s name.</param>
+		/// <returns>The <#= subPackage #> with the given <paramref name="name"/> or <c>null</c> if no such <#= subPackage #> is found.</returns>
+		/// </summary>
+        I<#= relation.SubPackageType.Name #> Get<#= relation.SubPackageType.Name #>ByName(string name);
+
+		/// <summary>
+		/// Creates a <#= subPackage #> based on the given <paramref name="specification"/>.
+		/// <param name="specification">A specification for a <#= subPackage #>.</param>
+		/// <returns>The newly created <#= subPackage #>.</returns>
+		/// </summary>
+		I<#= relation.SubPackageType.Name #> Create<#= relation.SubPackageType.Name #>(<#= relation.SubPackageType.Name #>Spec specification);
+
+		/// <summary>
+		/// Updates a <#= subPackage #> to match the given <paramref name="specification"/>.
+		/// <param name="<#= subPackageParamName #>">A <#= subPackage #>.</param>
+		/// <param name="specification">A new specification for the given <#= subPackage #>.</param>
+		/// <returns>The updated <#= subPackage #>. Depending on the implementation, this might be the same updated instance or a new instance!</returns>
+		/// </summary>
+        I<#= relation.SubPackageType.Name #> Update<#= relation.SubPackageType.Name #>(I<#= relation.SubPackageType.Name #> <#= subPackageParamName #>, <#= relation.SubPackageType.Name #>Spec specification);
+
+		/// <summary>
+		/// Removes a <#= subPackage #> from this <#= metaPackage.Stereotype #>.
+		/// <param name="<#= subPackageParamName #>">A <#= subPackage #>.</param>
+		/// </summary>
+        void Remove<#= relation.SubPackageType.Name #>(I<#= relation.SubPackageType.Name #> <#= subPackageParamName #>);
+<#
+		}
+
+///==========================================================================================================================
+/// Classifiers
+///==========================================================================================================================
+
+		foreach (var relation in MetaModel.GetClassifierRelationsFor(metaPackage))
+		{
+			var element = relation.ClassifierType.Stereotype;
+			var classifierParamName = FirstCharToLowerCase(relation.ClassifierType.Name);
+			if (classifierParamName == "enum") classifierParamName = "@enum"; // dirty hack to avoid naming conflict with 'enum'
+#>
+
+		/// <summary>
+		/// The <#= element #>s contained in this <#= metaPackage.Stereotype #>.
+		/// </summary>
+		IEnumerable<I<#= relation.ClassifierType.Name #>> <#= relation.ClassifierRole #> { get; }
+
+		/// <summary>
+		/// Retrieves a <#= element #> by name.
+		/// <param name="name">A <#= element #>'s name.</param>
+		/// <returns>The <#= element #> with the given <paramref name="name"/> or <c>null</c> if no such <#= element #> is found.</returns>
+		/// </summary>
+        I<#= relation.ClassifierType.Name #> Get<#= relation.ClassifierType.Name #>ByName(string name);
+
+		/// <summary>
+		/// Creates a <#= element #> based on the given <paramref name="specification"/>.
+		/// <param name="specification">A specification for a <#= element #>.</param>
+		/// <returns>The newly created <#= element #>.</returns>
+		/// </summary>
+		I<#= relation.ClassifierType.Name #> Create<#= relation.ClassifierType.Name #>(<#= relation.ClassifierType.Name #>Spec specification);
+
+		/// <summary>
+		/// Updates a <#= element #> to match the given <paramref name="specification"/>.
+		/// <param name="<#= classifierParamName #>">A <#= element #>.</param>
+		/// <param name="specification">A new specification for the given <#= element #>.</param>
+		/// <returns>The updated <#= element #>. Depending on the implementation, this might be the same updated instance or a new instance!</returns>
+		/// </summary>
+        I<#= relation.ClassifierType.Name #> Update<#= relation.ClassifierType.Name #>(I<#= relation.ClassifierType.Name #> <#= classifierParamName #>, <#= relation.ClassifierType.Name #>Spec specification);
+
+		/// <summary>
+		/// Removes a <#= element #> from this <#= metaPackage.Stereotype #>.
+		/// <param name="<#= classifierParamName #>">A <#= element #>.</param>
+		/// </summary>
+        void Remove<#= relation.ClassifierType.Name #>(I<#= relation.ClassifierType.Name #> <#= classifierParamName #>);
+<#
+		}
+
+///==========================================================================================================================
+/// Tagged Values
+///==========================================================================================================================
+
+		foreach (var taggedValue in metaPackage.TaggedValues)
+		{
+#>
+
+        ///<summary>
+        /// Tagged value '<#= taggedValue.Name #>'.
+        ///</summary>
+		<#= TaggedValuePropertyType(taggedValue) #> <#= TaggedValuePropertyName(taggedValue) #> { get; }
+<#
+		}
+#>
+    }
+}
