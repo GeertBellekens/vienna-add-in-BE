@@ -31,6 +31,7 @@ namespace VIENNAAddIn.upcc3
 		public const string CON = "CON";
 		public const string CodelistEntry = "CodelistEntry";
 		public const string DOCLibrary = "DOCLibrary";
+		public const string e_DocLibrary = "e_DocLibrary";
 		public const string ENUM = "ENUM";
 		public const string ENUMLibrary = "ENUMLibrary";
 		public const string IDSCHEME = "IDSCHEME";
@@ -54,11 +55,24 @@ namespace VIENNAAddIn.upcc3
 																			  ENUMLibrary,
 																			  PRIMLibrary,
                                                                           };
+        private static readonly List<string> DocLibraryStereotypes = new List<string>{
+        																DOCLibrary,
+        																e_DocLibrary};
+        			
 
         /// <returns>True if the given stereotype is one of the stereotypes for business libraries, false otherwise.</returns>
         public static bool IsBusinessLibraryStereotype(string stereotype)
         {
             return BusinessLibraryStereotypes.Contains(stereotype);
+        }
+        /// <summary>
+        /// Used to verify if the given stereotype is a DocLibrary stereotype
+        /// </summary>
+        /// <param name="stereotype">the stereotype to check</param>
+        /// <returns>true if the stereotype is one of the DocLibrary stereotypes</returns>
+        public static bool IsDocLibraryStereotype(string stereotype)
+        {
+        	return DocLibraryStereotypes.Contains(stereotype);
         }
     }
 }

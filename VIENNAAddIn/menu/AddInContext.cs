@@ -19,11 +19,11 @@ namespace VIENNAAddIn.menu
 
             if (MenuLocation == MenuLocation.TreeView)
             {
-                /// Workaround to fix problem in Enterprise Architect:
-                /// The "EA_OnContextItemChanged" method is not invoked in case the user
-                /// selects a model in the tree view which causes SelectedItem
-                /// to contain an invalid value. Therefore we override the values of the variables whenever the 
-                /// user selects a package in the tree view. 
+                // Workaround to fix problem in Enterprise Architect:
+                // The "EA_OnContextItemChanged" method is not invoked in case the user
+                // selects a model in the tree view which causes SelectedItem
+                // to contain an invalid value. Therefore we override the values of the variables whenever the 
+                // user selects a package in the tree view. 
                 SelectedItem = EARepository.GetTreeSelectedObject();
             }
             else
@@ -35,7 +35,7 @@ namespace VIENNAAddIn.menu
                 SelectedItem = contextObject;
             }
         }
-
+			
         ///<summary>
         /// The EA repository.
         ///</summary>
@@ -58,21 +58,32 @@ namespace VIENNAAddIn.menu
         /// The currently selected item.
         ///</summary>
         public object SelectedItem { get; private set; }
+        public Package SelectedPackage
+        {
+        	get
+        	{
+        		return SelectedItem as Package;
+        	}
+        }
 
         public bool SelectedItemIsLibraryOfType(string stereotype)
         {
-            return (SelectedItem as Package) != null && (SelectedItem as Package).Element != null && (SelectedItem as Package).Element.Stereotype == stereotype;
+            return SelectedPackage != null && SelectedPackage.Element != null && SelectedPackage.Element.Stereotype == stereotype;
         }
 
         public bool SelectedItemIsABIE()
         {
             return (SelectedItem as Element) != null && (SelectedItem as Element).Stereotype == Stereotype.ABIE;
         }
+        
+        public bool SelectedItemIsDocLibrary()
+        {
+        	return SelectedPackage != null && SelectedPackage.Element != null && Stereotype.IsDocLibraryStereotype(SelectedPackage.Element.Stereotype);
+        }
 
         public bool SelectedItemIsRootModel()
         {
-            var selectedPackage = SelectedItem as Package;
-            return selectedPackage != null && selectedPackage.ParentID == 0;
+            return SelectedPackage != null && SelectedPackage.ParentID == 0;
         }
     }
 }

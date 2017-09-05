@@ -60,39 +60,39 @@ namespace VIENNAAddIn
 
             menuManager.AddMenu(MenuLocation.MainMenu
                                 + (AddInSettings.AddInName
-                                   + "&Set Model as UMM2/UPCC3 Model"
-                                         .OnClick(ToggleUmm2ModelState)
-                                         .Checked(IfRepositoryIsUmm2Model)
-                                         .Enabled(Always)
-                                   + createUPCCStructure
-                                   + "&Create initial UMM 2 model structure".OnClick(UmmInitialPackageStructureCreator.ShowForm)
-                                   + _____
-                                   + "&Validate All - UPCC3".OnClick(ValidatorForm.ShowUpccValidator)
-                                   + "&Validate All - UMM2".OnClick(ValidatorForm.ShowUmmValidator)
-                                   + _____
-                                   + ("Maintenance"
-                                      + "Synchronize &Tagged Values...".OnClick(SynchStereoTypes.ShowForm)
-                                      // TODO: revert this to reenable UML Class Customizer
-                                      //+ "Set Stereo Types...".OnClick(StereoTypeTransformer.ShowForm)
-                                     )
-                                   + ("Wizards"
-                                      + createABIE
-                                      + modifyAbie
-                                      + createBDT
+//                                   + "&Set Model as UMM2/UPCC3 Model"
+//                                         .OnClick(ToggleUmm2ModelState)
+//                                         .Checked(IfRepositoryIsUmm2Model)
+//                                         .Enabled(Always)
+//                                   + createUPCCStructure
+//                                   + "&Create initial UMM 2 model structure".OnClick(UmmInitialPackageStructureCreator.ShowForm)
+//                                   + _____
+//                                   + "&Validate All - UPCC3".OnClick(ValidatorForm.ShowUpccValidator)
+//                                   + "&Validate All - UMM2".OnClick(ValidatorForm.ShowUmmValidator)
+//                                   + _____
+//                                   + ("Maintenance"
+//                                      + "Synchronize &Tagged Values...".OnClick(SynchStereoTypes.ShowForm)
+//                                      // TODO: revert this to reenable UML Class Customizer
+//                                      //+ "Set Stereo Types...".OnClick(StereoTypeTransformer.ShowForm)
+//                                     )
+//                                   + ("Wizards"
+//                                      + createABIE
+//                                      + modifyAbie
+//                                      + createBDT
                                       // TODO: revert this to reenable UML Class Customizer
                                       //+ "&Uml Class Customizer".OnClick(UmlClassCustomizer.ShowCreateDialog)
                                       //+ "Generate &XML Schema (old)".OnClick(GeneratorWizardForm.ShowGeneratorWizard)
                                       + "&Generate XML Schema".OnClick(ExporterForm.ShowForm)
-                                      + "&Import XML Schemas".OnClick(XsdImporterForm.ShowForm)
-                                      + "&XSLT Generator".OnClick(XsltGeneratorForm.ShowForm)
-                                      //+ "Import XML Schemas (old)".OnClick(ImporterWizardFormOld.ShowImporterWizard)
-                                      + _____
-                                      + "&Transformer Wizard".OnClick(TransformerWizard.ShowForm)
+//                                      + "&Import XML Schemas".OnClick(XsdImporterForm.ShowForm)
+//                                      + "&XSLT Generator".OnClick(XsltGeneratorForm.ShowForm)
+//                                      //+ "Import XML Schemas (old)".OnClick(ImporterWizardFormOld.ShowImporterWizard)
+//                                      + _____
+//                                      + "&Transformer Wizard".OnClick(TransformerWizard.ShowForm)
                                       + "&Sub&setting Wizard".OnClick(SubSettingWizard.ShowForm)
-                                      + "&Schema Anal&yzer".OnClick(SchemaAnalyzer.ShowForm)
-                                      + "&WSDL Generator".OnClick(WSDLGenerator.ShowForm)
-                                      )
-                                   + "&Options".OnClick(OptionsForm.ShowForm)
+//                                      + "&Schema Anal&yzer".OnClick(SchemaAnalyzer.ShowForm)
+//                                      + "&WSDL Generator".OnClick(WSDLGenerator.ShowForm)
+//                                      )
+//                                   + "&Options".OnClick(OptionsForm.ShowForm)
                                    + ("&About " + AddInSettings.AddInName).OnClick(AboutWindow.ShowForm)));
             menuManager.AddMenu((MenuLocation.TreeView | MenuLocation.Diagram)
                                 + (AddInSettings.AddInName
@@ -230,7 +230,9 @@ namespace VIENNAAddIn
         	
             try
             {
-                if (string.IsNullOrEmpty(menuName))
+                if (string.IsNullOrEmpty(menuName)
+            	    || (this.context != null 
+            	        && !this.context.MenuLocation.ToString().Equals(menuLocation)))
                 {
                     // this is the first (top-level) invocation of this method for the current mouse click
                     context = new AddInContext(repository, menuLocation);

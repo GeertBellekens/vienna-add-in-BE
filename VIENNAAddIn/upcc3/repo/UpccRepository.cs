@@ -48,7 +48,15 @@ namespace VIENNAAddIn.upcc3.repo
 		
 		public IEnumerable<object> GetAllLibraries()
         {
-            foreach (IUmlPackage umlPackage in UmlRepository.GetPackagesByStereotype("BDTLibrary", "BIELibrary", "bLibrary", "CCLibrary", "CDTLibrary", "DOCLibrary", "ENUMLibrary", "PRIMLibrary"))
+            foreach (IUmlPackage umlPackage in UmlRepository.GetPackagesByStereotype("BDTLibrary", 
+			                                                                         "BIELibrary", 
+			                                                                         "bLibrary", 
+			                                                                         "CCLibrary", 
+			                                                                         "CDTLibrary", 
+			                                                                         "DOCLibrary",
+																					 "e_DocLibrary",			                                                                         
+			                                                                         "ENUMLibrary", 
+			                                                                         "PRIMLibrary"))
             {
                 switch (umlPackage.Stereotype)
                 {
@@ -68,6 +76,7 @@ namespace VIENNAAddIn.upcc3.repo
                         yield return new UpccCdtLibrary(umlPackage);
                         break;
                     case "DOCLibrary":
+                    case "e_DocLibrary":
                         yield return new UpccDocLibrary(umlPackage);
                         break;
                     case "ENUMLibrary":

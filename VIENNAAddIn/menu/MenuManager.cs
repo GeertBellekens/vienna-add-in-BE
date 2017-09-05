@@ -434,18 +434,18 @@ namespace VIENNAAddIn.menu
         ///<returns></returns>
         public string[] GetMenuItems(AddInContext context, string menuName)
         {
-            if (IsInitialInvocation(menuName))
+//            if (IsInitialInvocation(menuName))
+//            {
+            activeMenu = null;
+            foreach (Menu menu in GetMenus(context.MenuLocation))
             {
-                activeMenu = null;
-                foreach (Menu menu in GetMenus(context.MenuLocation))
+                if (menu.Matches(context))
                 {
-                    if (menu.Matches(context))
-                    {
-                        activeMenu = menu;
-                        break;
-                    }
+                    activeMenu = menu;
+                    break;
                 }
             }
+//            }
             if (activeMenu == null)
             {
                 return DefaultMenuItems;
