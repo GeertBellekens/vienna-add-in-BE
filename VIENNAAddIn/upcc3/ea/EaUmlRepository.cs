@@ -51,21 +51,26 @@ namespace VIENNAAddIn.upcc3.ea
 	        	}
         	}
         	return foundPackages;
-//            var stereotypeSet = new HashSet<string>(stereotypes);
-//            var eaPackages = new List<Package>();
-//            foreach (Package eaModel in eaRepository.Models)
-//            {
-//                EnumeratePackages(eaModel, eaPackages);
-//            }
-//            foreach (Package eaPackage in eaPackages)
-//            {
-//                if (eaPackage.Element != null && stereotypeSet.Contains(eaPackage.Element.Stereotype))
-//                {
-//                    yield return new EaUmlPackage(eaRepository, eaPackage);
-//                }
-//            }
         }
 
+		public IEnumerable<IUmlPackage> GetSubPackagesByStereotype(int parentPackageID, params string[] stereotypes)
+		{
+			List<IUmlPackage> foundPackages = new List<IUmlPackage>();
+			//get the parent package
+			var parentPackage = this.GetPackageById(parentPackageID);
+			//add the parentPackage to the list
+			foundPackages.Add(parentPackage);
+			//get the subpackages by stereotype
+			foreach (var stereotype in stereotypes) 
+			{
+				//get the subpackages and add their 
+				foreach (IUmlPackage subPackage in parentPackage.GetPackagesByStereotype(stereotype)) 
+				{
+					foundPackages.AddRange(GetSubPackagesByStereotype(subPackage.Id,stereotypes));
+				}
+			}
+			return foundPackages;
+		}
         public IUmlPackage GetPackageById(int id)
         {
             return new EaUmlPackage(eaRepository, eaRepository.GetPackageByID(id));

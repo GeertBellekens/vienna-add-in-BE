@@ -805,7 +805,22 @@ namespace VIENNAAddIn.upcc3.Wizards
                 throw new CacheException("The repository did not contain any BDT libraries. Please make sure at least one BDT library is present before proceeding with the wizard.");
             }
         }        
-
+		
+        public void LoadBIVs(ICctsRepository repository, EA.Package selectedPackage)
+        {
+        	BIVs.Clear();
+        	foreach (var docLibrary in repository.GetDocLibraries(selectedPackage.PackageID)) 
+        	{
+        		if (!BIVs.ContainsKey(docLibrary.Name))
+        		{
+        			BIVs.Add(docLibrary.Name, new cBIV(docLibrary.Name, docLibrary.Id));
+        		}
+        	}
+        	if (BIVs.Count == 0)
+        	{
+        		throw new CacheException(string.Format("No DOClibraries found in package '{0}'", selectedPackage.Name));
+        	}
+        }
         public void LoadBIVs(ICctsRepository repository)
         {
             foreach (IDocLibrary docl in repository.GetDocLibraries())

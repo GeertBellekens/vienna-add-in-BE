@@ -30,14 +30,18 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
         private string outputDirectory = "";
         private string selectedBIVName;
         private string selectedModelName;
+        private EA.Package selectedPackage;
 
-        public ExporterForm(ICctsRepository cctsRepository)
+        public ExporterForm(ICctsRepository cctsRepository,EA.Package selectedPackage)
         {
             cctsR = cctsRepository;
+            this.selectedPackage = selectedPackage;
             try
             {
                 cache = new Cache();
-                cache.LoadBIVs(cctsR);
+                //cache.LoadBIVs(cctsR);
+                //TODO get only the BIV's of the selected package
+                cache.LoadBIVs(cctsR, selectedPackage);
             }
             catch (CacheException ce)
             {
@@ -47,7 +51,7 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
 
             InitializeComponent();
 
-            documentModels.Add("CCTS", panelSettingsCCTS);
+            //documentModels.Add("CCTS", panelSettingsCCTS);
             documentModels.Add("XML Schema", panelSettingsXMLSchema);
 
             MirrorBIVsToUI();
@@ -56,7 +60,7 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
 
         public static void ShowForm(AddInContext context)
         {
-            new ExporterForm(context.CctsRepository).Show();
+            new ExporterForm(context.CctsRepository,context.SelectedPackage).Show();
         }
 
         private static void SetSafeIndex(ComboBox box, int indexToBeSet)

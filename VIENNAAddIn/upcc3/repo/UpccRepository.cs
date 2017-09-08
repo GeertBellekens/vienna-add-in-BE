@@ -259,12 +259,16 @@ namespace VIENNAAddIn.upcc3.repo
 		/// </returns>
         public IEnumerable<IDocLibrary> GetDocLibraries()
         {
-            foreach (IUmlPackage umlPackage in UmlRepository.GetPackagesByStereotype("DOCLibrary"))
+            foreach (IUmlPackage umlPackage in UmlRepository.GetPackagesByStereotype("DOCLibrary","e_DocLibrary"))
             {
                 yield return new UpccDocLibrary(umlPackage);
             }
         }
 
+		public IEnumerable<IDocLibrary> GetDocLibraries(int packageID)
+		{
+			throw new NotImplementedException();
+		}
 		/// <summary>
 		/// Retrieves a DOCLibrary by ID.
 		/// <param name="id">A DOCLibrary's ID.</param>

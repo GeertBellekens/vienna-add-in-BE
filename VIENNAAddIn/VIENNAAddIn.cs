@@ -94,37 +94,37 @@ namespace VIENNAAddIn
 //                                      )
 //                                   + "&Options".OnClick(OptionsForm.ShowForm)
                                    + ("&About " + AddInSettings.AddInName).OnClick(AboutWindow.ShowForm)));
-            menuManager.AddMenu((MenuLocation.TreeView | MenuLocation.Diagram)
-                                + (AddInSettings.AddInName
-                                   + validate
-            //                       + "Import Standard CC Libraries".OnClick(StandardLibraryImporterForm.ShowForm)))
-            //    .ShowIf(context => context.SelectedItemIsLibraryOfType(Stereotype.bLibrary));
-            //menuManager.AddMenu((MenuLocation.TreeView | MenuLocation.Diagram)
-            //                    + (AddInSettings.AddInName
-            //                       + validate
-                                   + "Import Standard CC Libraries".OnClick(StandardLibraryImporter.ShowForm)))
-                .ShowIf(context => context.SelectedItemIsLibraryOfType(Stereotype.bLibrary));
-            menuManager.AddMenu((MenuLocation.TreeView | MenuLocation.Diagram)
-                                + (AddInSettings.AddInName
-                                   + createABIE
-                                   + validate))
-                .ShowIf(context => context.SelectedItemIsLibraryOfType(Stereotype.BIELibrary));
-            menuManager.AddMenu((MenuLocation.TreeView | MenuLocation.Diagram)
-                                + (AddInSettings.AddInName
-                                   + modifyAbie))
-                .ShowIf(context => context.SelectedItemIsABIE());
-            menuManager.AddMenu((MenuLocation.TreeView | MenuLocation.Diagram)
-                                + (AddInSettings.AddInName
-                                   + createBDT
-                                   + validate))
-                .ShowIf(context => context.SelectedItemIsLibraryOfType(Stereotype.BDTLibrary));
-            menuManager.AddMenu((MenuLocation.TreeView | MenuLocation.Diagram)
-                                + (AddInSettings.AddInName
-                                   + createUPCCStructure))
-                .ShowIf(context => context.SelectedItemIsRootModel());
-            menuManager.AddMenu((MenuLocation.TreeView | MenuLocation.Diagram)
-                                + (AddInSettings.AddInName
-                                   + validate));
+//            menuManager.AddMenu((MenuLocation.TreeView | MenuLocation.Diagram)
+//                                + (AddInSettings.AddInName
+//                                   + validate
+//            //                       + "Import Standard CC Libraries".OnClick(StandardLibraryImporterForm.ShowForm)))
+//            //    .ShowIf(context => context.SelectedItemIsLibraryOfType(Stereotype.bLibrary));
+//            //menuManager.AddMenu((MenuLocation.TreeView | MenuLocation.Diagram)
+//            //                    + (AddInSettings.AddInName
+//            //                       + validate
+//                                   + "Import Standard CC Libraries".OnClick(StandardLibraryImporter.ShowForm)))
+//                .ShowIf(context => context.SelectedItemIsLibraryOfType(Stereotype.bLibrary));
+//            menuManager.AddMenu((MenuLocation.TreeView | MenuLocation.Diagram)
+//                                + (AddInSettings.AddInName
+//                                   + createABIE
+//                                   + validate))
+//                .ShowIf(context => context.SelectedItemIsLibraryOfType(Stereotype.BIELibrary));
+//            menuManager.AddMenu((MenuLocation.TreeView | MenuLocation.Diagram)
+//                                + (AddInSettings.AddInName
+//                                   + modifyAbie))
+//                .ShowIf(context => context.SelectedItemIsABIE());
+//            menuManager.AddMenu((MenuLocation.TreeView | MenuLocation.Diagram)
+//                                + (AddInSettings.AddInName
+//                                   + createBDT
+//                                   + validate))
+//                .ShowIf(context => context.SelectedItemIsLibraryOfType(Stereotype.BDTLibrary));
+//            menuManager.AddMenu((MenuLocation.TreeView | MenuLocation.Diagram)
+//                                + (AddInSettings.AddInName
+//                                   + createUPCCStructure))
+//                .ShowIf(context => context.SelectedItemIsRootModel());
+//            menuManager.AddMenu((MenuLocation.TreeView | MenuLocation.Diagram)
+//                                + (AddInSettings.AddInName
+//                                   + validate));
         }
 
         #region VIENNAAddInInterface Members

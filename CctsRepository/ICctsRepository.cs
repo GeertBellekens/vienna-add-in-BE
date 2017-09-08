@@ -23,8 +23,8 @@ using VIENNAAddInUtils;
 
 namespace CctsRepository
 {
-    public interface ICctsRepository
-    {
+	public interface ICctsRepository
+	{
 		#region Libraries
 		
 		IEnumerable<Object> GetAllLibraries();
@@ -32,7 +32,7 @@ namespace CctsRepository
 		/// <returns>
 		/// All BDTLibraries contained in this repository.
 		/// </returns>
-        IEnumerable<IBdtLibrary> GetBdtLibraries();
+		IEnumerable<IBdtLibrary> GetBdtLibraries();
 
 		/// <summary>
 		/// Retrieves a BDTLibrary by ID.
@@ -46,12 +46,12 @@ namespace CctsRepository
 		/// <param name="path">A BDTLibrary's <see cref="Path"/>.</param>
 		/// <returns>The BDTLibrary with the given <paramref name="path"/> or <c>null</c> if no such BDTLibrary is found.</returns>
 		/// </summary>
-        IBdtLibrary GetBdtLibraryByPath(Path path);
+		IBdtLibrary GetBdtLibraryByPath(Path path);
 
 		/// <returns>
 		/// All BIELibraries contained in this repository.
 		/// </returns>
-        IEnumerable<IBieLibrary> GetBieLibraries();
+		IEnumerable<IBieLibrary> GetBieLibraries();
 
 		/// <summary>
 		/// Retrieves a BIELibrary by ID.
@@ -65,12 +65,12 @@ namespace CctsRepository
 		/// <param name="path">A BIELibrary's <see cref="Path"/>.</param>
 		/// <returns>The BIELibrary with the given <paramref name="path"/> or <c>null</c> if no such BIELibrary is found.</returns>
 		/// </summary>
-        IBieLibrary GetBieLibraryByPath(Path path);
+		IBieLibrary GetBieLibraryByPath(Path path);
 
 		/// <returns>
 		/// All bLibraries contained in this repository.
 		/// </returns>
-        IEnumerable<IBLibrary> GetBLibraries();
+		IEnumerable<IBLibrary> GetBLibraries();
 
 		/// <summary>
 		/// Retrieves a bLibrary by ID.
@@ -84,12 +84,12 @@ namespace CctsRepository
 		/// <param name="path">A bLibrary's <see cref="Path"/>.</param>
 		/// <returns>The bLibrary with the given <paramref name="path"/> or <c>null</c> if no such bLibrary is found.</returns>
 		/// </summary>
-        IBLibrary GetBLibraryByPath(Path path);
+		IBLibrary GetBLibraryByPath(Path path);
 
 		/// <returns>
 		/// All CCLibraries contained in this repository.
 		/// </returns>
-        IEnumerable<ICcLibrary> GetCcLibraries();
+		IEnumerable<ICcLibrary> GetCcLibraries();
 
 		/// <summary>
 		/// Retrieves a CCLibrary by ID.
@@ -103,12 +103,12 @@ namespace CctsRepository
 		/// <param name="path">A CCLibrary's <see cref="Path"/>.</param>
 		/// <returns>The CCLibrary with the given <paramref name="path"/> or <c>null</c> if no such CCLibrary is found.</returns>
 		/// </summary>
-        ICcLibrary GetCcLibraryByPath(Path path);
+		ICcLibrary GetCcLibraryByPath(Path path);
 
 		/// <returns>
 		/// All CDTLibraries contained in this repository.
 		/// </returns>
-        IEnumerable<ICdtLibrary> GetCdtLibraries();
+		IEnumerable<ICdtLibrary> GetCdtLibraries();
 
 		/// <summary>
 		/// Retrieves a CDTLibrary by ID.
@@ -122,13 +122,20 @@ namespace CctsRepository
 		/// <param name="path">A CDTLibrary's <see cref="Path"/>.</param>
 		/// <returns>The CDTLibrary with the given <paramref name="path"/> or <c>null</c> if no such CDTLibrary is found.</returns>
 		/// </summary>
-        ICdtLibrary GetCdtLibraryByPath(Path path);
+		ICdtLibrary GetCdtLibraryByPath(Path path);
 
 		/// <returns>
 		/// All DOCLibraries contained in this repository.
 		/// </returns>
-        IEnumerable<IDocLibrary> GetDocLibraries();
-
+		IEnumerable<IDocLibrary> GetDocLibraries();
+		
+		/// <summary>
+		/// All DOCLibraries contained in the package with the given packageID
+		/// </summary>
+		/// <param name="packageID">the packageID to start looking from</param>
+		/// <returns>all doclibraries in the package tree with the given ID</returns>
+		IEnumerable<IDocLibrary> GetDocLibraries(int packageID);
+        
 		/// <summary>
 		/// Retrieves a DOCLibrary by ID.
 		/// <param name="id">A DOCLibrary's ID.</param>
@@ -141,12 +148,12 @@ namespace CctsRepository
 		/// <param name="path">A DOCLibrary's <see cref="Path"/>.</param>
 		/// <returns>The DOCLibrary with the given <paramref name="path"/> or <c>null</c> if no such DOCLibrary is found.</returns>
 		/// </summary>
-        IDocLibrary GetDocLibraryByPath(Path path);
+		IDocLibrary GetDocLibraryByPath(Path path);
 
 		/// <returns>
 		/// All ENUMLibraries contained in this repository.
 		/// </returns>
-        IEnumerable<IEnumLibrary> GetEnumLibraries();
+		IEnumerable<IEnumLibrary> GetEnumLibraries();
 
 		/// <summary>
 		/// Retrieves a ENUMLibrary by ID.
@@ -160,12 +167,12 @@ namespace CctsRepository
 		/// <param name="path">A ENUMLibrary's <see cref="Path"/>.</param>
 		/// <returns>The ENUMLibrary with the given <paramref name="path"/> or <c>null</c> if no such ENUMLibrary is found.</returns>
 		/// </summary>
-        IEnumLibrary GetEnumLibraryByPath(Path path);
+		IEnumLibrary GetEnumLibraryByPath(Path path);
 
 		/// <returns>
 		/// All PRIMLibraries contained in this repository.
 		/// </returns>
-        IEnumerable<IPrimLibrary> GetPrimLibraries();
+		IEnumerable<IPrimLibrary> GetPrimLibraries();
 
 		/// <summary>
 		/// Retrieves a PRIMLibrary by ID.
@@ -179,7 +186,7 @@ namespace CctsRepository
 		/// <param name="path">A PRIMLibrary's <see cref="Path"/>.</param>
 		/// <returns>The PRIMLibrary with the given <paramref name="path"/> or <c>null</c> if no such PRIMLibrary is found.</returns>
 		/// </summary>
-        IPrimLibrary GetPrimLibraryByPath(Path path);
+		IPrimLibrary GetPrimLibraryByPath(Path path);
 
 		#endregion
 		#region Elements
@@ -189,7 +196,7 @@ namespace CctsRepository
 		/// <param name="id">A IDSCHEME's ID.</param>
 		/// <returns>The IDSCHEME with the given <paramref name="id"/> or <c>null</c> if no such IDSCHEME is found.</returns>
 		/// </summary>
-        IIdScheme GetIdSchemeById(int id);
+		IIdScheme GetIdSchemeById(int id);
 
 		/// <summary>
 		/// Retrieves a IDSCHEME by <see cref="Path"/>.
@@ -203,7 +210,7 @@ namespace CctsRepository
 		/// <param name="id">A PRIM's ID.</param>
 		/// <returns>The PRIM with the given <paramref name="id"/> or <c>null</c> if no such PRIM is found.</returns>
 		/// </summary>
-        IPrim GetPrimById(int id);
+		IPrim GetPrimById(int id);
 
 		/// <summary>
 		/// Retrieves a PRIM by <see cref="Path"/>.
@@ -217,7 +224,7 @@ namespace CctsRepository
 		/// <param name="id">A ENUM's ID.</param>
 		/// <returns>The ENUM with the given <paramref name="id"/> or <c>null</c> if no such ENUM is found.</returns>
 		/// </summary>
-        IEnum GetEnumById(int id);
+		IEnum GetEnumById(int id);
 
 		/// <summary>
 		/// Retrieves a ENUM by <see cref="Path"/>.
@@ -231,7 +238,7 @@ namespace CctsRepository
 		/// <param name="id">A ABIE's ID.</param>
 		/// <returns>The ABIE with the given <paramref name="id"/> or <c>null</c> if no such ABIE is found.</returns>
 		/// </summary>
-        IAbie GetAbieById(int id);
+		IAbie GetAbieById(int id);
 
 		/// <summary>
 		/// Retrieves a ABIE by <see cref="Path"/>.
@@ -245,7 +252,7 @@ namespace CctsRepository
 		/// <param name="id">A ACC's ID.</param>
 		/// <returns>The ACC with the given <paramref name="id"/> or <c>null</c> if no such ACC is found.</returns>
 		/// </summary>
-        IAcc GetAccById(int id);
+		IAcc GetAccById(int id);
 
 		/// <summary>
 		/// Retrieves a ACC by <see cref="Path"/>.
@@ -259,7 +266,7 @@ namespace CctsRepository
 		/// <param name="id">A BDT's ID.</param>
 		/// <returns>The BDT with the given <paramref name="id"/> or <c>null</c> if no such BDT is found.</returns>
 		/// </summary>
-        IBdt GetBdtById(int id);
+		IBdt GetBdtById(int id);
 
 		/// <summary>
 		/// Retrieves a BDT by <see cref="Path"/>.
@@ -273,7 +280,7 @@ namespace CctsRepository
 		/// <param name="id">A CDT's ID.</param>
 		/// <returns>The CDT with the given <paramref name="id"/> or <c>null</c> if no such CDT is found.</returns>
 		/// </summary>
-        ICdt GetCdtById(int id);
+		ICdt GetCdtById(int id);
 
 		/// <summary>
 		/// Retrieves a CDT by <see cref="Path"/>.
@@ -287,7 +294,7 @@ namespace CctsRepository
 		/// <param name="id">A MA's ID.</param>
 		/// <returns>The MA with the given <paramref name="id"/> or <c>null</c> if no such MA is found.</returns>
 		/// </summary>
-        IMa GetMaById(int id);
+		IMa GetMaById(int id);
 
 		/// <summary>
 		/// Retrieves a MA by <see cref="Path"/>.
@@ -298,19 +305,19 @@ namespace CctsRepository
 
 		#endregion
 
-        /// <summary>
-        /// Root locations are places in the repository where root-level bLibraries can be created.
-        /// </summary>
-        /// <returns>The root locations currently available in this repository.</returns>
-        IEnumerable<Path> GetRootLocations();
+		/// <summary>
+		/// Root locations are places in the repository where root-level bLibraries can be created.
+		/// </summary>
+		/// <returns>The root locations currently available in this repository.</returns>
+		IEnumerable<Path> GetRootLocations();
 
-        /// <summary>
-        /// Creates a bLibrary in the given <paramref name="rootLocation"/>.
-        /// </summary>
-        /// <param name="rootLocation">A root location (<see cref="GetRootLocations"/>).</param>
-        /// <param name="specification">A specification for a bLibrary.</param>
-        /// <returns>The newly created bLibrary.</returns>
-        /// <returns></returns>
+		/// <summary>
+		/// Creates a bLibrary in the given <paramref name="rootLocation"/>.
+		/// </summary>
+		/// <param name="rootLocation">A root location (<see cref="GetRootLocations"/>).</param>
+		/// <param name="specification">A specification for a bLibrary.</param>
+		/// <returns>The newly created bLibrary.</returns>
+		/// <returns></returns>
 		IBLibrary CreateRootBLibrary(Path rootLocation, BLibrarySpec specification);
-    }
+	}
 }

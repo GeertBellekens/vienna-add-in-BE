@@ -5,7 +5,8 @@ namespace VIENNAAddIn.upcc3.uml
 {
     public interface IUmlRepository
     {
-        IEnumerable<IUmlPackage> GetPackagesByStereotype(params string[] stereotypes);
+        IEnumerable<IUmlPackage> GetSubPackagesByStereotype(int parentPackageID, params string[] stereotypes);
+    	IEnumerable<IUmlPackage> GetPackagesByStereotype(params string[] stereotypes);
         IUmlPackage GetPackageById(int id);
         IUmlPackage GetPackageByPath(Path path);
 
