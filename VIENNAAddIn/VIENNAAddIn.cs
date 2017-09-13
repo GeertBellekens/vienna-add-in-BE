@@ -94,11 +94,10 @@ namespace VIENNAAddIn
 //                                      )
 //                                   + "&Options".OnClick(OptionsForm.ShowForm)
                                    + ("&About " + AddInSettings.AddInName).OnClick(AboutWindow.ShowForm)));
-//            menuManager.AddMenu((MenuLocation.TreeView | MenuLocation.Diagram)
-//                                + (AddInSettings.AddInName
-//                                   + validate
-//            //                       + "Import Standard CC Libraries".OnClick(StandardLibraryImporterForm.ShowForm)))
-//            //    .ShowIf(context => context.SelectedItemIsLibraryOfType(Stereotype.bLibrary));
+            menuManager.AddMenu((MenuLocation.TreeView | MenuLocation.Diagram)
+                                + (AddInSettings.AddInName
+                                   + "&Generate XML Schema".OnClick(ExporterForm.ShowForm)))
+                .ShowIf(context => context.SelectedPackage != null);
 //            //menuManager.AddMenu((MenuLocation.TreeView | MenuLocation.Diagram)
 //            //                    + (AddInSettings.AddInName
 //            //                       + validate

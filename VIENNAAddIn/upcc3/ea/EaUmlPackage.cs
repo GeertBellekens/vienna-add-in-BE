@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using EA;
 using VIENNAAddIn.upcc3.uml;
+using uppc3=VIENNAAddIn.upcc3;
 
 namespace VIENNAAddIn.upcc3.ea
 {
@@ -9,6 +10,7 @@ namespace VIENNAAddIn.upcc3.ea
     {
         private readonly Package eaPackage;
         private readonly Repository eaRepository;
+        private List<IUmlPackage> _packages;
 
         public EaUmlPackage(Repository eaRepository, Package eaPackage)
         {
@@ -22,6 +24,30 @@ namespace VIENNAAddIn.upcc3.ea
         {
             get { return eaPackage.Element != null ? eaPackage.Element.Stereotype : string.Empty; }
         }
+
+		public string[] Stereotypes 
+		{
+			get 
+			{
+				return (eaPackage.Element != null ? eaPackage.Element.StereotypeEx : string.Empty).Split(new []{","},StringSplitOptions.RemoveEmptyEntries);
+			}
+		}
+
+		public IEnumerable<IUmlPackage> Packages 
+		{
+			get 
+			{
+				if (_packages == null)
+				{
+					_packages = new List<IUmlPackage>();
+					foreach (EA.Package subPackage in eaPackage.Packages) 
+					{
+						_packages.Add(new EaUmlPackage(this.eaRepository,subPackage));
+					}
+				}
+				return _packages;
+			}
+		}
 
         public IEnumerable<IUmlDataType> GetDataTypesByStereotype(string stereotype)
         {
@@ -136,7 +162,7 @@ namespace VIENNAAddIn.upcc3.ea
                 Element eaPackageElement = eaSubPackage.Element;
                 if (eaPackageElement != null)
                 {
-                    if (eaPackageElement.Stereotype == stereotype)
+                    if (upcc3.Stereotype.HasStereotype(eaPackageElement.StereotypeEx,stereotype))
                     {
                         yield return new EaUmlPackage(eaRepository, eaSubPackage);
                     }

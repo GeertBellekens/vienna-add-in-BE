@@ -1,64 +1,212 @@
-﻿<Window x:Class="VIENNAAddIn.upcc3.Wizards.dev.ui.ExporterForm"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:VIENNAAddInWpfUserControls="clr-namespace:VIENNAAddInWpfUserControls;assembly=VIENNAAddInWpfUserControls"
-    Height="490" Width="478" WindowStyle="SingleBorderWindow" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ShowInTaskbar="True" ResizeMode="NoResize" Title="Exporter" FontSize="11">
-    <DockPanel Margin="5,5,5,5">
-        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5,10,5,5">
-            <Button KeyboardNavigation.TabIndex="9" HorizontalAlignment="Left" Height="23" Name="buttonExport" Width="175" Click="buttonExport_Click">_Export XML Schema</Button>
-            <Button KeyboardNavigation.TabIndex="10" HorizontalAlignment="Left" Height="23" Name="buttonClose" Width="75" Margin="30,0,0,0" Click="buttonClose_Click">_Close</Button>
-        </StackPanel>
-        <TextBox Name="textBoxStatus" DockPanel.Dock="Bottom" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Height="80" IsReadOnly="True" IsUndoEnabled="False" TextWrapping="Wrap" />
-        <Label Margin="0,5,0,0" DockPanel.Dock="Bottom" Name="label2" Height="23"  HorizontalAlignment="Left">Status:</Label>
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-            <Label Height="23" Width="160">Business Information View:</Label>
-            <ComboBox KeyboardNavigation.TabIndex="0" Name="comboboxBusinessInformationView" Width="300" SelectionChanged="comboboxBusinessInformationView_SelectionChanged"></ComboBox>
-        </StackPanel>
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,5,0,0">
-            <Label Height="75" Width="160">Documents to be generated:</Label>
-            <ListBox KeyboardNavigation.TabIndex="1" Name="comboboxDocuments" Width="300" Height="75"  >
-                <ListBox.Resources>
-                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
-                    <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent"/>
-                </ListBox.Resources>
-            </ListBox>
-        </StackPanel>
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,5,0,0">
-            <Label Height="23" Width="160">Document Model:</Label>
-            <ComboBox KeyboardNavigation.TabIndex="2" Name="comboboxDocumentModel" Width="300" SelectionChanged="comboboxDocumentModel_SelectionChanged">
-            </ComboBox>
-        </StackPanel>
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,5,0,0">
-            <Label Height="23" Width="160">XML Schema output directory:</Label>
-            <VIENNAAddInWpfUserControls:DirectorySelector KeyboardNavigation.TabIndex="3" Name="textboxOutputDirectory" Width="300" DirectoryNameChanged="textboxOutputDirectory_DirectoryNameChanged" />
-        </StackPanel>
-        <GroupBox Name="generationSettings" Header="Generation Settings" Margin="0,5,0,0">
-            <Canvas>
-                <StackPanel Name="panelSettingsCCTS" Orientation="Vertical" Visibility="Collapsed">
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                        <Label Height="23" Width="155">Target Namespace:</Label>
-                        <TextBox KeyboardNavigation.TabIndex="4" Name="textboxTagetNamespace" Width="295" TextChanged="textboxTagetNamespace_TextChanged" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                        <Label Height="23" Width="155">Prefix for Target Namespace:</Label>
-                        <TextBox KeyboardNavigation.TabIndex="5" Name="textboxPrefix" Width="295" TextChanged="textboxPrefix_TextChanged" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                        <Label Height="23" Width="155">Documentation Annotations:</Label>
-                        <CheckBox KeyboardNavigation.TabIndex="6" Name="checkboxDocumentationAnnotations" Margin="0,5,0,0" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                        <Label Height="23" Width="155">Generate CC Schemas:</Label>
-                        <CheckBox KeyboardNavigation.TabIndex="7" Name="checkboxGenerateCcSchemas" Margin="0,5,0,0" />
-                    </StackPanel>
-                </StackPanel>
-                <StackPanel Name="panelSettingsXMLSchema" Orientation="Vertical" Visibility="Collapsed">
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                        <Label Height="23" Width="155">Original XML Schema:</Label>
-                        <VIENNAAddInWpfUserControls:FileSelector KeyboardNavigation.TabIndex="9" Name="textboxXMLSchemaOriginalFile" Width="300" FileNameChanged="textboxXMLSchemaOriginalFile_FileNameChanged" />
-                    </StackPanel>
-                </StackPanel>
-            </Canvas>
-        </GroupBox>
-    </DockPanel>
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+	x:Class="VIENNAAddIn.upcc3.Wizards.dev.ui.ExporterForm" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:VIENNAAddInWpfUserControls="clr-namespace:VIENNAAddInWpfUserControls;assembly=VIENNAAddInWpfUserControls"
+	Height="490"
+	Width="478"
+	WindowStyle="SingleBorderWindow"
+	Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+	ShowInTaskbar="True"
+	ResizeMode="NoResize"
+	Title="Exporter"
+	FontSize="11">
+	<DockPanel
+		Margin="5,5,5,5">
+		<StackPanel
+			DockPanel.Dock="Bottom"
+			Orientation="Horizontal"
+			HorizontalAlignment="Center"
+			Margin="5,10,5,5">
+			<Button
+				KeyboardNavigation.TabIndex="9"
+				HorizontalAlignment="Left"
+				Height="23"
+				Name="buttonExport"
+				Width="175"
+				Click="buttonExport_Click">_Export XML Schema</Button>
+			<Button
+				KeyboardNavigation.TabIndex="10"
+				HorizontalAlignment="Left"
+				Height="23"
+				Name="buttonClose"
+				Width="75"
+				Margin="30,0,0,0"
+				Click="buttonClose_Click">_Close</Button>
+		</StackPanel>
+		<TextBox
+			Name="textBoxStatus"
+			DockPanel.Dock="Bottom"
+			Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+			Height="80"
+			IsReadOnly="True"
+			IsUndoEnabled="False"
+			TextWrapping="Wrap" />
+		<Label
+			Margin="0,5,0,0"
+			DockPanel.Dock="Bottom"
+			Name="label2"
+			Height="23"
+			HorizontalAlignment="Left">Status:</Label>
+		<StackPanel
+			DockPanel.Dock="Top"
+			Orientation="Horizontal">
+			<Label
+				Height="23"
+				Width="160"
+				Content="Selected Package" />
+			<TextBox
+				Height="20"
+				Width="296"
+				x:Name="selectedPackageTextBox"
+				IsReadOnly="False"
+				IsEnabled="False" />
+		</StackPanel>
+		<StackPanel
+			DockPanel.Dock="Top"
+			Orientation="Horizontal"
+			Margin="0,5,0,0">
+			<Label
+				Height="75"
+				Width="160">Documents to be generated:</Label>
+			<ListBox
+				KeyboardNavigation.TabIndex="1"
+				Name="documentsListBox"
+				Height="75"
+				Width="296"
+				SelectionMode="Multiple">
+				<ListBox.Resources>
+					<SolidColorBrush
+						x:Key="{x:Static SystemColors.HighlightBrushKey}"
+						Color="Transparent" />
+					<SolidColorBrush
+						x:Key="{x:Static SystemColors.ControlBrushKey}"
+						Color="Transparent" />
+				</ListBox.Resources>
+			</ListBox>
+		</StackPanel>
+		<StackPanel
+			DockPanel.Dock="Top"
+			Orientation="Horizontal"
+			Margin="0,5,0,0"
+			HorizontalAlignment="Right"
+			Width="213">
+			<Button
+				KeyboardNavigation.TabIndex="65"
+				Height="23"
+				Name="selectAllButton"
+				Width="75"
+				Margin="30,0,0,0"
+				HorizontalAlignment="Right"
+				Click="selectAllButton_Click">_All</Button>
+			<Button
+				KeyboardNavigation.TabIndex="66"
+				Height="23"
+				Name="selectNoneButton"
+				Width="75"
+				HorizontalAlignment="Right"
+				Margin="30,0,0,0"
+				Click="selectNoneButton_Click">_None</Button>
+		</StackPanel>
+		<StackPanel
+			DockPanel.Dock="Top"
+			Orientation="Horizontal"
+			Margin="0,5,0,0">
+			<Label
+				Height="23"
+				Width="160">Document Model:</Label>
+			<ComboBox
+				KeyboardNavigation.TabIndex="2"
+				Name="comboboxDocumentModel"
+				SelectionChanged="comboboxDocumentModel_SelectionChanged"
+				Width="295" />
+		</StackPanel>
+		<StackPanel
+			DockPanel.Dock="Top"
+			Orientation="Horizontal"
+			Margin="0,5,0,0">
+			<Label
+				Height="23"
+				Width="160">XML Schema output directory:</Label>
+			<VIENNAAddInWpfUserControls:DirectorySelector
+				KeyboardNavigation.TabIndex="3"
+				Name="textboxOutputDirectory"
+				DirectoryNameChanged="textboxOutputDirectory_DirectoryNameChanged"
+				Width="295" />
+		</StackPanel>
+		<GroupBox
+			Name="generationSettings"
+			Header="Generation Settings"
+			Margin="0,5,0,0"
+			Height="116">
+			<Canvas>
+				<StackPanel
+					Name="panelSettingsCCTS"
+					Orientation="Vertical"
+					Visibility="Collapsed">
+					<StackPanel
+						Orientation="Horizontal"
+						Margin="0,5,0,0">
+						<Label
+							Height="23"
+							Width="155">Target Namespace:</Label>
+						<TextBox
+							KeyboardNavigation.TabIndex="4"
+							Name="textboxTagetNamespace"
+							Width="295"
+							TextChanged="textboxTagetNamespace_TextChanged" />
+					</StackPanel>
+					<StackPanel
+						Orientation="Horizontal"
+						Margin="0,5,0,0">
+						<Label
+							Height="23"
+							Width="155">Prefix for Target Namespace:</Label>
+						<TextBox
+							KeyboardNavigation.TabIndex="5"
+							Name="textboxPrefix"
+							Width="295"
+							TextChanged="textboxPrefix_TextChanged" />
+					</StackPanel>
+					<StackPanel
+						Orientation="Horizontal"
+						Margin="0,5,0,0">
+						<Label
+							Height="23"
+							Width="155">Documentation Annotations:</Label>
+						<CheckBox
+							KeyboardNavigation.TabIndex="6"
+							Name="checkboxDocumentationAnnotations"
+							Margin="0,5,0,0" />
+					</StackPanel>
+					<StackPanel
+						Orientation="Horizontal"
+						Margin="0,5,0,0">
+						<Label
+							Height="23"
+							Width="155">Generate CC Schemas:</Label>
+						<CheckBox
+							KeyboardNavigation.TabIndex="7"
+							Name="checkboxGenerateCcSchemas"
+							Margin="0,5,0,0" />
+					</StackPanel>
+				</StackPanel>
+				<StackPanel
+					Name="panelSettingsXMLSchema"
+					Orientation="Vertical"
+					Visibility="Collapsed">
+					<StackPanel
+						Orientation="Horizontal"
+						Margin="0,5,0,0">
+						<Label
+							Height="23"
+							Width="155">Original XML Schema:</Label>
+						<VIENNAAddInWpfUserControls:FileSelector
+							KeyboardNavigation.TabIndex="9"
+							Name="textboxXMLSchemaOriginalFile"
+							Width="300"
+							FileNameChanged="textboxXMLSchemaOriginalFile_FileNameChanged" />
+					</StackPanel>
+				</StackPanel>
+			</Canvas>
+		</GroupBox>
+	</DockPanel>
 </Window>

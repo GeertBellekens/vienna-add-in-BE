@@ -265,10 +265,6 @@ namespace VIENNAAddIn.upcc3.repo
             }
         }
 
-		public IEnumerable<IDocLibrary> GetDocLibraries(int packageID)
-		{
-			throw new NotImplementedException();
-		}
 		/// <summary>
 		/// Retrieves a DOCLibrary by ID.
 		/// <param name="id">A DOCLibrary's ID.</param>
@@ -562,5 +558,20 @@ namespace VIENNAAddIn.upcc3.repo
         }
 
         #endregion
+        public IEnumerable<IDocLibrary> GetDocLibraries(int packageID)
+		{
+        	var parentPackage = UmlRepository.GetPackageById(packageID);
+        	List<IDocLibrary> foundDocLibraries = new List<IDocLibrary>();
+        	if (parentPackage !=null)
+        	{
+	        	//return empty list if package not found
+	        	var packages =  UmlRepository.GetSubPackagesByStereotype(parentPackage.Id,true,Stereotype.DocLibraryStereotypes.ToArray());
+	        	foreach (var package in packages) 
+	        	{
+	        		foundDocLibraries.Add(new UpccDocLibrary(package));
+	        	}
+        	}
+			return foundDocLibraries;
+		}
     }
 }

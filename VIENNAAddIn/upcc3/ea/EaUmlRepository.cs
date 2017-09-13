@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using EA;
 using VIENNAAddIn.upcc3.uml;
 using VIENNAAddInUtils;
+using System.Linq;
 
 namespace VIENNAAddIn.upcc3.ea
 {
@@ -52,21 +53,34 @@ namespace VIENNAAddIn.upcc3.ea
         	}
         	return foundPackages;
         }
-
-		public IEnumerable<IUmlPackage> GetSubPackagesByStereotype(int parentPackageID, params string[] stereotypes)
+		
+        /// <summary>
+        /// returns all packages owned by the package with the vgiven ID or below having one of the p
+        /// </summary>
+        /// <param name="parentPackageID"></param>
+        /// <param name="includeParent"></param>
+        /// <param name="stereotypes"></param>
+        /// <returns></returns>
+		public IEnumerable<IUmlPackage> GetSubPackagesByStereotype(int parentPackageID,bool includeParent, params string[] stereotypes)
 		{
 			List<IUmlPackage> foundPackages = new List<IUmlPackage>();
 			//get the parent package
 			var parentPackage = this.GetPackageById(parentPackageID);
-			//add the parentPackage to the list
-			foundPackages.Add(parentPackage);
-			//get the subpackages by stereotype
-			foreach (var stereotype in stereotypes) 
+			if (parentPackage != null)
 			{
-				//get the subpackages and add their 
-				foreach (IUmlPackage subPackage in parentPackage.GetPackagesByStereotype(stereotype)) 
-				{
-					foundPackages.AddRange(GetSubPackagesByStereotype(subPackage.Id,stereotypes));
+				//get the subpackages by stereotype
+				foreach (var stereotype in stereotypes) 
+				{			
+					//add the parentPackage to the list
+					if (includeParent
+					    && parentPackage.Stereotypes.Contains(stereotype))
+						foundPackages.Add(parentPackage);
+					//get the subpackages and add them
+					foreach (IUmlPackage subPackage in parentPackage.Packages)						
+					{
+						foundPackages.Add(subPackage);
+						foundPackages.AddRange(GetSubPackagesByStereotype(subPackage.Id,false,stereotypes));
+					}
 				}
 			}
 			return foundPackages;

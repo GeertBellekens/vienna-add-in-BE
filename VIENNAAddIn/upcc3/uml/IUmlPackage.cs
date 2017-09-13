@@ -8,6 +8,8 @@ namespace VIENNAAddIn.upcc3.uml
         int Id { get; }
         string Name { get; }
         string Stereotype { get; }
+        string[] Stereotypes {get;}
+        IEnumerable<IUmlPackage> Packages {get;}
 
         IUmlPackage Parent { get; }
 

@@ -244,14 +244,9 @@
       <DependentUpon>AccSpecConverter.tt</DependentUpon>
     </Compile>
     <Compile Include="upcc3\uml\MultiPartTaggedValue.cs" />
-    <None Include="upcc3\Stereotype.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Stereotype.cs</LastGenOutput>
-    </None>
     <Compile Include="upcc3\Stereotype.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Stereotype.tt</DependentUpon>
     </Compile>
     <None Include="upcc3\TaggedValues.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -562,7 +557,6 @@
     <Compile Include="upcc3\repo\UpccRepository.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UpccRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="upcc3\uml\IUmlAssociation.cs" />
     <Compile Include="upcc3\uml\IUmlAttribute.cs" />
@@ -946,10 +940,6 @@
       <LastGenOutput>UpccPrimLibrary.cs</LastGenOutput>
     </None>
     <None Include="upcc3\repo\t4\UpccUmlPackage.tt">
-    </None>
-    <None Include="upcc3\repo\UpccRepository.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>UpccRepository.cs</LastGenOutput>
     </None>
     <Compile Include="Settings\SynchStereotypesForm.cs">
       <SubType>Form</SubType>

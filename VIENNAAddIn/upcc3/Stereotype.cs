@@ -7,6 +7,7 @@
 // http://vienna-add-in.googlecode.com
 // *******************************************************************************
 using System.Collections.Generic;
+using System.Linq;
 
 namespace VIENNAAddIn.upcc3
 {
@@ -55,7 +56,7 @@ namespace VIENNAAddIn.upcc3
 																			  ENUMLibrary,
 																			  PRIMLibrary,
                                                                           };
-        private static readonly List<string> DocLibraryStereotypes = new List<string>{
+        public static readonly List<string> DocLibraryStereotypes = new List<string>{
         																DOCLibrary,
         																e_DocLibrary};
         			
@@ -73,6 +74,10 @@ namespace VIENNAAddIn.upcc3
         public static bool IsDocLibraryStereotype(string stereotype)
         {
         	return DocLibraryStereotypes.Contains(stereotype);
+        }
+        public static bool HasStereotype(string stereotypeList,string stereotype)
+        {
+        	return stereotypeList.Split(new []{","},System.StringSplitOptions.RemoveEmptyEntries).Contains(stereotype);
         }
     }
 }

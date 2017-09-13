@@ -53,9 +53,11 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
 
             //documentModels.Add("CCTS", panelSettingsCCTS);
             documentModels.Add("XML Schema", panelSettingsXMLSchema);
+            //set the pakage name
+            this.selectedPackageTextBox.Text = selectedPackage.Name;
 
-            MirrorBIVsToUI();
-            ResetForm(0);
+            MirrorDOCsToUI();
+
         }
 
         public static void ShowForm(AddInContext context)
@@ -79,21 +81,6 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
             }
         }
 
-        private void MirrorBIVsToUI()
-        {
-            comboboxBusinessInformationView.Items.Clear();
-
-            foreach (cBIV docl in cache.BIVs.Values)
-            {
-                comboboxBusinessInformationView.Items.Add(docl.Name);
-            }
-
-            //TODO preselect first item
-/*            if (comboboxBusinessInformationView.Items.Count > 0)
-            {
-                comboboxBusinessInformationView.SelectedIndex = 0;    
-            }  */
-        }
 
         private void MirrorModelsToUI()
         {
@@ -106,36 +93,31 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
 
         private void MirrorDOCsToUI()
         {
-            // todo: extend PathIsValid 
-            GatherUserInput();
-            try
+            foreach (var biv in cache.BIVs.Values) 
             {
-                cache.BIVs[selectedBIVName].LoadDOC(cctsR);
+            	try
+        		{
+            		biv.LoadDOC(cctsR);
+            	}
+            	catch (CacheException ce)
+	            {
+	                // TODO: find a way to properly list issues
+//	                MessageBox.Show(ce.Message, "VIENNA Add-In Error", MessageBoxButtons.OK,
+//	                                MessageBoxIcon.Error);
+	            }    
+            	cDOC doc = biv.DOC;
+            	if (doc != null)
+	            {
+	                var newItem = new CheckBox
+	                                  {
+	                                      Content = doc.Name,
+	                                      IsChecked = (doc.State == CheckState.Checked ? true : false)
+	                                  };
+	                documentsListBox.Items.Add(newItem);
+	            }
             }
-            catch (CacheException ce)
-            {
-                MessageBox.Show(ce.Message, "VIENNA Add-In Error", MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                Close();
-            }
-
-            // model
-            // todo: set default value for document model and select afterwards
-            //comboModels.SelectedItem = cache.DOCLs[selectedBIVName].DocumentModel;
-
-            // documents
-            comboboxDocuments.Items.Clear();
-
-            cDOC doc = cache.BIVs[selectedBIVName].DOC;
-            if (doc != null)
-            {
-                var newItem = new CheckBox
-                                  {
-                                      Content = doc.Name,
-                                      IsChecked = (doc.State == CheckState.Checked ? true : false)
-                                  };
-                comboboxDocuments.Items.Add(newItem);
-            }
+            ResetForm(1);
+            selectAlldocuments(true);
         }
 
         private void MirrorDOCSettingsToUI()
@@ -152,9 +134,6 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
 
         private void GatherUserInput()
         {
-            selectedBIVName = comboboxBusinessInformationView.SelectedIndex >= 0
-                                  ? comboboxBusinessInformationView.SelectedItem.ToString()
-                                  : "";
             selectedModelName = comboboxDocumentModel.SelectedIndex >= 0
                                     ? comboboxDocumentModel.SelectedItem.ToString()
                                     : "";
@@ -167,8 +146,7 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
             switch (levelOfReset)
             {
                 case 0:
-                    comboboxBusinessInformationView.IsEnabled = true;
-                    comboboxDocuments.IsEnabled = false;
+                    documentsListBox.IsEnabled = false;
                     textboxTagetNamespace.IsEnabled = false;
                     textboxPrefix.IsEnabled = false;
                     checkboxDocumentationAnnotations.IsEnabled = false;
@@ -179,7 +157,7 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
                     break;
 
                 case 1:
-                    comboboxDocuments.IsEnabled = true;
+                    documentsListBox.IsEnabled = true;
                     textboxTagetNamespace.IsEnabled = true;
                     textboxPrefix.IsEnabled = true;
                     checkboxDocumentationAnnotations.IsEnabled = true;
@@ -307,17 +285,6 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
             }
         }
 
-        private void comboboxBusinessInformationView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            MirrorModelsToUI();
-            MirrorDOCsToUI();
-
-            SetSafeIndex(comboboxDocumentModel, 0);
-            SetSafeIndex(comboboxDocuments, 0);
-
-            ResetForm(1);
-            VerifyUserInput();
-        }
 
         private void textboxPrefix_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -347,35 +314,23 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
         {
             VerifyUserInput();
         }
+        private void selectAlldocuments(bool isSelected)
+        {
+        	foreach (CheckBox item in documentsListBox.Items) 
+			{
+				item.IsChecked = isSelected;
+			}
+        }
+
+		void selectNoneButton_Click(object sender, RoutedEventArgs e)
+		{
+			selectAlldocuments(false);
+		}
+		void selectAllButton_Click(object sender, RoutedEventArgs e)
+		{
+			selectAlldocuments(true);
+		}
     }
 
-/*    public class ExporterViewModel : INotifyPropertyChanged
-    {
-        private List<string> documentModels;
 
-        public ExporterViewModel()
-        {
-            documentModels = new List<string>();
-        }
-
-        public List<string> DocumentModels
-        {
-            get { return documentModels; }
-            set
-            {
-                documentModels = value;
-                OnPropertyChanged("documentModels");
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string fieldName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(fieldName));
-            }
-        }
-    }*/
 }

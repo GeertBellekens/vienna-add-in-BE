@@ -43,6 +43,10 @@ namespace VIENNAAddIn.upcc3.otf
             contentLoader.ItemLoaded += repository.ItemLoaded;
         }
 
+		public IEnumerable<IDocLibrary> GetDocLibraries(int packageID)
+		{
+			throw new NotImplementedException();
+		}
         public IEnumerable<ValidationIssue> ValidationIssues
         {
             get { return validationService.ValidationIssues; }
