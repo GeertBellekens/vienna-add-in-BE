@@ -10,6 +10,7 @@ using CctsRepository.CdtLibrary;
 using CctsRepository.DocLibrary;
 using VIENNAAddIn.upcc3.export.cctsndr;
 using VIENNAAddIn.upcc3.import.util;
+using VIENNAAddIn.upcc3.repo;
 using VIENNAAddInUtils;
 
 namespace VIENNAAddIn.upcc3
@@ -85,17 +86,27 @@ namespace VIENNAAddIn.upcc3
         {
             return element.Ref.Name.Minus(associatedElementName);
         }
-
+        private static string GetXsdAttributeName(Object someattribute)
+        {
+        	var attribute = someattribute as UpccUmlAttribute;
+        	string name = attribute != null ? attribute.Name : "Error_attribute_missing";
+        	string basicTypeName = GetBasicTypeName(attribute);
+        	return (name + basicTypeName).Replace(".", String.Empty);
+        }
+        public static string GetBasicTypeName(UpccUmlAttribute attribute)
+        {
+        	return attribute != null && 
+					attribute.BasicType != null
+        		? attribute.BasicType.Name : "Error_No_BasicType";
+        }
         public static string GetXsdAttributeNameFromSup(IBdtSup sup)
         {
-            string name = sup.Name + sup.BasicType.Name;
-            return name.Replace(".", String.Empty);
+        	return GetXsdAttributeName(sup);
         }
 
         public static string GetXsdAttributeNameFromSup(ICdtSup sup)
         {
-            string name = sup.Name + sup.BasicType.Name;
-            return name.Replace(".", String.Empty);
+            return GetXsdAttributeName(sup);
         }
 
 
@@ -130,7 +141,13 @@ namespace VIENNAAddIn.upcc3
         /// <returns></returns>
         public static string GetXsdTypeNameFromBdt(IBdt bdt)
         {
-            return bdt.Name + bdt.Con.BasicType.Name + "Type";
+        	string bdtName = bdt != null ? bdt.Name : "Error_No_BDT";
+        	
+        	return bdtName + getBdtConBasicTypeName(bdt) + "Type";
+        }
+        public static string getBdtConBasicTypeName(IBdt bdt)
+        {
+        	return bdt != null ? GetBasicTypeName(bdt.Con as UpccUmlAttribute) : "Error_No_BasicType";
         }
 
         public static string ConvertXsdTypeNameToBasicTypeName(string xsdTypeName)

@@ -41,7 +41,12 @@ namespace VIENNAAddIn.upcc3.ea
 
         public IUmlClassifier Type
         {
-            get { return new EaUmlClassifier(eaRepository, eaRepository.GetElementByID(eaAttribute.ClassifierID)); }
+        	get 
+        	{ 
+        		if (eaAttribute.ClassifierID < 0)
+        			return new EaUmlClassifier(eaRepository, eaRepository.GetElementByID(eaAttribute.ClassifierID)); 
+        		return null;
+        	}
         }
 
         public IEnumerable<IUmlTaggedValue> GetTaggedValues()

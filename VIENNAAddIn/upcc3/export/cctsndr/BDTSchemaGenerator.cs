@@ -30,7 +30,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                     var simpleType = new XmlSchemaSimpleType {Name = NDR.GetXsdTypeNameFromBdt(bdt)};
                     var simpleTypeRestriction = new XmlSchemaSimpleTypeRestriction
                                                 {
-                                                    BaseTypeName = GetXmlQualifiedName(bdt.Con.BasicType.Name)
+                                                    BaseTypeName = GetXmlQualifiedName(NDR.getBdtConBasicTypeName(bdt))
                                                 };
                     simpleType.Content = simpleTypeRestriction;
                     if (context.Annotate)
@@ -48,7 +48,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                     var simpleContent = new XmlSchemaSimpleContent();
                     var simpleContentExtension = new XmlSchemaSimpleContentExtension
                                                  {
-                                                     BaseTypeName = GetXmlQualifiedName(bdt.Con.BasicType.Name)
+                    								BaseTypeName = GetXmlQualifiedName(NDR.getBdtConBasicTypeName(bdt))
                                                  };
                     foreach (IBdtSup sup in sups)
                     {

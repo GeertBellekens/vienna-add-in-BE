@@ -9,6 +9,7 @@ namespace VIENNAAddIn.upcc3.uml
         string Name { get; }
         IUmlPackage Package { get; }
         string Stereotype { get; }
+        string[] Stereotypes {get;}
         IUmlTaggedValue GetTaggedValue(string name);
 
         IEnumerable<IUmlDependency> GetDependenciesByStereotype(string stereotype);

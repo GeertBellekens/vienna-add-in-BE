@@ -44,6 +44,13 @@ namespace VIENNAAddIn.upcc3.ea
             get { return eaElement.Stereotype; }
         }
 
+		public string[] Stereotypes 
+		{
+			get 
+			{
+				return eaElement.StereotypeEx.Split(new []{","},StringSplitOptions.RemoveEmptyEntries);
+			}
+		}
         public IUmlTaggedValue GetTaggedValue(string name)
         {
             try
