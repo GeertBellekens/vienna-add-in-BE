@@ -112,12 +112,6 @@ namespace VIENNAAddIn.upcc3.Wizards
             // todo: extend PathIsValid 
             GatherUserInput();
 
-            cache.BIVs[selectedBIVName].LoadDOC(cctsR);
-
-            // model
-            // todo: set default value for document model and select afterwards
-            //comboModels.SelectedItem = cache.DOCLs[selectedBIVName].DocumentModel;
-
             // documents
             checkedlistboxDOCs.Items.Clear();
 
@@ -142,8 +136,6 @@ namespace VIENNAAddIn.upcc3.Wizards
 
         private void GatherUserInput()
         {            
-            selectedBIVName = comboBIVs.SelectedIndex >= 0 ? comboBIVs.SelectedItem.ToString() : "";
-            selectedModelName = comboModels.SelectedIndex >= 0 ? comboModels.SelectedItem.ToString() : "";
             outputDirectory = textOutputDirectory.Text;
         }
 

@@ -565,7 +565,7 @@ namespace VIENNAAddIn.upcc3.repo
         	if (parentPackage !=null)
         	{
 	        	//return empty list if package not found
-	        	var packages =  UmlRepository.GetSubPackagesByStereotype(parentPackage.Id,true,Stereotype.DocLibraryStereotypes.ToArray());
+	        	var packages =  UmlRepository.GetSubPackagesByStereotype(parentPackage,true,Stereotype.DocLibraryStereotypes.ToArray());
 	        	foreach (var package in packages) 
 	        	{
 	        		foundDocLibraries.Add(new UpccDocLibrary(package));

@@ -61,11 +61,9 @@ namespace VIENNAAddIn.upcc3.ea
         /// <param name="includeParent"></param>
         /// <param name="stereotypes"></param>
         /// <returns></returns>
-		public IEnumerable<IUmlPackage> GetSubPackagesByStereotype(int parentPackageID,bool includeParent, params string[] stereotypes)
+		public IEnumerable<IUmlPackage> GetSubPackagesByStereotype(IUmlPackage parentPackage,bool includeParent, params string[] stereotypes)
 		{
 			List<IUmlPackage> foundPackages = new List<IUmlPackage>();
-			//get the parent package
-			var parentPackage = this.GetPackageById(parentPackageID);
 			if (parentPackage != null)
 			{
 				//get the subpackages by stereotype
@@ -79,7 +77,7 @@ namespace VIENNAAddIn.upcc3.ea
 					foreach (IUmlPackage subPackage in parentPackage.Packages)						
 					{
 						foundPackages.Add(subPackage);
-						foundPackages.AddRange(GetSubPackagesByStereotype(subPackage.Id,false,stereotypes));
+						foundPackages.AddRange(GetSubPackagesByStereotype(subPackage,false,stereotypes));
 					}
 				}
 			}

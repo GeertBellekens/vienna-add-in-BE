@@ -536,41 +536,81 @@ namespace VIENNAAddIn.upcc3.Wizards
   
     public class cDOC : cCheckItem
     {
-        public cDOC(string initName, int initId, CheckState initState, string initTargetNS, string initTargetNSPrefix) : base(initName, initId, initState)
+        public cDOC(string initName, int initId, CheckState initState, string initTargetNS, string initTargetNSPrefix,cBIV biv) : base(initName, initId, initState)
         {            
             //RootElements = new List<string>();
             TargetNamespace = initTargetNS;
             TargetNamespacePrefix = initTargetNSPrefix;
+            BIV = biv;
         }
 
         //public IList<string> RootElements { get; set; }
         public string TargetNamespace { get; set; }
         public string TargetNamespacePrefix { get; set; }
         public string OutputDirectory { get; set; }
+        public cBIV BIV {get;private set;}
     }
 
     public class cBIV : cItem
     {
-        public cBIV(string initName, int initId) : base(initName, initId)
+    	cDOC _DOC;
+		IDocLibrary _DocL;
+		IMa _Document;
+        public cBIV(string initName, int initId,ICctsRepository repo) : base(initName, initId)
         {
+        	this.Repository = repo;
         }
-
-        public cDOC DOC { get; private set;}
-
-        public void LoadDOC(ICctsRepository repository)
+        public ICctsRepository Repository {get; private set;}
+        public cDOC DOC 
         {
-            if (DOC == null)
+			get 
+			{
+				if (_DOC == null) LoadDOC(Repository);
+				return _DOC;
+			}
+			private set 
+			{
+				_DOC = value;
+			}
+		}
+		
+        public IDocLibrary DocL
+        {
+			get 
+			{
+				if (_DocL == null) LoadDOC(Repository);
+				return _DocL;
+			}
+			private set 
+			{
+				_DocL = value;
+			}
+		}
+		
+        public IMa Document 
+        {
+			get 
+			{
+				if (_Document == null) LoadDOC(Repository);
+				return _Document;
+			}
+			private set 
+			{
+				_Document = value;
+			}
+		}
+
+        private void LoadDOC(ICctsRepository repository)
+        {
+            DocL = repository.GetDocLibraryById(Id);
+            Document = DocL.DocumentRoot;
+            if (_Document != null && _DocL != null)
             {
-                IDocLibrary docl = repository.GetDocLibraryById(Id);
-                IMa document = docl.DocumentRoot;
-                if (document != null)
-                {
-                    DOC = new cDOC(document.Name, document.Id, CheckState.Unchecked, docl.BaseURN, docl.NamespacePrefix);
-                }
-                else
-                {
-                    throw new CacheException("No Document root found!");
-                }
+                DOC = new cDOC(Document.Name, Document.Id, CheckState.Unchecked, DocL.BaseURN, DocL.NamespacePrefix,this);
+            }
+            else
+            {
+            	DOC = null;
             }
         }
     }
@@ -813,7 +853,7 @@ namespace VIENNAAddIn.upcc3.Wizards
         	{
         		if (!BIVs.ContainsKey(docLibrary.Name))
         		{
-        			BIVs.Add(docLibrary.Name, new cBIV(docLibrary.Name, docLibrary.Id));
+        			BIVs.Add(docLibrary.Name, new cBIV(docLibrary.Name, docLibrary.Id,repository));
         		}
         	}
         	if (BIVs.Count == 0)
@@ -831,7 +871,7 @@ namespace VIENNAAddIn.upcc3.Wizards
                     throw new CacheException("The wizard encountered two BIVs having identical names. Please make sure that all BIVs within the model have unique names before proceeding with the wizard.");
                 }
 
-                BIVs.Add(docl.Name, new cBIV(docl.Name, docl.Id));
+                BIVs.Add(docl.Name, new cBIV(docl.Name, docl.Id,repository));
             }
 
             if (BIVs.Count == 0)
