@@ -43,7 +43,7 @@ namespace VIENNAAddIn.upcc3.ea
         {
         	get 
         	{ 
-        		if (eaAttribute.ClassifierID < 0)
+        		if (eaAttribute.ClassifierID > 0)
         			return new EaUmlClassifier(eaRepository, eaRepository.GetElementByID(eaAttribute.ClassifierID)); 
         		return null;
         	}
