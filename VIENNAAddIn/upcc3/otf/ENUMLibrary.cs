@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CctsRepository;
 using CctsRepository.EnumLibrary;
 
 namespace VIENNAAddIn.upcc3.otf
@@ -13,7 +14,7 @@ namespace VIENNAAddIn.upcc3.otf
 
         #region IEnumLibrary Members
 
-        int IEnumLibrary.Id
+        int ICctsLibrary.Id
         {
             get { return Id.Value; }
         }

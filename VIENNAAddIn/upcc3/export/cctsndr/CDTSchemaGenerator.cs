@@ -3,6 +3,7 @@ using System.Xml;
 using System.Xml.Schema;
 using CctsRepository;
 using CctsRepository.CdtLibrary;
+using VIENNAAddIn.upcc3.repo;
 using VIENNAAddInUtils;
 
 namespace VIENNAAddIn.upcc3.export.cctsndr
@@ -32,7 +33,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                     var simpleType = new XmlSchemaSimpleType { Name = GetTypeName(cdt) };
                     var simpleTypeRestriction = new XmlSchemaSimpleTypeRestriction
                                                 {
-                                                    BaseTypeName = GetXmlQualifiedName(cdt.Con.BasicType.Name)
+                    								BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(cdt))
                                                 };
                     simpleType.Content = simpleTypeRestriction;
                     if (context.Annotate)
@@ -51,7 +52,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                     var simpleContent = new XmlSchemaSimpleContent();
                     var simpleContentExtension = new XmlSchemaSimpleContentExtension
                                                  {
-                                                     BaseTypeName = GetXmlQualifiedName(cdt.Con.BasicType.Name)
+                                                     BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(cdt))
                                                  };
                     foreach (ICdtSup sup in sups)
                     {
@@ -59,7 +60,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                                         {
                                             // Deviation from rule [R ABC1]: Using only attribute name and type as xml attribute name (instead of complete DEN), following the examples given in the specification.
                                             Name = GetAttributeName(sup),
-                                            SchemaTypeName = new XmlQualifiedName(GetXSDType(sup.BasicType.Name),
+                                            SchemaTypeName = new XmlQualifiedName(GetXSDType(NDR.GetBasicTypeName(sup as UpccUmlAttribute)),
                                                                                   "http://www.w3.org/2001/XMLSchema"),
                                         };
                         if (context.Annotate)
@@ -89,8 +90,8 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             // Deviation from rule [R 9C95]: Generating only a subset of the defined annotations and added some additional annotations.
             var annNodes = new List<XmlNode>();
             AddAnnotation(xml, annNodes, "PropertyTermName", sup.Name);
-            AddAnnotation(xml, annNodes, "RepresentationTermName", sup.BasicType.Name);
-            AddAnnotation(xml, annNodes, "PrimitiveTypeName", sup.BasicType.Name);
+            AddAnnotation(xml, annNodes, "RepresentationTermName", NDR.GetBasicTypeName(sup as UpccUmlAttribute));
+            AddAnnotation(xml, annNodes, "PrimitiveTypeName", NDR.GetBasicTypeName(sup as UpccUmlAttribute));
             AddAnnotation(xml, annNodes, "DataTypeName", sup.Cdt.Name);
             AddAnnotation(xml, annNodes, "UniqueID", sup.UniqueIdentifier);
             AddAnnotation(xml, annNodes, "VersionID", sup.VersionIdentifier);
@@ -151,13 +152,13 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 
         private static string GetAttributeName(ICdtSup sup)
         {
-            string name = sup.Name + sup.BasicType.Name;
+            string name = sup.Name + NDR.GetBasicTypeName(sup as UpccUmlAttribute);
             return name.Replace(".", "");
         }
 
         private static string GetTypeName(ICdt cdt)
         {
-            return cdt.Name + cdt.Con.BasicType.Name + "Type";
+            return cdt.Name + NDR.getConBasicTypeName(cdt) + "Type";
         }
 
         private static string GetXSDType(string primitiveTypeName)

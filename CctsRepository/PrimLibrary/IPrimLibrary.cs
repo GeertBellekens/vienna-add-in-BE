@@ -25,18 +25,8 @@ namespace CctsRepository.PrimLibrary
 	/// <summary>
 	/// Interface for CCTS/UPCC PRIMLibrary.
 	/// </summary>
-    public partial interface IPrimLibrary
+	public partial interface IPrimLibrary:ICctsLibrary
     {
-		/// <summary>
-		/// The PRIMLibrary's unique ID.
-		/// </summary>
-        int Id { get; }
-		
-		/// <summary>
-		/// The PRIMLibrary's name.
-		/// </summary>
-        string Name { get; }
-
 		/// <summary>
 		/// The bLibrary containing this PRIMLibrary.
 		/// </summary>
@@ -75,50 +65,6 @@ namespace CctsRepository.PrimLibrary
 		/// </summary>
         void RemovePrim(IPrim prim);
 
-        ///<summary>
-        /// Tagged value 'businessTerm'.
-        ///</summary>
-		IEnumerable<string> BusinessTerms { get; }
-
-        ///<summary>
-        /// Tagged value 'copyright'.
-        ///</summary>
-		IEnumerable<string> Copyrights { get; }
-
-        ///<summary>
-        /// Tagged value 'owner'.
-        ///</summary>
-		IEnumerable<string> Owners { get; }
-
-        ///<summary>
-        /// Tagged value 'reference'.
-        ///</summary>
-		IEnumerable<string> References { get; }
-
-        ///<summary>
-        /// Tagged value 'status'.
-        ///</summary>
-		string Status { get; }
-
-        ///<summary>
-        /// Tagged value 'uniqueIdentifier'.
-        ///</summary>
-		string UniqueIdentifier { get; }
-
-        ///<summary>
-        /// Tagged value 'versionIdentifier'.
-        ///</summary>
-		string VersionIdentifier { get; }
-
-        ///<summary>
-        /// Tagged value 'baseURN'.
-        ///</summary>
-		string BaseURN { get; }
-
-        ///<summary>
-        /// Tagged value 'namespacePrefix'.
-        ///</summary>
-		string NamespacePrefix { get; }
     }
 }
 

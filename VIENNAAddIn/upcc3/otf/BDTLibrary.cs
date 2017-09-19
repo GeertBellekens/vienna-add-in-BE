@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using CctsRepository;
 using CctsRepository.BdtLibrary;
+
 
 namespace VIENNAAddIn.upcc3.otf
 {
@@ -12,11 +14,6 @@ namespace VIENNAAddIn.upcc3.otf
         }
 
         #region IBdtLibrary Members
-
-        int IBdtLibrary.Id
-        {
-            get { return Id.Value; }
-        }
 
         public IEnumerable<IBdt> Bdts
         {

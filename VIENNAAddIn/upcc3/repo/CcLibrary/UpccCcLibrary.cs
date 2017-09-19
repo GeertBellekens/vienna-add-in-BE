@@ -19,37 +19,17 @@ using VIENNAAddIn.upcc3.repo.EnumLibrary;
 using VIENNAAddIn.upcc3.repo.PrimLibrary;
 // ReSharper restore RedundantUsingDirective
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using VIENNAAddIn.upcc3.uml;
 
 namespace VIENNAAddIn.upcc3.repo.CcLibrary
 {
-    internal class UpccCcLibrary : ICcLibrary
+    internal class UpccCcLibrary : UpccLibrary, ICcLibrary
     {
-        public UpccCcLibrary(IUmlPackage umlPackage)
-        {
-            UmlPackage = umlPackage;
-        }
+        public UpccCcLibrary(IUmlPackage umlPackage):base(umlPackage)
+    	{}
 
-        public IUmlPackage UmlPackage { get; private set; }
-
-        #region ICcLibrary Members
-
-		/// <summary>
-		/// The CCLibrary's unique ID.
-		/// </summary>
-        public int Id
-        {
-            get { return UmlPackage.Id; }
-        }
-
-		/// <summary>
-		/// The CCLibrary's name.
-		/// </summary>
-        public string Name
-        {
-            get { return UmlPackage.Name; }
-        }
 
 		/// <summary>
 		/// The bLibrary containing this CCLibrary.
@@ -64,13 +44,7 @@ namespace VIENNAAddIn.upcc3.repo.CcLibrary
 		/// </summary>
 		public IEnumerable<IAcc> Accs
 		{
-            get
-            {
-                foreach (var umlClass in UmlPackage.GetClassesByStereotype("ACC"))
-                {
-                    yield return new UpccAcc(umlClass);
-                }
-            }
+			get { return this.Elements.OfType<IAcc>(); }
 		}
 
 		/// <summary>
@@ -119,80 +93,6 @@ namespace VIENNAAddIn.upcc3.repo.CcLibrary
 		{
             UmlPackage.RemoveClass(((UpccAcc) acc).UmlClass);
 		}
-
-        ///<summary>
-        /// Tagged value 'businessTerm'.
-        ///</summary>
-        public IEnumerable<string> BusinessTerms
-        {
-            get { return UmlPackage.GetTaggedValue("businessTerm").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'copyright'.
-        ///</summary>
-        public IEnumerable<string> Copyrights
-        {
-            get { return UmlPackage.GetTaggedValue("copyright").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'owner'.
-        ///</summary>
-        public IEnumerable<string> Owners
-        {
-            get { return UmlPackage.GetTaggedValue("owner").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'reference'.
-        ///</summary>
-        public IEnumerable<string> References
-        {
-            get { return UmlPackage.GetTaggedValue("reference").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'status'.
-        ///</summary>
-        public string Status
-        {
-            get { return UmlPackage.GetTaggedValue("status").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'uniqueIdentifier'.
-        ///</summary>
-        public string UniqueIdentifier
-        {
-            get { return UmlPackage.GetTaggedValue("uniqueIdentifier").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'versionIdentifier'.
-        ///</summary>
-        public string VersionIdentifier
-        {
-            get { return UmlPackage.GetTaggedValue("versionIdentifier").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'baseURN'.
-        ///</summary>
-        public string BaseURN
-        {
-            get { return UmlPackage.GetTaggedValue("baseURN").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'namespacePrefix'.
-        ///</summary>
-        public string NamespacePrefix
-        {
-            get { return UmlPackage.GetTaggedValue("namespacePrefix").Value; }
-        }
-
-        #endregion
 
         public bool Equals(UpccCcLibrary other)
         {

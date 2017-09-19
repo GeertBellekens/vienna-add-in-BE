@@ -48,6 +48,11 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
         {
             get { return new UpccEnumLibrary(UmlDataType.Package); }
         }
+						
+		public ICctsLibrary library 
+		{
+			get { return EnumLibrary; }
+		}
 
         ///<summary>
         /// Tagged value 'businessTerm'.
@@ -160,5 +165,14 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
         {
             return !Equals(left, right);
         }
+        public IEnumerable<string> UsageRules 
+		{
+			get { return new List<string>(); }
+		}
+
+		public string LanguageCode 
+		{
+        	get { return string.Empty; }
+		}
 	}
 }

@@ -48,6 +48,11 @@ namespace VIENNAAddIn.upcc3.repo.CdtLibrary
         {
             get { return new UpccCdtLibrary(UmlClass.Package); }
         }
+		
+		public ICctsLibrary library 
+		{
+			get { return CdtLibrary; }
+		}
 
 		public ICdt IsEquivalentTo
         {

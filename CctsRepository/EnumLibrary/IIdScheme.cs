@@ -22,30 +22,12 @@ using CctsRepository.PrimLibrary;
 
 namespace CctsRepository.EnumLibrary
 {
-    public interface IIdScheme
+	public interface IIdScheme:ICctsElement
     {
-		int Id { get; }
-		
-		string Name { get; }
 		
         IEnumLibrary EnumLibrary { get; }
 
 		#region Tagged Values
-
-        ///<summary>
-        /// Tagged value 'businessTerm'.
-        ///</summary>
-		IEnumerable<string> BusinessTerms { get; }
-
-        ///<summary>
-        /// Tagged value 'definition'.
-        ///</summary>
-		string Definition { get; }
-
-        ///<summary>
-        /// Tagged value 'dictionaryEntryName'.
-        ///</summary>
-		string DictionaryEntryName { get; }
 
         ///<summary>
         /// Tagged value 'identifierSchemeAgencyIdentifier'.
@@ -71,16 +53,6 @@ namespace CctsRepository.EnumLibrary
         /// Tagged value 'restrictedPrimitive'.
         ///</summary>
 		string RestrictedPrimitive { get; }
-
-        ///<summary>
-        /// Tagged value 'uniqueIdentifier'.
-        ///</summary>
-		string UniqueIdentifier { get; }
-
-        ///<summary>
-        /// Tagged value 'versionIdentifier'.
-        ///</summary>
-		string VersionIdentifier { get; }
 
 		#endregion
     }

@@ -1,4 +1,5 @@
 // ReSharper disable RedundantUsingDirective
+using System.Linq;
 using CctsRepository;
 using CctsRepository.BdtLibrary;
 using CctsRepository.BieLibrary;
@@ -24,32 +25,10 @@ using VIENNAAddIn.upcc3.uml;
 
 namespace VIENNAAddIn.upcc3.repo.EnumLibrary
 {
-    internal class UpccEnumLibrary : IEnumLibrary
+    internal class UpccEnumLibrary : UpccLibrary, IEnumLibrary
     {
-        public UpccEnumLibrary(IUmlPackage umlPackage)
-        {
-            UmlPackage = umlPackage;
-        }
-
-        public IUmlPackage UmlPackage { get; private set; }
-
-        #region IEnumLibrary Members
-
-		/// <summary>
-		/// The ENUMLibrary's unique ID.
-		/// </summary>
-        public int Id
-        {
-            get { return UmlPackage.Id; }
-        }
-
-		/// <summary>
-		/// The ENUMLibrary's name.
-		/// </summary>
-        public string Name
-        {
-            get { return UmlPackage.Name; }
-        }
+        public UpccEnumLibrary(IUmlPackage umlPackage):base(umlPackage)
+    	{}
 
 		/// <summary>
 		/// The bLibrary containing this ENUMLibrary.
@@ -64,13 +43,7 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
 		/// </summary>
 		public IEnumerable<IEnum> Enums
 		{
-            get
-            {
-                foreach (var umlEnumeration in UmlPackage.GetEnumerationsByStereotype("ENUM"))
-                {
-                    yield return new UpccEnum(umlEnumeration);
-                }
-            }
+			get { return this.Elements.OfType<IEnum>(); }
 		}
 
 		/// <summary>
@@ -125,13 +98,7 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
 		/// </summary>
 		public IEnumerable<IIdScheme> IdSchemes
 		{
-            get
-            {
-                foreach (var umlDataType in UmlPackage.GetDataTypesByStereotype("IDSCHEME"))
-                {
-                    yield return new UpccIdScheme(umlDataType);
-                }
-            }
+			get { return this.Elements.OfType<IIdScheme>(); }
 		}
 
 		/// <summary>
@@ -180,80 +147,6 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
 		{
             UmlPackage.RemoveDataType(((UpccIdScheme) idScheme).UmlDataType);
 		}
-
-        ///<summary>
-        /// Tagged value 'businessTerm'.
-        ///</summary>
-        public IEnumerable<string> BusinessTerms
-        {
-            get { return UmlPackage.GetTaggedValue("businessTerm").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'copyright'.
-        ///</summary>
-        public IEnumerable<string> Copyrights
-        {
-            get { return UmlPackage.GetTaggedValue("copyright").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'owner'.
-        ///</summary>
-        public IEnumerable<string> Owners
-        {
-            get { return UmlPackage.GetTaggedValue("owner").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'reference'.
-        ///</summary>
-        public IEnumerable<string> References
-        {
-            get { return UmlPackage.GetTaggedValue("reference").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'status'.
-        ///</summary>
-        public string Status
-        {
-            get { return UmlPackage.GetTaggedValue("status").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'uniqueIdentifier'.
-        ///</summary>
-        public string UniqueIdentifier
-        {
-            get { return UmlPackage.GetTaggedValue("uniqueIdentifier").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'versionIdentifier'.
-        ///</summary>
-        public string VersionIdentifier
-        {
-            get { return UmlPackage.GetTaggedValue("versionIdentifier").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'baseURN'.
-        ///</summary>
-        public string BaseURN
-        {
-            get { return UmlPackage.GetTaggedValue("baseURN").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'namespacePrefix'.
-        ///</summary>
-        public string NamespacePrefix
-        {
-            get { return UmlPackage.GetTaggedValue("namespacePrefix").Value; }
-        }
-
-        #endregion
 
         public bool Equals(UpccEnumLibrary other)
         {

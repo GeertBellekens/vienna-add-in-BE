@@ -69,7 +69,7 @@ namespace VIENNAAddIn.upcc3.repo.BieLibrary
 			get
 			{
 				var type = UmlAttribute.Type;
-				return new UpccBdt((IUmlClass) type);
+				return type != null ? new UpccBdt((IUmlClass) type) : null;
 			}
 		}
 

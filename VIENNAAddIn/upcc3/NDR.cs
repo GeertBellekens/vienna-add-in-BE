@@ -31,7 +31,9 @@ namespace VIENNAAddIn.upcc3
 
         public static string GetXsdElementNameFromBbie(IBbie bbie)
         {
-            return GenerateBCCOrBBIEName(bbie.Name, bbie.Bdt.Name, bbie.DictionaryEntryName);
+            return bbie != null && bbie.Bdt != null ? 
+            	GenerateBCCOrBBIEName(bbie.Name, bbie.Bdt.Name, bbie.DictionaryEntryName)
+            	: "Error_BDT_Missing";
         }
 
         /// <exception cref="ArgumentException"><c>ArgumentException</c>.</exception>
@@ -143,11 +145,15 @@ namespace VIENNAAddIn.upcc3
         {
         	string bdtName = bdt != null ? bdt.Name : "Error_No_BDT";
         	
-        	return bdtName + getBdtConBasicTypeName(bdt) + "Type";
+        	return bdtName + getConBasicTypeName(bdt) + "Type";
         }
-        public static string getBdtConBasicTypeName(IBdt bdt)
+        public static string getConBasicTypeName(IBdt bdt)
         {
         	return bdt != null ? GetBasicTypeName(bdt.Con as UpccUmlAttribute) : "Error_No_BasicType";
+        }
+        public static string getConBasicTypeName(ICdt cdt)
+        {
+        	return cdt != null ? GetBasicTypeName(cdt.Con as UpccUmlAttribute) : "Error_No_BasicType";
         }
 
         public static string ConvertXsdTypeNameToBasicTypeName(string xsdTypeName)

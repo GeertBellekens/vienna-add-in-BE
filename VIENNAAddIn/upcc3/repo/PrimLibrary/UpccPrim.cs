@@ -48,6 +48,11 @@ namespace VIENNAAddIn.upcc3.repo.PrimLibrary
         {
             get { return new UpccPrimLibrary(UmlDataType.Package); }
         }
+				
+		public ICctsLibrary library 
+		{
+			get { return PrimLibrary; }
+		}
 
 		public IPrim IsEquivalentTo
         {
@@ -233,5 +238,10 @@ namespace VIENNAAddIn.upcc3.repo.PrimLibrary
         {
             return !Equals(left, right);
         }
+        
+        public IEnumerable<string> UsageRules 
+		{
+			get { return new List<string>(); }
+		}
 	}
 }

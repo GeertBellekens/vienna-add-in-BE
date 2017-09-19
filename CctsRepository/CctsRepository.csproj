@@ -93,488 +93,221 @@
     <Compile Include="BasicType.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BasicType.tt</DependentUpon>
     </Compile>
     <Compile Include="BdtLibrary\BdtConSpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BdtConSpec.tt</DependentUpon>
     </Compile>
     <Compile Include="BdtLibrary\BdtLibrarySpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BdtLibrarySpec.tt</DependentUpon>
     </Compile>
     <Compile Include="BdtLibrary\BdtSpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BdtSpec.tt</DependentUpon>
     </Compile>
     <Compile Include="BdtLibrary\BdtSpecManualExtensions.cs" />
     <Compile Include="BdtLibrary\BdtSupSpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BdtSupSpec.tt</DependentUpon>
     </Compile>
     <Compile Include="BdtLibrary\IBdt.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IBdt.tt</DependentUpon>
     </Compile>
     <Compile Include="BdtLibrary\IBdtCon.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IBdtCon.tt</DependentUpon>
     </Compile>
     <Compile Include="BdtLibrary\IBdtLibrary.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IBdtLibrary.tt</DependentUpon>
     </Compile>
     <Compile Include="BdtLibrary\IBdtSup.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IBdtSup.tt</DependentUpon>
     </Compile>
     <Compile Include="BieAggregator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BieAggregator.tt</DependentUpon>
     </Compile>
     <Compile Include="BieLibrary\AbieSpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AbieSpec.tt</DependentUpon>
     </Compile>
     <Compile Include="BieLibrary\AsbieSpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AsbieSpec.tt</DependentUpon>
     </Compile>
     <Compile Include="BieLibrary\AsbieSpecManualExtensions.cs" />
     <Compile Include="BieLibrary\BbieSpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BbieSpec.tt</DependentUpon>
     </Compile>
     <Compile Include="BieLibrary\BbieSpecManualExtensions.cs" />
     <Compile Include="BieLibrary\BieLibrarySpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BieLibrarySpec.tt</DependentUpon>
     </Compile>
     <Compile Include="BieLibrary\IAbie.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IAbie.tt</DependentUpon>
     </Compile>
     <Compile Include="BieLibrary\IAsbie.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IAsbie.tt</DependentUpon>
     </Compile>
     <Compile Include="BieLibrary\IBbie.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IBbie.tt</DependentUpon>
     </Compile>
     <Compile Include="BieLibrary\IBieLibrary.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IBieLibrary.tt</DependentUpon>
     </Compile>
     <Compile Include="bLibrary\BLibrarySpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BLibrarySpec.tt</DependentUpon>
     </Compile>
     <Compile Include="bLibrary\IBLibrary.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IBLibrary.tt</DependentUpon>
     </Compile>
     <Compile Include="CcLibrary\AccSpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AccSpec.tt</DependentUpon>
     </Compile>
     <Compile Include="CcLibrary\AsccSpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AsccSpec.tt</DependentUpon>
     </Compile>
     <Compile Include="CcLibrary\BccSpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BccSpec.tt</DependentUpon>
     </Compile>
     <Compile Include="CcLibrary\CcLibrarySpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CcLibrarySpec.tt</DependentUpon>
     </Compile>
     <Compile Include="CcLibrary\IAcc.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IAcc.tt</DependentUpon>
     </Compile>
     <Compile Include="CcLibrary\IAscc.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IAscc.tt</DependentUpon>
     </Compile>
     <Compile Include="CcLibrary\IBcc.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IBcc.tt</DependentUpon>
     </Compile>
     <Compile Include="CcLibrary\ICcLibrary.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ICcLibrary.tt</DependentUpon>
     </Compile>
     <Compile Include="CdtLibrary\CdtConSpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CdtConSpec.tt</DependentUpon>
     </Compile>
     <Compile Include="CdtLibrary\CdtLibrarySpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CdtLibrarySpec.tt</DependentUpon>
     </Compile>
     <Compile Include="CdtLibrary\CdtSpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CdtSpec.tt</DependentUpon>
     </Compile>
     <Compile Include="CdtLibrary\CdtSupSpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CdtSupSpec.tt</DependentUpon>
     </Compile>
     <Compile Include="CdtLibrary\ICdt.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ICdt.tt</DependentUpon>
     </Compile>
     <Compile Include="CdtLibrary\ICdtCon.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ICdtCon.tt</DependentUpon>
     </Compile>
     <Compile Include="CdtLibrary\ICdtLibrary.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ICdtLibrary.tt</DependentUpon>
     </Compile>
     <Compile Include="CdtLibrary\ICdtSup.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ICdtSup.tt</DependentUpon>
     </Compile>
     <Compile Include="DocLibrary\AsmaSpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AsmaSpec.tt</DependentUpon>
     </Compile>
     <Compile Include="DocLibrary\DocLibrarySpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DocLibrarySpec.tt</DependentUpon>
     </Compile>
     <Compile Include="DocLibrary\IAsma.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IAsma.tt</DependentUpon>
     </Compile>
     <Compile Include="DocLibrary\IDocLibrary.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IDocLibrary.tt</DependentUpon>
     </Compile>
     <Compile Include="DocLibrary\IDocLibraryManualExtensions.cs" />
     <Compile Include="DocLibrary\IMa.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IMa.tt</DependentUpon>
     </Compile>
     <Compile Include="DocLibrary\MaSpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MaSpec.tt</DependentUpon>
     </Compile>
     <Compile Include="EnumLibrary\CodelistEntrySpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CodelistEntrySpec.tt</DependentUpon>
     </Compile>
     <Compile Include="EnumLibrary\EnumLibrarySpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EnumLibrarySpec.tt</DependentUpon>
     </Compile>
     <Compile Include="EnumLibrary\EnumSpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EnumSpec.tt</DependentUpon>
     </Compile>
     <Compile Include="EnumLibrary\ICodelistEntry.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ICodelistEntry.tt</DependentUpon>
     </Compile>
     <Compile Include="EnumLibrary\IdSchemeSpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IdSchemeSpec.tt</DependentUpon>
     </Compile>
     <Compile Include="EnumLibrary\IEnum.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IEnum.tt</DependentUpon>
     </Compile>
     <Compile Include="EnumLibrary\IEnumLibrary.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IEnumLibrary.tt</DependentUpon>
     </Compile>
     <Compile Include="EnumLibrary\IIdScheme.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IIdScheme.tt</DependentUpon>
     </Compile>
+    <Compile Include="ICctsElement.cs" />
+    <Compile Include="ICctsLibrary.cs" />
     <Compile Include="ICctsRepository.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ICctsRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="PrimLibrary\IPrim.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IPrim.tt</DependentUpon>
     </Compile>
     <Compile Include="PrimLibrary\IPrimLibrary.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IPrimLibrary.tt</DependentUpon>
     </Compile>
-    <None Include="BdtLibrary\BdtConSpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BdtConSpec.cs</LastGenOutput>
-    </None>
-    <None Include="BdtLibrary\BdtLibrarySpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BdtLibrarySpec.cs</LastGenOutput>
-    </None>
-    <None Include="BdtLibrary\BdtSpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BdtSpec.cs</LastGenOutput>
-    </None>
-    <None Include="BdtLibrary\BdtSupSpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BdtSupSpec.cs</LastGenOutput>
-    </None>
-    <None Include="BdtLibrary\IBdt.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IBdt.cs</LastGenOutput>
-    </None>
-    <None Include="BdtLibrary\IBdtCon.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IBdtCon.cs</LastGenOutput>
-    </None>
-    <None Include="BdtLibrary\IBdtLibrary.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IBdtLibrary.cs</LastGenOutput>
-    </None>
-    <None Include="BdtLibrary\IBdtSup.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IBdtSup.cs</LastGenOutput>
-    </None>
-    <None Include="BieAggregator.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BieAggregator.cs</LastGenOutput>
-    </None>
-    <None Include="BieLibrary\AbieSpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AbieSpec.cs</LastGenOutput>
-    </None>
-    <None Include="BieLibrary\AsbieSpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AsbieSpec.cs</LastGenOutput>
-    </None>
-    <None Include="BieLibrary\BbieSpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BbieSpec.cs</LastGenOutput>
-    </None>
-    <None Include="BieLibrary\BieLibrarySpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BieLibrarySpec.cs</LastGenOutput>
-    </None>
-    <None Include="BieLibrary\IAbie.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IAbie.cs</LastGenOutput>
-    </None>
-    <None Include="BieLibrary\IAsbie.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IAsbie.cs</LastGenOutput>
-    </None>
-    <None Include="BieLibrary\IBbie.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IBbie.cs</LastGenOutput>
-    </None>
-    <None Include="BieLibrary\IBieLibrary.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IBieLibrary.cs</LastGenOutput>
-    </None>
-    <None Include="bLibrary\BLibrarySpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BLibrarySpec.cs</LastGenOutput>
-    </None>
-    <None Include="bLibrary\IBLibrary.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IBLibrary.cs</LastGenOutput>
-    </None>
-    <None Include="CcLibrary\AccSpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AccSpec.cs</LastGenOutput>
-    </None>
-    <None Include="CcLibrary\AsccSpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AsccSpec.cs</LastGenOutput>
-    </None>
-    <None Include="CcLibrary\BccSpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BccSpec.cs</LastGenOutput>
-    </None>
-    <None Include="CcLibrary\CcLibrarySpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CcLibrarySpec.cs</LastGenOutput>
-    </None>
-    <None Include="CcLibrary\IAcc.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IAcc.cs</LastGenOutput>
-    </None>
-    <None Include="CcLibrary\IAscc.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IAscc.cs</LastGenOutput>
-    </None>
-    <None Include="CcLibrary\IBcc.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IBcc.cs</LastGenOutput>
-    </None>
-    <None Include="CcLibrary\ICcLibrary.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ICcLibrary.cs</LastGenOutput>
-    </None>
-    <None Include="CdtLibrary\CdtConSpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CdtConSpec.cs</LastGenOutput>
-    </None>
-    <None Include="CdtLibrary\CdtLibrarySpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CdtLibrarySpec.cs</LastGenOutput>
-    </None>
-    <None Include="CdtLibrary\CdtSpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CdtSpec.cs</LastGenOutput>
-    </None>
-    <None Include="CdtLibrary\CdtSupSpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CdtSupSpec.cs</LastGenOutput>
-    </None>
-    <None Include="CdtLibrary\ICdt.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ICdt.cs</LastGenOutput>
-    </None>
-    <None Include="CdtLibrary\ICdtCon.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ICdtCon.cs</LastGenOutput>
-    </None>
-    <None Include="CdtLibrary\ICdtLibrary.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ICdtLibrary.cs</LastGenOutput>
-    </None>
-    <None Include="CdtLibrary\ICdtSup.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ICdtSup.cs</LastGenOutput>
-    </None>
-    <None Include="DocLibrary\AsmaSpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AsmaSpec.cs</LastGenOutput>
-    </None>
-    <None Include="DocLibrary\DocLibrarySpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DocLibrarySpec.cs</LastGenOutput>
-    </None>
-    <None Include="DocLibrary\IAsma.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IAsma.cs</LastGenOutput>
-    </None>
-    <None Include="DocLibrary\IDocLibrary.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IDocLibrary.cs</LastGenOutput>
-    </None>
-    <None Include="DocLibrary\IMa.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IMa.cs</LastGenOutput>
-    </None>
-    <None Include="DocLibrary\MaSpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MaSpec.cs</LastGenOutput>
-    </None>
-    <None Include="EnumLibrary\CodelistEntrySpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CodelistEntrySpec.cs</LastGenOutput>
-    </None>
-    <None Include="EnumLibrary\EnumLibrarySpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EnumLibrarySpec.cs</LastGenOutput>
-    </None>
-    <None Include="EnumLibrary\EnumSpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EnumSpec.cs</LastGenOutput>
-    </None>
-    <None Include="EnumLibrary\ICodelistEntry.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ICodelistEntry.cs</LastGenOutput>
-    </None>
-    <None Include="EnumLibrary\IdSchemeSpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IdSchemeSpec.cs</LastGenOutput>
-    </None>
-    <None Include="EnumLibrary\IEnum.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IEnum.cs</LastGenOutput>
-    </None>
-    <None Include="EnumLibrary\IEnumLibrary.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IEnumLibrary.cs</LastGenOutput>
-    </None>
-    <None Include="EnumLibrary\IIdScheme.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IIdScheme.cs</LastGenOutput>
-    </None>
-    <None Include="ICctsRepository.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ICctsRepository.cs</LastGenOutput>
-    </None>
-    <None Include="PrimLibrary\IPrim.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IPrim.cs</LastGenOutput>
-    </None>
-    <None Include="PrimLibrary\IPrimLibrary.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IPrimLibrary.cs</LastGenOutput>
-    </None>
-    <None Include="PrimLibrary\PrimLibrarySpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PrimLibrarySpec.cs</LastGenOutput>
-    </None>
-    <None Include="PrimLibrary\PrimSpec.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PrimSpec.cs</LastGenOutput>
-    </None>
     <None Include="t4\CctsRepositoryNamespaces.tt">
     </None>
     <None Include="t4\ClassifierInterface.tt">
@@ -601,21 +334,15 @@
     </None>
     <None Include="t4\LibrarySpec.tt">
     </None>
-    <None Include="BasicType.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BasicType.cs</LastGenOutput>
-    </None>
     <None Include="t4\MultiType.tt">
     </None>
     <Compile Include="PrimLibrary\PrimLibrarySpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PrimLibrarySpec.tt</DependentUpon>
     </Compile>
     <Compile Include="PrimLibrary\PrimSpec.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PrimSpec.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

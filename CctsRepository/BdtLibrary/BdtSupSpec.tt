@@ -1,8 +1,0 @@
-<#@ template language="C#v3.5" hostspecific="True" debug="True" #>
-<#@ output extension=".cs" #>
-<#@ assembly name="$(SolutionDir)/UpccModel/bin/Debug/Upcc.dll" #>
-<#@ import namespace="Upcc"#>
-<#
-	var metaAttribute = (MetaAttribute) MetaModel.BdtSup;
-#>
-<#@ include file="../t4/AttributeSpec.tt" #>

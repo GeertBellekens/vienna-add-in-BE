@@ -25,17 +25,8 @@ namespace CctsRepository.BdtLibrary
 	/// <summary>
 	/// Interface for CCTS/UPCC BDTLibrary.
 	/// </summary>
-    public partial interface IBdtLibrary
+	public partial interface IBdtLibrary:ICctsLibrary
     {
-		/// <summary>
-		/// The BDTLibrary's unique ID.
-		/// </summary>
-        int Id { get; }
-		
-		/// <summary>
-		/// The BDTLibrary's name.
-		/// </summary>
-        string Name { get; }
 
 		/// <summary>
 		/// The bLibrary containing this BDTLibrary.
@@ -74,51 +65,6 @@ namespace CctsRepository.BdtLibrary
 		/// <param name="bdt">A BDT.</param>
 		/// </summary>
         void RemoveBdt(IBdt bdt);
-
-        ///<summary>
-        /// Tagged value 'businessTerm'.
-        ///</summary>
-		IEnumerable<string> BusinessTerms { get; }
-
-        ///<summary>
-        /// Tagged value 'copyright'.
-        ///</summary>
-		IEnumerable<string> Copyrights { get; }
-
-        ///<summary>
-        /// Tagged value 'owner'.
-        ///</summary>
-		IEnumerable<string> Owners { get; }
-
-        ///<summary>
-        /// Tagged value 'reference'.
-        ///</summary>
-		IEnumerable<string> References { get; }
-
-        ///<summary>
-        /// Tagged value 'status'.
-        ///</summary>
-		string Status { get; }
-
-        ///<summary>
-        /// Tagged value 'uniqueIdentifier'.
-        ///</summary>
-		string UniqueIdentifier { get; }
-
-        ///<summary>
-        /// Tagged value 'versionIdentifier'.
-        ///</summary>
-		string VersionIdentifier { get; }
-
-        ///<summary>
-        /// Tagged value 'baseURN'.
-        ///</summary>
-		string BaseURN { get; }
-
-        ///<summary>
-        /// Tagged value 'namespacePrefix'.
-        ///</summary>
-		string NamespacePrefix { get; }
     }
 }
 

@@ -1,4 +1,5 @@
 // ReSharper disable RedundantUsingDirective
+using System.Linq;
 using CctsRepository;
 using CctsRepository.BdtLibrary;
 using CctsRepository.BieLibrary;
@@ -24,32 +25,10 @@ using VIENNAAddIn.upcc3.uml;
 
 namespace VIENNAAddIn.upcc3.repo.DocLibrary
 {
-    internal partial class UpccDocLibrary : IDocLibrary
+    internal partial class UpccDocLibrary : UpccLibrary, IDocLibrary
     {
-        public UpccDocLibrary(IUmlPackage umlPackage)
-        {
-            UmlPackage = umlPackage;
-        }
-
-        public IUmlPackage UmlPackage { get; private set; }
-
-        #region IDocLibrary Members
-
-		/// <summary>
-		/// The DOCLibrary's unique ID.
-		/// </summary>
-        public int Id
-        {
-            get { return UmlPackage.Id; }
-        }
-
-		/// <summary>
-		/// The DOCLibrary's name.
-		/// </summary>
-        public string Name
-        {
-            get { return UmlPackage.Name; }
-        }
+        public UpccDocLibrary(IUmlPackage umlPackage):base(umlPackage)
+    	{}
 
 		/// <summary>
 		/// The bLibrary containing this DOCLibrary.
@@ -64,13 +43,7 @@ namespace VIENNAAddIn.upcc3.repo.DocLibrary
 		/// </summary>
 		public IEnumerable<IMa> Mas
 		{
-            get
-            {
-                foreach (var umlClass in UmlPackage.GetClassesByStereotype("MA"))
-                {
-                    yield return new UpccMa(umlClass);
-                }
-            }
+			get { return this.Elements.OfType<IMa>(); }
 		}
 
 		/// <summary>
@@ -119,80 +92,6 @@ namespace VIENNAAddIn.upcc3.repo.DocLibrary
 		{
             UmlPackage.RemoveClass(((UpccMa) ma).UmlClass);
 		}
-
-        ///<summary>
-        /// Tagged value 'businessTerm'.
-        ///</summary>
-        public IEnumerable<string> BusinessTerms
-        {
-            get { return UmlPackage.GetTaggedValue("businessTerm").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'copyright'.
-        ///</summary>
-        public IEnumerable<string> Copyrights
-        {
-            get { return UmlPackage.GetTaggedValue("copyright").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'owner'.
-        ///</summary>
-        public IEnumerable<string> Owners
-        {
-            get { return UmlPackage.GetTaggedValue("owner").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'reference'.
-        ///</summary>
-        public IEnumerable<string> References
-        {
-            get { return UmlPackage.GetTaggedValue("reference").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'status'.
-        ///</summary>
-        public string Status
-        {
-            get { return UmlPackage.GetTaggedValue("status").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'uniqueIdentifier'.
-        ///</summary>
-        public string UniqueIdentifier
-        {
-            get { return UmlPackage.GetTaggedValue("uniqueIdentifier").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'versionIdentifier'.
-        ///</summary>
-        public string VersionIdentifier
-        {
-            get { return UmlPackage.GetTaggedValue("versionIdentifier").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'baseURN'.
-        ///</summary>
-        public string BaseURN
-        {
-            get { return UmlPackage.GetTaggedValue("baseURN").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'namespacePrefix'.
-        ///</summary>
-        public string NamespacePrefix
-        {
-            get { return UmlPackage.GetTaggedValue("namespacePrefix").Value; }
-        }
-
-        #endregion
 
         public bool Equals(UpccDocLibrary other)
         {

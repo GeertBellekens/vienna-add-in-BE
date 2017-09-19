@@ -48,6 +48,10 @@ namespace VIENNAAddIn.upcc3.repo.CcLibrary
         {
             get { return new UpccCcLibrary(UmlClass.Package); }
         }
+		public ICctsLibrary library 
+		{
+			get { return CcLibrary; }
+		}
 
 		public IAcc IsEquivalentTo
         {

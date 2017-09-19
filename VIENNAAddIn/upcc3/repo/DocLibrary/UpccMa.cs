@@ -49,6 +49,11 @@ namespace VIENNAAddIn.upcc3.repo.DocLibrary
             get { return new UpccDocLibrary(UmlClass.Package); }
         }
 
+		public ICctsLibrary library 
+		{
+			get { return DocLibrary; }
+		}
+		
 		public IEnumerable<IAsma> Asmas
         {
             get
@@ -121,5 +126,40 @@ namespace VIENNAAddIn.upcc3.repo.DocLibrary
         {
             return !Equals(left, right);
         }
+        
+        public IEnumerable<string> UsageRules
+		{
+			get { return new List<string>(); }
+		}
+
+		public IEnumerable<string> BusinessTerms 
+		{
+			get { return new List<string>(); }
+		}
+
+		public string Definition 
+		{
+			get { return string.Empty; }
+		}
+
+		public string DictionaryEntryName 
+		{
+			get { return string.Empty; }
+		}
+
+		public string LanguageCode 
+		{
+			get { return string.Empty; }
+		}
+
+		public string UniqueIdentifier 
+		{
+			get { return string.Empty; }
+		}
+
+		public string VersionIdentifier 
+		{
+			get { return string.Empty; }
+		}
 	}
 }

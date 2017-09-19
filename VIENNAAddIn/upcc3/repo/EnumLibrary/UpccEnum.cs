@@ -48,6 +48,11 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
         {
             get { return new UpccEnumLibrary(UmlEnumeration.Package); }
         }
+				
+		public ICctsLibrary library 
+		{
+			get { return EnumLibrary; }
+		}
 
 		public IEnum IsEquivalentTo
         {
@@ -250,5 +255,10 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
         {
             return !Equals(left, right);
         }
+
+		public IEnumerable<string> UsageRules 
+		{
+			get { return new List<string>(); }
+		}
 	}
 }

@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using CctsRepository;
 using CctsRepository.BLibrary;
 
 namespace VIENNAAddIn.upcc3.otf
 {
-    public abstract class BusinessLibrary : AbstractEAPackage
+	public abstract class BusinessLibrary: AbstractEAPackage, ICctsLibrary
     {
         protected BusinessLibrary(ItemId id, string name, ItemId parentId, string status, string uniqueIdentifier, string versionIdentifier, string baseUrn, string namespacePrefix, IEnumerable<string> businessTerms, IEnumerable<string> copyrights, IEnumerable<string> owners, IEnumerable<string> references) : base(id, name, parentId)
         {
@@ -18,6 +19,17 @@ namespace VIENNAAddIn.upcc3.otf
             References = references;
         }
 
+		int ICctsLibrary.Id 
+		{
+			get { return Id.Value; }
+		}
+		public IEnumerable<ICctsElement> Elements 
+		{
+			get 
+			{
+				throw new System.NotImplementedException();
+			}
+		}
         public IBLibrary BLibrary
         {
             get { return ParentPackage as IBLibrary; }

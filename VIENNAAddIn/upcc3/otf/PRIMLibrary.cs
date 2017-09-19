@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CctsRepository;
 using CctsRepository.PrimLibrary;
 
 namespace VIENNAAddIn.upcc3.otf
@@ -12,7 +13,7 @@ namespace VIENNAAddIn.upcc3.otf
 
         #region IPrimLibrary Members
 
-        int IPrimLibrary.Id
+        int ICctsLibrary.Id
         {
             get { return Id.Value; }
         }

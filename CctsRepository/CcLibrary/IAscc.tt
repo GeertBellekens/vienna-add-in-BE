@@ -1,8 +1,0 @@
-<#@ template language="C#v3.5" hostspecific="True" debug="True" #>
-<#@ output extension=".cs" #>
-<#@ assembly name="$(SolutionDir)/UpccModel/bin/Debug/Upcc.dll" #>
-<#@ import namespace="Upcc"#>
-<#
-	var metaAssociation = (MetaAssociation) MetaModel.Ascc;
-#>
-<#@ include file="../t4/AssociationInterface.tt" #>

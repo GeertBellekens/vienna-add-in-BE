@@ -21,6 +21,7 @@ using VIENNAAddIn.upcc3.repo.PrimLibrary;
 using System;
 using System.Collections.Generic;
 using VIENNAAddIn.upcc3.uml;
+using System.Linq;
 
 namespace VIENNAAddIn.upcc3.repo.DocLibrary
 {
@@ -69,15 +70,11 @@ namespace VIENNAAddIn.upcc3.repo.DocLibrary
 			get
 			{
 				var associatedClassifier = UmlAssociation.AssociatedClassifier;
-                switch (associatedClassifier.Stereotype)
-                {
-                    case "ABIE":
-                    	return new BieAggregator(new UpccAbie((IUmlClass) associatedClassifier));
-                    case "MA":
-                    	return new BieAggregator(new UpccMa((IUmlClass) associatedClassifier));
-                    default:
-                        return null;
-                }
+				if (associatedClassifier.Stereotypes.Contains("ABIE")) 
+					return new BieAggregator(new UpccAbie((IUmlClass) associatedClassifier));
+				if (associatedClassifier.Stereotypes.Contains("MA"))
+					return new BieAggregator(new UpccMa((IUmlClass) associatedClassifier));
+				return null;
 			}
 		}
 

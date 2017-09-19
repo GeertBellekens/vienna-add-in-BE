@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Windows.Media;
 using CctsRepository;
 using CctsRepository.DocLibrary;
 using VIENNAAddIn.menu;
@@ -87,8 +88,11 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
 
         private void EnableDisable()
         {
+        	var validOutputdirectory = System.IO.Directory.Exists(textboxOutputDirectory.DirectoryName);
             textboxOutputDirectory.IsEnabled = documentsListBox.Items.Count > 0;
-            buttonExport.IsEnabled = ! string.IsNullOrEmpty(textboxOutputDirectory.DirectoryName);
+            buttonExport.IsEnabled = ! string.IsNullOrEmpty(textboxOutputDirectory.DirectoryName)
+            						&& validOutputdirectory;
+            textboxOutputDirectory.Foreground = validOutputdirectory  ? Brushes.Red : Brushes.Black;
         }
 
  
@@ -111,7 +115,7 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
                 if (cDoc != null && cDoc.State == CheckState.Checked)
                 {
                 	var generationContext = new GeneratorContext(cctsR, cDoc.TargetNamespace,
-                                                             cDoc.TargetNamespacePrefix, false, true,
+                                                             cDoc.TargetNamespacePrefix, false, false,
                                                              outputDirectory, cDoc.BIV.DocL);
 	                generationContext.SchemaAdded += HandleSchemaAdded;
 	                XSDGenerator.GenerateSchemas(generationContext);

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CctsRepository;
 using CctsRepository.CcLibrary;
 
 namespace VIENNAAddIn.upcc3.otf
@@ -13,7 +14,7 @@ namespace VIENNAAddIn.upcc3.otf
 
         #region ICcLibrary Members
 
-        int ICcLibrary.Id
+        int ICctsLibrary.Id
         {
             get { return Id.Value; }
         }

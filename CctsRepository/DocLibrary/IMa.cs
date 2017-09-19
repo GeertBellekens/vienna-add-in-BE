@@ -22,11 +22,8 @@ using CctsRepository.PrimLibrary;
 
 namespace CctsRepository.DocLibrary
 {
-    public interface IMa
+    public interface IMa:ICctsElement
     {
-		int Id { get; }
-		
-		string Name { get; }
 		
         IDocLibrary DocLibrary { get; }
 

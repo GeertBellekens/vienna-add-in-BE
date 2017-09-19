@@ -128,6 +128,11 @@ namespace VIENNAAddIn.upcc3.ea
         {
             get { return GetClassifiers<IUmlClass>(); }
         }
+        
+        public IEnumerable<IUmlClassifier> Classifiers
+        {
+            get { return GetClassifiers<IUmlClassifier>(); }
+        }
 
         public IEnumerable<IUmlDataType> DataTypes
         {

@@ -1,4 +1,5 @@
 // ReSharper disable RedundantUsingDirective
+using System.Linq;
 using CctsRepository;
 using CctsRepository.BdtLibrary;
 using CctsRepository.BieLibrary;
@@ -24,32 +25,10 @@ using VIENNAAddIn.upcc3.uml;
 
 namespace VIENNAAddIn.upcc3.repo.CdtLibrary
 {
-    internal class UpccCdtLibrary : ICdtLibrary
+    internal class UpccCdtLibrary : UpccLibrary, ICdtLibrary
     {
-        public UpccCdtLibrary(IUmlPackage umlPackage)
-        {
-            UmlPackage = umlPackage;
-        }
-
-        public IUmlPackage UmlPackage { get; private set; }
-
-        #region ICdtLibrary Members
-
-		/// <summary>
-		/// The CDTLibrary's unique ID.
-		/// </summary>
-        public int Id
-        {
-            get { return UmlPackage.Id; }
-        }
-
-		/// <summary>
-		/// The CDTLibrary's name.
-		/// </summary>
-        public string Name
-        {
-            get { return UmlPackage.Name; }
-        }
+        public UpccCdtLibrary(IUmlPackage umlPackage):base(umlPackage)
+    	{}
 
 		/// <summary>
 		/// The bLibrary containing this CDTLibrary.
@@ -64,13 +43,7 @@ namespace VIENNAAddIn.upcc3.repo.CdtLibrary
 		/// </summary>
 		public IEnumerable<ICdt> Cdts
 		{
-            get
-            {
-                foreach (var umlClass in UmlPackage.GetClassesByStereotype("CDT"))
-                {
-                    yield return new UpccCdt(umlClass);
-                }
-            }
+			get { return this.Elements.OfType<ICdt>(); }
 		}
 
 		/// <summary>
@@ -119,80 +92,6 @@ namespace VIENNAAddIn.upcc3.repo.CdtLibrary
 		{
             UmlPackage.RemoveClass(((UpccCdt) cdt).UmlClass);
 		}
-
-        ///<summary>
-        /// Tagged value 'businessTerm'.
-        ///</summary>
-        public IEnumerable<string> BusinessTerms
-        {
-            get { return UmlPackage.GetTaggedValue("businessTerm").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'copyright'.
-        ///</summary>
-        public IEnumerable<string> Copyrights
-        {
-            get { return UmlPackage.GetTaggedValue("copyright").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'owner'.
-        ///</summary>
-        public IEnumerable<string> Owners
-        {
-            get { return UmlPackage.GetTaggedValue("owner").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'reference'.
-        ///</summary>
-        public IEnumerable<string> References
-        {
-            get { return UmlPackage.GetTaggedValue("reference").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'status'.
-        ///</summary>
-        public string Status
-        {
-            get { return UmlPackage.GetTaggedValue("status").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'uniqueIdentifier'.
-        ///</summary>
-        public string UniqueIdentifier
-        {
-            get { return UmlPackage.GetTaggedValue("uniqueIdentifier").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'versionIdentifier'.
-        ///</summary>
-        public string VersionIdentifier
-        {
-            get { return UmlPackage.GetTaggedValue("versionIdentifier").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'baseURN'.
-        ///</summary>
-        public string BaseURN
-        {
-            get { return UmlPackage.GetTaggedValue("baseURN").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'namespacePrefix'.
-        ///</summary>
-        public string NamespacePrefix
-        {
-            get { return UmlPackage.GetTaggedValue("namespacePrefix").Value; }
-        }
-
-        #endregion
 
         public bool Equals(UpccCdtLibrary other)
         {

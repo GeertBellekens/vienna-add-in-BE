@@ -22,11 +22,8 @@ using CctsRepository.PrimLibrary;
 
 namespace CctsRepository.EnumLibrary
 {
-    public interface IEnum
+	public interface IEnum:ICctsElement
     {
-		int Id { get; }
-		
-		string Name { get; }
 		
         IEnumLibrary EnumLibrary { get; }
 
@@ -58,11 +55,6 @@ namespace CctsRepository.EnumLibrary
 		#region Tagged Values
 
         ///<summary>
-        /// Tagged value 'businessTerm'.
-        ///</summary>
-		IEnumerable<string> BusinessTerms { get; }
-
-        ///<summary>
         /// Tagged value 'codeListAgencyIdentifier'.
         ///</summary>
 		string CodeListAgencyIdentifier { get; }
@@ -88,19 +80,9 @@ namespace CctsRepository.EnumLibrary
 		string DictionaryEntryName { get; }
 
         ///<summary>
-        /// Tagged value 'definition'.
-        ///</summary>
-		string Definition { get; }
-
-        ///<summary>
         /// Tagged value 'enumerationURI'.
         ///</summary>
 		string EnumerationURI { get; }
-
-        ///<summary>
-        /// Tagged value 'languageCode'.
-        ///</summary>
-		string LanguageCode { get; }
 
         ///<summary>
         /// Tagged value 'modificationAllowedIndicator'.
@@ -116,16 +98,6 @@ namespace CctsRepository.EnumLibrary
         /// Tagged value 'status'.
         ///</summary>
 		string Status { get; }
-
-        ///<summary>
-        /// Tagged value 'uniqueIdentifier'.
-        ///</summary>
-		string UniqueIdentifier { get; }
-
-        ///<summary>
-        /// Tagged value 'versionIdentifier'.
-        ///</summary>
-		string VersionIdentifier { get; }
 
 		#endregion
     }

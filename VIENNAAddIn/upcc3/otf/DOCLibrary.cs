@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CctsRepository;
 using CctsRepository.BieLibrary;
 using CctsRepository.DocLibrary;
 
@@ -34,7 +35,7 @@ namespace VIENNAAddIn.upcc3.otf
             get { throw new NotImplementedException(); }
         }
 
-        int IDocLibrary.Id
+        int ICctsLibrary.Id
         {
             get { return Id.Value; }
         }

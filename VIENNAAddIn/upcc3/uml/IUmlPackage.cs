@@ -14,6 +14,7 @@ namespace VIENNAAddIn.upcc3.uml
         IUmlPackage Parent { get; }
 
         IEnumerable<IUmlClass> Classes { get; }
+        IEnumerable<IUmlClassifier> Classifiers { get; }
         IEnumerable<IUmlDataType> DataTypes { get; }
         IEnumerable<IUmlEnumeration> Enumerations { get; }
 

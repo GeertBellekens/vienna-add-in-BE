@@ -19,37 +19,16 @@ using VIENNAAddIn.upcc3.repo.EnumLibrary;
 using VIENNAAddIn.upcc3.repo.PrimLibrary;
 // ReSharper restore RedundantUsingDirective
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using VIENNAAddIn.upcc3.uml;
 
 namespace VIENNAAddIn.upcc3.repo.BieLibrary
 {
-    internal class UpccBieLibrary : IBieLibrary
+    internal class UpccBieLibrary : UpccLibrary, IBieLibrary
     {
-        public UpccBieLibrary(IUmlPackage umlPackage)
-        {
-            UmlPackage = umlPackage;
-        }
-
-        public IUmlPackage UmlPackage { get; private set; }
-
-        #region IBieLibrary Members
-
-		/// <summary>
-		/// The BIELibrary's unique ID.
-		/// </summary>
-        public int Id
-        {
-            get { return UmlPackage.Id; }
-        }
-
-		/// <summary>
-		/// The BIELibrary's name.
-		/// </summary>
-        public string Name
-        {
-            get { return UmlPackage.Name; }
-        }
+        public UpccBieLibrary(IUmlPackage umlPackage):base(umlPackage)
+    	{}
 
 		/// <summary>
 		/// The bLibrary containing this BIELibrary.
@@ -64,13 +43,7 @@ namespace VIENNAAddIn.upcc3.repo.BieLibrary
 		/// </summary>
 		public IEnumerable<IAbie> Abies
 		{
-            get
-            {
-                foreach (var umlClass in UmlPackage.GetClassesByStereotype("ABIE"))
-                {
-                    yield return new UpccAbie(umlClass);
-                }
-            }
+			get { return this.Elements.OfType<IAbie>(); }
 		}
 
 		/// <summary>
@@ -119,80 +92,6 @@ namespace VIENNAAddIn.upcc3.repo.BieLibrary
 		{
             UmlPackage.RemoveClass(((UpccAbie) abie).UmlClass);
 		}
-
-        ///<summary>
-        /// Tagged value 'businessTerm'.
-        ///</summary>
-        public IEnumerable<string> BusinessTerms
-        {
-            get { return UmlPackage.GetTaggedValue("businessTerm").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'copyright'.
-        ///</summary>
-        public IEnumerable<string> Copyrights
-        {
-            get { return UmlPackage.GetTaggedValue("copyright").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'owner'.
-        ///</summary>
-        public IEnumerable<string> Owners
-        {
-            get { return UmlPackage.GetTaggedValue("owner").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'reference'.
-        ///</summary>
-        public IEnumerable<string> References
-        {
-            get { return UmlPackage.GetTaggedValue("reference").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'status'.
-        ///</summary>
-        public string Status
-        {
-            get { return UmlPackage.GetTaggedValue("status").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'uniqueIdentifier'.
-        ///</summary>
-        public string UniqueIdentifier
-        {
-            get { return UmlPackage.GetTaggedValue("uniqueIdentifier").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'versionIdentifier'.
-        ///</summary>
-        public string VersionIdentifier
-        {
-            get { return UmlPackage.GetTaggedValue("versionIdentifier").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'baseURN'.
-        ///</summary>
-        public string BaseURN
-        {
-            get { return UmlPackage.GetTaggedValue("baseURN").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'namespacePrefix'.
-        ///</summary>
-        public string NamespacePrefix
-        {
-            get { return UmlPackage.GetTaggedValue("namespacePrefix").Value; }
-        }
-
-        #endregion
 
         public bool Equals(UpccBieLibrary other)
         {

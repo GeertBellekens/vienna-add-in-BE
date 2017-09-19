@@ -22,12 +22,9 @@ using CctsRepository.PrimLibrary;
 
 namespace CctsRepository.PrimLibrary
 {
-    public interface IPrim
+	public interface IPrim:ICctsElement
     {
-		int Id { get; }
-		
-		string Name { get; }
-		
+	
         IPrimLibrary PrimLibrary { get; }
 
 		IPrim IsEquivalentTo { get; }
@@ -40,11 +37,6 @@ namespace CctsRepository.PrimLibrary
 		IEnumerable<string> BusinessTerms { get; }
 
         ///<summary>
-        /// Tagged value 'definition'.
-        ///</summary>
-		string Definition { get; }
-
-        ///<summary>
         /// Tagged value 'dictionaryEntryName'.
         ///</summary>
 		string DictionaryEntryName { get; }
@@ -53,11 +45,6 @@ namespace CctsRepository.PrimLibrary
         /// Tagged value 'fractionDigits'.
         ///</summary>
 		string FractionDigits { get; }
-
-        ///<summary>
-        /// Tagged value 'languageCode'.
-        ///</summary>
-		string LanguageCode { get; }
 
         ///<summary>
         /// Tagged value 'length'.
@@ -103,16 +90,6 @@ namespace CctsRepository.PrimLibrary
         /// Tagged value 'totalDigits'.
         ///</summary>
 		string TotalDigits { get; }
-
-        ///<summary>
-        /// Tagged value 'uniqueIdentifier'.
-        ///</summary>
-		string UniqueIdentifier { get; }
-
-        ///<summary>
-        /// Tagged value 'versionIdentifier'.
-        ///</summary>
-		string VersionIdentifier { get; }
 
         ///<summary>
         /// Tagged value 'whiteSpace'.

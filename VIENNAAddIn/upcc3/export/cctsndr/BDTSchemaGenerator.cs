@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Schema;
 using CctsRepository.BdtLibrary;
+using VIENNAAddIn.upcc3.repo;
 using VIENNAAddInUtils;
 
 namespace VIENNAAddIn.upcc3.export.cctsndr
@@ -30,7 +31,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                     var simpleType = new XmlSchemaSimpleType {Name = NDR.GetXsdTypeNameFromBdt(bdt)};
                     var simpleTypeRestriction = new XmlSchemaSimpleTypeRestriction
                                                 {
-                                                    BaseTypeName = GetXmlQualifiedName(NDR.getBdtConBasicTypeName(bdt))
+                                                    BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt))
                                                 };
                     simpleType.Content = simpleTypeRestriction;
                     if (context.Annotate)
@@ -48,7 +49,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                     var simpleContent = new XmlSchemaSimpleContent();
                     var simpleContentExtension = new XmlSchemaSimpleContentExtension
                                                  {
-                    								BaseTypeName = GetXmlQualifiedName(NDR.getBdtConBasicTypeName(bdt))
+                    								BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt))
                                                  };
                     foreach (IBdtSup sup in sups)
                     {
@@ -56,7 +57,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                                         {
                                             // Deviation from rule [R ABC1]: Using only attribute name and type as xml attribute name (instead of complete DEN), following the examples given in the specification.
                                             Name = NDR.GetXsdAttributeNameFromSup(sup),
-                                            SchemaTypeName = new XmlQualifiedName(GetXSDType(sup.BasicType.Name),
+                                            SchemaTypeName = new XmlQualifiedName(GetXSDType(NDR.GetBasicTypeName(sup as UpccUmlAttribute)),
                                                                                   "http://www.w3.org/2001/XMLSchema"),
                                         };
                         if (context.Annotate)

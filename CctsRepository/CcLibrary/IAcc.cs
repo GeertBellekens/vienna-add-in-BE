@@ -22,12 +22,9 @@ using CctsRepository.PrimLibrary;
 
 namespace CctsRepository.CcLibrary
 {
-    public interface IAcc
+    public interface IAcc:ICctsElement
     {
-		int Id { get; }
-		
-		string Name { get; }
-		
+	
         ICcLibrary CcLibrary { get; }
 
 		IAcc IsEquivalentTo { get; }
@@ -78,44 +75,6 @@ namespace CctsRepository.CcLibrary
 		/// </summary>
         void RemoveAscc(IAscc ascc);
 
-		#region Tagged Values
-
-        ///<summary>
-        /// Tagged value 'businessTerm'.
-        ///</summary>
-		IEnumerable<string> BusinessTerms { get; }
-
-        ///<summary>
-        /// Tagged value 'definition'.
-        ///</summary>
-		string Definition { get; }
-
-        ///<summary>
-        /// Tagged value 'dictionaryEntryName'.
-        ///</summary>
-		string DictionaryEntryName { get; }
-
-        ///<summary>
-        /// Tagged value 'languageCode'.
-        ///</summary>
-		string LanguageCode { get; }
-
-        ///<summary>
-        /// Tagged value 'uniqueIdentifier'.
-        ///</summary>
-		string UniqueIdentifier { get; }
-
-        ///<summary>
-        /// Tagged value 'versionIdentifier'.
-        ///</summary>
-		string VersionIdentifier { get; }
-
-        ///<summary>
-        /// Tagged value 'usageRule'.
-        ///</summary>
-		IEnumerable<string> UsageRules { get; }
-
-		#endregion
     }
 }
 

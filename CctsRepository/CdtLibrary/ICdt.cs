@@ -22,11 +22,8 @@ using CctsRepository.PrimLibrary;
 
 namespace CctsRepository.CdtLibrary
 {
-    public interface ICdt
+    public interface ICdt:ICctsElement
     {
-		int Id { get; }
-		
-		string Name { get; }
 		
         ICdtLibrary CdtLibrary { get; }
 
@@ -57,44 +54,6 @@ namespace CctsRepository.CdtLibrary
 		/// </summary>
         void RemoveCdtSup(ICdtSup cdtSup);
 
-		#region Tagged Values
-
-        ///<summary>
-        /// Tagged value 'businessTerm'.
-        ///</summary>
-		IEnumerable<string> BusinessTerms { get; }
-
-        ///<summary>
-        /// Tagged value 'definition'.
-        ///</summary>
-		string Definition { get; }
-
-        ///<summary>
-        /// Tagged value 'dictionaryEntryName'.
-        ///</summary>
-		string DictionaryEntryName { get; }
-
-        ///<summary>
-        /// Tagged value 'languageCode'.
-        ///</summary>
-		string LanguageCode { get; }
-
-        ///<summary>
-        /// Tagged value 'uniqueIdentifier'.
-        ///</summary>
-		string UniqueIdentifier { get; }
-
-        ///<summary>
-        /// Tagged value 'versionIdentifier'.
-        ///</summary>
-		string VersionIdentifier { get; }
-
-        ///<summary>
-        /// Tagged value 'usageRule'.
-        ///</summary>
-		IEnumerable<string> UsageRules { get; }
-
-		#endregion
     }
 }
 

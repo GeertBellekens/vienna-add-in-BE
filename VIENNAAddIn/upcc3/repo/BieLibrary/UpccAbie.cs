@@ -25,6 +25,7 @@ namespace VIENNAAddIn.upcc3.repo.BieLibrary
 {
     internal class UpccAbie : IAbie
     {
+
         public UpccAbie(IUmlClass umlClass)
         {
             UmlClass = umlClass;
@@ -48,6 +49,11 @@ namespace VIENNAAddIn.upcc3.repo.BieLibrary
         {
             get { return new UpccBieLibrary(UmlClass.Package); }
         }
+		
+		public ICctsLibrary library 
+		{
+			get { return BieLibrary; }
+		}
 
 		public IAbie IsEquivalentTo
         {
