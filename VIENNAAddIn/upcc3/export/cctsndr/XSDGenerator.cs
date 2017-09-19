@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
@@ -111,13 +112,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         ///<returns></returns>
         public static IEnumerable<IBdt> CollectBDTs(GeneratorContext context)
         {
-            foreach (IBdtLibrary bdtLibrary in context.Repository.GetBdtLibraries())
-            {
-                foreach (IBdt bdt in bdtLibrary.Bdts)
-                {
-                    yield return bdt;
-                }
-            }
+        	return context.DocLibrary.Elements.OfType<IBdt>();
         }
 
         ///<summary>
@@ -126,13 +121,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         ///<returns></returns>
         public static IEnumerable<IAbie> CollectABIEs(GeneratorContext context)
         {
-            foreach (IBieLibrary bieLibrary in context.Repository.GetBieLibraries())
-            {
-                foreach (IAbie abie in bieLibrary.Abies)
-                {
-                    yield return abie;
-                }
-            }
+			return context.DocLibrary.Elements.OfType<IAbie>();
         }
 
         ///<summary>
@@ -141,13 +130,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         ///<returns></returns>
         public static IEnumerable<IAcc> CollectACCs(GeneratorContext context)
         {
-            foreach (ICcLibrary ccLibrary in context.Repository.GetCcLibraries())
-            {
-                foreach (IAcc acc in ccLibrary.Accs)
-                {
-                    yield return acc;
-                }
-            }
+			return context.DocLibrary.Elements.OfType<IAcc>();
         }
 
 
@@ -157,13 +140,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         ///<returns></returns>
         public static IEnumerable<ICdt> CollectCDTs(GeneratorContext context)
         {
-            foreach (ICdtLibrary cdtLibrary in context.Repository.GetCdtLibraries())
-            {
-                foreach (ICdt cdt in cdtLibrary.Cdts)
-                {
-                    yield return cdt;
-                }
-            }
+			return context.DocLibrary.Elements.OfType<ICdt>();
         }
     }
 }
