@@ -115,7 +115,7 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
                 if (cDoc != null && cDoc.State == CheckState.Checked)
                 {
                 	var generationContext = new GeneratorContext(cctsR, cDoc.TargetNamespace,
-                                                             cDoc.TargetNamespacePrefix, false, false,
+                                                             cDoc.TargetNamespacePrefix, false, true,
                                                              outputDirectory, cDoc.BIV.DocL);
 	                generationContext.SchemaAdded += HandleSchemaAdded;
 	                XSDGenerator.GenerateSchemas(generationContext);

@@ -110,7 +110,13 @@ namespace VIENNAAddIn.upcc3.repo
         ///</summary>
         public string UniqueIdentifier
         {
-            get { return UmlPackage.GetTaggedValue("uniqueIdentifier").Value; }
+            get 
+            {
+            	string tvValue = UmlPackage.GetTaggedValue("uniqueIdentifier").Value;
+            	if (string.IsNullOrEmpty(tvValue)) 
+            		tvValue = UmlPackage.GetTaggedValue("uniqueID").Value;
+            	return tvValue;
+        	}
         }
 
         ///<summary>
@@ -118,7 +124,13 @@ namespace VIENNAAddIn.upcc3.repo
         ///</summary>
         public string VersionIdentifier
         {
-            get { return UmlPackage.GetTaggedValue("versionIdentifier").Value; }
+            get 
+            {
+            	string tvValue = UmlPackage.GetTaggedValue("versionIdentifier").Value;
+            	if (string.IsNullOrEmpty(tvValue)) 
+            		tvValue = UmlPackage.GetTaggedValue("versionID").Value;
+            	return tvValue;
+        	}
         }
 
         ///<summary>

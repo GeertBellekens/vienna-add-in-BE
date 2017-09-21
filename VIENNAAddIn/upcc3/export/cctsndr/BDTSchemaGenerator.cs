@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
 using System.Xml.Schema;
 using CctsRepository.BdtLibrary;
@@ -22,7 +23,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             schema.Namespaces.Add("xsd", "http://www.w3.org/2001/XMLSchema");
             schema.Namespaces.Add("ccts","urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3");
             schema.Version = context.DocLibrary.VersionIdentifier.DefaultTo("1");
-
+			string schemaFileName = getSchemaFileName(context,false);
             foreach (IBdt bdt in bdts)
             {
                 var sups = new List<IBdtSup>(bdt.Sups);
@@ -76,7 +77,20 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                     schema.Items.Add(complexType);
                 }
             }
-            context.AddSchema(schema, "BusinessDataType_" + schema.Version + ".xsd");
+            context.AddSchema(schema, schemaFileName,Schematype.BDT);
+        }
+        private static string getSchemaFileName(GeneratorContext context, bool generic = false)
+        {
+        	var mainVersion = context.DocLibrary.VersionIdentifier.Split('.').FirstOrDefault();
+        	var minorVersion = context.DocLibrary.VersionIdentifier.Split('.').LastOrDefault();
+        	var docRootName =  context.DocLibrary.DocumentRoot.Name;
+        	var bSlash = System.IO.Path.DirectorySeparatorChar;
+        	var docOrGeneric = generic ? "generic" : "document" + bSlash
+        											+ docRootName ;
+        	//TODO set "Ebix" prefix via settings?
+        	string filename = context.OutputDirectory + bSlash + mainVersion + bSlash + docOrGeneric + bSlash //directories
+        					+ "ebIX_MessageDataType_" + docRootName +"_"+ mainVersion + "p" + minorVersion + ".xsd"; //filename
+        	return  filename;
         }
 
         private static XmlSchemaAnnotation GetAttributeAnnotation(IBdtSup sup)

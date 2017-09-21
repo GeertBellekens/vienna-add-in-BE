@@ -82,12 +82,9 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             // add namespace to be able to utilize ABIEs 
             schema.Namespaces.Add(NSPREFIX_TNS, context.TargetNamespace);
 
-
+			string schemaFileName = getSchemaFileName(context,false);
             // R 8FE2: include BDT XML schema file
-            // TODO: check with christian e. if we can retrieve the bdt schema file from the context
-            XmlSchemaInclude bdtInclude = new XmlSchemaInclude();
-            bdtInclude.SchemaLocation = "BusinessDataType_" + schema.Version + ".xsd";
-            schema.Includes.Add(bdtInclude);
+            AddIncludes(schema, context, context.DocLibrary, schemaFileName);
 
             foreach (IAbie abie in abies.OrderBy(a => a.Name))
             {
@@ -105,9 +102,30 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                 schema.Items.Add(elementBIE);
             }
 
-            context.AddSchema(schema, "BusinessInformationEntity_" + schema.Version + ".xsd");
+            context.AddSchema(schema, schemaFileName, Schematype.BIE);
         }
-
+        private static string getSchemaFileName(GeneratorContext context, bool generic = false)
+        {
+        	var mainVersion = context.DocLibrary.VersionIdentifier.Split('.').FirstOrDefault();
+        	var minorVersion = context.DocLibrary.VersionIdentifier.Split('.').LastOrDefault();
+        	var docRootName =  context.DocLibrary.DocumentRoot.Name;
+        	var bSlash = System.IO.Path.DirectorySeparatorChar;
+        	var docOrGeneric = generic ? "generic" : "document" + bSlash
+        											+ docRootName ;
+        	//TODO set "Ebix" prefix via settings?
+        	string filename = context.OutputDirectory + bSlash + mainVersion + bSlash + docOrGeneric + bSlash //directories
+        					+ "ebIX_MessageBusinessInformationEntities_" + docRootName +"_"+ mainVersion + "p" + minorVersion + ".xsd"; //filename
+        	return  filename;
+        }
+		private static void AddIncludes(XmlSchema schema, GeneratorContext context, IDocLibrary docLibrary, string schemaFileName)
+        {
+			foreach (var incSchemaInfo in context.Schemas.Where(x => x.Schematype == Schematype.BDT))
+            {
+                var include = new XmlSchemaInclude();
+                include.SchemaLocation = NDR.GetRelativePath(schemaFileName, incSchemaInfo.FileName);
+                schema.Includes.Add(include);
+            }
+        }
         internal static XmlSchemaComplexType GenerateComplexTypeABIE(GeneratorContext context, XmlSchema schema, IAbie abie)
         {
             return GenerateComplexTypeABIE(context, schema, abie, NSPREFIX_TNS);

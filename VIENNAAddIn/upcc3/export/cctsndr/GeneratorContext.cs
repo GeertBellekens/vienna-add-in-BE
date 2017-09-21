@@ -73,9 +73,9 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         ///</summary>
         ///<param name="schema"></param>
         ///<param name="fileName"></param>
-        public void AddSchema(XmlSchema schema, string fileName)
+        public void AddSchema(XmlSchema schema, string fileName, Schematype schematype)
         {
-            Schemas.Add(new SchemaInfo(schema, fileName));
+            Schemas.Add(new SchemaInfo(schema, fileName,schematype));
             if (SchemaAdded != null)
             {
                 SchemaAdded(this, new SchemaAddedEventArgs(fileName, progress));
@@ -109,10 +109,11 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         ///</summary>
         ///<param name="schema"></param>
         ///<param name="fileName"></param>
-        public SchemaInfo(XmlSchema schema, string fileName)
+        public SchemaInfo(XmlSchema schema, string fileName, Schematype schematype)
         {
             Schema = schema;
             FileName = fileName;
+            Schematype = schematype;
         }
 
         ///<summary>
@@ -122,5 +123,15 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         ///<summary>
         ///</summary>
         public string FileName { get; private set; }
+        public Schematype Schematype {get; private set;}
+    }
+    public enum Schematype : int
+    {
+    	BDT,
+    	BIE,
+    	ROOT,
+    	ACC,
+    	CDT,
+    	ENUM
     }
 }

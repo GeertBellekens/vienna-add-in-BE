@@ -80,7 +80,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                 }
             }
 
-            context.AddSchema(schema, "CoreDataType_" + schema.Version + ".xsd");
+            context.AddSchema(schema, "CoreDataType_" + schema.Version + ".xsd", Schematype.CDT);
         
         }
 

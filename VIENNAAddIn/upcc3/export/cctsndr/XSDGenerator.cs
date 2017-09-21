@@ -35,23 +35,25 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 
             if (context.Allschemas)
             {
-                CDTSchemaGenerator.GenerateXSD(context, CollectCDTs(context));
-                CCSchemaGenerator.GenerateXSD(context, CollectACCs(context));
-            }
-
-            if (!Directory.Exists(context.OutputDirectory))
-            {
-                Directory.CreateDirectory(context.OutputDirectory);
+//                CDTSchemaGenerator.GenerateXSD(context, CollectCDTs(context));
+//                CCSchemaGenerator.GenerateXSD(context, CollectACCs(context));
+				// TODO: create generic schema's including schema's for enumerations
             }
             foreach (SchemaInfo schemaInfo in context.Schemas)
             {
+            	//make sure the directory exists
+            	var directoryPath = Path.GetDirectoryName(schemaInfo.FileName);
+            	if (!Directory.Exists(directoryPath))
+	            {
+	                Directory.CreateDirectory(directoryPath);
+	            }
                 var xmlWriterSettings = new XmlWriterSettings
                                             {
                                                 Indent = true,
                                                 Encoding = Encoding.UTF8,
                                             };
                 using (
-                    XmlWriter xmlWriter = XmlWriter.Create(context.OutputDirectory + "\\" + schemaInfo.FileName,
+                    XmlWriter xmlWriter = XmlWriter.Create(schemaInfo.FileName,
                                                            xmlWriterSettings))
                 {
 // ReSharper disable AssignNullToNotNullAttribute

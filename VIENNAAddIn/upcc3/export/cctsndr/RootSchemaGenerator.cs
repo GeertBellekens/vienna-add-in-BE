@@ -37,18 +37,21 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                              };
             schema.Namespaces.Add(context.NamespacePrefix, context.TargetNamespace);
             schema.Namespaces.Add("xsd", "http://www.w3.org/2001/XMLSchema");
+            //TODO make ccts variable via setting
             schema.Namespaces.Add("ccts",
-                                  "urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3");
+                                  "urn:un:unece:uncefact:documentation:common:3:standard:CoreComponentsTechnicalSpecification:3");
             schema.Namespaces.Add(NSPREFIX_BDT, context.TargetNamespace);
             schema.Namespaces.Add(NSPREFIX_BIE, context.TargetNamespace);
 
             schema.ElementFormDefault = XmlSchemaForm.Qualified;
             schema.AttributeFormDefault = XmlSchemaForm.Unqualified;
             schema.Version = context.DocLibrary.VersionIdentifier.DefaultTo("1");
+            
+            string schemaFileName = getSchemaFileName(context,false);
 
             //TODO how do i now what schemas to include and what to import
             AddImports(schema, context, context.DocLibrary);
-            AddIncludes(schema, context, context.DocLibrary);
+            AddIncludes(schema, context, context.DocLibrary, schemaFileName);
 
             AddRootElementDeclaration(schema, documentRoot, context);
             AddRootTypeDefinition(schema, documentRoot, context, context.DocLibrary);
@@ -56,7 +59,20 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             IEnumerable<IMa> nonRootDocLibraryElements = context.DocLibrary.NonRootMas;
             AddGlobalElementDeclarations(schema, nonRootDocLibraryElements, context);
             AddGlobalTypeDefinitions(schema, nonRootDocLibraryElements, context);
-            context.AddSchema(schema, documentRoot.Name + "_" + schema.Version + ".xsd");
+            context.AddSchema(schema, schemaFileName, Schematype.ROOT );
+        }
+        private static string getSchemaFileName(GeneratorContext context, bool generic = false)
+        {
+        	var mainVersion = context.DocLibrary.VersionIdentifier.Split('.').FirstOrDefault();
+        	var minorVersion = context.DocLibrary.VersionIdentifier.Split('.').LastOrDefault();
+        	var docRootName =  context.DocLibrary.DocumentRoot.Name;
+        	var bSlash = System.IO.Path.DirectorySeparatorChar;
+        	var docOrGeneric = generic ? "generic" : "document" + bSlash
+        											+ docRootName ;
+        	//TODO set "Ebix" prefix via settings?
+        	string filename = context.OutputDirectory + bSlash + mainVersion + bSlash + docOrGeneric + bSlash //directories
+        					+ "ebIX_" + docRootName +"_"+ mainVersion + "p" + minorVersion + ".xsd"; //filename
+        	return  filename;
         }
 
         private static void AddGlobalElementDeclarations(XmlSchema schema, IEnumerable<IMa> mas,
@@ -252,27 +268,24 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 
        private static void AddImports(XmlSchema schema, GeneratorContext context, IDocLibrary docLibrary)
         {
-            if (context.Annotate)
-            {
-                var import = new XmlSchemaImport
-                                 {
-                                     Namespace = "urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3",
-                                     SchemaLocation = "documentation/standard/XMLNDR_Documentation_3p0.xsd"
-                                 };
-
-                schema.Includes.Add(import);
-            }
+//            if (context.Annotate)
+//            {
+//                var import = new XmlSchemaImport
+//                                 {
+//                                     Namespace = "urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3",
+//                                     SchemaLocation = "documentation/standard/XMLNDR_Documentation_3p0.xsd"
+//                                 };
+//
+//                schema.Includes.Add(import);
+//            }
         }
 
-        private static void AddIncludes(XmlSchema schema, GeneratorContext context, IDocLibrary docLibrary)
+        private static void AddIncludes(XmlSchema schema, GeneratorContext context, IDocLibrary docLibrary, string schemaFileName)
         {
             foreach (SchemaInfo si in context.Schemas)
             {
-                //XmlTextReader textReader = new XmlTextReader(context.OutputDirectory + si.FileName);
-                //XmlSchema includeSchema = XmlSchema.Read(textReader, null);
                 var include = new XmlSchemaInclude();
-                //include.Schema = includeSchema;
-                include.SchemaLocation = si.FileName;
+                include.SchemaLocation = NDR.GetRelativePath(schemaFileName, si.FileName);
                 schema.Includes.Add(include);
             }
         }
@@ -291,5 +304,6 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 
             return annotation;
         }
+        
     }
 }
