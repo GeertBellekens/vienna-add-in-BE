@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Windows.Interop;
 using System.Windows.Media;
 using CctsRepository;
 using CctsRepository.DocLibrary;
@@ -58,7 +59,14 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
 
         public static void ShowForm(AddInContext context)
         {
-            new ExporterForm(context.CctsRepository,context.SelectedPackage).Show();
+        	var exporterForm = new ExporterForm(context.CctsRepository,context.SelectedPackage);
+        	var mainWindowHandle = context.GetmainWindowHandle();
+        	if (mainWindowHandle != IntPtr.Zero)
+        	{
+        		WindowInteropHelper wih = new WindowInteropHelper(exporterForm);
+        		wih.Owner = context.GetmainWindowHandle();
+        	}
+        	exporterForm.Show();
         }
 
         private void MirrorDOCsToUI()
@@ -133,7 +141,8 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
 
         private void HandleSchemaAdded(object sender, SchemaAddedEventArgs e)
         {
-            textBoxStatus.Text += "Generated Schema file: " + System.IO.Path.GetFileName(e.FileName) + Environment.NewLine;
+            textBoxStatus.Text += "- " + System.IO.Path.GetFileName(e.FileName) + Environment.NewLine;
+            textBoxStatus.ScrollToEnd();
         }
 
         private void textboxOutputDirectory_DirectoryNameChanged(object sender, RoutedEventArgs e)

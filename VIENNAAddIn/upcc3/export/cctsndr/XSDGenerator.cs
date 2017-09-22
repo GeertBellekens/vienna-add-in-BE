@@ -62,7 +62,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         {
             BDTSchemaGenerator.GenerateXSD(context, genericContext, CollectBDTs(context));
             BIESchemaGenerator.GenerateXSD(context, genericContext, CollectABIEs(context));
-            RootSchemaGenerator.GenerateXSD(context, genericContext);
+            RootSchemaGenerator.GenerateXSD(context);
             
             WriteSchemas(context);
         }

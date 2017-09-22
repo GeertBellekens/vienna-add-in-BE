@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using CctsRepository;
 using EA;
 using VIENNAAddIn.upcc3;
@@ -84,6 +86,15 @@ namespace VIENNAAddIn.menu
         public bool SelectedItemIsRootModel()
         {
             return SelectedPackage != null && SelectedPackage.ParentID == 0;
+        }
+        
+        public IntPtr GetmainWindowHandle()
+        {
+        	//TODO: handle multiple EA processes open
+    		List<Process> allProcesses = new List<Process>( Process.GetProcesses());
+	   		Process proc = allProcesses.Find(pr => pr.ProcessName == "EA");
+	     	//if we don't find the process then we set the mainwindow to null
+	   		return proc != null ? proc.MainWindowHandle : IntPtr.Zero;
         }
     }
 }

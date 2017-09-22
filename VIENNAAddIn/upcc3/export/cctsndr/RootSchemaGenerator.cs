@@ -27,13 +27,17 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         ///<summary>
         ///</summary>
         ///<param name="context"></param>
-        public static void GenerateXSD(GeneratorContext context,GeneratorContext genericContext)
+        public static void GenerateXSD(GeneratorContext context)
         {
         	GenerateXSD(context, false);
         	GenerateXSD(context, true);
         }
         public static void GenerateXSD(GeneratorContext context, bool generic)
         {
+        	//set bdt and bie prefixes
+        	NSPREFIX_BDT = context.NamespacePrefix;
+        	NSPREFIX_BIE = context.NamespacePrefix;
+        	
         	string targetNameSpace = NDR.getTargetNameSpace(context, generic);
             globalAsmas = new List<string>();
             IMa documentRoot = context.DocLibrary.DocumentRoot;
