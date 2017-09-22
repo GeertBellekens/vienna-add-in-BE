@@ -29,10 +29,16 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             DocLibrary = docLibrary;            
             progress = 100/(allschemas ? 5 : 3);
         }
-        public GeneratorContext(GeneratorContext otherContext):this(otherContext.Repository,otherContext.TargetNamespace, otherContext.BaseURN, otherContext.NamespacePrefix,otherContext.Annotate, 
+        /// <summary>
+        /// creates a generic generator context based on a document generator context.
+        /// TargetNameSpace is replace by BaseURN and DocLibrary is set to null
+        /// </summary>
+        /// <param name="otherContext">the other context to base this one on</param>
+        public GeneratorContext(GeneratorContext otherContext):this(otherContext.Repository,otherContext.BaseURN, otherContext.BaseURN, otherContext.NamespacePrefix,otherContext.Annotate, 
                                                                     otherContext.Allschemas, otherContext.OutputDirectory, null)
         {
         	this.VersionID = otherContext.VersionID;
+        	this._elements.AddRange(otherContext.Elements);
         	this.SchemaAdded += otherContext.GetSchemaAddedSubscribers();
         }
 
@@ -45,7 +51,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         }
         public void AddElements(IEnumerable<ICctsElement> newElements)
         {
-        	_elements.AddRange(newElements.Where( x => this.Elements.Any(x.Equals)));
+        	_elements.AddRange(newElements.Where( x => ! this.Elements.Any(y => x.Equals(y))));
         }
         public bool isGeneric 
         {

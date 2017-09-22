@@ -288,11 +288,12 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 
         private static void AddIncludes(XmlSchema schema, GeneratorContext context, IDocLibrary docLibrary, string schemaFileName,bool generic)
         {
-            foreach (SchemaInfo si in context.Schemas)
+        	foreach (SchemaInfo si in context.Schemas.Where(x => x.Schematype == Schematype.BIE
+        	                                               || x.Schematype  == Schematype.BDT))
             {
                 var include = new XmlSchemaInclude();
                 include.SchemaLocation = generic ? 
-                				System.IO.Path.GetFileName(si.FileName) : 
+                	System.IO.Path.GetFileName(si.FileName).Replace(context.DocRootName + "_",string.Empty) :
                 				NDR.GetRelativePath(schemaFileName, si.FileName);
                 schema.Includes.Add(include);
             }

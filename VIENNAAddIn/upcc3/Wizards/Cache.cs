@@ -543,7 +543,7 @@ namespace VIENNAAddIn.upcc3.Wizards
             BIV = biv;
             if (biv.DocL !=null && biv.DocL.DocumentRoot != null)
             {
-            	TargetNamespace = BaseUrn + "-" + biv.DocL.DocumentRoot;
+            	TargetNamespace = BaseUrn + "-" + biv.DocL.DocumentRoot.Name;
             }
         }
         public string BaseUrn { get; set; }

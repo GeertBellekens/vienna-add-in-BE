@@ -27,7 +27,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             schema.Namespaces.Add("xsd", "http://www.w3.org/2001/XMLSchema");
             schema.Namespaces.Add("ccts","urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3");
             schema.Version = context.VersionID.DefaultTo("1");
-			string schemaFileName = getSchemaFileName(context,false);
+			string schemaFileName = getSchemaFileName(context);
 			foreach (IBdt bdt in context.Elements.OfType<IBdt>())
             {
                 var sups = new List<IBdtSup>(bdt.Sups);
@@ -83,13 +83,13 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             }
             context.AddSchema(schema, schemaFileName,Schematype.BDT);
         }
-        private static string getSchemaFileName(GeneratorContext context, bool generic = false)
+        private static string getSchemaFileName(GeneratorContext context)
         {
         	var mainVersion = context.VersionID.Split('.').FirstOrDefault();
         	var minorVersion = context.VersionID.Split('.').LastOrDefault();
         	var docRootName =  context.DocRootName;
         	var bSlash = System.IO.Path.DirectorySeparatorChar;
-        	var docOrGeneric = generic ? "generic" : "document" + bSlash
+        	var docOrGeneric = context.isGeneric ? "generic" : "document" + bSlash
         											+ docRootName ;
         	//TODO set "Ebix" prefix via settings?
         	string filename = context.OutputDirectory + bSlash + mainVersion + bSlash + docOrGeneric + bSlash //directories
