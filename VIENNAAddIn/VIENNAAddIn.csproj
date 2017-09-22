@@ -702,12 +702,6 @@
       <DependentUpon>BDTWizardForm.cs</DependentUpon>
     </Compile>
     <Compile Include="upcc3\Wizards\Cache.cs" />
-    <Compile Include="upcc3\Wizards\GeneratorWizardForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="upcc3\Wizards\GeneratorWizardForm.Designer.cs">
-      <DependentUpon>GeneratorWizardForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="upcc3\Wizards\UPCCModelWizardForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -821,10 +815,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="upcc3\Wizards\dev\ui\StereoTypeTransformer.resx">
       <DependentUpon>StereoTypeTransformer.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="upcc3\Wizards\GeneratorWizardForm.resx">
-      <DependentUpon>GeneratorWizardForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="upcc3\Wizards\ImporterWizardFormOld.resx">

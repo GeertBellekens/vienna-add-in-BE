@@ -27,31 +27,37 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         ///<summary>
         ///</summary>
         ///<param name="context"></param>
-        public static void GenerateXSD(GeneratorContext context)
+        public static void GenerateXSD(GeneratorContext context,GeneratorContext genericContext)
         {
+        	GenerateXSD(context, false);
+        	GenerateXSD(context, true);
+        }
+        public static void GenerateXSD(GeneratorContext context, bool generic)
+        {
+        	string targetNameSpace = NDR.getTargetNameSpace(context, generic);
             globalAsmas = new List<string>();
             IMa documentRoot = context.DocLibrary.DocumentRoot;
             var schema = new XmlSchema
                              {
-                                 TargetNamespace = context.TargetNamespace
+                                 TargetNamespace = targetNameSpace
                              };
-            schema.Namespaces.Add(context.NamespacePrefix, context.TargetNamespace);
+            //namespaces
             schema.Namespaces.Add("xsd", "http://www.w3.org/2001/XMLSchema");
-            //TODO make ccts variable via setting
+            schema.Namespaces.Add(context.NamespacePrefix, targetNameSpace);
+            //TODO make additional namespaces variable via setting
             schema.Namespaces.Add("ccts",
                                   "urn:un:unece:uncefact:documentation:common:3:standard:CoreComponentsTechnicalSpecification:3");
-            schema.Namespaces.Add(NSPREFIX_BDT, context.TargetNamespace);
-            schema.Namespaces.Add(NSPREFIX_BIE, context.TargetNamespace);
-
+            schema.Namespaces.Add("xbt", "urn:un:unece:uncefact:data:common:1:draft");
+			//qualifiedSetting
             schema.ElementFormDefault = XmlSchemaForm.Qualified;
             schema.AttributeFormDefault = XmlSchemaForm.Unqualified;
+			//version
             schema.Version = context.DocLibrary.VersionIdentifier.DefaultTo("1");
             
-            string schemaFileName = getSchemaFileName(context,false);
+            string schemaFileName = getSchemaFileName(context,generic);
 
-            //TODO how do i now what schemas to include and what to import
             AddImports(schema, context, context.DocLibrary);
-            AddIncludes(schema, context, context.DocLibrary, schemaFileName);
+            AddIncludes(schema, context, context.DocLibrary, schemaFileName,generic);
 
             AddRootElementDeclaration(schema, documentRoot, context);
             AddRootTypeDefinition(schema, documentRoot, context, context.DocLibrary);
@@ -69,7 +75,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         	var bSlash = System.IO.Path.DirectorySeparatorChar;
         	var docOrGeneric = generic ? "generic" : "document" + bSlash
         											+ docRootName ;
-        	//TODO set "Ebix" prefix via settings?
+        	//TODO set "ebIX" prefix via settings?
         	string filename = context.OutputDirectory + bSlash + mainVersion + bSlash + docOrGeneric + bSlash //directories
         					+ "ebIX_" + docRootName +"_"+ mainVersion + "p" + minorVersion + ".xsd"; //filename
         	return  filename;
@@ -280,12 +286,14 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 //            }
         }
 
-        private static void AddIncludes(XmlSchema schema, GeneratorContext context, IDocLibrary docLibrary, string schemaFileName)
+        private static void AddIncludes(XmlSchema schema, GeneratorContext context, IDocLibrary docLibrary, string schemaFileName,bool generic)
         {
             foreach (SchemaInfo si in context.Schemas)
             {
                 var include = new XmlSchemaInclude();
-                include.SchemaLocation = NDR.GetRelativePath(schemaFileName, si.FileName);
+                include.SchemaLocation = generic ? 
+                				System.IO.Path.GetFileName(si.FileName) : 
+                				NDR.GetRelativePath(schemaFileName, si.FileName);
                 schema.Includes.Add(include);
             }
         }

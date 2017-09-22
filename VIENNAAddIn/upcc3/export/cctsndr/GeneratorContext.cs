@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Schema;
 using CctsRepository;
 using CctsRepository.DocLibrary;
@@ -12,35 +14,51 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
     {
         private readonly int progress;
         private readonly List<SchemaInfo> schemas = new List<SchemaInfo>();
+        private List<ICctsElement> _elements = new List<ICctsElement>();
 
-        ///<summary>
-        ///</summary>
-        ///<param name="repository"></param>
-        ///<param name="targetNamespace"></param>
-        ///<param name="namespacePrefix"></param>
-        ///<param name="annotate"></param>
-        ///<param name="allschemas"></param>
-        ///<param name="outputDirectory"></param>
-        ///<param name="docLibrary"></param>
-        public GeneratorContext(ICctsRepository repository, string targetNamespace, string namespacePrefix, bool annotate, bool allschemas, string outputDirectory, IDocLibrary docLibrary)
+        public GeneratorContext(ICctsRepository repository, string targetNamespace, string baseURN, string namespacePrefix, bool annotate, 
+                                bool allschemas, string outputDirectory, IDocLibrary docLibrary)
         {
             Allschemas = allschemas;
             Repository = repository;
             TargetNamespace = targetNamespace;
+            BaseURN = baseURN;
             NamespacePrefix = namespacePrefix;
             Annotate = annotate;
             OutputDirectory = outputDirectory;
-            DocLibrary = docLibrary;
+            DocLibrary = docLibrary;            
             progress = 100/(allschemas ? 5 : 3);
+        }
+        public GeneratorContext(GeneratorContext otherContext):this(otherContext.Repository,otherContext.TargetNamespace, otherContext.BaseURN, otherContext.NamespacePrefix,otherContext.Annotate, 
+                                                                    otherContext.Allschemas, otherContext.OutputDirectory, null)
+        {
+        	this.VersionID = otherContext.VersionID;
+        	this.SchemaAdded += otherContext.GetSchemaAddedSubscribers();
+        }
+
+        public ICctsRepository Repository { get; private set; }
+        
+        
+        public IEnumerable<ICctsElement> Elements 
+        {
+        	get {return _elements;}
+        }
+        public void AddElements(IEnumerable<ICctsElement> newElements)
+        {
+        	_elements.AddRange(newElements.Where( x => this.Elements.Any(x.Equals)));
+        }
+        public bool isGeneric 
+        {
+        	get { return DocLibrary == null; }
         }
 
         ///<summary>
         ///</summary>
-        public ICctsRepository Repository { get; private set; }
-
-        ///<summary>
-        ///</summary>
         public string TargetNamespace { get; private set; }
+        public string VersionID { get; set; }
+        public string DocRootName { get; set; }
+        
+        public string BaseURN { get; private set; }
 
         ///<summary>
         ///</summary>
@@ -65,9 +83,24 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         ///</summary>
         public string OutputDirectory { get; private set; }
 
+		IDocLibrary _docLibrary;
         ///<summary>
-        ///</summary>
-        public IDocLibrary DocLibrary { get; private set; }
+		///</summary>
+		public IDocLibrary DocLibrary {
+			get {
+				return _docLibrary;
+			}
+			private set 
+			{
+				_docLibrary = value;
+				//set version attributes
+				if (_docLibrary != null)
+				{
+					this.VersionID = _docLibrary.VersionIdentifier;
+					if (_docLibrary.DocumentRoot != null) this.DocRootName = _docLibrary.DocumentRoot.Name;
+				}
+			}
+		}
 
         ///<summary>
         ///</summary>
@@ -83,6 +116,10 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         }
 
         public event EventHandler<SchemaAddedEventArgs> SchemaAdded;
+        private EventHandler<SchemaAddedEventArgs> GetSchemaAddedSubscribers()
+        {        	
+        	return this.SchemaAdded;
+        }
     }
 
     public class GenerationMessage

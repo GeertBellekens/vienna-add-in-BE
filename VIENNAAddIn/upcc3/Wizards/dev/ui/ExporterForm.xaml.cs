@@ -107,6 +107,7 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
             Cursor = Cursors.Wait;
             textBoxStatus.Text = "Starting to generate XML schemas ...\n\n";
             GatherUserInput();
+            var generationContexts = new List<GeneratorContext>();
             foreach (var cDoc in this.documentsListBox.Items
                      					.OfType<CheckBox>()
                      					.Where(x => x.IsChecked.HasValue && x.IsChecked.Value)
@@ -114,13 +115,14 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
             {
                 if (cDoc != null && cDoc.State == CheckState.Checked)
                 {
-                	var generationContext = new GeneratorContext(cctsR, cDoc.TargetNamespace,
+                	var generationContext = new GeneratorContext(cctsR, cDoc.TargetNamespace, cDoc.BaseUrn, 
                                                              cDoc.TargetNamespacePrefix, false, true,
                                                              outputDirectory, cDoc.BIV.DocL);
 	                generationContext.SchemaAdded += HandleSchemaAdded;
-	                XSDGenerator.GenerateSchemas(generationContext);
+	                generationContexts.Add(generationContext);
                 }
             }
+           	XSDGenerator.GenerateSchemas(generationContexts);
 //            else
 //            {
 //                SubsetExporter.ExportSubset(docl, originalXMLSchema, outputDirectory);
@@ -131,8 +133,7 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
 
         private void HandleSchemaAdded(object sender, SchemaAddedEventArgs e)
         {
-            //textBoxStatus.Text += "Schema generated: file:///" + e.FileName + "\n";
-            textBoxStatus.Text += "Generated Schema file:" + e.FileName + "\n";
+            textBoxStatus.Text += "Generated Schema file: " + System.IO.Path.GetFileName(e.FileName) + Environment.NewLine;
         }
 
         private void textboxOutputDirectory_DirectoryNameChanged(object sender, RoutedEventArgs e)

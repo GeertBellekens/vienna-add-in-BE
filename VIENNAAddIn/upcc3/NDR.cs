@@ -35,6 +35,20 @@ namespace VIENNAAddIn.upcc3
             	GenerateBCCOrBBIEName(bbie.Name, bbie.Bdt.Name, bbie.DictionaryEntryName)
             	: "Error_BDT_Missing";
         }
+        public static string getTargetNameSpace(GeneratorContext context,bool generic )
+        {
+        	string targetnameSpace = string.Empty;
+        	if (context.DocLibrary != null)
+        	{
+        		targetnameSpace += context.DocLibrary.BaseURN;
+        		
+        		if (! generic && context.DocLibrary.DocumentRoot != null)
+        		{
+        			targetnameSpace += "-" + context.DocLibrary.DocumentRoot.Name;
+        		}
+        	}
+        	return targetnameSpace;
+        }
 
         /// <exception cref="ArgumentException"><c>ArgumentException</c>.</exception>
         private static string GenerateBCCOrBBIEName(string propertyTerm, string representationTerm, string dictionaryEntryName)

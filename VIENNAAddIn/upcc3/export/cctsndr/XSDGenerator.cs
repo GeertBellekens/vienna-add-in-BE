@@ -25,66 +25,75 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
     ///</summary>
     public class XSDGenerator
     {
+    	public static void GenerateSchemas(IEnumerable<GeneratorContext> contexts)
+    	{
+    		//keep a list of all generic contexts, one for each main version.
+    		List<GeneratorContext> genericContexts = new List<GeneratorContext>();
+    		foreach (var context in contexts) 
+    		{
+    			//get or add a generic context
+    			var genericContext = genericContexts.FirstOrDefault(x => x.BaseURN == context.BaseURN);
+    			if (genericContext == null)
+    			{
+    				genericContext = new GeneratorContext(context);
+    				genericContexts.Add(genericContext);
+    			}
+    			//start generating
+    			GenerateSchemas(context, genericContext);
+    		}
+    		//now start generating the genericContexts
+    		foreach (var genericContext in genericContexts) 
+    		{
+    			GenerateGenericSchemas(genericContext);
+    		}
+    	}
+
+		public static void GenerateGenericSchemas(GeneratorContext genericContext)
+		{
+			BDTSchemaGenerator.GenerateXSD(genericContext);
+            BIESchemaGenerator.GenerateXSD(genericContext);
+            
+            WriteSchemas(genericContext);
+		}
+
         ///<summary>
         ///</summary>
-        public static GeneratorContext GenerateSchemas(GeneratorContext context)
+        public static void GenerateSchemas(GeneratorContext context, GeneratorContext genericContext)
         {
-            BDTSchemaGenerator.GenerateXSD(context, CollectBDTs(context));
-            BIESchemaGenerator.GenerateXSD(context, CollectABIEs(context));
-            RootSchemaGenerator.GenerateXSD(context);
-
-            if (context.Allschemas)
-            {
-//                CDTSchemaGenerator.GenerateXSD(context, CollectCDTs(context));
-//                CCSchemaGenerator.GenerateXSD(context, CollectACCs(context));
-				// TODO: create generic schema's including schema's for enumerations
-            }
-            foreach (SchemaInfo schemaInfo in context.Schemas)
-            {
-            	//make sure the directory exists
-            	var directoryPath = Path.GetDirectoryName(schemaInfo.FileName);
-            	if (!Directory.Exists(directoryPath))
-	            {
-	                Directory.CreateDirectory(directoryPath);
-	            }
-                var xmlWriterSettings = new XmlWriterSettings
-                                            {
-                                                Indent = true,
-                                                Encoding = Encoding.UTF8,
-                                            };
-                using (
-                    XmlWriter xmlWriter = XmlWriter.Create(schemaInfo.FileName,
-                                                           xmlWriterSettings))
-                {
-// ReSharper disable AssignNullToNotNullAttribute
-                    schemaInfo.Schema.Write(xmlWriter);
-// ReSharper restore AssignNullToNotNullAttribute
-// ReSharper disable PossibleNullReferenceException
-                    xmlWriter.Close();
-// ReSharper restore PossibleNullReferenceException
-                }
-            }
-
-            if (context.Annotate)
-            {
-                try
-                {
-                    CopyFolder(AddInSettings.CommonXSDPath, context.OutputDirectory);
-                }
-                catch (DirectoryNotFoundException)
-                {
-                    MessageBox.Show("Directory '" + AddInSettings.CommonXSDPath + "' not found!", "Error",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                catch (IOException ioe)
-                {
-                    Console.Out.WriteLine("Exception occured:" + ioe.Message);
-                }
-            }
-
-            return context;
+            BDTSchemaGenerator.GenerateXSD(context, genericContext, CollectBDTs(context));
+            BIESchemaGenerator.GenerateXSD(context, genericContext, CollectABIEs(context));
+            RootSchemaGenerator.GenerateXSD(context, genericContext);
+            
+            WriteSchemas(context);
         }
 
+		static void WriteSchemas(GeneratorContext context)
+		{
+			foreach (SchemaInfo schemaInfo in context.Schemas) {
+				//make sure the directory exists
+				var directoryPath = Path.GetDirectoryName(schemaInfo.FileName);
+				if (!Directory.Exists(directoryPath)) {
+					Directory.CreateDirectory(directoryPath);
+				}
+				var xmlWriterSettings = new XmlWriterSettings {
+					Indent = true,
+					Encoding = Encoding.UTF8,
+				};
+				using (XmlWriter xmlWriter = XmlWriter.Create(schemaInfo.FileName, xmlWriterSettings)) {
+					schemaInfo.Schema.Write(xmlWriter);
+					xmlWriter.Close();
+				}
+			}
+			if (context.Annotate) {
+				try {
+					CopyFolder(AddInSettings.CommonXSDPath, context.OutputDirectory);
+				} catch (DirectoryNotFoundException) {
+					MessageBox.Show("Directory '" + AddInSettings.CommonXSDPath + "' not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				} catch (IOException ioe) {
+					Console.Out.WriteLine("Exception occured:" + ioe.Message);
+				}
+			}
+		}
         private static void CopyFolder(string sourceFolder, string destFolder)
         {
             if (!Directory.Exists(destFolder))

@@ -50,21 +50,24 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         private const string NSPREFIX_XSD = "xsd";
         private const string NS_XSD = "http://www.w3.org/2001/XMLSchema";
         private static List<String> globalASBIEs;
-
-        ///<summary>
-        ///</summary>
-        ///<param name="context"></param>
-        ///<param name="abies"></param>
-        public static void GenerateXSD(GeneratorContext context, IEnumerable<IAbie> abies)
+		
+        public static void GenerateXSD(GeneratorContext context, GeneratorContext genericContext,  IEnumerable<IAbie> abies)
         {
-            // Create XML schema file and prepare the XML schema header
+        	genericContext.AddElements(abies);
+        	context.AddElements(abies);
+        	GenerateXSD(context);
+        }
+
+        public static void GenerateXSD(GeneratorContext context)
+        {
+        	// Create XML schema file and prepare the XML schema header
             // R 88E2: all XML schema files must use UTF-8 encoding
             // R B387: every XML schema must have a declared target namespace
             globalASBIEs = new List<String>();
 
             var schema = new XmlSchema {TargetNamespace = context.TargetNamespace};
             schema.Namespaces.Add(context.NamespacePrefix, context.TargetNamespace);
-            schema.Version = context.DocLibrary.VersionIdentifier.DefaultTo("1");
+            schema.Version = context.VersionID.DefaultTo("1");
 
             // TODO: discuss R A0E5 and R A9C5 with Christian E. and Michi S. since this is something that should be added to the context
             // R A0E5: all XML schemas must contain elementFormDefault and set it to qualified     
@@ -82,11 +85,11 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             // add namespace to be able to utilize ABIEs 
             schema.Namespaces.Add(NSPREFIX_TNS, context.TargetNamespace);
 
-			string schemaFileName = getSchemaFileName(context,false);
+			string schemaFileName = getSchemaFileName(context);
             // R 8FE2: include BDT XML schema file
-            AddIncludes(schema, context, context.DocLibrary, schemaFileName);
+            AddIncludes(schema, context, schemaFileName);
 
-            foreach (IAbie abie in abies.OrderBy(a => a.Name))
+            foreach (IAbie abie in context.Elements.OfType<IAbie>().OrderBy(a => a.Name))
             {
                 // finally add the complex type to the schema
                 schema.Items.Add(GenerateComplexTypeABIE(context, schema, abie));
@@ -104,20 +107,22 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 
             context.AddSchema(schema, schemaFileName, Schematype.BIE);
         }
-        private static string getSchemaFileName(GeneratorContext context, bool generic = false)
+        private static string getSchemaFileName(GeneratorContext context)
         {
-        	var mainVersion = context.DocLibrary.VersionIdentifier.Split('.').FirstOrDefault();
-        	var minorVersion = context.DocLibrary.VersionIdentifier.Split('.').LastOrDefault();
-        	var docRootName =  context.DocLibrary.DocumentRoot.Name;
+        	var mainVersion = context.VersionID.Split('.').FirstOrDefault();
+        	var minorVersion = context.VersionID.Split('.').LastOrDefault();
+        	var docRootName =  context.DocRootName;
         	var bSlash = System.IO.Path.DirectorySeparatorChar;
-        	var docOrGeneric = generic ? "generic" : "document" + bSlash
+        	var docOrGeneric = context.isGeneric ? "generic" : "document" + bSlash
         											+ docRootName ;
-        	//TODO set "Ebix" prefix via settings?
+        	//TODO set "ebIX" prefix via settings?
         	string filename = context.OutputDirectory + bSlash + mainVersion + bSlash + docOrGeneric + bSlash //directories
-        					+ "ebIX_MessageBusinessInformationEntities_" + docRootName +"_"+ mainVersion + "p" + minorVersion + ".xsd"; //filename
+        		+ "ebIX_MessageBusinessInformationEntities_"; // filename
+        	if (! context.isGeneric) filename += docRootName +"_";
+        	filename += mainVersion + "p" + minorVersion + ".xsd";
         	return  filename;
         }
-		private static void AddIncludes(XmlSchema schema, GeneratorContext context, IDocLibrary docLibrary, string schemaFileName)
+		private static void AddIncludes(XmlSchema schema, GeneratorContext context, string schemaFileName)
         {
 			foreach (var incSchemaInfo in context.Schemas.Where(x => x.Schematype == Schematype.BDT))
             {

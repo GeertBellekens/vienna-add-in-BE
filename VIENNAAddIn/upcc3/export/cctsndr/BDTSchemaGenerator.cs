@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Controls;
 using System.Xml;
 using System.Xml.Schema;
 using CctsRepository.BdtLibrary;
@@ -12,19 +13,22 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
     ///</summary>
     public static class BDTSchemaGenerator
     {
-        ///<summary>
-        ///</summary>
-        ///<param name="context"></param>
-        ///<param name="bdts"></param>
-        public static void GenerateXSD(GeneratorContext context, IEnumerable<IBdt> bdts)
+			
+    	public static void GenerateXSD(GeneratorContext context, GeneratorContext genericContext, IEnumerable<IBdt> bdts)
+    	{
+    		genericContext.AddElements(bdts);
+        	context.AddElements(bdts);
+        	GenerateXSD(context);
+    	}
+        public static void GenerateXSD(GeneratorContext context)
         {
             var schema = new XmlSchema {TargetNamespace = context.TargetNamespace};
             schema.Namespaces.Add(context.NamespacePrefix, context.TargetNamespace);
             schema.Namespaces.Add("xsd", "http://www.w3.org/2001/XMLSchema");
             schema.Namespaces.Add("ccts","urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3");
-            schema.Version = context.DocLibrary.VersionIdentifier.DefaultTo("1");
+            schema.Version = context.VersionID.DefaultTo("1");
 			string schemaFileName = getSchemaFileName(context,false);
-            foreach (IBdt bdt in bdts)
+			foreach (IBdt bdt in context.Elements.OfType<IBdt>())
             {
                 var sups = new List<IBdtSup>(bdt.Sups);
                 if (sups.Count == 0)
@@ -81,9 +85,9 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         }
         private static string getSchemaFileName(GeneratorContext context, bool generic = false)
         {
-        	var mainVersion = context.DocLibrary.VersionIdentifier.Split('.').FirstOrDefault();
-        	var minorVersion = context.DocLibrary.VersionIdentifier.Split('.').LastOrDefault();
-        	var docRootName =  context.DocLibrary.DocumentRoot.Name;
+        	var mainVersion = context.VersionID.Split('.').FirstOrDefault();
+        	var minorVersion = context.VersionID.Split('.').LastOrDefault();
+        	var docRootName =  context.DocRootName;
         	var bSlash = System.IO.Path.DirectorySeparatorChar;
         	var docOrGeneric = generic ? "generic" : "document" + bSlash
         											+ docRootName ;

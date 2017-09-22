@@ -68,5 +68,6 @@ namespace CctsRepository
         /// Tagged value 'namespacePrefix'.
         ///</summary>
 		string NamespacePrefix { get; }
+		
 	}
 }

@@ -536,15 +536,17 @@ namespace VIENNAAddIn.upcc3.Wizards
   
     public class cDOC : cCheckItem
     {
-        public cDOC(string initName, int initId, CheckState initState, string initTargetNS, string initTargetNSPrefix,cBIV biv) : base(initName, initId, initState)
+        public cDOC(string initName, int initId, CheckState initState, string baseUrn, string initTargetNSPrefix,cBIV biv) : base(initName, initId, initState)
         {            
-            //RootElements = new List<string>();
-            TargetNamespace = initTargetNS;
+            BaseUrn = baseUrn;
             TargetNamespacePrefix = initTargetNSPrefix;
             BIV = biv;
+            if (biv.DocL !=null && biv.DocL.DocumentRoot != null)
+            {
+            	TargetNamespace = BaseUrn + "-" + biv.DocL.DocumentRoot;
+            }
         }
-
-        //public IList<string> RootElements { get; set; }
+        public string BaseUrn { get; set; }
         public string TargetNamespace { get; set; }
         public string TargetNamespacePrefix { get; set; }
         public string OutputDirectory { get; set; }
