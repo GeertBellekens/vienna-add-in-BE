@@ -8,7 +8,8 @@
 	Title="Exporter"
 	FontSize="11"
 	Height="349"
-	Width="572">
+	Width="572"
+	WindowStartupLocation="CenterOwner">
 	<DockPanel
 		Margin="5,5,5,5"
 		Height="305">

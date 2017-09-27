@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 using System.Xml.Schema;
+using CctsRepository;
 using CctsRepository.BdtLibrary;
 using CctsRepository.BieLibrary;
 using CctsRepository.CcLibrary;
@@ -85,17 +86,21 @@ namespace VIENNAAddIn.upcc3
 
         public static string GenerateASCCName(IAscc ascc)
         {
-            return ascc.Name + ascc.AssociatedAcc.Name;
+        	return ascc.Name + TrimElementName(ascc.AssociatedAcc.Name);
         }
 
         public static string GetXsdElementNameFromAsbie(IAsbie asbie)
         {
-            return asbie.Name + asbie.AssociatedAbie.Name;
+        	return asbie.Name + TrimElementName(asbie.AssociatedAbie.Name);
         }
 
         public static string GetXsdElementNameFromAsma(IAsma asma)
         {
-            return asma.Name + asma.AssociatedBieAggregator.Name;
+            return asma.Name + TrimElementName(asma.AssociatedBieAggregator.Name);
+        }
+        public static string TrimElementName(string elementName)
+        {
+        	return elementName.Replace("_",string.Empty);
         }
 
         public static string GetAsbieNameFromXsdElement(Element element, string associatedElementName)
