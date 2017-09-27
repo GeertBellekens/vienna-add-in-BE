@@ -1,36 +1,39 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using System;
 
-// *******************************************************************************
-// This file is part of the VIENNAAddIn project
-// 
-// Licensed under GNU General Public License V3 http://gplv3.fsf.org/
-// 
-// For further information on the VIENNAAddIn project please visit 
-// http://vienna-add-in.googlecode.com
-// *******************************************************************************
-
-using System.Collections.Generic;
-// ReSharper disable RedundantUsingDirective
-using CctsRepository.BdtLibrary;
-using CctsRepository.BieLibrary;
-using CctsRepository.BLibrary;
-using CctsRepository.CcLibrary;
-using CctsRepository.CdtLibrary;
-using CctsRepository.DocLibrary;
-using CctsRepository.EnumLibrary;
-using CctsRepository.PrimLibrary;
-// ReSharper restore RedundantUsingDirective
-
-namespace CctsRepository.CcLibrary
+namespace CctsRepository
 {
-    public interface IAscc: ICctsAssociation
-    {
+	/// <summary>
+	/// Description of ICctsAssociation.
+	/// </summary>
+	public interface ICctsAssociation
+	{
+		int Id { get; }
 		
-		IAcc AssociatingAcc { get; }
-
-		IAcc AssociatedAcc { get; }
-
-		#region Tagged Values
-
+		string Name { get; }
+		
+        string UpperBound { get; }
+		
+        string LowerBound { get; }
+		
+        bool IsOptional();
+        
+        AggregationKind AggregationKind { get; }
+        /// <summary>
+        /// Source Element
+        /// </summary>
+        ICctsElement AssociatingElement { get;}
+        /// <summary>
+        /// Target Element
+        /// </summary>
+        ICctsElement AssociatedElement { get;}
+        /// <summary>
+        /// The relative position of this association within all attributes and associations of the owner element.
+        /// Stored in the tagged value SequencingKey
+        /// </summary>
+        int position {get;}
+        
         ///<summary>
         /// Tagged value 'businessTerm'.
         ///</summary>
@@ -70,8 +73,5 @@ namespace CctsRepository.CcLibrary
         /// Tagged value 'usageRule'.
         ///</summary>
 		IEnumerable<string> UsageRules { get; }
-
-		#endregion
-    }
+	}
 }
-

@@ -22,9 +22,9 @@ namespace CctsRepository
 {
     public class BieAggregator
     {
-        private readonly object actualType;
+        private readonly ICctsElement actualType;
 
-        public BieAggregator(object actualType)
+        public BieAggregator(ICctsElement actualType)
         {
             this.actualType = actualType;
         }
@@ -36,18 +36,16 @@ namespace CctsRepository
 		{ 
 			get
 			{
-				if (IsAbie)
-				{
-					return Abie.Id;
-				}
-				if (IsMa)
-				{
-					return Ma.Id;
-				}
-				throw new Exception("Invalid BieAggregator: " + actualType.GetType());
+				return actualType.Id;
 			}
 		}
 		
+        public ICctsElement Element {
+        	get
+        	{
+        		return this.actualType;
+        	}
+        }
 		/// <summary>
 		/// The actual type's name.
 		/// </summary>
@@ -55,15 +53,7 @@ namespace CctsRepository
 		{ 
 			get
 			{
-				if (IsAbie)
-				{
-					return Abie.Name;
-				}
-				if (IsMa)
-				{
-					return Ma.Name;
-				}
-				throw new Exception("Invalid BieAggregator: " + actualType.GetType());
+				return actualType.Name;
 			}
 		}
 		

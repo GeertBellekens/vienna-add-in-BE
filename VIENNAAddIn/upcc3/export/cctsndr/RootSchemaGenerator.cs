@@ -120,7 +120,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             maType.Name = ma.Name + "Type";
 
             var sequence = new XmlSchemaSequence();
-            foreach (IAsma asma in ma.Asmas.OrderBy(a => a.Name))
+            foreach (IAsma asma in ma.Asmas.OrderBy(a => a.position).ThenBy(x => x.Name))
             {
                 XmlSchemaElement elementAsma = null;
 

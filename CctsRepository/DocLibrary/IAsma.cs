@@ -22,18 +22,9 @@ using CctsRepository.PrimLibrary;
 
 namespace CctsRepository.DocLibrary
 {
-    public interface IAsma
+	public interface IAsma: ICctsAssociation
     {
-		int Id { get; }
-		
-		string Name { get; }
-		
-        string UpperBound { get; }
-		
-        string LowerBound { get; }
-		
-        bool IsOptional();
-		
+
 		IMa AssociatingMa { get; }
 
 		BieAggregator AssociatedBieAggregator { get; }

@@ -25,17 +25,19 @@ using System.Linq;
 
 namespace VIENNAAddIn.upcc3.repo.DocLibrary
 {
-    internal class UpccAsma : IAsma
+    internal class UpccAsma : UpccAssociation, IAsma
     {
-        public UpccAsma(IUmlAssociation umlAssociation, IMa associatingMa)
-        {
-            UmlAssociation = umlAssociation;
-			AssociatingMa = associatingMa;
-        }
+    	public UpccAsma(IUmlAssociation umlAssociation, IMa associatingMa):base(umlAssociation,associatingMa)
+    	{}
 
-        public IUmlAssociation UmlAssociation { get; private set; }
 
-        #region IAsma Members
+		public override ICctsElement AssociatedElement {
+			get 
+			{
+				return AssociatedBieAggregator.Element;
+			}
+		}
+
 
         public int Id
         {
@@ -77,8 +79,6 @@ namespace VIENNAAddIn.upcc3.repo.DocLibrary
 				return null;
 			}
 		}
-
-		#endregion
 
         public bool Equals(UpccAsma other)
         {

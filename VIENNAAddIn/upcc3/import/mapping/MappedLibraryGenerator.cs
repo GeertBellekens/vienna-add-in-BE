@@ -363,10 +363,16 @@ namespace VIENNAAddIn.upcc3.import.mapping
 
         internal AsmaSpec GenerateSpec()
         {
+        	ICctsElement element;
+        	if (bieLibrary != null) 
+        		element = bieLibrary.GetAbieByName(associatedBieName);
+        	else 
+        		element = docLibrary.GetMaByName(associatedBieName);
+
             AsmaSpec asmaSpec = new AsmaSpec
                                 {
                                     Name = name,
-                                    AssociatedBieAggregator = new BieAggregator(bieLibrary != null ? (object) bieLibrary.GetAbieByName(associatedBieName) : docLibrary.GetMaByName(associatedBieName)),
+                                    AssociatedBieAggregator = new BieAggregator(element),
                                 };
             return asmaSpec;
         }
