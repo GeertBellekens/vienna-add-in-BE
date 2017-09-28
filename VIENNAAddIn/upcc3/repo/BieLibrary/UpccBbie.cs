@@ -24,42 +24,11 @@ using VIENNAAddIn.upcc3.uml;
 
 namespace VIENNAAddIn.upcc3.repo.BieLibrary
 {
-    internal class UpccBbie : IBbie
+    internal class UpccBbie :UpccAttribute, IBbie
     {
-        public UpccBbie(IUmlAttribute umlAttribute, IAbie abie)
+    	public UpccBbie(IUmlAttribute umlAttribute, IAbie abie):base(umlAttribute)
         {
-            UmlAttribute = umlAttribute;
 			Abie = abie;
-        }
-
-        public IUmlAttribute UmlAttribute { get; private set; }
-
-        #region IBbie Members
-
-        public int Id
-        {
-            get { return UmlAttribute.Id; }
-        }
-
-        public string Name
-        {
-            get { return UmlAttribute.Name; }
-        }
-
-        public string UpperBound
-		{
-            get { return UmlAttribute.UpperBound; }
-		}
-		
-        public string LowerBound
-		{
-            get { return UmlAttribute.LowerBound; }
-		}
-		
-        public bool IsOptional()
-        {
-            int i;
-            return Int32.TryParse(LowerBound, out i) && i == 0;
         }
 
         public IAbie Abie { get; private set; }
@@ -98,71 +67,6 @@ namespace VIENNAAddIn.upcc3.repo.BieLibrary
             }
         }
 
-        ///<summary>
-        /// Tagged value 'businessTerm'.
-        ///</summary>
-        public IEnumerable<string> BusinessTerms
-        {
-            get { return UmlAttribute.GetTaggedValue("businessTerm").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'definition'.
-        ///</summary>
-        public string Definition
-        {
-            get { return UmlAttribute.GetTaggedValue("definition").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'dictionaryEntryName'.
-        ///</summary>
-        public string DictionaryEntryName
-        {
-            get { return UmlAttribute.GetTaggedValue("dictionaryEntryName").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'languageCode'.
-        ///</summary>
-        public string LanguageCode
-        {
-            get { return UmlAttribute.GetTaggedValue("languageCode").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'sequencingKey'.
-        ///</summary>
-        public string SequencingKey
-        {
-            get { return UmlAttribute.GetTaggedValue("sequencingKey").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'uniqueIdentifier'.
-        ///</summary>
-        public string UniqueIdentifier
-        {
-            get { return UmlAttribute.GetTaggedValue("uniqueIdentifier").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'versionIdentifier'.
-        ///</summary>
-        public string VersionIdentifier
-        {
-            get { return UmlAttribute.GetTaggedValue("versionIdentifier").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'usageRule'.
-        ///</summary>
-        public IEnumerable<string> UsageRules
-        {
-            get { return UmlAttribute.GetTaggedValue("usageRule").SplitValues; }
-        }
-
-		#endregion
 
         public bool Equals(UpccBbie other)
         {

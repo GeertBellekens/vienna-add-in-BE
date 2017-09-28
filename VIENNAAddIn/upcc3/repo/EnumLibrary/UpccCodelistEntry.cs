@@ -24,26 +24,16 @@ using VIENNAAddIn.upcc3.uml;
 
 namespace VIENNAAddIn.upcc3.repo.EnumLibrary
 {
-    internal class UpccCodelistEntry : ICodelistEntry
+    internal class UpccCodelistEntry : UpccAttribute, ICodelistEntry
     {
-        public UpccCodelistEntry(IUmlEnumerationLiteral umlEnumerationLiteral, IEnum @enum)
+    	public UpccCodelistEntry(IUmlEnumerationLiteral umlEnumerationLiteral, IEnum @enum):base(umlEnumerationLiteral)
         {
-            UmlEnumerationLiteral = umlEnumerationLiteral;
 			Enum = @enum;
         }
 
-        public IUmlEnumerationLiteral UmlEnumerationLiteral { get; private set; }
-
-        #region ICodelistEntry Members
-
-        public int Id
+        public IUmlEnumerationLiteral UmlEnumerationLiteral
         {
-            get { return UmlEnumerationLiteral.Id; }
-        }
-
-        public string Name
-        {
-            get { return UmlEnumerationLiteral.Name; }
+        	get {return this.UmlAttribute as IUmlEnumerationLiteral;}
         }
 
         public IEnum Enum { get; private set; }
@@ -65,7 +55,6 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
             get { return UmlEnumerationLiteral.GetTaggedValue("status").Value; }
         }
 
-		#endregion
 
         public bool Equals(UpccCodelistEntry other)
         {

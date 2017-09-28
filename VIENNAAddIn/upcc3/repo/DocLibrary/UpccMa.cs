@@ -44,7 +44,13 @@ namespace VIENNAAddIn.upcc3.repo.DocLibrary
 		{
 			get { return DocLibrary; }
 		}
-		
+
+		#region implemented abstract members of UpccElement
+		protected override ICctsAttribute CreateAttribute(IUmlAttribute attribute)
+		{
+			return null;
+		}
+		#endregion		
 		public IEnumerable<IAsma> Asmas
         {
             get

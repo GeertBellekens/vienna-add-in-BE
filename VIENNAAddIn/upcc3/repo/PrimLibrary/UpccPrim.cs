@@ -42,6 +42,12 @@ namespace VIENNAAddIn.upcc3.repo.PrimLibrary
 			get { return PrimLibrary; }
 		}
 
+		#region implemented abstract members of UpccElement
+		protected override ICctsAttribute CreateAttribute(IUmlAttribute attribute)
+		{
+			return null;
+		}
+		#endregion
 		public IPrim IsEquivalentTo
         {
             get

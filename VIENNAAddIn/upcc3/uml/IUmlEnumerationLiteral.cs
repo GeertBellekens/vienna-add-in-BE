@@ -1,9 +1,6 @@
 namespace VIENNAAddIn.upcc3.uml
 {
-    public interface IUmlEnumerationLiteral
+	public interface IUmlEnumerationLiteral:IUmlAttribute
     {
-        int Id { get; }
-        string Name { get; }
-        IUmlTaggedValue GetTaggedValue(string name);
     }
 }

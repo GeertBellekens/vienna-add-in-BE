@@ -1,4 +1,5 @@
 // ReSharper disable RedundantUsingDirective
+using System.Linq;
 using CctsRepository;
 using CctsRepository.BdtLibrary;
 using CctsRepository.BieLibrary;
@@ -58,25 +59,23 @@ namespace VIENNAAddIn.upcc3.repo.CdtLibrary
 				return null;
             }
         }
-
+		protected override ICctsAttribute CreateAttribute(IUmlAttribute attribute)
+		{
+			if (attribute.Stereotypes.Contains("CON"))
+				return new UpccCdtCon(attribute, this);
+			if (attribute.Stereotypes.Contains("SUP"))
+				return new UpccCdtSup(attribute, this);
+			else
+				return null;
+		}
 		public ICdtCon Con
         {
-            get
-            {
-                var attribute = UmlClass.GetFirstAttributeByStereotype("CON");
-                return attribute == null ? null : new UpccCdtCon(attribute, this);
-            }
+			get { return this.Attributes.OfType<ICdtCon>().FirstOrDefault(); }
         }
 
 		public IEnumerable<ICdtSup> Sups
         {
-            get
-            {
-                foreach (var attribute in UmlClass.GetAttributesByStereotype("SUP"))
-                {
-                    yield return new UpccCdtSup(attribute, this);
-                }
-            }
+			get { return this.Attributes.OfType<ICdtSup>(); }
         }
 
 		/// <summary>

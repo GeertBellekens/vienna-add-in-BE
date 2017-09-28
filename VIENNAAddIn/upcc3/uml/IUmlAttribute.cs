@@ -9,6 +9,7 @@ namespace VIENNAAddIn.upcc3.uml
         string UpperBound { get; }
         string LowerBound { get; }
         IUmlClassifier Type { get; }
+		string[] Stereotypes {get;}
 
         IEnumerable<IUmlTaggedValue> GetTaggedValues();
         IUmlTaggedValue GetTaggedValue(string name);

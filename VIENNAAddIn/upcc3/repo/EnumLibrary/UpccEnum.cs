@@ -1,4 +1,5 @@
 // ReSharper disable RedundantUsingDirective
+using System.Linq;
 using CctsRepository;
 using CctsRepository.BdtLibrary;
 using CctsRepository.BieLibrary;
@@ -63,16 +64,17 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
 				return null;
             }
         }
-
+		
+		protected override ICctsAttribute CreateAttribute(IUmlAttribute attribute)
+		{
+			var enumerationLiteral = attribute as IUmlEnumerationLiteral ;
+			return enumerationLiteral != null && enumerationLiteral.Stereotypes.Contains("CodelistEntry")  
+				? new UpccCodelistEntry(enumerationLiteral, this) : null;
+		}
+		
 		public IEnumerable<ICodelistEntry> CodelistEntries
         {
-            get
-            {
-                foreach (var enumerationLiteral in UmlEnumeration.GetEnumerationLiteralsByStereotype("CodelistEntry"))
-                {
-                    yield return new UpccCodelistEntry(enumerationLiteral, this);
-                }
-            }
+            get { return this.Attributes.OfType<ICodelistEntry>(); }
         }
 
 		/// <summary>

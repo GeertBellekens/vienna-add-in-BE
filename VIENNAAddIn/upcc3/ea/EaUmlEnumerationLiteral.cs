@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using EA;
 using VIENNAAddIn.upcc3.uml;
 using Attribute=EA.Attribute;
@@ -13,7 +14,12 @@ namespace VIENNAAddIn.upcc3.ea
         {
             this.eaAttribute = eaAttribute;
         }
-
+		
+       	public static bool isLiteralValue(Attribute eaAttribute)
+		{
+			//if the field StyleEx contains "IsLiteral=1" then it is a literal value
+			return (eaAttribute.StyleEx.Contains("IsLiteral=1"));
+		}
         #region IUmlEnumerationLiteral Members
 
         public int Id
@@ -38,7 +44,32 @@ namespace VIENNAAddIn.upcc3.ea
                 return new UndefinedTaggedValue(name);
             }
         }
-
+       	public string[] Stereotypes 
+		{
+			get 
+			{
+				return eaAttribute.StereotypeEx.Split(new []{","},StringSplitOptions.RemoveEmptyEntries);
+			}
+		}
+        public IEnumerable<IUmlTaggedValue> GetTaggedValues()
+        {
+            foreach (AttributeTag eaAttributeTag in eaAttribute.TaggedValues)
+            {
+                yield return new EaAttributeTag(eaAttributeTag);
+            }
+        }
+		public string UpperBound 
+		{
+			get {return string.Empty;}
+		}
+		public string LowerBound 
+		{
+			get {return string.Empty;}
+		}
+		public IUmlClassifier Type 		
+		{
+			get {return null;}
+		}
         #endregion
 
         public void Initialize(UmlEnumerationLiteralSpec spec)

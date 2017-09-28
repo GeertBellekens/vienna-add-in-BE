@@ -28,6 +28,13 @@ namespace VIENNAAddIn.upcc3.ea
         {
             get { return eaAttribute.Name; }
         }
+       	public string[] Stereotypes 
+		{
+			get 
+			{
+				return eaAttribute.StereotypeEx.Split(new []{","},StringSplitOptions.RemoveEmptyEntries);
+			}
+		}
 
         public string UpperBound
         {

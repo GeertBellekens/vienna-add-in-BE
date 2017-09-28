@@ -42,6 +42,12 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
 			get { return EnumLibrary; }
 		}
 
+		#region implemented abstract members of UpccElement
+		protected override ICctsAttribute CreateAttribute(IUmlAttribute attribute)
+		{
+			return null;
+		}
+		#endregion
         ///<summary>
         /// Tagged value 'identifierSchemeAgencyIdentifier'.
         ///</summary>

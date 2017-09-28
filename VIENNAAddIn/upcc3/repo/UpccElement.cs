@@ -28,6 +28,34 @@ namespace VIENNAAddIn.upcc3.repo
         {
             get { return UmlClassifier.Name; }
 		}
+        List<ICctsProperty> _properties;
+		public IEnumerable<ICctsProperty> Properties 
+		{
+			get 
+			{
+				if (_properties == null)
+				{
+					_properties = new List<ICctsProperty>();
+					foreach (var attribute in UmlClassifier.Attributes) 
+					{
+						var newAttribute = this.CreateAttribute(attribute);
+						if (newAttribute != null) _properties.Add(newAttribute);
+					}
+				}
+				return _properties;
+			}
+		}
+		protected abstract ICctsAttribute CreateAttribute(IUmlAttribute attribute);
+		
+		public IEnumerable<ICctsAttribute> Attributes
+		{
+			get {return this.Properties.OfType<ICctsAttribute>();}
+		}
+		
+		public IEnumerable<ICctsAssociation> Associations 
+		{
+			get {return this.Properties.OfType<ICctsAssociation>();}
+		}     
         
         public abstract ICctsLibrary library {get;}
 		        ///<summary>

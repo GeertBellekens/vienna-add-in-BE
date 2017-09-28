@@ -1,4 +1,5 @@
 // ReSharper disable RedundantUsingDirective
+using System.Linq;
 using CctsRepository;
 using CctsRepository.BdtLibrary;
 using CctsRepository.BieLibrary;
@@ -77,15 +78,16 @@ namespace VIENNAAddIn.upcc3.repo.BieLibrary
             }
         }
 
+		#region implemented abstract members of UpccElement
+		protected override ICctsAttribute CreateAttribute(IUmlAttribute attribute)
+		{
+			return attribute.Stereotypes.Contains("BBIE") ?
+				new UpccBbie(attribute, this) : null;
+		}
+		#endregion
 		public IEnumerable<IBbie> Bbies
         {
-            get
-            {
-                foreach (var attribute in UmlClass.GetAttributesByStereotype("BBIE"))
-                {
-                    yield return new UpccBbie(attribute, this);
-                }
-            }
+            get { return this.Attributes.OfType<IBbie>(); }
         }
 
 		/// <summary>

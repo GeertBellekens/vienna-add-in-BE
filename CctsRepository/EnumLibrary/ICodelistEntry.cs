@@ -22,16 +22,10 @@ using CctsRepository.PrimLibrary;
 
 namespace CctsRepository.EnumLibrary
 {
-    public interface ICodelistEntry
+	public interface ICodelistEntry: ICctsProperty
     {
-		int Id { get; }
-		
-		string Name { get; }
 		
         IEnum Enum { get; }
-
-		#region Tagged Values
-
         ///<summary>
         /// Tagged value 'codeName'.
         ///</summary>
@@ -42,7 +36,6 @@ namespace CctsRepository.EnumLibrary
         ///</summary>
 		string Status { get; }
 
-		#endregion
     }
 }
 

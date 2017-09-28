@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using EA;
 using VIENNAAddIn.upcc3.uml;
 using Attribute=EA.Attribute;
@@ -105,22 +106,36 @@ namespace VIENNAAddIn.upcc3.ea
             eaConnector.Update();
             return new EaUmlDependency(eaRepository, eaConnector);
         }
+		
+        List<IUmlAttribute> _attributes;
+		public IEnumerable<IUmlAttribute> Attributes 
+		{
+			get
+			{
+				if(_attributes == null)
+				{
+					_attributes = new List<IUmlAttribute>();
+					foreach (Attribute eaAttribute in eaElement.Attributes)
+		            {
+						//check if attribute is literal value
+						if (EaUmlEnumerationLiteral.isLiteralValue(eaAttribute))
+							_attributes.Add(new EaUmlEnumerationLiteral(eaAttribute));
+						else
+							_attributes.Add(new EaUmlAttribute(eaRepository, eaAttribute));
+		            }
+				}
+				return _attributes;
+			}
+		}
 
         public IEnumerable<IUmlAttribute> GetAttributesByStereotype(string stereotype)
         {
-            foreach (Attribute eaAttribute in eaElement.Attributes)
-            {
-                if (eaAttribute.Stereotype == stereotype)
-                {
-                    yield return new EaUmlAttribute(eaRepository, eaAttribute);
-                }
-            }
+        	return this.Attributes.Where(x => x.Stereotypes.Contains(stereotype));
         }
 
         public IUmlAttribute GetFirstAttributeByStereotype(string stereotype)
         {
-            var umlAttributes = new List<IUmlAttribute>(GetAttributesByStereotype(stereotype));
-            return umlAttributes.Count == 0 ? null : umlAttributes[0];
+        	return this.Attributes.FirstOrDefault(x => x.Stereotypes.Contains(stereotype));
         }
 
         public IUmlAttribute CreateAttribute(UmlAttributeSpec spec)

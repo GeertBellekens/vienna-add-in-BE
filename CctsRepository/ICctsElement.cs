@@ -15,6 +15,10 @@ namespace CctsRepository
 		
 		ICctsLibrary library {get;}
 		
+		IEnumerable<ICctsProperty> Properties {get;}
+		IEnumerable<ICctsAttribute> Attributes {get;}
+		IEnumerable<ICctsAssociation> Associations {get;}
+		
 		///<summary>
         /// Tagged value 'businessTerm'.
         ///</summary>
