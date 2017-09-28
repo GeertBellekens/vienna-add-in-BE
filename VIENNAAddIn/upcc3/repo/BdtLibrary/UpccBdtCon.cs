@@ -25,7 +25,7 @@ using System.Linq;
 
 namespace VIENNAAddIn.upcc3.repo.BdtLibrary
 {
-    internal class UpccBdtCon :UpccUmlAttribute, IBdtCon
+    internal class UpccBdtCon :UpccAttribute, IBdtCon
     {
     	public UpccBdtCon(IUmlAttribute umlAttribute, IBdt bdt):base(umlAttribute)
         {

@@ -23,33 +23,21 @@ using VIENNAAddIn.upcc3.uml;
 
 namespace VIENNAAddIn.upcc3.repo.PrimLibrary
 {
-    internal class UpccPrim : IPrim
+    internal class UpccPrim : UpccElement,IPrim
     {
-        public UpccPrim(IUmlDataType umlDataType)
-        {
-            UmlDataType = umlDataType;
-        }
+    	public UpccPrim(IUmlDataType umlDataType):base(umlDataType){}
 
-        public IUmlDataType UmlDataType { get; private set; }
-
-        #region IPrim Members
-
-        public int Id
-        {
-            get { return UmlDataType.Id; }
-        }
-
-        public string Name
-        {
-            get { return UmlDataType.Name; }
-        }
+        public IUmlDataType UmlDataType
+    	{
+    		get {return this.UmlClassifier as IUmlDataType;}
+    	}
 
 		public IPrimLibrary PrimLibrary
         {
             get { return new UpccPrimLibrary(UmlDataType.Package); }
         }
 				
-		public ICctsLibrary library 
+		public override ICctsLibrary library 
 		{
 			get { return PrimLibrary; }
 		}
@@ -72,43 +60,11 @@ namespace VIENNAAddIn.upcc3.repo.PrimLibrary
         }
 
         ///<summary>
-        /// Tagged value 'businessTerm'.
-        ///</summary>
-        public IEnumerable<string> BusinessTerms
-        {
-            get { return UmlDataType.GetTaggedValue("businessTerm").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'definition'.
-        ///</summary>
-        public string Definition
-        {
-            get { return UmlDataType.GetTaggedValue("definition").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'dictionaryEntryName'.
-        ///</summary>
-        public string DictionaryEntryName
-        {
-            get { return UmlDataType.GetTaggedValue("dictionaryEntryName").Value; }
-        }
-
-        ///<summary>
         /// Tagged value 'fractionDigits'.
         ///</summary>
         public string FractionDigits
         {
             get { return UmlDataType.GetTaggedValue("fractionDigits").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'languageCode'.
-        ///</summary>
-        public string LanguageCode
-        {
-            get { return UmlDataType.GetTaggedValue("languageCode").Value; }
         }
 
         ///<summary>
@@ -184,30 +140,12 @@ namespace VIENNAAddIn.upcc3.repo.PrimLibrary
         }
 
         ///<summary>
-        /// Tagged value 'uniqueIdentifier'.
-        ///</summary>
-        public string UniqueIdentifier
-        {
-            get { return UmlDataType.GetTaggedValue("uniqueIdentifier").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'versionIdentifier'.
-        ///</summary>
-        public string VersionIdentifier
-        {
-            get { return UmlDataType.GetTaggedValue("versionIdentifier").Value; }
-        }
-
-        ///<summary>
         /// Tagged value 'whiteSpace'.
         ///</summary>
         public string WhiteSpace
         {
             get { return UmlDataType.GetTaggedValue("whiteSpace").Value; }
         }
-
-        #endregion
 
         public bool Equals(UpccPrim other)
         {
@@ -238,10 +176,5 @@ namespace VIENNAAddIn.upcc3.repo.PrimLibrary
         {
             return !Equals(left, right);
         }
-        
-        public IEnumerable<string> UsageRules 
-		{
-			get { return new List<string>(); }
-		}
 	}
 }

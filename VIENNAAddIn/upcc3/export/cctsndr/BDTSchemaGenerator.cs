@@ -62,7 +62,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                                         {
                                             // Deviation from rule [R ABC1]: Using only attribute name and type as xml attribute name (instead of complete DEN), following the examples given in the specification.
                                             Name = NDR.GetXsdAttributeNameFromSup(sup),
-                                            SchemaTypeName = new XmlQualifiedName(GetXSDType(NDR.GetBasicTypeName(sup as UpccUmlAttribute)),
+                                            SchemaTypeName = new XmlQualifiedName(GetXSDType(NDR.GetBasicTypeName(sup as UpccAttribute)),
                                                                                   "http://www.w3.org/2001/XMLSchema"),
                                         };
                         if (context.Annotate)

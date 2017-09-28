@@ -23,32 +23,20 @@ using VIENNAAddIn.upcc3.uml;
 
 namespace VIENNAAddIn.upcc3.repo.BdtLibrary
 {
-    internal class UpccBdt : IBdt
+    internal class UpccBdt : UpccElement, IBdt
     {
-        public UpccBdt(IUmlClass umlClass)
+    	public UpccBdt(IUmlClass umlClass):base(umlClass){}
+    	
+    	public IUmlClass UmlClass
         {
-            UmlClass = umlClass;
-        }
-
-        public IUmlClass UmlClass { get; private set; }
-
-        #region IBdt Members
-
-        public int Id
-        {
-            get { return UmlClass.Id; }
-        }
-
-        public string Name
-        {
-            get { return UmlClass.Name; }
+        	get {return this.UmlClassifier as IUmlClass;}
         }
 
 		public IBdtLibrary BdtLibrary
         {
-            get { return new UpccBdtLibrary(UmlClass.Package); }
+            get { return new UpccBdtLibrary(UmlClassifier.Package); }
         }
-		public ICctsLibrary library 
+		public override ICctsLibrary library 
 		{
 			get { return BdtLibrary; }
 		}
@@ -137,63 +125,7 @@ namespace VIENNAAddIn.upcc3.repo.BdtLibrary
             UmlClass.RemoveAttribute(((UpccBdtSup) bdtSup).UmlAttribute);
 		}
 
-        ///<summary>
-        /// Tagged value 'businessTerm'.
-        ///</summary>
-        public IEnumerable<string> BusinessTerms
-        {
-            get { return UmlClass.GetTaggedValue("businessTerm").SplitValues; }
-        }
-
-        ///<summary>
-        /// Tagged value 'definition'.
-        ///</summary>
-        public string Definition
-        {
-            get { return UmlClass.GetTaggedValue("definition").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'dictionaryEntryName'.
-        ///</summary>
-        public string DictionaryEntryName
-        {
-            get { return UmlClass.GetTaggedValue("dictionaryEntryName").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'languageCode'.
-        ///</summary>
-        public string LanguageCode
-        {
-            get { return UmlClass.GetTaggedValue("languageCode").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'uniqueIdentifier'.
-        ///</summary>
-        public string UniqueIdentifier
-        {
-            get { return UmlClass.GetTaggedValue("uniqueIdentifier").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'versionIdentifier'.
-        ///</summary>
-        public string VersionIdentifier
-        {
-            get { return UmlClass.GetTaggedValue("versionIdentifier").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'usageRule'.
-        ///</summary>
-        public IEnumerable<string> UsageRules
-        {
-            get { return UmlClass.GetTaggedValue("usageRule").SplitValues; }
-        }
-
-        #endregion
+        
 
         public bool Equals(UpccBdt other)
         {

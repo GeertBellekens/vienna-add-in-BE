@@ -23,25 +23,16 @@ using VIENNAAddIn.upcc3.uml;
 
 namespace VIENNAAddIn.upcc3.repo.DocLibrary
 {
-    internal class UpccMa : IMa
+    internal class UpccMa : UpccElement, IMa
     {
-        public UpccMa(IUmlClass umlClass)
+    	public UpccMa(IUmlClass umlClass):base(umlClass){}
+    	
+        public IUmlClass UmlClass 
         {
-            UmlClass = umlClass;
-        }
-
-        public IUmlClass UmlClass { get; private set; }
-
-        #region IMa Members
-
-        public int Id
-        {
-            get { return UmlClass.Id; }
-        }
-
-        public string Name
-        {
-            get { return UmlClass.Name; }
+        	get
+        	{
+        		return this.UmlClassifier as IUmlClass;
+        	}
         }
 
 		public IDocLibrary DocLibrary
@@ -49,7 +40,7 @@ namespace VIENNAAddIn.upcc3.repo.DocLibrary
             get { return new UpccDocLibrary(UmlClass.Package); }
         }
 
-		public ICctsLibrary library 
+		public override ICctsLibrary library 
 		{
 			get { return DocLibrary; }
 		}
@@ -95,8 +86,6 @@ namespace VIENNAAddIn.upcc3.repo.DocLibrary
             UmlClass.RemoveAssociation(((UpccAsma) asma).UmlAssociation);
 		}
 
-        #endregion
-
         public bool Equals(UpccMa other)
         {
             if (ReferenceEquals(null, other)) return false;
@@ -126,40 +115,5 @@ namespace VIENNAAddIn.upcc3.repo.DocLibrary
         {
             return !Equals(left, right);
         }
-        
-        public IEnumerable<string> UsageRules
-		{
-			get { return new List<string>(); }
-		}
-
-		public IEnumerable<string> BusinessTerms 
-		{
-			get { return new List<string>(); }
-		}
-
-		public string Definition 
-		{
-			get { return string.Empty; }
-		}
-
-		public string DictionaryEntryName 
-		{
-			get { return string.Empty; }
-		}
-
-		public string LanguageCode 
-		{
-			get { return string.Empty; }
-		}
-
-		public string UniqueIdentifier 
-		{
-			get { return string.Empty; }
-		}
-
-		public string VersionIdentifier 
-		{
-			get { return string.Empty; }
-		}
 	}
 }

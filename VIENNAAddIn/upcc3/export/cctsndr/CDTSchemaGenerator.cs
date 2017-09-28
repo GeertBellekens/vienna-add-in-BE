@@ -60,7 +60,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                                         {
                                             // Deviation from rule [R ABC1]: Using only attribute name and type as xml attribute name (instead of complete DEN), following the examples given in the specification.
                                             Name = GetAttributeName(sup),
-                                            SchemaTypeName = new XmlQualifiedName(GetXSDType(NDR.GetBasicTypeName(sup as UpccUmlAttribute)),
+                                            SchemaTypeName = new XmlQualifiedName(GetXSDType(NDR.GetBasicTypeName(sup as UpccAttribute)),
                                                                                   "http://www.w3.org/2001/XMLSchema"),
                                         };
                         if (context.Annotate)
@@ -90,8 +90,8 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             // Deviation from rule [R 9C95]: Generating only a subset of the defined annotations and added some additional annotations.
             var annNodes = new List<XmlNode>();
             AddAnnotation(xml, annNodes, "PropertyTermName", sup.Name);
-            AddAnnotation(xml, annNodes, "RepresentationTermName", NDR.GetBasicTypeName(sup as UpccUmlAttribute));
-            AddAnnotation(xml, annNodes, "PrimitiveTypeName", NDR.GetBasicTypeName(sup as UpccUmlAttribute));
+            AddAnnotation(xml, annNodes, "RepresentationTermName", NDR.GetBasicTypeName(sup as UpccAttribute));
+            AddAnnotation(xml, annNodes, "PrimitiveTypeName", NDR.GetBasicTypeName(sup as UpccAttribute));
             AddAnnotation(xml, annNodes, "DataTypeName", sup.Cdt.Name);
             AddAnnotation(xml, annNodes, "UniqueID", sup.UniqueIdentifier);
             AddAnnotation(xml, annNodes, "VersionID", sup.VersionIdentifier);
@@ -152,7 +152,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 
         private static string GetAttributeName(ICdtSup sup)
         {
-            string name = sup.Name + NDR.GetBasicTypeName(sup as UpccUmlAttribute);
+            string name = sup.Name + NDR.GetBasicTypeName(sup as UpccAttribute);
             return name.Replace(".", "");
         }
 

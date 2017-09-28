@@ -81,7 +81,7 @@ namespace VIENNAAddIn.upcc3
                 return propertyTerm;
             }
 
-            return propertyTerm + representationTerm;
+            return NDR.TrimElementName(propertyTerm);// + representationTerm;
         }
 
         public static string GenerateASCCName(IAscc ascc)
@@ -109,16 +109,16 @@ namespace VIENNAAddIn.upcc3
         }
         private static string GetXsdAttributeName(Object someattribute)
         {
-        	var attribute = someattribute as UpccUmlAttribute;
+        	var attribute = someattribute as UpccAttribute;
         	string name = attribute != null ? attribute.Name : "Error_attribute_missing";
         	string basicTypeName = GetBasicTypeName(attribute);
         	return (name + basicTypeName).Replace(".", String.Empty);
         }
-        public static string GetBasicTypeName(UpccUmlAttribute attribute)
+        public static string GetBasicTypeName(UpccAttribute attribute)
         {
         	return attribute != null && 
 					attribute.BasicType != null
-        		? attribute.BasicType.Name : "Error_No_BasicType";
+        		? attribute.BasicType.Name + attribute.BasicType.UniqueIdentifier : "Error_No_BasicType";
         }
         public static string GetXsdAttributeNameFromSup(IBdtSup sup)
         {
@@ -162,17 +162,25 @@ namespace VIENNAAddIn.upcc3
         /// <returns></returns>
         public static string GetXsdTypeNameFromBdt(IBdt bdt)
         {
-        	string bdtName = bdt != null ? bdt.Name : "Error_No_BDT";
+        	if ( bdt == null) return "Error_No_BDT";
         	
-        	return bdtName + getConBasicTypeName(bdt) + "Type";
+        	return bdt.Name + getConBasicTypeName(bdt) + "Type" + bdt.UniqueIdentifier;
         }
         public static string getConBasicTypeName(IBdt bdt)
         {
-        	return bdt != null ? GetBasicTypeName(bdt.Con as UpccUmlAttribute) : "Error_No_BasicType";
+        	if (bdt.Con != null && bdt.Con.BasicType != null)
+        	{
+        		return TrimElementName(GetBasicTypeName(bdt.Con as UpccAttribute));
+        	}
+        	return "Error_No_BasicType";
         }
         public static string getConBasicTypeName(ICdt cdt)
         {
-        	return cdt != null ? GetBasicTypeName(cdt.Con as UpccUmlAttribute) : "Error_No_BasicType";
+        	if (cdt.Con != null && cdt.Con.BasicType != null)
+        	{
+        		return TrimElementName(GetBasicTypeName(cdt.Con as UpccAttribute));
+        	}
+        	return "Error_No_BasicType";
         }
 
         public static string ConvertXsdTypeNameToBasicTypeName(string xsdTypeName)

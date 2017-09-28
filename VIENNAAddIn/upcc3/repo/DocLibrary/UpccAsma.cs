@@ -38,32 +38,6 @@ namespace VIENNAAddIn.upcc3.repo.DocLibrary
 			}
 		}
 
-
-        public int Id
-        {
-            get { return UmlAssociation.Id; }
-        }
-
-        public string Name
-        {
-            get { return UmlAssociation.Name; }
-        }
-
-        public string UpperBound
-		{
-            get { return UmlAssociation.UpperBound; }
-		}
-		
-        public string LowerBound
-		{
-            get { return UmlAssociation.LowerBound; }
-		}
-		
-        public bool IsOptional()
-        {
-            int i;
-            return Int32.TryParse(LowerBound, out i) && i == 0;
-        }
 		
         public IMa AssociatingMa { get; private set; }
 		

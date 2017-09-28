@@ -9,12 +9,12 @@ using VIENNAAddIn.upcc3.uml;
 namespace VIENNAAddIn.upcc3.repo
 {
 	/// <summary>
-	/// Description of UpccUmlAttribute.
+	/// Description of UpccAttribute.
 	/// </summary>
-	public abstract class UpccUmlAttribute
+	public abstract class UpccAttribute: ICctsAttribute
 	{
 		public IUmlAttribute UmlAttribute { get; private set; }
-		protected UpccUmlAttribute(IUmlAttribute umlAttribute)
+		protected UpccAttribute(IUmlAttribute umlAttribute)
 		{
 			UmlAttribute = umlAttribute;
 		}
@@ -23,6 +23,9 @@ namespace VIENNAAddIn.upcc3.repo
         {
             get { return UmlAttribute.Id; }
         }
+
+		public int position {get;set;}
+		
 
         public string Name
         {
@@ -200,6 +203,13 @@ namespace VIENNAAddIn.upcc3.repo
         {
             get { return UmlAttribute.GetTaggedValue("versionIdentifier").Value; }
         }
+        ///<summary>
+        /// Tagged value 'SequencingKey'.
+        ///</summary>
+       	public string SequencingKey 
+       	{
+			get { return UmlAttribute.GetTaggedValue("SequencingKey").Value; }
+		}
 		
 	}
 }

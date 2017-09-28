@@ -58,15 +58,10 @@ namespace VIENNAAddIn.upcc3.repo
 		}
 
 		public abstract ICctsElement AssociatedElement {get;}
+		
+		
+		public int position {get;set;}
 
-		public int position 
-		{
-			get 
-			{
-				int foundPosition;
-				return int.TryParse(this.SequencingKey, out foundPosition) ? foundPosition: 0;
-			}
-		}
 		        ///<summary>
         /// Tagged value 'businessTerm'.
         ///</summary>

@@ -39,11 +39,11 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
     ///</summary>
     public class BIESchemaGenerator
     {
-        private const string NSPREFIX_BDT = "bdt";
-        private const string NSPREFIX_TNS = "tns";
+        private const string NSPREFIX_NS1 = "ns1";
+        private const string NSPREFIX_BIE = "bie";
         private const string NSPREFIX_DOC = "ccts";
 
-        private const string NS_DOC = "urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3";
+        private const string NS_DOC = "urn:un:unece:uncefact:documentation:common:3:standard:CoreComponentsTechnicalSpecification:3";
 
         //private const string NSPREFIX_CCTS = "ccts";
         //private const string NS_CCTS = "urn:un:unece:uncefact:documentation:standard:CoreComponentsTechnicalSpecification:2";
@@ -66,7 +66,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             globalASBIEs = new List<String>();
 
             var schema = new XmlSchema {TargetNamespace = context.TargetNamespace};
-            schema.Namespaces.Add(context.NamespacePrefix, context.TargetNamespace);
+            schema.Namespaces.Add(NSPREFIX_BIE, context.TargetNamespace);
             schema.Version = context.VersionID.DefaultTo("1");
 
             // TODO: discuss R A0E5 and R A9C5 with Christian E. and Michi S. since this is something that should be added to the context
@@ -80,10 +80,10 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 
             schema.Namespaces.Add(NSPREFIX_DOC, NS_DOC);
 
-            // add namespace to be able to utilize BDTs
-            schema.Namespaces.Add(NSPREFIX_BDT, context.TargetNamespace);
-            // add namespace to be able to utilize ABIEs 
-            schema.Namespaces.Add(NSPREFIX_TNS, context.TargetNamespace);
+            // add namespace ns1
+            schema.Namespaces.Add(NSPREFIX_NS1, context.BaseURN);
+            schema.Namespaces.Add("xbt", "urn:un:unece:uncefact:data:common:1:draft");
+ 
 
 			string schemaFileName = getSchemaFileName(context);
             // R 8FE2: include BDT XML schema file
@@ -101,7 +101,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                 //         the ABIE
                 XmlSchemaElement elementBIE = new XmlSchemaElement();
                 elementBIE.Name = abie.Name;
-                elementBIE.SchemaTypeName = new XmlQualifiedName(NSPREFIX_TNS + ":" + abie.Name + "Type");
+                elementBIE.SchemaTypeName = new XmlQualifiedName(NSPREFIX_BIE + ":" + abie.Name + "Type");
                 schema.Items.Add(elementBIE);
             }
 
@@ -133,7 +133,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         }
         internal static XmlSchemaComplexType GenerateComplexTypeABIE(GeneratorContext context, XmlSchema schema, IAbie abie)
         {
-            return GenerateComplexTypeABIE(context, schema, abie, NSPREFIX_TNS);
+            return GenerateComplexTypeABIE(context, schema, abie, NSPREFIX_BIE);
         }
 
         internal static XmlSchemaComplexType GenerateComplexTypeABIE(GeneratorContext context, XmlSchema schema, IAbie abie, string abiePrefix)
@@ -143,7 +143,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 
             // R 9D83: the name of the ABIE must be the DictionaryEntryName with all whitespace and separators 
             //         removed. The 'Details' suffix is replaced with 'Type'.
-            complexTypeBIE.Name = abie.Name + "Type";
+            complexTypeBIE.Name = NDR.TrimElementName(abie.Name);
 
             if (context.Annotate)
             {
@@ -165,7 +165,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                 //         representation term of the basic business information entity (BBIE) it represents
                 //         with the word 'Type' appended. 
                 elementBBIE.SchemaTypeName =
-                    new XmlQualifiedName(NSPREFIX_BDT + ":" + NDR.GetXsdTypeNameFromBdt(bbie.Bdt));
+                    new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.GetXsdTypeNameFromBdt(bbie.Bdt));
 
 
                 // R 90F9: cardinality of elements within the ABIE

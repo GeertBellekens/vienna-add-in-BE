@@ -24,7 +24,7 @@ using VIENNAAddIn.upcc3.uml;
 
 namespace VIENNAAddIn.upcc3.repo.CdtLibrary
 {
-    internal class UpccCdtSup : UpccUmlAttribute, ICdtSup
+    internal class UpccCdtSup : UpccAttribute, ICdtSup
     {
     	public UpccCdtSup(IUmlAttribute umlAttribute, ICdt cdt):base(umlAttribute)
         {

@@ -23,33 +23,26 @@ using VIENNAAddIn.upcc3.uml;
 
 namespace VIENNAAddIn.upcc3.repo.EnumLibrary
 {
-    internal class UpccEnum : IEnum
+    internal class UpccEnum : UpccElement, IEnum
     {
-        public UpccEnum(IUmlEnumeration umlEnumeration)
+    	public UpccEnum(IUmlEnumeration umlEnumeration):base(umlEnumeration){}
+
+
+        public IUmlEnumeration UmlEnumeration 
         {
-            UmlEnumeration = umlEnumeration;
+    		get
+    		{
+    			return this.UmlClassifier as IUmlEnumeration;
+    		}
         }
 
-        public IUmlEnumeration UmlEnumeration { get; private set; }
-
-        #region IEnum Members
-
-        public int Id
-        {
-            get { return UmlEnumeration.Id; }
-        }
-
-        public string Name
-        {
-            get { return UmlEnumeration.Name; }
-        }
 
 		public IEnumLibrary EnumLibrary
         {
             get { return new UpccEnumLibrary(UmlEnumeration.Package); }
         }
 				
-		public ICctsLibrary library 
+		public override ICctsLibrary library 
 		{
 			get { return EnumLibrary; }
 		}
@@ -112,13 +105,6 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
             UmlEnumeration.RemoveEnumerationLiteral(((UpccCodelistEntry) codelistEntry).UmlEnumerationLiteral);
 		}
 
-        ///<summary>
-        /// Tagged value 'businessTerm'.
-        ///</summary>
-        public IEnumerable<string> BusinessTerms
-        {
-            get { return UmlEnumeration.GetTaggedValue("businessTerm").SplitValues; }
-        }
 
         ///<summary>
         /// Tagged value 'codeListAgencyIdentifier'.
@@ -153,35 +139,11 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
         }
 
         ///<summary>
-        /// Tagged value 'dictionaryEntryName'.
-        ///</summary>
-        public string DictionaryEntryName
-        {
-            get { return UmlEnumeration.GetTaggedValue("dictionaryEntryName").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'definition'.
-        ///</summary>
-        public string Definition
-        {
-            get { return UmlEnumeration.GetTaggedValue("definition").Value; }
-        }
-
-        ///<summary>
         /// Tagged value 'enumerationURI'.
         ///</summary>
         public string EnumerationURI
         {
             get { return UmlEnumeration.GetTaggedValue("enumerationURI").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'languageCode'.
-        ///</summary>
-        public string LanguageCode
-        {
-            get { return UmlEnumeration.GetTaggedValue("languageCode").Value; }
         }
 
         ///<summary>
@@ -207,24 +169,6 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
         {
             get { return UmlEnumeration.GetTaggedValue("status").Value; }
         }
-
-        ///<summary>
-        /// Tagged value 'uniqueIdentifier'.
-        ///</summary>
-        public string UniqueIdentifier
-        {
-            get { return UmlEnumeration.GetTaggedValue("uniqueIdentifier").Value; }
-        }
-
-        ///<summary>
-        /// Tagged value 'versionIdentifier'.
-        ///</summary>
-        public string VersionIdentifier
-        {
-            get { return UmlEnumeration.GetTaggedValue("versionIdentifier").Value; }
-        }
-
-        #endregion
 
         public bool Equals(UpccEnum other)
         {
@@ -256,9 +200,5 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
             return !Equals(left, right);
         }
 
-		public IEnumerable<string> UsageRules 
-		{
-			get { return new List<string>(); }
-		}
 	}
 }
