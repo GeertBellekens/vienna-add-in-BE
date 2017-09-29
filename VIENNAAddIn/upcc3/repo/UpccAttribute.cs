@@ -166,11 +166,10 @@ namespace VIENNAAddIn.upcc3.repo
 			}
 		}
 	
-		public string Length {
-			get {
-				throw new NotImplementedException();
-			}
-		}
+		public string Length 
+        {
+            get { return UmlAttribute.GetTaggedValue("length").Value; }
+        }
 
         ///<summary>
         /// Tagged value 'businessTerm'.

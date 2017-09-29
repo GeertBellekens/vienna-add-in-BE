@@ -174,8 +174,24 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             // R 8B85: every BBIE type must be named the property term and qualifiers and the
             //         representation term of the basic business information entity (BBIE) it represents
             //         with the word 'Type' appended. 
-            elementBBIE.SchemaTypeName =
-                new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.GetXsdTypeNameFromBdt(bbie.Bdt));
+            if (bbie.Bdt != null 
+                && bbie.Bdt.Con != null 
+                && bbie.Bdt.Con.Facets.Any())
+            {
+            	//add facets
+				var resctrictedtype = new XmlSchemaSimpleType();
+            	var restriction = new XmlSchemaSimpleTypeRestriction();
+            	restriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.GetXsdTypeNameFromBdt(bbie.Bdt));
+            	addFacets( restriction,bbie.Bdt.Con.Facets);
+            	elementBBIE.SchemaType = resctrictedtype;
+            }
+            else
+            {
+				//use type without facets
+            	elementBBIE.SchemaTypeName =
+                	new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.GetXsdTypeNameFromBdt(bbie.Bdt));
+            }
+            
 
 
             // R 90F9: cardinality of elements within the ABIE
@@ -189,6 +205,59 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 
             // add the element created to the sequence
             sequenceBBIEs.Items.Add(elementBBIE);
+		}
+		static void addFacets(XmlSchemaSimpleTypeRestriction restriction, IEnumerable<ICctsFacet> facets)
+		{
+			foreach (var facet in facets) 
+			{
+				var xmlFacet = createXmlFacet(facet);
+				if (xmlFacet != null)
+				{
+					xmlFacet.Value = facet.content;
+					restriction.Facets.Add(xmlFacet);
+				}
+			}
+		}
+		static XmlSchemaFacet createXmlFacet(ICctsFacet facet)
+		{
+			XmlSchemaFacet xmlFacet = null;
+			switch (facet.name) 
+			{
+				case "fractionDigit":
+					xmlFacet = new XmlSchemaFractionDigitsFacet();
+					break;
+				case "length": 
+					xmlFacet = new XmlSchemaLengthFacet();
+					break;
+				case "maxExclusive":
+					xmlFacet = new XmlSchemaMaxExclusiveFacet();
+					break;
+				case "maxInclusive":
+					xmlFacet = new XmlSchemaMaxInclusiveFacet();
+					break;
+				case "maxLength":
+					xmlFacet = new XmlSchemaMaxLengthFacet();
+					break;
+				case "minExclusive":
+					xmlFacet = new XmlSchemaMinExclusiveFacet();
+					break;
+				case "minInclusive":
+					xmlFacet = new XmlSchemaMinInclusiveFacet();
+					break;
+				case "minLength":
+					xmlFacet = new XmlSchemaMinLengthFacet();
+					break;
+				case "pattern":
+					xmlFacet = new XmlSchemaPatternFacet();
+					break;
+				case "totalDigits":
+					xmlFacet = new XmlSchemaTotalDigitsFacet();
+					break;
+				case "whiteSpace":
+					xmlFacet = new XmlSchemaWhiteSpaceFacet();
+					break;
+			}
+			return xmlFacet;
 		}
 		static void AddAsbie(IAsbie asbie, XmlSchemaSequence sequenceBBIEs, GeneratorContext context, XmlSchema schema)
 		{
