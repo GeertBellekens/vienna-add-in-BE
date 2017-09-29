@@ -37,7 +37,10 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
         }
 
         public IEnum Enum { get; private set; }
-
+        public override ICctsElement Owner 
+       	{
+       		get {return this.Enum;}
+		}
 
         ///<summary>
         /// Tagged value 'codeName'.

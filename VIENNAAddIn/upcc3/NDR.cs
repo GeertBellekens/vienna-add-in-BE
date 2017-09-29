@@ -164,7 +164,7 @@ namespace VIENNAAddIn.upcc3
         {
         	if ( bdt == null) return "Error_No_BDT";
         	
-        	return bdt.Name + getConBasicTypeName(bdt) + "Type" + bdt.UniqueIdentifier;
+        	return TrimElementName(bdt.Name) + "_" + bdt.UniqueIdentifier;
         }
         public static string getConBasicTypeName(IBdt bdt)
         {

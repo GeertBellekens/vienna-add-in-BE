@@ -22,65 +22,13 @@ using CctsRepository.PrimLibrary;
 
 namespace CctsRepository.CdtLibrary
 {
-    public interface ICdtSup
+	public interface ICdtSup: ICctsAttribute
     {
-		int Id { get; }
-		
-		string Name { get; }
-		
-        string UpperBound { get; }
-		
-        string LowerBound { get; }
-		
-        bool IsOptional();
-		
+
         ICdt Cdt { get; }
 		
 		BasicType BasicType { get; }
 
-		#region Tagged Values
-
-        ///<summary>
-        /// Tagged value 'businessTerm'.
-        ///</summary>
-		IEnumerable<string> BusinessTerms { get; }
-
-        ///<summary>
-        /// Tagged value 'definition'.
-        ///</summary>
-		string Definition { get; }
-
-        ///<summary>
-        /// Tagged value 'dictionaryEntryName'.
-        ///</summary>
-		string DictionaryEntryName { get; }
-
-        ///<summary>
-        /// Tagged value 'languageCode'.
-        ///</summary>
-		string LanguageCode { get; }
-
-        ///<summary>
-        /// Tagged value 'modificationAllowedIndicator'.
-        ///</summary>
-		string ModificationAllowedIndicator { get; }
-
-        ///<summary>
-        /// Tagged value 'uniqueIdentifier'.
-        ///</summary>
-		string UniqueIdentifier { get; }
-
-        ///<summary>
-        /// Tagged value 'versionIdentifier'.
-        ///</summary>
-		string VersionIdentifier { get; }
-
-        ///<summary>
-        /// Tagged value 'usageRule'.
-        ///</summary>
-		IEnumerable<string> UsageRules { get; }
-
-		#endregion
     }
 }
 

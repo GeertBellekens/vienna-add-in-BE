@@ -297,6 +297,7 @@
     <Compile Include="ICctsAssociation.cs" />
     <Compile Include="ICctsAttribute.cs" />
     <Compile Include="ICctsElement.cs" />
+    <Compile Include="ICctsFacet.cs" />
     <Compile Include="ICctsLibrary.cs" />
     <Compile Include="ICctsProperty.cs" />
     <Compile Include="ICctsRepository.cs">

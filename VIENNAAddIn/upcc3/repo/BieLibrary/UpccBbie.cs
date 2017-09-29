@@ -32,6 +32,10 @@ namespace VIENNAAddIn.upcc3.repo.BieLibrary
         }
 
         public IAbie Abie { get; private set; }
+        public override ICctsElement Owner 
+       	{
+       		get {return this.Abie;}
+		}
 
 		public IBdt Bdt
 		{

@@ -42,12 +42,12 @@ namespace VIENNAAddIn.upcc3.repo.PrimLibrary
 			get { return PrimLibrary; }
 		}
 
-		protected override ICctsAttribute CreateAttribute(IUmlAttribute attribute)
+		public override ICctsAttribute CreateAttribute(IUmlAttribute attribute)
 		{
 			return null;
 		}
 		
-		protected override ICctsAssociation CreateAssociation(IUmlAssociation association)
+		public override ICctsAssociation CreateAssociation(IUmlAssociation association)
 		{
 			return null;
 		}

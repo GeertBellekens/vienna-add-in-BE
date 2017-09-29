@@ -42,6 +42,9 @@ namespace VIENNAAddIn.upcc3.repo
 		{
             get { return UmlAttribute.LowerBound; }
 		}
+
+        public abstract ICctsElement Owner {get;}
+
 		public BasicType BasicType
 		{
 			get
@@ -61,6 +64,114 @@ namespace VIENNAAddIn.upcc3.repo
             int i;
             return Int32.TryParse(LowerBound, out i) && i == 0;
         }
+        UpccAttribute _sourceAttribute;
+        public UpccAttribute SourceAttribute
+        {
+        	get
+        	{
+        		if (_sourceAttribute == null)
+        		{
+        			var sourceUmlAttribute = this.UmlAttribute.ReferencedAttributes.FirstOrDefault(x => x.Name == this.Name);
+        			if (sourceUmlAttribute != null)
+        			{
+        				_sourceAttribute = ((UpccElement)this.Owner).CreateAttribute(sourceUmlAttribute) as UpccAttribute;
+        			}
+        		}
+        		return _sourceAttribute;
+        	}
+        }
+        List<ICctsFacet> _facets;
+		public IEnumerable<ICctsFacet> Facets 
+		{
+			get 
+			{
+				if (_facets == null)
+				{
+					_facets = new List<ICctsFacet>();
+					addFacetIfNeeded("fractionDigit");
+					addFacetIfNeeded("length");
+					addFacetIfNeeded("maxExclusive");
+					addFacetIfNeeded("maxInclusive");
+					addFacetIfNeeded("maxLength");
+					addFacetIfNeeded("minExclusive");
+					addFacetIfNeeded("minInclusive");
+					addFacetIfNeeded("minLength");
+					addFacetIfNeeded("pattern");
+					addFacetIfNeeded("totalDigits");
+					addFacetIfNeeded("whiteSpace");
+				}
+				return _facets;
+			}
+		}
+		void addFacetIfNeeded (string facetName)
+		{
+			bool noSource = SourceAttribute == null;
+			switch (facetName) 
+			{
+				case "fractionDigit":
+					if ((noSource || SourceAttribute.FractionDigits != this.FractionDigits)
+						&& ! string.IsNullOrEmpty(this.FractionDigits))
+						_facets.Add(new UpccFacet(facetName,this.FractionDigits));
+					break;
+				case "length": 
+					if ((noSource || SourceAttribute.Length != this.Length)
+						&& ! string.IsNullOrEmpty(this.Length))
+						_facets.Add(new UpccFacet(facetName,this.Length));
+					 break;
+				case "maxExclusive":
+					if ((noSource || SourceAttribute.MaximumExclusive != this.MaximumExclusive)
+						&& ! string.IsNullOrEmpty(this.MaximumExclusive))
+						_facets.Add(new UpccFacet(facetName,this.MaximumExclusive));
+					 break;
+				case "maxInclusive":
+					if ((noSource || SourceAttribute.MaximumInclusive != this.MaximumInclusive)
+						&& ! string.IsNullOrEmpty(this.MaximumInclusive))
+						_facets.Add(new UpccFacet(facetName,this.MaximumInclusive));
+					 break;
+				case "maxLength":
+					if ((noSource || SourceAttribute.MaximumLength != this.MaximumLength)
+						&& ! string.IsNullOrEmpty(this.MaximumLength))
+						_facets.Add(new UpccFacet(facetName,this.MaximumLength));
+					break;
+				case "minExclusive":
+					if ((noSource || SourceAttribute.MinimumExclusive != this.MinimumExclusive)
+						&& ! string.IsNullOrEmpty(this.MinimumExclusive))
+						_facets.Add(new UpccFacet(facetName,this.MinimumExclusive));
+					 break;
+				case "minInclusive":
+					if ((noSource || SourceAttribute.MinimumInclusive != this.MinimumInclusive)
+						&& ! string.IsNullOrEmpty(this.MinimumInclusive))
+						_facets.Add(new UpccFacet(facetName,this.MinimumInclusive));
+					 break;
+				case "minLength":
+					if ((noSource || SourceAttribute.MinimumLength != this.MinimumLength)
+						&& ! string.IsNullOrEmpty(this.MinimumLength))
+						_facets.Add(new UpccFacet(facetName,this.MinimumLength));
+					 break;
+				case "pattern":
+					if ((noSource || SourceAttribute.Pattern != this.Pattern)
+						&& ! string.IsNullOrEmpty(this.Pattern))
+						_facets.Add(new UpccFacet(facetName,this.Pattern));
+					 break;
+				case "totalDigits":
+					if ((noSource || SourceAttribute.TotalDigits != this.TotalDigits)
+					     && ! string.IsNullOrEmpty(this.TotalDigits))
+						_facets.Add(new UpccFacet(facetName,this.TotalDigits));
+					 break;
+				case "whiteSpace":
+					if ((noSource || SourceAttribute.WhiteSpace != this.WhiteSpace)
+						&& ! string.IsNullOrEmpty(this.WhiteSpace))
+						_facets.Add(new UpccFacet(facetName,this.WhiteSpace));
+					 break;
+			}
+		}
+	
+		public string Length {
+			get {
+				throw new NotImplementedException();
+			}
+		}
+
         ///<summary>
         /// Tagged value 'businessTerm'.
         ///</summary>
@@ -211,6 +322,12 @@ namespace VIENNAAddIn.upcc3.repo
        	{
 			get { return UmlAttribute.GetTaggedValue("SequencingKey").Value; }
 		}
-		
+		///<summary>
+        /// Tagged value 'whiteSpace'.
+        ///</summary>
+		public string WhiteSpace
+		{
+			get { return UmlAttribute.GetTaggedValue("whiteSpace").Value; }
+		}
 	}
 }

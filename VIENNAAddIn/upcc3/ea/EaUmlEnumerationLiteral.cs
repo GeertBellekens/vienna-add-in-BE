@@ -58,6 +58,15 @@ namespace VIENNAAddIn.upcc3.ea
 				return eaAttribute.StereotypeEx.Split(new []{","},StringSplitOptions.RemoveEmptyEntries);
 			}
 		}
+
+		public IEnumerable<IUmlAttribute> ReferencedAttributes 
+		{
+			get 
+			{
+				return new List<EaUmlAttribute>();
+			}
+		}
+
         public IEnumerable<IUmlTaggedValue> GetTaggedValues()
         {
             foreach (AttributeTag eaAttributeTag in eaAttribute.TaggedValues)

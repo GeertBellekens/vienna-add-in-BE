@@ -99,10 +99,11 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                 //         and the 'Details' suffix removed
                 // R B27B: every ABIE global element declaration must be of the complexType that represents
                 //         the ABIE
-                XmlSchemaElement elementBIE = new XmlSchemaElement();
-                elementBIE.Name = abie.Name;
-                elementBIE.SchemaTypeName = new XmlQualifiedName(NSPREFIX_BIE + ":" + abie.Name + "Type");
-                schema.Items.Add(elementBIE);
+                // Global element definitions are apparently not required
+//                XmlSchemaElement elementBIE = new XmlSchemaElement();
+//                elementBIE.Name = abie.Name;
+//                elementBIE.SchemaTypeName = new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.TrimElementName(abie.Name) + "Type");
+//                schema.Items.Add(elementBIE);
             }
 
             context.AddSchema(schema, schemaFileName, Schematype.BIE);
@@ -196,7 +197,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             // R A08A: name of the ASBIE
             elementASBIE.Name = NDR.GetXsdElementNameFromAsbie(asbie);
             elementASBIE.SchemaTypeName =
-                new XmlQualifiedName(NSPREFIX_BIE + ":" + asbie.AssociatedAbie.Name + "Type");
+            	new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.TrimElementName(asbie.AssociatedAbie.Name));
 
             if (context.Annotate)
             {
@@ -207,6 +208,8 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             {
                 XmlSchemaElement refASBIE = new XmlSchemaElement();
                 refASBIE.RefName = new XmlQualifiedName(NSPREFIX_BIE + ":" + elementASBIE.Name);
+                refASBIE.MinOccursString = AdjustBound(asbie.LowerBound);
+                refASBIE.MaxOccursString = AdjustBound(asbie.UpperBound);
 
                 // every shared ASCC may only appear once in the XSD file
                 if (!globalASBIEs.Contains(elementASBIE.Name))

@@ -17,6 +17,8 @@ namespace CctsRepository
 		
         string LowerBound { get; }
 		
+        ICctsElement Owner {get;}
+        
         bool IsOptional();
         
         /// <summary>

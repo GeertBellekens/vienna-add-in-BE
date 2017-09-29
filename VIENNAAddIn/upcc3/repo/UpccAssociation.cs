@@ -28,6 +28,10 @@ namespace VIENNAAddIn.upcc3.repo
 		}
 		public IUmlAssociation UmlAssociation { get; private set; }
 
+		public ICctsElement Owner 
+		{
+			get {return this.AssociatingElement;}
+		}
 
 		public int Id
         {

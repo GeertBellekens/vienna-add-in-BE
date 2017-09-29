@@ -79,7 +79,7 @@ namespace VIENNAAddIn.upcc3.repo.BieLibrary
         }
 
 		#region implemented abstract members of UpccElement
-		protected override ICctsAttribute CreateAttribute(IUmlAttribute attribute)
+		public override ICctsAttribute CreateAttribute(IUmlAttribute attribute)
 		{
 			return attribute.Stereotypes.Contains("BBIE") ?
 				new UpccBbie(attribute, this) : null;
@@ -121,7 +121,7 @@ namespace VIENNAAddIn.upcc3.repo.BieLibrary
 		}
 
 		#region implemented abstract members of UpccElement
-		protected override ICctsAssociation CreateAssociation(IUmlAssociation association)
+		public override ICctsAssociation CreateAssociation(IUmlAssociation association)
 		{
 			if (association.Stereotypes.Contains("ASBIE")) 
 				return new UpccAsbie(association, this);

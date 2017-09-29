@@ -61,9 +61,9 @@ namespace VIENNAAddIn.upcc3.repo
 				this._properties[i].position = i;
 			}
 		}
-		protected abstract ICctsAttribute CreateAttribute(IUmlAttribute attribute);
+		public abstract ICctsAttribute CreateAttribute(IUmlAttribute attribute);
 
-		protected abstract ICctsAssociation CreateAssociation(IUmlAssociation association);
+		public abstract ICctsAssociation CreateAssociation(IUmlAssociation association);
 
 		public IEnumerable<ICctsAttribute> Attributes
 		{

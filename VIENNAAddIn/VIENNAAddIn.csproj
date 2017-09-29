@@ -248,6 +248,7 @@
     </Compile>
     <Compile Include="upcc3\repo\UpccAssociation.cs" />
     <Compile Include="upcc3\repo\UpccElement.cs" />
+    <Compile Include="upcc3\repo\UpccFacet.cs" />
     <Compile Include="upcc3\repo\UpccLibrary.cs" />
     <Compile Include="upcc3\repo\UpccAttribute.cs" />
     <Compile Include="upcc3\uml\MultiPartTaggedValue.cs" />

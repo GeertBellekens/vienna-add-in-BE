@@ -76,12 +76,12 @@ namespace VIENNAAddIn.upcc3.repo.BdtLibrary
             }
         }
 
-		protected override ICctsAssociation CreateAssociation(IUmlAssociation association)
+		public override ICctsAssociation CreateAssociation(IUmlAssociation association)
 		{
 			return null;
 		}
 		
-		protected override ICctsAttribute CreateAttribute(IUmlAttribute attribute)
+		public override ICctsAttribute CreateAttribute(IUmlAttribute attribute)
 		{
 			if (attribute.Stereotypes.Contains("CON"))
 				return new UpccBdtCon(attribute, this);

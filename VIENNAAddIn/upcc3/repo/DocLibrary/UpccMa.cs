@@ -46,12 +46,12 @@ namespace VIENNAAddIn.upcc3.repo.DocLibrary
 			get { return DocLibrary; }
 		}
 
-		protected override ICctsAttribute CreateAttribute(IUmlAttribute attribute)
+		public override ICctsAttribute CreateAttribute(IUmlAttribute attribute)
 		{
 			return null;
 		}
 	
-		protected override ICctsAssociation CreateAssociation(IUmlAssociation association)
+		public override ICctsAssociation CreateAssociation(IUmlAssociation association)
 		{
 			if (association.Stereotypes.Contains("ASMA")) 
 				return new UpccAsma(association, this);

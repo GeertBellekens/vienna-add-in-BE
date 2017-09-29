@@ -32,6 +32,10 @@ namespace VIENNAAddIn.upcc3.repo.CcLibrary
         }
 
         public IAcc Acc { get; private set; }
+        public override ICctsElement Owner 
+       	{
+       		get {return this.Acc;}
+		}
 
 		public ICdt Cdt
 		{

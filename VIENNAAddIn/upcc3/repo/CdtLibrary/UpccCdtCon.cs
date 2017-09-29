@@ -32,6 +32,10 @@ namespace VIENNAAddIn.upcc3.repo.CdtLibrary
         }
 
         public ICdt Cdt { get; private set; }
+        public override ICctsElement Owner 
+       	{
+       		get {return this.Cdt;}
+		}
 
 		public bool Equals(UpccCdtCon other)
         {

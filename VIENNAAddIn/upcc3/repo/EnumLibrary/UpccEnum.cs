@@ -64,11 +64,11 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
 				return null;
             }
         }
-		protected override ICctsAssociation CreateAssociation(IUmlAssociation association)
+		public override ICctsAssociation CreateAssociation(IUmlAssociation association)
 		{
 			return null;
 		}
-		protected override ICctsAttribute CreateAttribute(IUmlAttribute attribute)
+		public override ICctsAttribute CreateAttribute(IUmlAttribute attribute)
 		{
 			var enumerationLiteral = attribute as IUmlEnumerationLiteral ;
 			return enumerationLiteral != null && enumerationLiteral.Stereotypes.Contains("CodelistEntry")  

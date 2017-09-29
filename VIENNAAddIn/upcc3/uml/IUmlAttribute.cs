@@ -13,5 +13,6 @@ namespace VIENNAAddIn.upcc3.uml
 		int position {get;}
         IEnumerable<IUmlTaggedValue> GetTaggedValues();
         IUmlTaggedValue GetTaggedValue(string name);
+        IEnumerable<IUmlAttribute> ReferencedAttributes {get;}
     }
 }

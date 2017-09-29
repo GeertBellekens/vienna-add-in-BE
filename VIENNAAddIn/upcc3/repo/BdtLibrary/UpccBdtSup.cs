@@ -32,6 +32,10 @@ namespace VIENNAAddIn.upcc3.repo.BdtLibrary
         }
 
         public IBdt Bdt { get; private set; }
+       	public override ICctsElement Owner 
+       	{
+       		get {return this.Bdt;}
+		}
 
         public bool Equals(UpccBdtSup other)
         {
