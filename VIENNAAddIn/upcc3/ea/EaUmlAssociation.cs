@@ -60,6 +60,13 @@ namespace VIENNAAddIn.upcc3.ea
             get { return Cardinality.LowerBound; }
         }
 
+		public string[] Stereotypes 
+		{
+			get 
+			{
+				return eaConnector.StereotypeEx.Split(new []{","},StringSplitOptions.RemoveEmptyEntries);
+			}
+		}
         public IUmlClassifier AssociatedClassifier
         {
             get { return new EaUmlClassifier(eaRepository, eaRepository.GetElementByID(AssociatedElementId)); }

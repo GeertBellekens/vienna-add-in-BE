@@ -59,6 +59,12 @@ namespace VIENNAAddIn.upcc3.repo.CdtLibrary
 				return null;
             }
         }
+
+		protected override ICctsAssociation CreateAssociation(IUmlAssociation association)
+		{
+			return null;
+		}
+
 		protected override ICctsAttribute CreateAttribute(IUmlAttribute attribute)
 		{
 			if (attribute.Stereotypes.Contains("CON"))

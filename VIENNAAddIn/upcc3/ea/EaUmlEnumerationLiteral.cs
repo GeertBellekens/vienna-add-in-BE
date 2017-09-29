@@ -32,6 +32,13 @@ namespace VIENNAAddIn.upcc3.ea
             get { return eaAttribute.Name; }
         }
 
+		public int position 
+		{
+			get 
+			{
+				return eaAttribute.Pos;
+			}
+		}
         public IUmlTaggedValue GetTaggedValue(string name)
         {
             try

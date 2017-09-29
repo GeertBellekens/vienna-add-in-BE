@@ -1,4 +1,5 @@
 // ReSharper disable RedundantUsingDirective
+using System.Linq;
 using CctsRepository;
 using CctsRepository.BdtLibrary;
 using CctsRepository.BieLibrary;
@@ -45,20 +46,23 @@ namespace VIENNAAddIn.upcc3.repo.DocLibrary
 			get { return DocLibrary; }
 		}
 
-		#region implemented abstract members of UpccElement
 		protected override ICctsAttribute CreateAttribute(IUmlAttribute attribute)
 		{
 			return null;
 		}
-		#endregion		
+	
+		protected override ICctsAssociation CreateAssociation(IUmlAssociation association)
+		{
+			if (association.Stereotypes.Contains("ASMA")) 
+				return new UpccAsma(association, this);
+			else return null;
+		}
+
 		public IEnumerable<IAsma> Asmas
         {
             get
             {
-                foreach (var association in UmlClass.GetAssociationsByStereotype("ASMA"))
-                {
-                    yield return new UpccAsma(association, this);
-                }
+            	return this.Properties.OfType<IAsma>();
             }
         }
 

@@ -17,6 +17,14 @@ namespace VIENNAAddIn.upcc3.repo
         {
             UmlAssociation = umlAssociation;
 			_associatingElement = associatingElement;
+			//set initial position
+			int sequence ;
+			if (int.TryParse(this.SequencingKey, out sequence))
+			{
+				this.position = sequence;
+			}
+			//zero means not ordered so it should appear last.
+			if (position == 0) position = int.MaxValue;
 		}
 		public IUmlAssociation UmlAssociation { get; private set; }
 

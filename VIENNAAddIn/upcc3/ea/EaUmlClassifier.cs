@@ -165,23 +165,32 @@ namespace VIENNAAddIn.upcc3.ea
             }
             eaAttributes.Refresh();
         }
-
+        List<IUmlAssociation> _associations;
+		public IEnumerable<IUmlAssociation> Associations 
+		{
+			get 
+			{
+				if (_associations == null)
+				{
+					_associations = new List<IUmlAssociation>();
+					foreach (Connector eaConnector in eaElement.Connectors)
+		            {
+		                if (eaConnector.Type == EaConnectorTypes.Association.ToString() || eaConnector.Type == EaConnectorTypes.Aggregation.ToString())
+		                {
+	                        if ((eaConnector.ClientID == Id && eaConnector.ClientEnd.Aggregation != (int) EaAggregationKind.None) ||
+	                            (eaConnector.SupplierID == Id && eaConnector.SupplierEnd.Aggregation != (int) EaAggregationKind.None))
+	                        {
+		                		_associations.Add(new EaUmlAssociation(eaRepository, eaConnector, Id));
+	                        }
+		                }
+		            }
+				}
+				return _associations;
+			}
+		}
         public IEnumerable<IUmlAssociation> GetAssociationsByStereotype(string stereotype)
         {
-            foreach (Connector eaConnector in eaElement.Connectors)
-            {
-                if (eaConnector.Type == EaConnectorTypes.Association.ToString() || eaConnector.Type == EaConnectorTypes.Aggregation.ToString())
-                {
-                    if (eaConnector.Stereotype == stereotype)
-                    {
-                        if ((eaConnector.ClientID == Id && eaConnector.ClientEnd.Aggregation != (int) EaAggregationKind.None) ||
-                            (eaConnector.SupplierID == Id && eaConnector.SupplierEnd.Aggregation != (int) EaAggregationKind.None))
-                        {
-                            yield return new EaUmlAssociation(eaRepository, eaConnector, Id);
-                        }
-                    }
-                }
-            }
+        	return _associations.Where( x => x.Stereotypes.Contains(stereotype));
         }
 
         public IUmlAssociation CreateAssociation(UmlAssociationSpec spec)

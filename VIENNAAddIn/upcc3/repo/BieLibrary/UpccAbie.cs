@@ -120,14 +120,19 @@ namespace VIENNAAddIn.upcc3.repo.BieLibrary
             UmlClass.RemoveAttribute(((UpccBbie) bbie).UmlAttribute);
 		}
 
+		#region implemented abstract members of UpccElement
+		protected override ICctsAssociation CreateAssociation(IUmlAssociation association)
+		{
+			if (association.Stereotypes.Contains("ASBIE")) 
+				return new UpccAsbie(association, this);
+			else return null;
+		}
+		#endregion
 		public IEnumerable<IAsbie> Asbies
         {
             get
             {
-                foreach (var association in UmlClass.GetAssociationsByStereotype("ASBIE"))
-                {
-                    yield return new UpccAsbie(association, this);
-                }
+            	return this.Properties.OfType<IAsbie>();
             }
         }
 

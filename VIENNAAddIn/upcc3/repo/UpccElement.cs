@@ -41,12 +41,30 @@ namespace VIENNAAddIn.upcc3.repo
 						var newAttribute = this.CreateAttribute(attribute);
 						if (newAttribute != null) _properties.Add(newAttribute);
 					}
+					foreach (var association in UmlClassifier.Associations) 
+					{
+						var newAssociation = this.CreateAssociation(association);
+						if (newAssociation != null) _properties.Add(newAssociation);
+					}
+					this.setPropertyOrder();
 				}
 				return _properties;
 			}
 		}
+		private void setPropertyOrder()
+		{
+			var orderdProperties = this.Properties.OrderBy(x => x.position).ThenBy(y => y.Name);
+			this._properties = orderdProperties.ToList();
+			//set the position attributes
+			for (int i = 0; i < this._properties.Count; i++) 
+			{
+				this._properties[i].position = i;
+			}
+		}
 		protected abstract ICctsAttribute CreateAttribute(IUmlAttribute attribute);
-		
+
+		protected abstract ICctsAssociation CreateAssociation(IUmlAssociation association);
+
 		public IEnumerable<ICctsAttribute> Attributes
 		{
 			get {return this.Properties.OfType<ICctsAttribute>();}

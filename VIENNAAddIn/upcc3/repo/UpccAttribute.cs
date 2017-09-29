@@ -17,6 +17,7 @@ namespace VIENNAAddIn.upcc3.repo
 		protected UpccAttribute(IUmlAttribute umlAttribute)
 		{
 			UmlAttribute = umlAttribute;
+			this.position = umlAttribute.position * 100;
 		}
 		      
         public int Id

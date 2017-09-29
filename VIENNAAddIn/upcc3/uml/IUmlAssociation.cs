@@ -8,6 +8,7 @@ namespace VIENNAAddIn.upcc3.uml
         string Name { get; }
         string UpperBound { get; }
         string LowerBound { get; }
+        string [] Stereotypes {get;}
         IUmlClassifier AssociatedClassifier { get; }
         AggregationKind AggregationKind { get; }
         IUmlTaggedValue GetTaggedValue(string name);

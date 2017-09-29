@@ -46,6 +46,13 @@ namespace VIENNAAddIn.upcc3.ea
             get { return eaAttribute.LowerBound; }
         }
 
+		public int position 
+		{
+			get 
+			{
+				return eaAttribute.Pos;
+			}
+		}
         public IUmlClassifier Type
         {
         	get 

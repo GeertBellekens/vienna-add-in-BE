@@ -101,15 +101,17 @@ namespace VIENNAAddIn.upcc3.repo.CcLibrary
             UmlClass.RemoveAttribute(((UpccBcc) bcc).UmlAttribute);
 		}
 
+		#region implemented abstract members of UpccElement
+		protected override ICctsAssociation CreateAssociation(IUmlAssociation association)
+		{
+			if (association.Stereotypes.Contains("ASCC")) 
+				return new UpccAscc(association, this);
+			else return null;
+		}
+		#endregion
 		public IEnumerable<IAscc> Asccs
         {
-            get
-            {
-                foreach (var association in UmlClass.GetAssociationsByStereotype("ASCC"))
-                {
-                    yield return new UpccAscc(association, this);
-                }
-            }
+            get { return this.Properties.OfType<IAscc>(); }
         }
 
 		/// <summary>
