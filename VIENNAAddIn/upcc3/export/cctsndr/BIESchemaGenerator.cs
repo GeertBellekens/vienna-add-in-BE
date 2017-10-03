@@ -179,11 +179,14 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                 && bbie.Bdt.Con.Facets.Any())
             {
             	//add facets
-				var resctrictedtype = new XmlSchemaSimpleType();
+				var restrictedtype = new XmlSchemaSimpleType();
             	var restriction = new XmlSchemaSimpleTypeRestriction();
             	restriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.GetXsdTypeNameFromBdt(bbie.Bdt));
             	addFacets( restriction,bbie.Bdt.Con.Facets);
-            	elementBBIE.SchemaType = resctrictedtype;
+            	//add the restriction to the simple type
+            	restrictedtype.Content = restriction;
+            	//set the type of the BBIE
+            	elementBBIE.SchemaType = restrictedtype;
             }
             else
             {
