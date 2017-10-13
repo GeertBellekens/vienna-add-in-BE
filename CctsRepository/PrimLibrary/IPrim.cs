@@ -28,6 +28,11 @@ namespace CctsRepository.PrimLibrary
         IPrimLibrary PrimLibrary { get; }
 
 		IPrim IsEquivalentTo { get; }
+		
+		/// <summary>
+		/// the XSD type name that can be used to represent this primitive type
+		/// </summary>
+		string xsdType {get;}
 
 		#region Tagged Values
 

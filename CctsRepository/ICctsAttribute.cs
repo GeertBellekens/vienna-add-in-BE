@@ -9,6 +9,7 @@ namespace CctsRepository
 	/// </summary>
 	public interface ICctsAttribute : ICctsProperty
 	{
+		IEnumerable<ICctsFacet> AllFacets {get;}
 		IEnumerable<ICctsFacet> Facets {get;}
 		
 		///<summary>

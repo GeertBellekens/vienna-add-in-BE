@@ -13,6 +13,7 @@ namespace VIENNAAddIn.upcc3.uml
         IEnumerable<IUmlAttribute> Attributes{get;}
         IEnumerable<IUmlAssociation> Associations {get;}
         IEnumerable<IUmlDependency> Traces {get;}
+        IEnumerable<IUmlClassifier> BaseClassifiers {get;}
         
         IUmlTaggedValue GetTaggedValue(string name);
         

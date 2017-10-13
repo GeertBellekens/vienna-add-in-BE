@@ -1,4 +1,5 @@
 // ReSharper disable RedundantUsingDirective
+using System.Linq;
 using CctsRepository;
 using CctsRepository.BdtLibrary;
 using CctsRepository.BieLibrary;
@@ -31,6 +32,16 @@ namespace VIENNAAddIn.upcc3.repo.PrimLibrary
     	{
     		get {return this.UmlClassifier as IUmlDataType;}
     	}
+
+		public string xsdType 
+		{
+			get 
+			{
+				var baseType = this.UmlDataType.BaseClassifiers.FirstOrDefault();
+				return baseType != null ? baseType.Name : string.Empty;
+			}
+		}
+
        	#region implemented abstract members of UpccElement
 		protected override UpccElement createSimilarElement(IUmlClassifier otherclassifier)
 		{

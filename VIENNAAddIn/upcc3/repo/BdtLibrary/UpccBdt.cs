@@ -32,6 +32,18 @@ namespace VIENNAAddIn.upcc3.repo.BdtLibrary
         {
         	get {return this.UmlClassifier as IUmlClass;}
         }
+		/// <summary>
+		/// indicates that this BDT will be translated directly into it's underlying XSD datatype in the messages.
+		/// this indicator is stored in the tagged value directXSDType
+		/// </summary>
+		public bool isDirectXSDType 
+		{
+			get 
+			{
+				return this.UmlClass.GetTaggedValue("directXSDType").Value.Equals("true",System.StringComparison.InvariantCultureIgnoreCase);
+			}
+		}
+
        	#region implemented abstract members of UpccElement
 		protected override UpccElement createSimilarElement(IUmlClassifier otherclassifier)
 		{

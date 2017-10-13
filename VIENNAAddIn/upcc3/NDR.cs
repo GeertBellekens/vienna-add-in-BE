@@ -182,7 +182,6 @@ namespace VIENNAAddIn.upcc3
         	}
         	return "Error_No_BasicType";
         }
-
         public static string ConvertXsdTypeNameToBasicTypeName(string xsdTypeName)
         {
             switch (xsdTypeName.ToLower())

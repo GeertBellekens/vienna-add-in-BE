@@ -8,6 +8,7 @@ using CctsRepository.BdtLibrary;
 using CctsRepository.BieLibrary;
 using CctsRepository.DocLibrary;
 using CctsRepository.EnumLibrary;
+using CctsRepository.PrimLibrary;
 using VIENNAAddIn.upcc3.repo.EnumLibrary;
 using VIENNAAddInUtils;
 
@@ -203,6 +204,33 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 	            		}
             		}
             	}
+            	if (bbie.Bdt.isDirectXSDType)
+            	{
+            		var basicTypePrim = bbie.Bdt.Con.BasicType.Prim;
+            		if (basicTypePrim != null)
+            		{
+            			var XSDtype = basicTypePrim.xsdType;
+            			if (!string.IsNullOrEmpty(XSDtype))
+            			{
+            				if (bbie.Bdt.Con.AllFacets.Any())
+            				{
+	            				//add facets
+								var restrictedtype = new XmlSchemaSimpleType();
+				            	var restriction = new XmlSchemaSimpleTypeRestriction();
+				            	restriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_XSD + ":" + XSDtype);
+				            	addFacets( restriction,bbie.Bdt.Con.AllFacets);
+				            	//add the restriction to the simple type
+				            	restrictedtype.Content = restriction;
+				            	//set the type of the BBIE
+				            	elementBBIE.SchemaType = restrictedtype;
+            				}
+            				else
+            				{
+            					elementBBIE.SchemaTypeName = new XmlQualifiedName(NSPREFIX_XSD + ":" + XSDtype);
+            				}
+            			}
+            		}
+            	}
 	            if (bbie.Facets.Any())
 	            {
 	            	//add facets
@@ -215,7 +243,8 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 	            	//set the type of the BBIE
 	            	elementBBIE.SchemaType = restrictedtype;
 	            }
-	            if (elementBBIE.SchemaType == null)
+	            if (elementBBIE.SchemaType == null 
+	                && elementBBIE.SchemaTypeName.IsEmpty)
 	            {
 					//use type without facets
 	            	elementBBIE.SchemaTypeName =

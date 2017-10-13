@@ -80,89 +80,161 @@ namespace VIENNAAddIn.upcc3.repo
         		return _sourceAttribute;
         	}
         }
+        List<ICctsFacet> _allFacets;
         List<ICctsFacet> _facets;
 		public IEnumerable<ICctsFacet> Facets 
 		{
 			get 
 			{
-				if (_facets == null)
-				{
-					_facets = new List<ICctsFacet>();
-					addFacetIfNeeded("fractionDigit");
-					addFacetIfNeeded("length");
-					addFacetIfNeeded("maxExclusive");
-					addFacetIfNeeded("maxInclusive");
-					addFacetIfNeeded("maxLength");
-					addFacetIfNeeded("minExclusive");
-					addFacetIfNeeded("minInclusive");
-					addFacetIfNeeded("minLength");
-					addFacetIfNeeded("pattern");
-					addFacetIfNeeded("totalDigits");
-					addFacetIfNeeded("whiteSpace");
-				}
+				getAllFacets();
 				return _facets;
 			}
 		}
-		void addFacetIfNeeded (string facetName)
+
+		public IEnumerable<ICctsFacet> AllFacets 
+		{
+			get 
+			{
+				getAllFacets();
+				return _allFacets;
+			}
+		}
+
+		private void getAllFacets()
+		{
+			if (_facets == null && _allFacets == null)
+			{
+				_facets = new List<ICctsFacet>();
+				_allFacets = new List<ICctsFacet>();
+				addFacet("fractionDigit");
+				addFacet("length");
+				addFacet("maxExclusive");
+				addFacet("maxInclusive");
+				addFacet("maxLength");
+				addFacet("minExclusive");
+				addFacet("minInclusive");
+				addFacet("minLength");
+				addFacet("pattern");
+				addFacet("totalDigits");
+				addFacet("whiteSpace");
+			}
+		}
+		void addFacet (string facetName)
 		{
 			bool noSource = SourceAttribute == null;
 			switch (facetName) 
 			{
+				
 				case "fractionDigit":
-					if ((noSource || SourceAttribute.FractionDigits != this.FractionDigits)
-						&& ! string.IsNullOrEmpty(this.FractionDigits))
-						_facets.Add(new UpccFacet(facetName,this.FractionDigits));
+					var facetValue = this.FractionDigits;
+					if (! string.IsNullOrEmpty(facetValue))
+					{
+						var facet = new UpccFacet(facetName, facetValue);
+						_allFacets.Add(facet);
+						if ((noSource || SourceAttribute.FractionDigits != facetValue))
+							_facets.Add(facet);
+					}
 					break;
 				case "length": 
-					if ((noSource || SourceAttribute.Length != this.Length)
-						&& ! string.IsNullOrEmpty(this.Length))
-						_facets.Add(new UpccFacet(facetName,this.Length));
-					 break;
-				case "maxExclusive":
-					if ((noSource || SourceAttribute.MaximumExclusive != this.MaximumExclusive)
-						&& ! string.IsNullOrEmpty(this.MaximumExclusive))
-						_facets.Add(new UpccFacet(facetName,this.MaximumExclusive));
-					 break;
-				case "maxInclusive":
-					if ((noSource || SourceAttribute.MaximumInclusive != this.MaximumInclusive)
-						&& ! string.IsNullOrEmpty(this.MaximumInclusive))
-						_facets.Add(new UpccFacet(facetName,this.MaximumInclusive));
-					 break;
-				case "maxLength":
-					if ((noSource || SourceAttribute.MaximumLength != this.MaximumLength)
-						&& ! string.IsNullOrEmpty(this.MaximumLength))
-						_facets.Add(new UpccFacet(facetName,this.MaximumLength));
+					facetValue = this.Length;
+					if (! string.IsNullOrEmpty(facetValue))
+					{
+						var facet = new UpccFacet(facetName, facetValue);
+						_allFacets.Add(facet);
+						if ((noSource || SourceAttribute.Length != facetValue))
+							_facets.Add(facet);
+					}
 					break;
+				case "maxExclusive":
+					facetValue = this.MaximumExclusive;
+					if (! string.IsNullOrEmpty(facetValue))
+					{
+						var facet = new UpccFacet(facetName, facetValue);
+						_allFacets.Add(facet);
+						if ((noSource || SourceAttribute.MaximumExclusive != facetValue))
+							_facets.Add(facet);
+					}
+					break;					
+				case "maxInclusive":
+					facetValue = this.MaximumInclusive;
+					if (! string.IsNullOrEmpty(facetValue))
+					{
+						var facet = new UpccFacet(facetName, facetValue);
+						_allFacets.Add(facet);
+						if ((noSource || SourceAttribute.MaximumInclusive != facetValue))
+							_facets.Add(facet);
+					}
+					break;						
+				case "maxLength":
+					facetValue = this.MaximumLength;
+					if (! string.IsNullOrEmpty(facetValue))
+					{
+						var facet = new UpccFacet(facetName, facetValue);
+						_allFacets.Add(facet);
+						if ((noSource || SourceAttribute.MaximumLength != facetValue))
+							_facets.Add(facet);
+					}
+					break;						 
 				case "minExclusive":
-					if ((noSource || SourceAttribute.MinimumExclusive != this.MinimumExclusive)
-						&& ! string.IsNullOrEmpty(this.MinimumExclusive))
-						_facets.Add(new UpccFacet(facetName,this.MinimumExclusive));
-					 break;
+					facetValue = this.MinimumExclusive;
+					if (! string.IsNullOrEmpty(facetValue))
+					{
+						var facet = new UpccFacet(facetName, facetValue);
+						_allFacets.Add(facet);
+						if ((noSource || SourceAttribute.MinimumExclusive != facetValue))
+							_facets.Add(facet);
+					}
+					break;						
 				case "minInclusive":
-					if ((noSource || SourceAttribute.MinimumInclusive != this.MinimumInclusive)
-						&& ! string.IsNullOrEmpty(this.MinimumInclusive))
-						_facets.Add(new UpccFacet(facetName,this.MinimumInclusive));
-					 break;
+					facetValue = this.MinimumInclusive;
+					if (! string.IsNullOrEmpty(facetValue))
+					{
+						var facet = new UpccFacet(facetName, facetValue);
+						_allFacets.Add(facet);
+						if ((noSource || SourceAttribute.MinimumInclusive != facetValue))
+							_facets.Add(facet);
+					}
+					break;						 
 				case "minLength":
-					if ((noSource || SourceAttribute.MinimumLength != this.MinimumLength)
-						&& ! string.IsNullOrEmpty(this.MinimumLength))
-						_facets.Add(new UpccFacet(facetName,this.MinimumLength));
-					 break;
+					facetValue = this.MinimumLength;
+					if (! string.IsNullOrEmpty(facetValue))
+					{
+						var facet = new UpccFacet(facetName, facetValue);
+						_allFacets.Add(facet);
+						if ((noSource || SourceAttribute.MinimumLength != facetValue))
+							_facets.Add(facet);
+					}
+					break;						 
 				case "pattern":
-					if ((noSource || SourceAttribute.Pattern != this.Pattern)
-						&& ! string.IsNullOrEmpty(this.Pattern))
-						_facets.Add(new UpccFacet(facetName,this.Pattern));
-					 break;
+					facetValue = this.Pattern;
+					if (! string.IsNullOrEmpty(facetValue))
+					{
+						var facet = new UpccFacet(facetName, facetValue);
+						_allFacets.Add(facet);
+						if ((noSource || SourceAttribute.Pattern != facetValue))
+							_facets.Add(facet);
+					}
+					break;						 
 				case "totalDigits":
-					if ((noSource || SourceAttribute.TotalDigits != this.TotalDigits)
-					     && ! string.IsNullOrEmpty(this.TotalDigits))
-						_facets.Add(new UpccFacet(facetName,this.TotalDigits));
-					 break;
+					facetValue = this.TotalDigits;
+					if (! string.IsNullOrEmpty(facetValue))
+					{
+						var facet = new UpccFacet(facetName, facetValue);
+						_allFacets.Add(facet);
+						if ((noSource || SourceAttribute.TotalDigits != facetValue))
+							_facets.Add(facet);
+					}
+					break;						 
 				case "whiteSpace":
-					if ((noSource || SourceAttribute.WhiteSpace != this.WhiteSpace)
-						&& ! string.IsNullOrEmpty(this.WhiteSpace))
-						_facets.Add(new UpccFacet(facetName,this.WhiteSpace));
-					 break;
+					facetValue = this.WhiteSpace;
+					if (! string.IsNullOrEmpty(facetValue))
+					{
+						var facet = new UpccFacet(facetName, facetValue);
+						_allFacets.Add(facet);
+						if ((noSource || SourceAttribute.WhiteSpace != facetValue))
+							_facets.Add(facet);
+					}
+					break;						 
 			}
 		}
 	

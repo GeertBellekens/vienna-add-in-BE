@@ -27,7 +27,19 @@ namespace VIENNAAddIn.upcc3.ea
         			&& this.Stereotypes.Contains("enumeration");
         	}
         }
-        
+        List<IUmlClassifier> _baseClassifiers;
+		public IEnumerable<IUmlClassifier> BaseClassifiers 
+		{
+			get 
+			{
+				if (_baseClassifiers == null) _baseClassifiers = new List<IUmlClassifier>();
+				foreach (var baseClass in this.eaElement.BaseClasses) 
+				{
+					_baseClassifiers.Add(new EaUmlClassifier(eaRepository,(EA.Element)baseClass));
+				}
+				return _baseClassifiers;
+			}
+		}
         #region IUmlClass Members
 
         public int Id
