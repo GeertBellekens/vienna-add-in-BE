@@ -32,7 +32,13 @@ namespace VIENNAAddIn.upcc3.repo.CcLibrary
         {
         	get {return this.UmlClassifier as IUmlClass;}
         }
-
+       	#region implemented abstract members of UpccElement
+		protected override UpccElement createSimilarElement(IUmlClassifier otherclassifier)
+		{
+			var otherClass = otherclassifier as IUmlClass;
+			return otherClass != null ? new UpccAcc(otherClass) : null;
+		}
+		#endregion
 		public ICcLibrary CcLibrary
         {
             get { return new UpccCcLibrary(UmlClass.Package); }

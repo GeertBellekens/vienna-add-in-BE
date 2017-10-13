@@ -89,11 +89,13 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         	var minorVersion = context.VersionID.Split('.').LastOrDefault();
         	var docRootName =  context.DocRootName;
         	var bSlash = System.IO.Path.DirectorySeparatorChar;
-        	var docOrGeneric = context.isGeneric ? "generic" : "document" + bSlash
-        											+ docRootName ;
+        	var docOrGeneric = context.isGeneric ? "generic" : "document" 
+        					  + (string.IsNullOrEmpty(docRootName) ? string.Empty : bSlash.ToString())
+        					  + docRootName ;
         	//TODO set "Ebix" prefix via settings?
         	string filename = context.OutputDirectory + bSlash + mainVersion + bSlash + docOrGeneric + bSlash //directories
-        					+ "ebIX_MessageDataType_" + docRootName +"_"+ mainVersion + "p" + minorVersion + ".xsd"; //filename
+        					+ "ebIX_MessageDataType_" + docRootName + (string.IsNullOrEmpty(docRootName) ? string.Empty : "_") 
+        					+ mainVersion + "p" + minorVersion + ".xsd"; //filename
         	return  filename;
         }
 

@@ -7,6 +7,8 @@ using CctsRepository;
 using CctsRepository.BdtLibrary;
 using CctsRepository.BieLibrary;
 using CctsRepository.DocLibrary;
+using CctsRepository.EnumLibrary;
+using VIENNAAddIn.upcc3.repo.EnumLibrary;
 using VIENNAAddInUtils;
 
 // XML Naming and Design Rules that are currently not considered:
@@ -175,26 +177,52 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             //         representation term of the basic business information entity (BBIE) it represents
             //         with the word 'Type' appended. 
             if (bbie.Bdt != null 
-                && bbie.Bdt.Con != null 
-                && bbie.Bdt.Con.Facets.Any())
+                && bbie.Bdt.Con != null)
             {
-            	//add facets
-				var restrictedtype = new XmlSchemaSimpleType();
-            	var restriction = new XmlSchemaSimpleTypeRestriction();
-            	restriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.GetXsdTypeNameFromBdt(bbie.Bdt));
-            	addFacets( restriction,bbie.Bdt.Con.Facets);
-            	//add the restriction to the simple type
-            	restrictedtype.Content = restriction;
-            	//set the type of the BBIE
-            	elementBBIE.SchemaType = restrictedtype;
-            }
-            else
-            {
-				//use type without facets
-            	elementBBIE.SchemaTypeName =
-                	new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.GetXsdTypeNameFromBdt(bbie.Bdt));
-            }
-            
+            	if (bbie.Bdt.Con.BasicType != null 
+            	   && bbie.Bdt.Con.BasicType.IsEnum)
+            	{
+            		//figure out if the set of values is restricted
+            		var basicEnum = bbie.Bdt.Con.BasicType.Enum as UpccEnum;
+            		if (basicEnum != null)
+            		{
+            			var sourceEnum = basicEnum.SourceElement as UpccEnum;
+            			if (sourceEnum != null 
+            				&& basicEnum.CodelistEntries.Count() != sourceEnum.CodelistEntries.Count())
+	            		{
+	            			var restrictedtype = new XmlSchemaComplexType();
+	            			var sympleContent = new XmlSchemaSimpleContent();
+			            	var restriction = new XmlSchemaSimpleContentRestriction();
+			            	restriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.GetXsdTypeNameFromBdt(bbie.Bdt));
+			            	addEnumerationValues(restriction, basicEnum);
+			            	//add restriction to simplecontent
+			            	sympleContent.Content = restriction;
+			            	//add the restriction to the simple type
+			            	restrictedtype.ContentModel = sympleContent;
+			            	//set the type of the BBIE
+			            	elementBBIE.SchemaType = restrictedtype;
+	            		}
+            		}
+            	}
+	            if (bbie.Bdt.Con.Facets.Any())
+	            {
+	            	//add facets
+					var restrictedtype = new XmlSchemaSimpleType();
+	            	var restriction = new XmlSchemaSimpleTypeRestriction();
+	            	restriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.GetXsdTypeNameFromBdt(bbie.Bdt));
+	            	addFacets( restriction,bbie.Bdt.Con.Facets);
+	            	//add the restriction to the simple type
+	            	restrictedtype.Content = restriction;
+	            	//set the type of the BBIE
+	            	elementBBIE.SchemaType = restrictedtype;
+	            }
+	            if (elementBBIE.SchemaType == null)
+	            {
+					//use type without facets
+	            	elementBBIE.SchemaTypeName =
+	                	new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.GetXsdTypeNameFromBdt(bbie.Bdt));
+	            }
+			}
 
 
             // R 90F9: cardinality of elements within the ABIE
@@ -208,6 +236,15 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 
             // add the element created to the sequence
             sequenceBBIEs.Items.Add(elementBBIE);
+		}
+		static void addEnumerationValues(XmlSchemaSimpleContentRestriction restriction, UpccEnum basicEnum )
+		{
+			foreach (var codeListEntry in basicEnum.CodelistEntries) 
+			{
+				var xmlEnum = new XmlSchemaEnumerationFacet();
+				xmlEnum.Value = codeListEntry.Name;
+				restriction.Facets.Add(xmlEnum);
+			}
 		}
 		static void addFacets(XmlSchemaSimpleTypeRestriction restriction, IEnumerable<ICctsFacet> facets)
 		{

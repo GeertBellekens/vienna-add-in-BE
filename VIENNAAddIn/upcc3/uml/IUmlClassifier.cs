@@ -12,6 +12,7 @@ namespace VIENNAAddIn.upcc3.uml
         string[] Stereotypes {get;}
         IEnumerable<IUmlAttribute> Attributes{get;}
         IEnumerable<IUmlAssociation> Associations {get;}
+        IEnumerable<IUmlDependency> Traces {get;}
         
         IUmlTaggedValue GetTaggedValue(string name);
         

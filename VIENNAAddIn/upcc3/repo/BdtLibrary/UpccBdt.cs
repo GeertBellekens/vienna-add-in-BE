@@ -32,7 +32,13 @@ namespace VIENNAAddIn.upcc3.repo.BdtLibrary
         {
         	get {return this.UmlClassifier as IUmlClass;}
         }
-
+       	#region implemented abstract members of UpccElement
+		protected override UpccElement createSimilarElement(IUmlClassifier otherclassifier)
+		{
+			var otherClass = otherclassifier as IUmlClass;
+			return otherClass != null ? new UpccBdt(otherClass) : null;
+		}
+		#endregion
 		public IBdtLibrary BdtLibrary
         {
             get { return new UpccBdtLibrary(UmlClassifier.Package); }

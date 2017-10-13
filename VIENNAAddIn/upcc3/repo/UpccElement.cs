@@ -18,7 +18,7 @@ namespace VIENNAAddIn.upcc3.repo
         }
 		
 		public IUmlClassifier UmlClassifier { get; private set; }
-
+		
  		public int Id
         {
             get { return UmlClassifier.Id; }
@@ -28,6 +28,22 @@ namespace VIENNAAddIn.upcc3.repo
         {
             get { return UmlClassifier.Name; }
 		}
+        UpccElement _SourceElement;
+        public UpccElement SourceElement 
+        {
+        	get
+        	{
+        		if (_SourceElement == null)
+        		{
+        			var sourceClassifier = this.UmlClassifier.Traces
+        					.Select(y => y.Target)
+        					.FirstOrDefault(x => x.Name == this.Name);
+        			if (sourceClassifier != null)
+        				_SourceElement = this.createSimilarElement(sourceClassifier);
+        		}
+        		return _SourceElement;
+        	}
+        }
         List<ICctsProperty> _properties;
 		public IEnumerable<ICctsProperty> Properties 
 		{
@@ -51,6 +67,7 @@ namespace VIENNAAddIn.upcc3.repo
 				return _properties;
 			}
 		}
+		protected abstract UpccElement createSimilarElement(IUmlClassifier otherclassifier);
 		private void setPropertyOrder()
 		{
 			var orderdProperties = this.Properties.OrderBy(x => x.position).ThenBy(y => y.Name);

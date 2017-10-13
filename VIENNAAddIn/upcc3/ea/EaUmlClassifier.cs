@@ -17,7 +17,17 @@ namespace VIENNAAddIn.upcc3.ea
             this.eaRepository = eaRepository;
             this.eaElement = eaElement;
         }
-
+		
+        public bool isEnumeration
+        {
+        	get
+        	{
+        		return this.eaElement.Type == "Enumeration"
+				||this.eaElement.Type == "Class"        			
+        			&& this.Stereotypes.Contains("enumeration");
+        	}
+        }
+        
         #region IUmlClass Members
 
         public int Id
@@ -64,7 +74,28 @@ namespace VIENNAAddIn.upcc3.ea
                 return new UndefinedTaggedValue(name);
             }
         }
-
+        List<IUmlDependency> _Traces;
+		public IEnumerable<IUmlDependency> Traces 
+		{
+			get 
+			{
+				if(_Traces == null)
+				{
+					_Traces = new List<IUmlDependency>();
+					foreach (Connector eaConnector in eaElement.Connectors)
+		            {
+		                if (eaConnector.Type == EaConnectorTypes.Abstraction.ToString())
+		                {
+		                	if (eaConnector.StereotypeEx.Split(',').Contains("trace"))
+		                    {
+		                		_Traces.Add( new EaUmlDependency(eaRepository, eaConnector));
+		                    }
+		                }
+		            }
+				}
+				return _Traces;
+			}
+		}
         public IEnumerable<IUmlDependency> GetDependenciesByStereotype(string stereotype)
         {
             foreach (Connector eaConnector in eaElement.Connectors)
@@ -118,8 +149,8 @@ namespace VIENNAAddIn.upcc3.ea
 					foreach (Attribute eaAttribute in eaElement.Attributes)
 		            {
 						//check if attribute is literal value
-						if (EaUmlEnumerationLiteral.isLiteralValue(eaAttribute))
-							_attributes.Add(new EaUmlEnumerationLiteral(eaAttribute));
+						if (EaUmlEnumerationLiteral.isLiteralValue(eaAttribute,this))
+							_attributes.Add(new EaUmlEnumerationLiteral(eaRepository, eaAttribute,this));
 						else
 							_attributes.Add(new EaUmlAttribute(eaRepository, eaAttribute));
 		            }
@@ -232,14 +263,14 @@ namespace VIENNAAddIn.upcc3.ea
             {
                 if (eaAttribute.Stereotype == stereotype)
                 {
-                    yield return new EaUmlEnumerationLiteral(eaAttribute);
+                    yield return new EaUmlEnumerationLiteral(eaRepository, eaAttribute,this);
                 }
             }
         }
 
         public IUmlEnumerationLiteral CreateEnumerationLiteral(UmlEnumerationLiteralSpec spec)
         {
-            var enumerationLiteral = new EaUmlEnumerationLiteral((Attribute) eaElement.Attributes.AddNew(spec.Name, "String"));
+            var enumerationLiteral = new EaUmlEnumerationLiteral(eaRepository,(Attribute) eaElement.Attributes.AddNew(spec.Name, "String"),this);
             enumerationLiteral.Initialize(spec);
             return enumerationLiteral;
         }

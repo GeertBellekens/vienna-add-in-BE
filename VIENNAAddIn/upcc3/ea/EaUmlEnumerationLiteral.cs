@@ -9,16 +9,25 @@ namespace VIENNAAddIn.upcc3.ea
     internal class EaUmlEnumerationLiteral : IUmlEnumerationLiteral, IEquatable<EaUmlEnumerationLiteral>
     {
         private readonly Attribute eaAttribute;
+        private readonly Repository eaRepository;
+        public IUmlClassifier Owner {get;private set;}
 
-        public EaUmlEnumerationLiteral(Attribute eaAttribute)
+        public EaUmlEnumerationLiteral(Repository eaRepository, Attribute eaAttribute, IUmlClassifier owner)
         {
             this.eaAttribute = eaAttribute;
+            this.eaRepository = eaRepository;
+            this.Owner = owner;
         }
 		
-       	public static bool isLiteralValue(Attribute eaAttribute)
+       	public static bool isLiteralValue(Attribute eaAttribute, EaUmlClassifier owner)
 		{
 			//if the field StyleEx contains "IsLiteral=1" then it is a literal value
-			return (eaAttribute.StyleEx.Contains("IsLiteral=1"));
+			//of if the StyleEx field is empty and the owner of this attribute is of type Enumeration
+			var styleEx = eaAttribute.StyleEx;
+			if (styleEx.Contains("IsLiteral=1")) return true;
+			if (styleEx.Contains("IsLiteral=0")) return false;
+			//no information in the StyleEx, check the owner
+			return owner.isEnumeration;
 		}
         #region IUmlEnumerationLiteral Members
 

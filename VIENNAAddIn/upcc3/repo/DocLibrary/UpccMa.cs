@@ -35,7 +35,13 @@ namespace VIENNAAddIn.upcc3.repo.DocLibrary
         		return this.UmlClassifier as IUmlClass;
         	}
         }
-
+       	#region implemented abstract members of UpccElement
+		protected override UpccElement createSimilarElement(IUmlClassifier otherclassifier)
+		{
+			var otherClass = otherclassifier as IUmlClass;
+			return otherClass != null ? new UpccMa(otherClass) : null;
+		}
+		#endregion
 		public IDocLibrary DocLibrary
         {
             get { return new UpccDocLibrary(UmlClass.Package); }

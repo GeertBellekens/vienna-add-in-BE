@@ -37,6 +37,13 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
     		}
         }
 
+       	#region implemented abstract members of UpccElement
+		protected override UpccElement createSimilarElement(IUmlClassifier otherclassifier)
+		{
+			var otherEnum = otherclassifier as IUmlEnumeration;
+			return otherEnum != null ? new UpccEnum(otherEnum) : null;
+		}
+		#endregion
 
 		public IEnumLibrary EnumLibrary
         {
@@ -71,7 +78,8 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
 		public override ICctsAttribute CreateAttribute(IUmlAttribute attribute)
 		{
 			var enumerationLiteral = attribute as IUmlEnumerationLiteral ;
-			return enumerationLiteral != null && enumerationLiteral.Stereotypes.Contains("CodelistEntry")  
+			return enumerationLiteral != null && (enumerationLiteral.Stereotypes.Contains("CodelistEntry")
+			                                      || enumerationLiteral.Stereotypes.Contains("e_CodeListEntry"))
 				? new UpccCodelistEntry(enumerationLiteral, this) : null;
 		}
 		

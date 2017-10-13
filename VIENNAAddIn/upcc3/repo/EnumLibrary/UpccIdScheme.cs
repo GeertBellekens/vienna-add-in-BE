@@ -31,6 +31,13 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
     	{
     		get {return this.UmlClassifier as IUmlDataType;}
     	}
+       	#region implemented abstract members of UpccElement
+		protected override UpccElement createSimilarElement(IUmlClassifier otherclassifier)
+		{
+			var otherDataType = otherclassifier as IUmlDataType;
+			return otherDataType != null ? new UpccIdScheme(otherDataType) : null;
+		}
+		#endregion
 
 		public IEnumLibrary EnumLibrary
         {

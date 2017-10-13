@@ -8,5 +8,6 @@ namespace VIENNAAddIn.upcc3.ea
         Dependency,
         Aggregation,
         Association,
+        Abstraction
     }
 }

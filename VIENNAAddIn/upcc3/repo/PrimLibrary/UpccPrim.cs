@@ -31,7 +31,13 @@ namespace VIENNAAddIn.upcc3.repo.PrimLibrary
     	{
     		get {return this.UmlClassifier as IUmlDataType;}
     	}
-
+       	#region implemented abstract members of UpccElement
+		protected override UpccElement createSimilarElement(IUmlClassifier otherclassifier)
+		{
+			var otherDataType = otherclassifier as IUmlDataType;
+			return otherDataType != null ? new UpccPrim(otherDataType) : null;
+		}
+		#endregion
 		public IPrimLibrary PrimLibrary
         {
             get { return new UpccPrimLibrary(UmlDataType.Package); }

@@ -33,7 +33,13 @@ namespace VIENNAAddIn.upcc3.repo.BieLibrary
         {
         	get {return this.UmlClassifier as IUmlClass;}
         }
-
+       	#region implemented abstract members of UpccElement
+		protected override UpccElement createSimilarElement(IUmlClassifier otherclassifier)
+		{
+			var otherClass = otherclassifier as IUmlClass;
+			return otherClass != null ? new UpccAbie(otherClass) : null;
+		}
+		#endregion
 		public IBieLibrary BieLibrary
         {
             get { return new UpccBieLibrary(UmlClassifier.Package); }
