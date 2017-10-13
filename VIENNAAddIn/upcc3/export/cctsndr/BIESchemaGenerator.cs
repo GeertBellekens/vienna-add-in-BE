@@ -187,8 +187,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             		if (basicEnum != null)
             		{
             			var sourceEnum = basicEnum.SourceElement as UpccEnum;
-            			if (sourceEnum != null 
-            				&& basicEnum.CodelistEntries.Count() != sourceEnum.CodelistEntries.Count())
+            			if (sourceEnum != null)
 	            		{
 	            			var restrictedtype = new XmlSchemaComplexType();
 	            			var sympleContent = new XmlSchemaSimpleContent();
@@ -204,13 +203,13 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 	            		}
             		}
             	}
-	            if (bbie.Bdt.Con.Facets.Any())
+	            if (bbie.Facets.Any())
 	            {
 	            	//add facets
 					var restrictedtype = new XmlSchemaSimpleType();
 	            	var restriction = new XmlSchemaSimpleTypeRestriction();
 	            	restriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.GetXsdTypeNameFromBdt(bbie.Bdt));
-	            	addFacets( restriction,bbie.Bdt.Con.Facets);
+	            	addFacets( restriction,bbie.Facets);
 	            	//add the restriction to the simple type
 	            	restrictedtype.Content = restriction;
 	            	//set the type of the BBIE
