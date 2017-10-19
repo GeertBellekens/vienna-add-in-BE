@@ -12,6 +12,7 @@ using CctsRepository.DocLibrary;
 using VIENNAAddIn.upcc3.export.cctsndr;
 using VIENNAAddIn.upcc3.import.util;
 using VIENNAAddIn.upcc3.repo;
+using VIENNAAddIn.upcc3.repo.EnumLibrary;
 using VIENNAAddInUtils;
 
 namespace VIENNAAddIn.upcc3
@@ -116,9 +117,22 @@ namespace VIENNAAddIn.upcc3
         }
         public static string GetBasicTypeName(UpccAttribute attribute)
         {
-        	return attribute != null && 
-					attribute.BasicType != null
-        		? attribute.BasicType.Name + attribute.BasicType.UniqueIdentifier : "Error_No_BasicType";
+        	return attribute != null ? GetBasicTypeName(attribute.BasicType) :"Error_attribute_missing";
+        }
+        public static string GetBasicTypeName(BasicType basicType)
+        {
+        	if (basicType == null) return "Error_No_BasicType";
+        	return GetBasicTypeName(basicType.ActualType);
+        }
+        public static string GetBasicTypeName(ICctsElement element)
+        {
+        	if (element == null) return "Error_No_BasicType";
+        	var enumType = element as UpccEnum;
+        	//assembled types have a different naming convention
+        	if (enumType != null 
+        		&& enumType.IsAssembled)
+        		return "Assembled" + element.Name + "ContentType";
+        	return element.Name + element.UniqueIdentifier;
         }
         public static string GetXsdAttributeNameFromSup(IBdtSup sup)
         {

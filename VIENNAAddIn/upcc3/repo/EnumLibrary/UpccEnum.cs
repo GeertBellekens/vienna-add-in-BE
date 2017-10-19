@@ -37,6 +37,13 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
     		}
         }
 
+		public bool IsAssembled 
+		{
+			get 
+			{
+				return this.UmlEnumeration.Stereotypes.Contains("Assembled");
+			}
+		}
        	#region implemented abstract members of UpccElement
 		protected override UpccElement createSimilarElement(IUmlClassifier otherclassifier)
 		{

@@ -22,11 +22,27 @@ namespace CctsRepository
 {
     public class BasicType
     {
-        private readonly object actualType;
+        private readonly ICctsElement actualType;
+        public ICctsElement ActualType
+        {
+        	get { return actualType; }
+        }
 
-        public BasicType(object actualType)
+        public BasicType(ICctsElement actualType)
         {
             this.actualType = actualType;
+        }
+        public bool IsAssembled
+        {
+        	get
+        	{
+        		//only valid for enums
+        		if (IsEnum)
+        		{
+        			return Enum.IsAssembled;
+        		}
+        		return false;
+        	}
         }
 
 		/// <summary>
@@ -36,19 +52,7 @@ namespace CctsRepository
 		{ 
 			get
 			{
-				if (IsPrim)
-				{
-					return Prim.Id;
-				}
-				if (IsIdScheme)
-				{
-					return IdScheme.Id;
-				}
-				if (IsEnum)
-				{
-					return Enum.Id;
-				}
-				throw new Exception("Invalid BasicType: " + actualType.GetType());
+				return actualType.Id;
 			}
 		}
 		
@@ -59,19 +63,7 @@ namespace CctsRepository
 		{ 
 			get
 			{
-				if (IsPrim)
-				{
-					return Prim.Name;
-				}
-				if (IsIdScheme)
-				{
-					return IdScheme.Name;
-				}
-				if (IsEnum)
-				{
-					return Enum.Name;
-				}
-				throw new Exception("Invalid BasicType: " + actualType.GetType());
+				return actualType.Name;
 			}
 		}
 		
@@ -151,19 +143,7 @@ namespace CctsRepository
 		{
 			get
 			{
-				if (IsPrim)
-				{
-					return Prim.BusinessTerms;
-				}
-				if (IsIdScheme)
-				{
-					return IdScheme.BusinessTerms;
-				}
-				if (IsEnum)
-				{
-					return Enum.BusinessTerms;
-				}
-				throw new Exception("Invalid BasicType: " + actualType.GetType());
+				return actualType.BusinessTerms;
 			}
 		}
 
@@ -174,19 +154,7 @@ namespace CctsRepository
 		{
 			get
 			{
-				if (IsPrim)
-				{
-					return Prim.Definition;
-				}
-				if (IsIdScheme)
-				{
-					return IdScheme.Definition;
-				}
-				if (IsEnum)
-				{
-					return Enum.Definition;
-				}
-				throw new Exception("Invalid BasicType: " + actualType.GetType());
+				return actualType.Definition;
 			}
 		}
 
@@ -197,19 +165,7 @@ namespace CctsRepository
 		{
 			get
 			{
-				if (IsPrim)
-				{
-					return Prim.DictionaryEntryName;
-				}
-				if (IsIdScheme)
-				{
-					return IdScheme.DictionaryEntryName;
-				}
-				if (IsEnum)
-				{
-					return Enum.DictionaryEntryName;
-				}
-				throw new Exception("Invalid BasicType: " + actualType.GetType());
+				return actualType.DictionaryEntryName;
 			}
 		}
 
@@ -220,19 +176,7 @@ namespace CctsRepository
 		{
 			get
 			{
-				if (IsPrim)
-				{
-					return Prim.UniqueIdentifier;
-				}
-				if (IsIdScheme)
-				{
-					return IdScheme.UniqueIdentifier;
-				}
-				if (IsEnum)
-				{
-					return Enum.UniqueIdentifier;
-				}
-				throw new Exception("Invalid BasicType: " + actualType.GetType());
+				return actualType.UniqueIdentifier;
 			}
 		}
 
@@ -243,19 +187,7 @@ namespace CctsRepository
 		{
 			get
 			{
-				if (IsPrim)
-				{
-					return Prim.VersionIdentifier;
-				}
-				if (IsIdScheme)
-				{
-					return IdScheme.VersionIdentifier;
-				}
-				if (IsEnum)
-				{
-					return Enum.VersionIdentifier;
-				}
-				throw new Exception("Invalid BasicType: " + actualType.GetType());
+				return actualType.VersionIdentifier;
 			}
 		}
 

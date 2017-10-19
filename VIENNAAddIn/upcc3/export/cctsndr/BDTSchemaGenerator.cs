@@ -3,8 +3,10 @@ using System.Linq;
 using System.Windows.Controls;
 using System.Xml;
 using System.Xml.Schema;
+using CctsRepository;
 using CctsRepository.BdtLibrary;
 using VIENNAAddIn.upcc3.repo;
+using VIENNAAddIn.upcc3.repo.EnumLibrary;
 using VIENNAAddInUtils;
 
 namespace VIENNAAddIn.upcc3.export.cctsndr
@@ -13,7 +15,16 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
     ///</summary>
     public static class BDTSchemaGenerator
     {
-			
+		private const string NSPREFIX_NS1 = "ns1";
+        private const string NSPREFIX_BDT = "bdt";
+        private const string NSPREFIX_DOC = "ccts";
+        private const string NSPREFIX_XBT = "xbt";
+		private const string NSPREFIX_XSD = "xsd";
+		
+        private const string NS_DOC = "urn:un:unece:uncefact:documentation:common:3:standard:CoreComponentsTechnicalSpecification:3";
+        private const string NS_XBT = "urn:un:unece:uncefact:data:common:1:draft"; 
+        private const string NS_XSD = "http://www.w3.org/2001/XMLSchema";
+        
     	public static void GenerateXSD(GeneratorContext context, GeneratorContext genericContext, IEnumerable<IBdt> bdts)
     	{
     		genericContext.AddElements(bdts);
@@ -23,9 +34,17 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         public static void GenerateXSD(GeneratorContext context)
         {
             var schema = new XmlSchema {TargetNamespace = context.TargetNamespace};
+            //add namespaces
             schema.Namespaces.Add(context.NamespacePrefix, context.TargetNamespace);
-            schema.Namespaces.Add("xsd", "http://www.w3.org/2001/XMLSchema");
-            schema.Namespaces.Add("ccts","urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3");
+            // R 9B18: all XML schemas must utilize the xsd prefix when referring to the W3C XML schema namespace            
+            schema.Namespaces.Add(NSPREFIX_XSD, NS_XSD);
+			//add namespace for documentation
+            schema.Namespaces.Add(NSPREFIX_DOC, NS_DOC);
+            // add namespace ns1
+            schema.Namespaces.Add(NSPREFIX_NS1, context.BaseURN);
+            //add namespace xbt
+            schema.Namespaces.Add(NSPREFIX_XBT, NS_XBT);
+            
             schema.Version = context.VersionID.DefaultTo("1");
 			string schemaFileName = getSchemaFileName(context);
 			foreach (IBdt bdt in context.Elements.OfType<IBdt>())
@@ -36,7 +55,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                     var simpleType = new XmlSchemaSimpleType {Name = NDR.GetXsdTypeNameFromBdt(bdt)};
                     var simpleTypeRestriction = new XmlSchemaSimpleTypeRestriction
                                                 {
-                                                    BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt))
+                                                    BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt),context)
                                                 };
                     simpleType.Content = simpleTypeRestriction;
                     if (context.Annotate)
@@ -47,28 +66,56 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                 }
                 else
                 {
-                    var complexType = new XmlSchemaComplexType
-                                      {
-                                          Name = NDR.GetXsdTypeNameFromBdt(bdt)
-                                      };
+                	//create the complex type
+                	var complexType = new XmlSchemaComplexType();
+                	complexType.Name = NDR.GetXsdTypeNameFromBdt(bdt);
+                	//add the simple content extension
                     var simpleContent = new XmlSchemaSimpleContent();
-                    var simpleContentExtension = new XmlSchemaSimpleContentExtension
-                                                 {
-                    								BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt))
-                                                 };
+                    var simpleContentExtension = new XmlSchemaSimpleContentExtension();
+                    simpleContentExtension.BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt),context);
                     foreach (IBdtSup sup in sups)
                     {
-                        var attribute = new XmlSchemaAttribute
-                                        {
-                                            // Deviation from rule [R ABC1]: Using only attribute name and type as xml attribute name (instead of complete DEN), following the examples given in the specification.
-                                            Name = NDR.GetXsdAttributeNameFromSup(sup),
-                                            SchemaTypeName = new XmlQualifiedName(GetXSDType(NDR.GetBasicTypeName(sup as UpccAttribute)),
-                                                                                  "http://www.w3.org/2001/XMLSchema"),
-                                        };
+                    	var attribute = new XmlSchemaAttribute();
+                        // Deviation from rule [R ABC1]: Using only attribute name and type as xml attribute name (instead of complete DEN), following the examples given in the specification.
+                    	attribute.Name = sup.Name;
+                    	//set optional or required
+                    	attribute.Use = sup.IsOptional() ? XmlSchemaUse.Optional : XmlSchemaUse.Required;				                                             
+						//set the type of the attribute                                   
+                        if (bdt.Con.BasicType != null 
+		            	   && bdt.Con.BasicType.IsEnum)
+		            	{
+		            		//figure out if the set of values is restricted
+		            		var basicEnum = bdt.Con.BasicType.Enum as UpccEnum;
+		            		if (basicEnum != null)
+		            		{
+		            			var sourceEnum = basicEnum.SourceElement as UpccEnum;
+		            			if (sourceEnum != null
+		            			    && sourceEnum.CodelistEntries.Count() != basicEnum.CodelistEntries.Count())
+			            		{
+			            			var restrictedtype = new XmlSchemaSimpleType();
+					            	var restriction = new XmlSchemaSimpleTypeRestriction();
+					            	restriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_NS1 + ":" + NDR.GetBasicTypeName(sourceEnum));
+					            	addEnumerationValues(restriction, basicEnum);
+					            	//add the restriction to the simple type
+					            	restrictedtype.Content = restriction;
+					            	//set the type of the attribute
+					            	attribute.SchemaType = restrictedtype;
+			            		}
+
+		            		}
+		            	}
+                        //set regular type name if not restricted
+                        if (attribute.SchemaTypeName == null
+                           && attribute.SchemaType == null)
+                        {
+                        	attribute.SchemaTypeName = GetXmlQualifiedName(NDR.GetBasicTypeName(sup as UpccAttribute),context);
+                        }
+                        //annotate if needed
                         if (context.Annotate)
                         {
                             attribute.Annotation = GetAttributeAnnotation(sup);
                         }
+                        //add the attribute
                         simpleContentExtension.Attributes.Add(attribute);
                     }
 
@@ -83,6 +130,16 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             }
             context.AddSchema(schema, schemaFileName,Schematype.BDT);
         }
+       	static void addEnumerationValues(XmlSchemaSimpleTypeRestriction restriction, UpccEnum basicEnum )
+		{
+			foreach (var codeListEntry in basicEnum.CodelistEntries) 
+			{
+				var xmlEnum = new XmlSchemaEnumerationFacet();
+				xmlEnum.Value = codeListEntry.Name;
+				restriction.Facets.Add(xmlEnum);
+			}
+		}
+        
         private static string getSchemaFileName(GeneratorContext context)
         {
         	var mainVersion = context.VersionID.Split('.').FirstOrDefault();
@@ -160,9 +217,13 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             }
         }
 
-        private static XmlQualifiedName GetXmlQualifiedName(string basicTypeName)
+        private static XmlQualifiedName GetXmlQualifiedName(string basicTypeName, GeneratorContext context)
         {
-            return new XmlQualifiedName(GetXSDType(basicTypeName), "http://www.w3.org/2001/XMLSchema");
+        	if (basicTypeName.StartsWith("Assembled", System.StringComparison.InvariantCulture))
+    	    {
+        		return new XmlQualifiedName(basicTypeName, context.BaseURN );
+    	    }
+            return new XmlQualifiedName(GetXSDType(basicTypeName) );
         }
 
         private static string GetXSDType(string primitiveTypeName)

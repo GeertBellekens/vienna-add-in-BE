@@ -96,8 +96,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                                   {
                                       Name = ma.Name,
                                       SchemaTypeName =
-                                          new XmlQualifiedName(context.NamespacePrefix + ":" + ma.Name +
-                                                               "Type")
+                                          new XmlQualifiedName(context.NamespacePrefix + ":" + ma.Name)
                                   };
                 //if (context.Annotate)
                 //    element.Annotation = GetMaAnnotation(ma);
@@ -132,8 +131,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                         Name = NDR.GetXsdElementNameFromAsma(asma),
                         SchemaTypeName =
                             new XmlQualifiedName(NSPREFIX_BIE + ":" +
-                        	                     NDR.TrimElementName(asma.AssociatedBieAggregator.Name) +
-                                                 "Type")
+                        	                     NDR.TrimElementName(asma.AssociatedBieAggregator.Name))
                     };
                 }
                 else if (asma.AssociatedBieAggregator.IsMa)

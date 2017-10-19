@@ -30,6 +30,8 @@ namespace CctsRepository.EnumLibrary
 		IEnum IsEquivalentTo { get; }
 
 		IEnumerable<ICodelistEntry> CodelistEntries { get; }
+		
+		bool IsAssembled{get;}
 
 		/// <summary>
 		/// Creates a(n) CodelistEntry based on the given <paramref name="specification"/>.

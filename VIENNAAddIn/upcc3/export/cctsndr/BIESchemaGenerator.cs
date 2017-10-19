@@ -45,13 +45,13 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         private const string NSPREFIX_NS1 = "ns1";
         private const string NSPREFIX_BIE = "bie";
         private const string NSPREFIX_DOC = "ccts";
-
+        private const string NSPREFIX_XBT = "xbt";
+		private const string NSPREFIX_XSD = "xsd";
+		
         private const string NS_DOC = "urn:un:unece:uncefact:documentation:common:3:standard:CoreComponentsTechnicalSpecification:3";
-
-        //private const string NSPREFIX_CCTS = "ccts";
-        //private const string NS_CCTS = "urn:un:unece:uncefact:documentation:standard:CoreComponentsTechnicalSpecification:2";
-        private const string NSPREFIX_XSD = "xsd";
+        private const string NS_XBT = "urn:un:unece:uncefact:data:common:1:draft"; 
         private const string NS_XSD = "http://www.w3.org/2001/XMLSchema";
+        
         private static List<String> globalASBIEs;
 		
         public static void GenerateXSD(GeneratorContext context, GeneratorContext genericContext,  IEnumerable<IAbie> abies)
@@ -80,12 +80,12 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 
             // R 9B18: all XML schemas must utilize the xsd prefix when referring to the W3C XML schema namespace            
             schema.Namespaces.Add(NSPREFIX_XSD, NS_XSD);
-
+			//add namespace for documentation
             schema.Namespaces.Add(NSPREFIX_DOC, NS_DOC);
-
             // add namespace ns1
             schema.Namespaces.Add(NSPREFIX_NS1, context.BaseURN);
-            schema.Namespaces.Add("xbt", "urn:un:unece:uncefact:data:common:1:draft");
+            //add namespace xbt
+            schema.Namespaces.Add(NSPREFIX_XBT, NS_XBT);
  
 
 			string schemaFileName = getSchemaFileName(context);
