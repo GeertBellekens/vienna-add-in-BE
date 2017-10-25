@@ -270,7 +270,59 @@ namespace VIENNAAddIn.upcc3
 		
 		    return relativePath.Replace(System.IO.Path.DirectorySeparatorChar,System.IO.Path.AltDirectorySeparatorChar);
 		}
-		
+		public static void addFacets(XmlSchemaSimpleTypeRestriction restriction, IEnumerable<ICctsFacet> facets)
+		{
+			foreach (var facet in facets) 
+			{
+				var xmlFacet = createXmlFacet(facet);
+				if (xmlFacet != null)
+				{
+					xmlFacet.Value = facet.content;
+					restriction.Facets.Add(xmlFacet);
+				}
+			}
+		}
+		public static XmlSchemaFacet createXmlFacet(ICctsFacet facet)
+		{
+			XmlSchemaFacet xmlFacet = null;
+			switch (facet.name) 
+			{
+				case "fractionDigit":
+					xmlFacet = new XmlSchemaFractionDigitsFacet();
+					break;
+				case "length": 
+					xmlFacet = new XmlSchemaLengthFacet();
+					break;
+				case "maxExclusive":
+					xmlFacet = new XmlSchemaMaxExclusiveFacet();
+					break;
+				case "maxInclusive":
+					xmlFacet = new XmlSchemaMaxInclusiveFacet();
+					break;
+				case "maxLength":
+					xmlFacet = new XmlSchemaMaxLengthFacet();
+					break;
+				case "minExclusive":
+					xmlFacet = new XmlSchemaMinExclusiveFacet();
+					break;
+				case "minInclusive":
+					xmlFacet = new XmlSchemaMinInclusiveFacet();
+					break;
+				case "minLength":
+					xmlFacet = new XmlSchemaMinLengthFacet();
+					break;
+				case "pattern":
+					xmlFacet = new XmlSchemaPatternFacet();
+					break;
+				case "totalDigits":
+					xmlFacet = new XmlSchemaTotalDigitsFacet();
+					break;
+				case "whiteSpace":
+					xmlFacet = new XmlSchemaWhiteSpaceFacet();
+					break;
+			}
+			return xmlFacet;
+		}
 		private static string AppendDirectorySeparatorChar(string path)
 		{
 		    // Append a slash only if the path is a directory and does not have a slash.

@@ -52,18 +52,31 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             var enumImports = new List<SchemaInfo>();
 			string schemaFileName = getSchemaFileName(context);
 			//loop the bdt's
-			foreach (IBdt bdt in context.Elements.OfType<IBdt>())
+			foreach (IBdt bdt in context.Elements
+			         			.OfType<IBdt>().Where(x => !x.isDirectXSDType))
             {
                 var sups = new List<IBdtSup>(bdt.Sups);
-                if (sups.Count == 0)
+                if (! sups.Any())
                 {
-                    var simpleType = new XmlSchemaSimpleType {Name = NDR.GetXsdTypeNameFromBdt(bdt)};
-
-                    var simpleTypeRestriction = new XmlSchemaSimpleTypeRestriction
-                                                {
-                                                    BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt),context)
-                                                };
-                    simpleType.Content = simpleTypeRestriction;
+	                var simpleType = new XmlSchemaSimpleType {Name = NDR.GetXsdTypeNameFromBdt(bdt)};
+	                var simpleTypeRestriction = new XmlSchemaSimpleTypeRestriction();
+	                simpleTypeRestriction.BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt),context);
+	                simpleType.Content = simpleTypeRestriction;
+            		var basicTypePrim = bdt.Con.BasicType.Prim;
+            		if (basicTypePrim != null)
+            		{
+            			var XSDtype = basicTypePrim.xsdType;
+            			if (!string.IsNullOrEmpty(XSDtype))
+            			{
+            				simpleTypeRestriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_XSD + ":" + XSDtype);
+            				//TODO: discuss the strategy for pattern in teh BDT schema
+//	            				if (bdt.Con.AllFacets.Any())
+//	            				{
+//					            	NDR.addFacets( simpleTypeRestriction,bdt.Con.AllFacets);
+//	            				}
+            			}
+            		}
+	                
                     if (context.Annotate)
                     {
                         simpleType.Annotation = GetTypeAnnotation(bdt);
@@ -251,7 +264,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
     	    {
         		return new XmlQualifiedName(basicTypeName, context.BaseURN );
     	    }
-            return new XmlQualifiedName(GetXSDType(basicTypeName) );
+            return new XmlQualifiedName(GetXSDType(basicTypeName), NS_XSD );
         }
 
         private static string GetXSDType(string primitiveTypeName)
