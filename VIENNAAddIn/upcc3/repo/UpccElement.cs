@@ -36,8 +36,8 @@ namespace VIENNAAddIn.upcc3.repo
         		if (_SourceElement == null)
         		{
         			var sourceClassifier = this.UmlClassifier.Traces
-        					.Select(y => y.Target)
-        					.FirstOrDefault(x => x.Name == this.Name);
+				        				.Select(y => y.Target)
+				        				.FirstOrDefault();
         			if (sourceClassifier != null)
         				_SourceElement = this.createSimilarElement(sourceClassifier);
         		}

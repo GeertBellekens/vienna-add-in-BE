@@ -81,11 +81,11 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                     	//set optional or required
                     	attribute.Use = sup.IsOptional() ? XmlSchemaUse.Optional : XmlSchemaUse.Required;				                                             
 						//set the type of the attribute                                   
-                        if (bdt.Con.BasicType != null 
-		            	   && bdt.Con.BasicType.IsEnum)
+                        if (sup.BasicType != null 
+		            	   && sup.BasicType.IsEnum)
 		            	{
 		            		//figure out if the set of values is restricted
-		            		var basicEnum = bdt.Con.BasicType.Enum as UpccEnum;
+		            		var basicEnum = sup.BasicType.Enum as UpccEnum;
 		            		if (basicEnum != null)
 		            		{
 		            			var sourceEnum = basicEnum.SourceElement as UpccEnum;
