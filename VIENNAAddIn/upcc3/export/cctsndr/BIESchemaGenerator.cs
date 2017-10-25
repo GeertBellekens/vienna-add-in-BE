@@ -109,7 +109,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 //                schema.Items.Add(elementBIE);
             }
 
-            context.AddSchema(schema, schemaFileName, Schematype.BIE);
+            context.AddSchema(schema, schemaFileName, UpccSchematype.BIE);
         }
         private static string getSchemaFileName(GeneratorContext context)
         {
@@ -128,7 +128,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         }
 		private static void AddIncludes(XmlSchema schema, GeneratorContext context, string schemaFileName)
         {
-			foreach (var incSchemaInfo in context.Schemas.Where(x => x.Schematype == Schematype.BDT))
+			foreach (var incSchemaInfo in context.Schemas.Where(x => x.Schematype == UpccSchematype.BDT))
             {
                 var include = new XmlSchemaInclude();
                 include.SchemaLocation = NDR.GetRelativePath(schemaFileName, incSchemaInfo.FileName);

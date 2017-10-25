@@ -5,6 +5,7 @@ using System.Xml;
 using System.Xml.Schema;
 using CctsRepository;
 using CctsRepository.BdtLibrary;
+using CctsRepository.EnumLibrary;
 using VIENNAAddIn.upcc3.repo;
 using VIENNAAddIn.upcc3.repo.EnumLibrary;
 using VIENNAAddInUtils;
@@ -29,9 +30,9 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
     	{
     		genericContext.AddElements(bdts);
         	context.AddElements(bdts);
-        	GenerateXSD(context);
+        	GenerateXSD(context, genericContext);
     	}
-        public static void GenerateXSD(GeneratorContext context)
+        public static void GenerateXSD(GeneratorContext context,GeneratorContext genericContext)
         {
             var schema = new XmlSchema {TargetNamespace = context.TargetNamespace};
             //add namespaces
@@ -44,15 +45,20 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             schema.Namespaces.Add(NSPREFIX_NS1, context.BaseURN);
             //add namespace xbt
             schema.Namespaces.Add(NSPREFIX_XBT, NS_XBT);
-            
+			//add version
             schema.Version = context.VersionID.DefaultTo("1");
+            
+            //define list of enumeration xsd's to import
+            var enumImports = new List<SchemaInfo>();
 			string schemaFileName = getSchemaFileName(context);
+			//loop the bdt's
 			foreach (IBdt bdt in context.Elements.OfType<IBdt>())
             {
                 var sups = new List<IBdtSup>(bdt.Sups);
                 if (sups.Count == 0)
                 {
                     var simpleType = new XmlSchemaSimpleType {Name = NDR.GetXsdTypeNameFromBdt(bdt)};
+
                     var simpleTypeRestriction = new XmlSchemaSimpleTypeRestriction
                                                 {
                                                     BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt),context)
@@ -69,6 +75,13 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                 	//create the complex type
                 	var complexType = new XmlSchemaComplexType();
                 	complexType.Name = NDR.GetXsdTypeNameFromBdt(bdt);
+                    //Generate the base enum schema and add it to the imports
+                    if (bdt.Con != null
+                        && bdt.Con.BasicType != null
+                        && bdt.Con.BasicType.Enum != null)
+                    {
+                    	enumImports.Add(ENUMSchemaGenerator.GenerateXSD(genericContext,bdt.Con.BasicType.Enum));
+                    }
                 	//add the simple content extension
                     var simpleContent = new XmlSchemaSimpleContent();
                     var simpleContentExtension = new XmlSchemaSimpleContentExtension();
@@ -89,18 +102,23 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 		            		if (basicEnum != null)
 		            		{
 		            			var sourceEnum = basicEnum.SourceElement as UpccEnum;
-		            			if (sourceEnum != null
-		            			    && sourceEnum.CodelistEntries.Count() != basicEnum.CodelistEntries.Count())
-			            		{
-			            			var restrictedtype = new XmlSchemaSimpleType();
-					            	var restriction = new XmlSchemaSimpleTypeRestriction();
-					            	restriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_NS1 + ":" + NDR.GetBasicTypeName(sourceEnum));
-					            	addEnumerationValues(restriction, basicEnum);
-					            	//add the restriction to the simple type
-					            	restrictedtype.Content = restriction;
-					            	//set the type of the attribute
-					            	attribute.SchemaType = restrictedtype;
-			            		}
+		            			if (sourceEnum != null)
+		            			{
+		            				//add the source enum to the imports as well
+		            				enumImports.Add(ENUMSchemaGenerator.GenerateXSD(genericContext,sourceEnum));
+		            				//add the restriction         
+		            			    if( sourceEnum.CodelistEntries.Count() != basicEnum.CodelistEntries.Count())
+				            		{
+				            			var restrictedtype = new XmlSchemaSimpleType();
+						            	var restriction = new XmlSchemaSimpleTypeRestriction();
+						            	restriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_NS1 + ":" + NDR.GetBasicTypeName(sourceEnum));
+						            	addEnumerationValues(restriction, basicEnum);
+						            	//add the restriction to the simple type
+						            	restrictedtype.Content = restriction;
+						            	//set the type of the attribute
+						            	attribute.SchemaType = restrictedtype;
+				            		}
+		            			}
 
 		            		}
 		            	}
@@ -128,7 +146,17 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                     schema.Items.Add(complexType);
                 }
             }
-            context.AddSchema(schema, schemaFileName,Schematype.BDT);
+			//add the imports
+			foreach (var enumImport in enumImports) 
+			{
+				var schemaImport = new XmlSchemaImport();
+				schemaImport.Namespace = context.BaseURN;
+				schemaImport.SchemaLocation = NDR.GetRelativePath(schemaFileName, enumImport.FileName);
+				schema.Includes.Add(schemaImport);
+			}
+			
+			//add the schema to the context
+            context.AddSchema(schema, schemaFileName,UpccSchematype.BDT);
         }
        	static void addEnumerationValues(XmlSchemaSimpleTypeRestriction restriction, UpccEnum basicEnum )
 		{

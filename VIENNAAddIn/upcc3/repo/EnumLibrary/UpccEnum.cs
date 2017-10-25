@@ -131,7 +131,12 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
         ///</summary>
         public string CodeListAgencyIdentifier
         {
-            get { return UmlEnumeration.GetTaggedValue("codeListAgencyIdentifier").Value; }
+            get 
+            {
+            	var tvId = UmlClassifier.GetTaggedValue("codeListAgencyID");
+            	if (string.IsNullOrEmpty(tvId.Value)) tvId = UmlClassifier.GetTaggedValue("codeListAgencyIdentifier"); 
+            	return tvId.Value;
+            }
         }
 
         ///<summary>
@@ -147,7 +152,12 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
         ///</summary>
         public string CodeListIdentifier
         {
-            get { return UmlEnumeration.GetTaggedValue("codeListIdentifier").Value; }
+            get 
+            {
+            	var tvId = UmlClassifier.GetTaggedValue("codeListID");
+            	if (string.IsNullOrEmpty(tvId.Value)) tvId = UmlClassifier.GetTaggedValue("codeListIdentifier"); 
+            	return tvId.Value;
+            }
         }
 
         ///<summary>

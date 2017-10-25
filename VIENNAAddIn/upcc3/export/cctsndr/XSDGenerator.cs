@@ -50,7 +50,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 
 		public static void GenerateGenericSchemas(GeneratorContext genericContext)
 		{
-			BDTSchemaGenerator.GenerateXSD(genericContext);
+			BDTSchemaGenerator.GenerateXSD(genericContext, genericContext);
             BIESchemaGenerator.GenerateXSD(genericContext);
             
             WriteSchemas(genericContext);

@@ -71,7 +71,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             AddGlobalTypeDefinitions(schema, nonRootDocLibraryElements, context);
             AddGlobalElementDeclarations(schema, nonRootDocLibraryElements, context);
             
-            context.AddSchema(schema, schemaFileName, Schematype.ROOT );
+            context.AddSchema(schema, schemaFileName, UpccSchematype.ROOT );
         }
         private static string getSchemaFileName(GeneratorContext context, bool generic = false)
         {
@@ -234,8 +234,8 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 
         private static void AddIncludes(XmlSchema schema, GeneratorContext context, IDocLibrary docLibrary, string schemaFileName,bool generic)
         {
-        	foreach (SchemaInfo si in context.Schemas.Where(x => x.Schematype == Schematype.BIE
-        	                                               || x.Schematype  == Schematype.BDT))
+        	foreach (SchemaInfo si in context.Schemas.Where(x => x.Schematype == UpccSchematype.BIE
+        	                                               || x.Schematype  == UpccSchematype.BDT))
             {
                 var include = new XmlSchemaInclude();
                 include.SchemaLocation = generic ? 

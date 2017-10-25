@@ -716,7 +716,7 @@
     <Compile Include="upcc3\export\cctsndr\BIESchemaGenerator.cs" />
     <Compile Include="upcc3\export\cctsndr\RootSchemaGenerator.cs" />
     <Compile Include="upcc3\export\cctsndr\StringExtensions.cs" />
-    <Compile Include="upcc3\export\cctsndr\ENUMLibraryGenerator.cs" />
+    <Compile Include="upcc3\export\cctsndr\ENUMSchemaGenerator.cs" />
     <Compile Include="upcc3\export\cctsndr\XSDGenerator.cs" />
     <Compile Include="Utils\EAElementWrapper.cs" />
     <Compile Include="Utils\FormStyles.cs" />

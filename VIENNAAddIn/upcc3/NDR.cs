@@ -257,7 +257,7 @@ namespace VIENNAAddIn.upcc3
 		
 		    if (fromUri.Scheme != toUri.Scheme)
 		    {
-		        return toPath;
+		        return toPath.Replace(System.IO.Path.DirectorySeparatorChar,System.IO.Path.AltDirectorySeparatorChar);
 		    }
 		
 		    Uri relativeUri = fromUri.MakeRelativeUri(toUri);
@@ -268,7 +268,7 @@ namespace VIENNAAddIn.upcc3
 		        relativePath = relativePath.Replace(System.IO.Path.AltDirectorySeparatorChar,System.IO.Path.DirectorySeparatorChar);
 		    }
 		
-		    return relativePath;
+		    return relativePath.Replace(System.IO.Path.DirectorySeparatorChar,System.IO.Path.AltDirectorySeparatorChar);
 		}
 		
 		private static string AppendDirectorySeparatorChar(string path)

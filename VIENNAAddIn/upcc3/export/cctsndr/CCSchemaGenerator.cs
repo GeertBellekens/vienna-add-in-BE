@@ -85,7 +85,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                 schema.Items.Add(elementACC);
             }
 
-            context.AddSchema(schema, "CoreComponent_" + schema.Version + ".xsd", Schematype.ACC);
+            context.AddSchema(schema, "CoreComponent_" + schema.Version + ".xsd", UpccSchematype.ACC);
         }
 
         internal static XmlSchemaComplexType GenerateComplexTypeACC(GeneratorContext context, XmlSchema schema, IAcc acc)
