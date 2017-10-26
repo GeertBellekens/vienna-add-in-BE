@@ -33,6 +33,14 @@ namespace VIENNAAddIn.upcc3.repo
 			get {return this.AssociatingElement;}
 		}
 
+		public IEnumerable<ICctsProperty> otherPropertiesInChoice 
+		{
+			get 
+			{
+				//TODO: check if also needed for associations
+				throw new NotImplementedException();
+			}
+		}
 		public int Id
         {
             get { return UmlAssociation.Id; }

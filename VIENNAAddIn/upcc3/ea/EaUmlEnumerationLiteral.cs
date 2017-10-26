@@ -68,12 +68,9 @@ namespace VIENNAAddIn.upcc3.ea
 			}
 		}
 
-		public IEnumerable<IUmlAttribute> ReferencedAttributes 
+       	public IEnumerable<IUmlAttribute> ReferencedAttributes (string tagname)
 		{
-			get 
-			{
-				return new List<EaUmlAttribute>();
-			}
+			return new List<EaUmlAttribute>();
 		}
 
         public IEnumerable<IUmlTaggedValue> GetTaggedValues()

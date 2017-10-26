@@ -45,6 +45,7 @@ namespace VIENNAAddIn.upcc3.repo
 
         public abstract ICctsElement Owner {get;}
 
+
 		public BasicType BasicType
 		{
 			get
@@ -71,7 +72,7 @@ namespace VIENNAAddIn.upcc3.repo
         	{
         		if (_sourceAttribute == null)
         		{
-        			var sourceUmlAttribute = this.UmlAttribute.ReferencedAttributes.FirstOrDefault(x => x.Name == this.Name);
+        			var sourceUmlAttribute = this.UmlAttribute.ReferencedAttributes("sourceAttribute").FirstOrDefault();
         			if (sourceUmlAttribute != null)
         			{
         				_sourceAttribute = ((UpccElement)this.Owner).CreateAttribute(sourceUmlAttribute) as UpccAttribute;
@@ -80,6 +81,26 @@ namespace VIENNAAddIn.upcc3.repo
         		return _sourceAttribute;
         	}
         }
+        List<ICctsProperty> _otherPropertiesInChoice;
+        public IEnumerable<ICctsProperty> otherPropertiesInChoice 
+		{
+			get 
+			{
+				if (_otherPropertiesInChoice == null)
+				{
+					_otherPropertiesInChoice = new List<ICctsProperty>();
+					foreach (var otherUmlAttribute in this.UmlAttribute.ReferencedAttributes("Choice"))
+					{
+						var otherAttribute = this.Owner.Attributes.FirstOrDefault(x => x.Id == otherUmlAttribute.Id);
+						if (otherAttribute != null)
+						{
+							_otherPropertiesInChoice.Add(otherAttribute);
+						}
+					}
+				}
+				return _otherPropertiesInChoice;
+			}
+		}
         List<ICctsFacet> _allFacets;
         List<ICctsFacet> _facets;
 		public IEnumerable<ICctsFacet> Facets 

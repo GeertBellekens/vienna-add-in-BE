@@ -18,6 +18,7 @@ namespace CctsRepository
         string LowerBound { get; }
 		
         ICctsElement Owner {get;}
+        IEnumerable<ICctsProperty> otherPropertiesInChoice {get;}
         
         bool IsOptional();
         

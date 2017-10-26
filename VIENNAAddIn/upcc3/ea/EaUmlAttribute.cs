@@ -63,31 +63,30 @@ namespace VIENNAAddIn.upcc3.ea
         	}
         }
 
-		public IEnumerable<IUmlAttribute> ReferencedAttributes 
+        public IEnumerable<IUmlAttribute> ReferencedAttributes(string tagName)
 		{
-			get 
+			List<EaUmlAttribute> foundAttributes = new List<EaUmlAttribute>();
+			foreach (var tagGUID in GetTaggedValue(tagName).Value
+			         .Split(new [] {","},StringSplitOptions.RemoveEmptyEntries))
 			{
-				List<EaUmlAttribute> foundAttributes = new List<EaUmlAttribute>();
-				foreach (var taggedValue in GetTaggedValues()) 
+				Guid attributeGUID;
+				if( Guid.TryParse(tagGUID, out attributeGUID))
 				{
-					Guid attributeGUID;
-					if( Guid.TryParse(taggedValue.Value, out attributeGUID))
+					try
 					{
-						try
-						{
-							var refAttribute = eaRepository.GetAttributeByGuid(taggedValue.Value);
-							if (refAttribute != null)
-								foundAttributes.Add(new EaUmlAttribute(eaRepository, refAttribute));
-						}
-						catch(Exception)
-						{
-							//do nothing if attribute found found.
-						}
+						var refAttribute = eaRepository.GetAttributeByGuid(tagGUID);
+						if (refAttribute != null)
+							foundAttributes.Add(new EaUmlAttribute(eaRepository, refAttribute));
+					}
+					catch(Exception)
+					{
+						//do nothing if attribute found found.
 					}
 				}
-				return foundAttributes;
 			}
+			return foundAttributes;
 		}
+        
         public IEnumerable<IUmlTaggedValue> GetTaggedValues()
         {
             foreach (AttributeTag eaAttributeTag in eaAttribute.TaggedValues)

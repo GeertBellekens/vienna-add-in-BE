@@ -62,10 +62,11 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 	                var simpleTypeRestriction = new XmlSchemaSimpleTypeRestriction();
 	                simpleTypeRestriction.BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt),context);
 	                simpleType.Content = simpleTypeRestriction;
-            		var basicTypePrim = bdt.Con.BasicType.Prim;
-            		if (basicTypePrim != null)
+            		if (bdt.Con != null 
+            			&& bdt.Con.BasicType != null
+            			&& bdt.Con.BasicType.Prim != null)
             		{
-            			var XSDtype = basicTypePrim.xsdType;
+            			var XSDtype = bdt.Con.BasicType.Prim.xsdType;
             			if (!string.IsNullOrEmpty(XSDtype))
             			{
             				simpleTypeRestriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_XSD + ":" + XSDtype);
@@ -131,6 +132,10 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 						            	//set the type of the attribute
 						            	attribute.SchemaType = restrictedtype;
 				            		}
+		            			    else
+		            			    {
+		            			    	attribute.SchemaTypeName = new XmlQualifiedName(NSPREFIX_NS1 + ":" + NDR.GetBasicTypeName(sourceEnum));
+		            			    }
 		            			}
 
 		            		}

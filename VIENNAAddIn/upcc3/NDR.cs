@@ -67,15 +67,15 @@ namespace VIENNAAddIn.upcc3
                 propertyTerm = parts[1];
                 representationTerm = parts[2];
             }
-            if ((propertyTerm.EndsWith(Identification)) && (representationTerm.Equals(Identifier)))
-            {
-                return propertyTerm.Remove(propertyTerm.Length - Identification.Length) + Identifier;
-            }
-
-            if ((propertyTerm.EndsWith(Indication)) && (representationTerm.Equals(Indicator)))
-            {
-                return propertyTerm.Remove(propertyTerm.Length - Indication.Length) + Indicator;
-            }
+//            if ((propertyTerm.EndsWith(Identification)) && (representationTerm.Equals(Identifier)))
+//            {
+//                return propertyTerm.Remove(propertyTerm.Length - Identification.Length) + Identifier;
+//            }
+//
+//            if ((propertyTerm.EndsWith(Indication)) && (representationTerm.Equals(Indicator)))
+//            {
+//                return propertyTerm.Remove(propertyTerm.Length - Indication.Length) + Indicator;
+//            }
 
             if (representationTerm.Equals(Text))
             {
