@@ -207,19 +207,19 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             var xml = new XmlDocument();
             // Deviation from rule [R 9C95]: Generating only a subset of the defined annotations and added some additional annotations.
             var annNodes = new List<XmlNode>();
-            AddAnnotation(xml, annNodes, "PropertyTermName", sup.Name);
-            AddAnnotation(xml, annNodes, "RepresentationTermName", sup.BasicType.Name);
-            AddAnnotation(xml, annNodes, "PrimitiveTypeName", sup.BasicType.Name);
-            AddAnnotation(xml, annNodes, "DataTypeName", sup.Bdt.Name);
-            AddAnnotation(xml, annNodes, "UniqueID", sup.UniqueIdentifier);
-            AddAnnotation(xml, annNodes, "VersionID", sup.VersionIdentifier);
-            AddAnnotation(xml, annNodes, "DictionaryEntryName", sup.DictionaryEntryName);
-            AddAnnotation(xml, annNodes, "Definition", sup.Definition);
-            AddAnnotations(xml, annNodes, "BusinessTermName", sup.BusinessTerms);
-            AddAnnotation(xml, annNodes, "ModificationAllowedIndicator",
+            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "PropertyTermName", sup.Name);
+            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "RepresentationTermName", sup.BasicType.Name);
+            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "PrimitiveTypeName", sup.BasicType.Name);
+            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "DataTypeName", sup.Bdt.Name);
+            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "UniqueID", sup.UniqueIdentifier);
+            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "VersionID", sup.VersionIdentifier);
+            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "DictionaryEntryName", sup.DictionaryEntryName);
+            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "Definition", sup.Definition);
+            SchemaGeneratorUtils.AddAnnotations(xml, annNodes, "BusinessTermName", sup.BusinessTerms);
+            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "ModificationAllowedIndicator",
                           sup.ModificationAllowedIndicator.ToString().ToLower());
-            AddAnnotation(xml, annNodes, "LanguageCode", sup.LanguageCode);
-            AddAnnotation(xml, annNodes, "AcronymCode", "SUP");
+            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "LanguageCode", sup.LanguageCode);
+            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "AcronymCode", "SUP");
             var ann = new XmlSchemaAnnotation();
             ann.Items.Add(new XmlSchemaDocumentation {Language = "en", Markup = annNodes.ToArray()});
             return ann;
@@ -230,38 +230,19 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             var xml = new XmlDocument();
             // Deviation from rule [R BFE5]: Generating only a subset of the defined annotations and added some additional annotations.
             var annNodes = new List<XmlNode>();
-            AddAnnotation(xml, annNodes, "UniqueID", bdt.UniqueIdentifier);
-            AddAnnotation(xml, annNodes, "VersionID", bdt.VersionIdentifier);
-            AddAnnotation(xml, annNodes, "DictionaryEntryName", bdt.DictionaryEntryName);
-            AddAnnotation(xml, annNodes, "Definition", bdt.Definition);
-            AddAnnotations(xml, annNodes, "BusinessTermName", bdt.BusinessTerms);
-            AddAnnotation(xml, annNodes, "PropertyTermName", bdt.Name);
-            AddAnnotation(xml, annNodes, "LanguageCode", bdt.LanguageCode);
-            AddAnnotation(xml, annNodes, "AcronymCode", "BDT");
+            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "UniqueID", bdt.UniqueIdentifier);
+            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "VersionID", bdt.VersionIdentifier);
+            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "DictionaryEntryName", bdt.DictionaryEntryName);
+            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "Definition", bdt.Definition);
+            SchemaGeneratorUtils.AddAnnotations(xml, annNodes, "BusinessTermName", bdt.BusinessTerms);
+            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "PropertyTermName", bdt.Name);
+            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "LanguageCode", bdt.LanguageCode);
+            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "AcronymCode", "BDT");
             var ann = new XmlSchemaAnnotation();
             ann.Items.Add(new XmlSchemaDocumentation {Language = "en", Markup = annNodes.ToArray()});
             return ann;
         }
 
-        private static void AddAnnotations(XmlDocument xml, List<XmlNode> annNodes, string name,
-                                           IEnumerable<string> values)
-        {
-            foreach (string item in values)
-            {
-                AddAnnotation(xml, annNodes, name, item);
-            }
-        }
-
-        private static void AddAnnotation(XmlDocument xml, List<XmlNode> annNodes, string name, string value)
-        {
-            if (!string.IsNullOrEmpty(value))
-            {
-                XmlElement annotation = xml.CreateElement("ccts", name,
-                                                          "urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3");
-                annotation.InnerText = value;
-                annNodes.Add(annotation);
-            }
-        }
 
         private static XmlQualifiedName GetXmlQualifiedName(string basicTypeName, GeneratorContext context)
         {

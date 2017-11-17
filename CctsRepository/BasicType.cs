@@ -32,16 +32,16 @@ namespace CctsRepository
         {
             this.actualType = actualType;
         }
-        public bool IsAssembled
+        public EnumerationType EnumerationType
         {
         	get
         	{
         		//only valid for enums
         		if (IsEnum)
         		{
-        			return Enum.IsAssembled;
+        			return Enum.EnumerationType;
         		}
-        		return false;
+        		else return EnumerationType.Regular;
         	}
         }
 

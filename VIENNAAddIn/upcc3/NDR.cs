@@ -135,10 +135,26 @@ namespace VIENNAAddIn.upcc3
         	if (element == null) return "Error_No_BasicType";
         	var enumType = element as UpccEnum;
         	//assembled types have a different naming convention
-        	if (enumType != null 
-        		&& enumType.IsAssembled)
-        		return "Assembled" + element.Name + "ContentType";
+        	if (enumType != null)
+        		return GetEnumName(enumType) + "ContentType";
         	return element.Name + element.UniqueIdentifier;
+        }
+        public static string GetEnumName(IEnum enumeration)
+        {
+        	string prefix = string.Empty;
+        	switch (enumeration.EnumerationType) 
+        	{
+        		case EnumerationType.Assembled:
+        			prefix = "Assembled";
+        			break;
+        		case EnumerationType.Original:
+        			prefix = "Original";
+        			break;
+        		case EnumerationType.Subset:
+        			prefix = "Subset";
+        			break;
+        	}
+        	return prefix + enumeration.Name;
         }
         public static string GetXsdAttributeNameFromSup(IBdtSup sup)
         {

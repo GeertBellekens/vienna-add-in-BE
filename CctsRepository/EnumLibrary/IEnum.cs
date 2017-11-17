@@ -31,7 +31,7 @@ namespace CctsRepository.EnumLibrary
 
 		IEnumerable<ICodelistEntry> CodelistEntries { get; }
 		
-		bool IsAssembled{get;}
+		EnumerationType EnumerationType{get;}
 		IEnumerable<IEnum> BaseEnums {get;}
 
 		/// <summary>
@@ -104,5 +104,13 @@ namespace CctsRepository.EnumLibrary
 
 		#endregion
     }
+	public enum EnumerationType
+	{
+		Assembled,
+		Original,
+		Qualifier,
+		Subset,
+		Regular
+	}
 }
 

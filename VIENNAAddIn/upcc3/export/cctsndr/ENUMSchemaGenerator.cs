@@ -48,9 +48,82 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             string schemaFileName = getSchemaFileName(context,enumeration);
             //add includes for enumeration on which this enumeration depends.
             addDependentEnumSchemas(schema, schemaFileName, context, enumeration);
+            //create root element
+            AddRootElementDeclaration(schema,context, enumeration);
+            //add the simpletype definition
+            AddSimpleTypeDefinition(schema,context, enumeration);
             //return the schema info
             return context.AddSchema(schema, schemaFileName,UpccSchematype.ENUM);
         }
+        //add the root element for the enumeration
+        private static void AddRootElementDeclaration(XmlSchema schema, GeneratorContext context, IEnum enumeration)
+        {
+        	var root = new XmlSchemaElement();
+        	root.Name = NDR.GetEnumName(enumeration);
+            root.SchemaTypeName =  new XmlQualifiedName(NDR.getEnumPrefixname(enumeration) + ":" + NDR.GetBasicTypeName(enumeration));
+            schema.Items.Add(root);
+        }
+        private static void AddSimpleTypeDefinition(XmlSchema schema, GeneratorContext context, IEnum enumeration)
+        {
+            var restrictedtype = new XmlSchemaSimpleType();
+            restrictedtype.Name = NDR.GetEnumName(enumeration);
+            // enumeration with only union
+            switch (enumeration.EnumerationType) 
+            {
+            	case EnumerationType.Assembled:
+            		//enum with union
+            		AddUnion(restrictedtype, enumeration);
+            		break;
+            	default:
+            		// enumeration with actual values
+		        	addEnumRestriction(restrictedtype, enumeration);
+		        	break;
+            }
+            //add the restrictedType to the schema
+            schema.Items.Add(restrictedtype);
+        }
+        
+        static void addEnumRestriction(XmlSchemaSimpleType restrictedtype, IEnum basicEnum )
+		{
+        	var restriction = new XmlSchemaSimpleTypeRestriction();
+		    restriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_XSD + ":token");
+			foreach (var codeListEntry in basicEnum.CodelistEntries) 
+			{
+				var xmlEnum = new XmlSchemaEnumerationFacet();
+				xmlEnum.Value = codeListEntry.Name;
+				//add annoation
+				xmlEnum.Annotation = GetCodeListentryAnnotation(codeListEntry);
+				restriction.Facets.Add(xmlEnum);
+			}
+			//add the restriction to the simple type
+		    restrictedtype.Content = restriction;
+		}
+        private static XmlSchemaAnnotation GetCodeListentryAnnotation(ICodelistEntry codeListEntry)
+        {
+            var xml = new XmlDocument();
+            // Deviation from rule [R 9C95]: Generating only a subset of the defined annotations and added some additional annotations.
+            var annNodes = new List<XmlNode>();
+            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "Name", codeListEntry.Name);
+            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "Description", codeListEntry.CodeName);
+            var ann = new XmlSchemaAnnotation();
+            ann.Items.Add(new XmlSchemaDocumentation {Language = "en", Markup = annNodes.ToArray()});
+            return ann;
+        }
+
+		static void AddUnion(XmlSchemaSimpleType restrictedtype, IEnum enumeration)
+		{
+			//add union
+			var unionElement = new XmlSchemaSimpleTypeUnion();
+			List<XmlQualifiedName> memberTypes = new List<XmlQualifiedName>();
+			foreach (var baseEnum in enumeration.BaseEnums) 
+			{
+				memberTypes.Add(new XmlQualifiedName(NDR.getEnumPrefixname(baseEnum) +":" + NDR.GetEnumName(baseEnum)));
+			}
+			unionElement.MemberTypes = memberTypes.ToArray();
+			restrictedtype.Content = unionElement;
+		}
+
+        //add simpletype for the enuemration
         private static void addDependentEnumSchemas(XmlSchema schema, string schemaFileName, GeneratorContext context, IEnum enumeration)
         {
         	//check all the parent enums

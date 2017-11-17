@@ -37,11 +37,24 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
     		}
         }
 
-		public bool IsAssembled 
+		private EnumerationType? _enumerationType;
+		public EnumerationType EnumerationType 
 		{
 			get 
 			{
-				return this.UmlEnumeration.Stereotypes.Contains("Assembled");
+				if (! _enumerationType.HasValue)
+				{
+					if (this.UmlEnumeration.Stereotypes.Contains("Assembled"))
+						_enumerationType = EnumerationType.Assembled;
+					else if (this.UmlEnumeration.Stereotypes.Contains("Original"))
+						_enumerationType = EnumerationType.Original;
+					else if (this.UmlEnumeration.Stereotypes.Contains("Qualifier"))
+						_enumerationType = EnumerationType.Qualifier;
+					else if (this.UmlEnumeration.Stereotypes.Contains("Subset"))
+						_enumerationType = EnumerationType.Subset;
+					else  _enumerationType = EnumerationType.Regular;
+				}
+				return _enumerationType.Value;
 			}
 		}
 		List<IEnum> _baseEnums;
