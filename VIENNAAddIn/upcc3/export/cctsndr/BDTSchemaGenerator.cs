@@ -168,7 +168,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 			foreach (var enumImport in enumImports) 
 			{
 				var schemaImport = new XmlSchemaImport();
-				schemaImport.Namespace = context.BaseURN;
+				schemaImport.Namespace = enumImport.Schema.TargetNamespace;
 				schemaImport.SchemaLocation = NDR.GetRelativePath(schemaFileName, enumImport.FileName);
 				schema.Includes.Add(schemaImport);
 			}

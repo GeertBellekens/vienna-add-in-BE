@@ -7,6 +7,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using CctsRepository;
 using CctsRepository.DocLibrary;
+using Microsoft.Win32;
 using VIENNAAddIn.menu;
 using VIENNAAddIn.upcc3.export.cctsndr;
 using VIENNAAddIn.upcc3.export.mapping;
@@ -50,7 +51,7 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
             InitializeComponent();
 
             //documentModels.Add("CCTS", panelSettingsCCTS);
-            //set the pakage name
+            //set the package name
             this.selectedPackageTextBox.Text = selectedPackage.Name;
 
             MirrorDOCsToUI();

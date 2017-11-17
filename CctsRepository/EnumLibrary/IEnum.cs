@@ -32,6 +32,7 @@ namespace CctsRepository.EnumLibrary
 		IEnumerable<ICodelistEntry> CodelistEntries { get; }
 		
 		bool IsAssembled{get;}
+		IEnumerable<IEnum> BaseEnums {get;}
 
 		/// <summary>
 		/// Creates a(n) CodelistEntry based on the given <paramref name="specification"/>.

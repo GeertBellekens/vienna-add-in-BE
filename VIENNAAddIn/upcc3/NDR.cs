@@ -9,6 +9,7 @@ using CctsRepository.BieLibrary;
 using CctsRepository.CcLibrary;
 using CctsRepository.CdtLibrary;
 using CctsRepository.DocLibrary;
+using CctsRepository.EnumLibrary;
 using VIENNAAddIn.upcc3.export.cctsndr;
 using VIENNAAddIn.upcc3.import.util;
 using VIENNAAddIn.upcc3.repo;
@@ -84,7 +85,12 @@ namespace VIENNAAddIn.upcc3
 
             return NDR.TrimElementName(propertyTerm);// + representationTerm;
         }
-
+        public static string getEnumPrefixname(IEnum enumeration)
+        {
+        	return "bcl" + enumeration.CodeListAgencyIdentifier 
+        			+ "_" + enumeration.UniqueIdentifier
+        			+ "_" + enumeration.VersionIdentifier.Replace(".",string.Empty);
+        }
         public static string GenerateASCCName(IAscc ascc)
         {
         	return ascc.Name + TrimElementName(ascc.AssociatedAcc.Name);

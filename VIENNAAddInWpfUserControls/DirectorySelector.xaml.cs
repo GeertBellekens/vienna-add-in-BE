@@ -50,6 +50,11 @@ namespace VIENNAAddInWpfUserControls
                           Description = Description,
                           ShowNewFolderButton = ShowNewFolderButton
                       };
+            if (! string.IsNullOrEmpty(this.fileNameTextBox.Text)
+                && System.IO.Directory.Exists(this.fileNameTextBox.Text))
+            {
+            	dlg.SelectedPath = this.fileNameTextBox.Text;
+            }
             RaiseEvent(new RoutedEventArgs(BeforeDialogOpenedEvent));
             if (dlg.ShowDialog() == DialogResult.OK)
             {

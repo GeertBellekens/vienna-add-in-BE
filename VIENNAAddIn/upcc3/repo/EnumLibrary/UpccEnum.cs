@@ -44,6 +44,23 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
 				return this.UmlEnumeration.Stereotypes.Contains("Assembled");
 			}
 		}
+		List<IEnum> _baseEnums;
+		public IEnumerable<IEnum> BaseEnums 
+		{
+			get 
+			{
+				if (_baseEnums == null)
+				{
+					_baseEnums = new List<IEnum>();
+					foreach ( var baseEnum in this.UmlClassifier.BaseClassifiers.OfType<IUmlEnumeration>())
+					{
+						_baseEnums.Add(new UpccEnum(baseEnum));
+					}
+				}
+				return _baseEnums;
+			}
+		}
+
        	#region implemented abstract members of UpccElement
 		protected override UpccElement createSimilarElement(IUmlClassifier otherclassifier)
 		{
