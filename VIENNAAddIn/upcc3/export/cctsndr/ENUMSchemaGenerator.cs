@@ -42,6 +42,10 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             schema.Namespaces.Add(NSPREFIX_DOC, NS_DOC);
             //add namespace xbt
             schema.Namespaces.Add(NSPREFIX_XBT, NS_XBT);
+            // R A0E5: all XML schemas must contain elementFormDefault and set it to qualified     
+            schema.ElementFormDefault = XmlSchemaForm.Qualified;
+            // R A9C5: All XML schemas must contain attributeFormDefault and set it to unqualified
+            schema.AttributeFormDefault = XmlSchemaForm.Unqualified;
             //add version
             schema.Version = enumeration.VersionIdentifier.DefaultTo("1");
             //get the schemaFileName
@@ -117,7 +121,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 			List<XmlQualifiedName> memberTypes = new List<XmlQualifiedName>();
 			foreach (var baseEnum in enumeration.BaseEnums) 
 			{
-				memberTypes.Add(new XmlQualifiedName(NDR.getEnumPrefixname(baseEnum) +":" + NDR.GetEnumName(baseEnum)));
+				memberTypes.Add(new XmlQualifiedName(NDR.getEnumPrefixname(baseEnum) +":" + NDR.GetBasicTypeName(baseEnum)));
 			}
 			unionElement.MemberTypes = memberTypes.ToArray();
 			restrictedtype.Content = unionElement;
