@@ -62,14 +62,17 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         {
             BDTSchemaGenerator.GenerateXSD(context, genericContext, CollectBDTs(context));
             BIESchemaGenerator.GenerateXSD(context, genericContext, CollectABIEs(context));
-            RootSchemaGenerator.GenerateXSD(context);
+            RootSchemaGenerator.GenerateXSD(context, genericContext);
             
             WriteSchemas(context);
         }
 
 		static void WriteSchemas(GeneratorContext context)
 		{
-			foreach (SchemaInfo schemaInfo in context.Schemas) {
+			//write only enum schema's in generic
+			foreach (SchemaInfo schemaInfo in context.Schemas
+			         .Where(x => ! context.isGeneric || x.Schematype == UpccSchematype.ENUM))
+			{
 				//make sure the directory exists
 				var directoryPath = Path.GetDirectoryName(schemaInfo.FileName);
 				if (!Directory.Exists(directoryPath)) {

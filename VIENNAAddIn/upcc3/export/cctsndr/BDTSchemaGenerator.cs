@@ -196,7 +196,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         					  + (string.IsNullOrEmpty(docRootName) ? string.Empty : bSlash.ToString())
         					  + docRootName ;
         	//TODO set "Ebix" prefix via settings?
-        	string filename = context.OutputDirectory + bSlash + mainVersion + bSlash + docOrGeneric + bSlash //directories
+        	string filename = context.OutputDirectory + bSlash + docOrGeneric + bSlash //directories
         					+ "ebIX_MessageDataType_" + docRootName + (string.IsNullOrEmpty(docRootName) ? string.Empty : "_") 
         					+ mainVersion + "p" + minorVersion + ".xsd"; //filename
         	return  filename;

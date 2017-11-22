@@ -27,12 +27,12 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         ///<summary>
         ///</summary>
         ///<param name="context"></param>
-        public static void GenerateXSD(GeneratorContext context)
+        public static void GenerateXSD(GeneratorContext context, GeneratorContext genericContext)
         {
-        	GenerateXSD(context, false);
-        	GenerateXSD(context, true);
+        	GenerateXSD(context, genericContext, false);
+        	//GenerateXSD(context, genericContext, true);
         }
-        public static void GenerateXSD(GeneratorContext context, bool generic)
+        public static void GenerateXSD(GeneratorContext context, GeneratorContext genericContext, bool generic)
         {
         	//set bdt and bie prefixes
         	NSPREFIX_BDT = context.NamespacePrefix;
@@ -82,7 +82,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         	var docOrGeneric = generic ? "generic" : "document" + bSlash
         											+ docRootName ;
         	//TODO set "ebIX" prefix via settings?
-        	string filename = context.OutputDirectory + bSlash + mainVersion + bSlash + docOrGeneric + bSlash //directories
+        	string filename = context.OutputDirectory + bSlash + docOrGeneric + bSlash //directories
         					+ "ebIX_" + docRootName +"_"+ mainVersion + "p" + minorVersion + ".xsd"; //filename
         	return  filename;
         }

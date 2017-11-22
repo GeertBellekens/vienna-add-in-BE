@@ -160,7 +160,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         	var mainVersion = context.VersionID.Split('.').FirstOrDefault();
         	var minorVersion = context.VersionID.Split('.').LastOrDefault();
         	var bSlash = System.IO.Path.DirectorySeparatorChar;
-        	string filename = context.OutputDirectory + bSlash + mainVersion + bSlash + "generic" + bSlash //directories
+        	string filename = context.OutputDirectory + bSlash + "generic" + bSlash //directories
         					+ enumeration.CodeListAgencyIdentifier + "_" + enumeration.UniqueIdentifier + "_"
         					+ enumeration.VersionIdentifier.Replace(".","p") +".xsd"; //filename
         	return  filename;

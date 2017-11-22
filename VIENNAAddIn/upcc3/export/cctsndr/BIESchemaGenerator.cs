@@ -120,7 +120,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         	var docOrGeneric = context.isGeneric ? "generic" : "document" + bSlash
         											+ docRootName ;
         	//TODO set "ebIX" prefix via settings?
-        	string filename = context.OutputDirectory + bSlash + mainVersion + bSlash + docOrGeneric + bSlash //directories
+        	string filename = context.OutputDirectory + bSlash + docOrGeneric + bSlash //directories
         		+ "ebIX_MessageBusinessInformationEntities_"; // filename
         	if (! context.isGeneric) filename += docRootName +"_";
         	filename += mainVersion + "p" + minorVersion + ".xsd";
