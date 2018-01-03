@@ -152,7 +152,7 @@ namespace VIENNAAddIn.upcc3.repo
 					{
 						var facet = new UpccFacet(facetName, facetValue);
 						_allFacets.Add(facet);
-						if ((noSource || SourceAttribute.FractionDigits != facetValue))
+						//if ((noSource || SourceAttribute.FractionDigits != facetValue))
 							_facets.Add(facet);
 					}
 					break;
@@ -162,7 +162,7 @@ namespace VIENNAAddIn.upcc3.repo
 					{
 						var facet = new UpccFacet(facetName, facetValue);
 						_allFacets.Add(facet);
-						if ((noSource || SourceAttribute.Length != facetValue))
+						//if ((noSource || SourceAttribute.Length != facetValue))
 							_facets.Add(facet);
 					}
 					break;
@@ -172,7 +172,7 @@ namespace VIENNAAddIn.upcc3.repo
 					{
 						var facet = new UpccFacet(facetName, facetValue);
 						_allFacets.Add(facet);
-						if ((noSource || SourceAttribute.MaximumExclusive != facetValue))
+						//if ((noSource || SourceAttribute.MaximumExclusive != facetValue))
 							_facets.Add(facet);
 					}
 					break;					
@@ -182,7 +182,7 @@ namespace VIENNAAddIn.upcc3.repo
 					{
 						var facet = new UpccFacet(facetName, facetValue);
 						_allFacets.Add(facet);
-						if ((noSource || SourceAttribute.MaximumInclusive != facetValue))
+						//if ((noSource || SourceAttribute.MaximumInclusive != facetValue))
 							_facets.Add(facet);
 					}
 					break;						
@@ -192,7 +192,7 @@ namespace VIENNAAddIn.upcc3.repo
 					{
 						var facet = new UpccFacet(facetName, facetValue);
 						_allFacets.Add(facet);
-						if ((noSource || SourceAttribute.MaximumLength != facetValue))
+						//if ((noSource || SourceAttribute.MaximumLength != facetValue))
 							_facets.Add(facet);
 					}
 					break;						 
@@ -202,7 +202,7 @@ namespace VIENNAAddIn.upcc3.repo
 					{
 						var facet = new UpccFacet(facetName, facetValue);
 						_allFacets.Add(facet);
-						if ((noSource || SourceAttribute.MinimumExclusive != facetValue))
+						//if ((noSource || SourceAttribute.MinimumExclusive != facetValue))
 							_facets.Add(facet);
 					}
 					break;						
@@ -212,7 +212,7 @@ namespace VIENNAAddIn.upcc3.repo
 					{
 						var facet = new UpccFacet(facetName, facetValue);
 						_allFacets.Add(facet);
-						if ((noSource || SourceAttribute.MinimumInclusive != facetValue))
+						//if ((noSource || SourceAttribute.MinimumInclusive != facetValue))
 							_facets.Add(facet);
 					}
 					break;						 
@@ -222,7 +222,7 @@ namespace VIENNAAddIn.upcc3.repo
 					{
 						var facet = new UpccFacet(facetName, facetValue);
 						_allFacets.Add(facet);
-						if ((noSource || SourceAttribute.MinimumLength != facetValue))
+						//if ((noSource || SourceAttribute.MinimumLength != facetValue))
 							_facets.Add(facet);
 					}
 					break;						 
@@ -232,7 +232,7 @@ namespace VIENNAAddIn.upcc3.repo
 					{
 						var facet = new UpccFacet(facetName, facetValue);
 						_allFacets.Add(facet);
-						if ((noSource || SourceAttribute.Pattern != facetValue))
+						//if ((noSource || SourceAttribute.Pattern != facetValue))
 							_facets.Add(facet);
 					}
 					break;						 
@@ -242,7 +242,7 @@ namespace VIENNAAddIn.upcc3.repo
 					{
 						var facet = new UpccFacet(facetName, facetValue);
 						_allFacets.Add(facet);
-						if ((noSource || SourceAttribute.TotalDigits != facetValue))
+						//if ((noSource || SourceAttribute.TotalDigits != facetValue))
 							_facets.Add(facet);
 					}
 					break;						 
@@ -252,7 +252,7 @@ namespace VIENNAAddIn.upcc3.repo
 					{
 						var facet = new UpccFacet(facetName, facetValue);
 						_allFacets.Add(facet);
-						if ((noSource || SourceAttribute.WhiteSpace != facetValue))
+						//if ((noSource || SourceAttribute.WhiteSpace != facetValue))
 							_facets.Add(facet);
 					}
 					break;						 

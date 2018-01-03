@@ -154,7 +154,12 @@ namespace VIENNAAddIn.upcc3
         			prefix = "Subset";
         			break;
         	}
-        	return prefix + enumeration.Name;
+            //list ID is only used in Original or Subset enums
+            string listID = enumeration.EnumerationType != EnumerationType.Assembled
+                        && enumeration.CodeListIdentifier != string.Empty ?
+                            enumeration.CodeListIdentifier + "_"
+                            : string.Empty;
+        	return prefix + listID + enumeration.Name;
         }
         public static string GetXsdAttributeNameFromSup(IBdtSup sup)
         {
