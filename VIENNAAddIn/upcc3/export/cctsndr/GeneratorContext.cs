@@ -28,6 +28,16 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             OutputDirectory = outputDirectory;
             DocLibrary = docLibrary;            
             progress = 100/(allschemas ? 5 : 3);
+            string invalidInput = string.Empty;
+            if (string.IsNullOrEmpty(targetNamespace)) invalidInput = "targetNamespace";
+            else if (string.IsNullOrEmpty(BaseURN)) invalidInput = "baseURN";
+            else if (string.IsNullOrEmpty(namespacePrefix)) invalidInput = "namespacePrefix";
+            else if (string.IsNullOrEmpty(namespacePrefix)) invalidInput = "outputDirectory";
+            if (! string.IsNullOrEmpty(invalidInput)) 
+            	throw new ArgumentException(string.Format("Cannot create generator context for {0} because parameter {1} is empty",
+            	                                          docLibrary != null ? docLibrary.Name : "unknow doclibrary",
+            	                                          invalidInput));
+            
         }
         /// <summary>
         /// creates a generic generator context based on a document generator context.

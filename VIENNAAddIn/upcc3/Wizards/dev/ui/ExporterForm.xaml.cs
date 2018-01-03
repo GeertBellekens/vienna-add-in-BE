@@ -132,10 +132,7 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
                 }
             }
            	XSDGenerator.GenerateSchemas(generationContexts);
-//            else
-//            {
-//                SubsetExporter.ExportSubset(docl, originalXMLSchema, outputDirectory);
-//            }
+
             textBoxStatus.Text += "\nGenerating XML schemas completed!";
             Cursor = Cursors.Arrow;
         }

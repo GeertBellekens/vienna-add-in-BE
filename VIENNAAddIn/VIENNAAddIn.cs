@@ -318,44 +318,44 @@ namespace VIENNAAddIn
 
         public bool EA_OnPreNewDiagramObject(Repository repository, EventProperties info)
         {
-            var elementId = 0;
-            var diagramId = 0;
-            Element element;
-            foreach (EventProperty eventProperty in info)
-            {
-                    if (eventProperty.Name == "ID")
-                    {
-                        elementId = int.Parse(eventProperty.Value.ToString());
-
-                    }
-                    if (eventProperty.Name == "DiagramID")
-                    {
-                        diagramId = int.Parse(eventProperty.Value.ToString());
-                    }
-            }
-
-            try
-            {
-            element = repository.GetElementByID(elementId);
-            }
-                catch(Exception)
-                {
-                    //if we don't get any ID the new Diagram Object seems to be created from the toolbox, that's ok so we just allow it
-                    return true;
-                }
-            var diagram = repository.GetDiagramByID(diagramId);
-            var diagramLibrary = repository.GetPackageByID(diagram.PackageID);
-            var elementLibrary = repository.GetPackageByID(element.PackageID);
-            if (element.Stereotype == "ACC" && diagramLibrary.StereotypeEx =="BIELibrary")
-            {
-                new AbieEditor(elementLibrary.Name, element.Name, diagramLibrary.Name, diagramId, repository).ShowDialog();
-                return false;
-            }
-            if(element.Stereotype == "CDT" && diagramLibrary.StereotypeEx =="BDTLibrary")
-            {
-                new BdtEditor(elementLibrary.Name, element.Name, diagramLibrary.Name, diagramId, repository).ShowDialog();
-                return false;
-            }
+//            var elementId = 0;
+//            var diagramId = 0;
+//            Element element;
+//            foreach (EventProperty eventProperty in info)
+//            {
+//                    if (eventProperty.Name == "ID")
+//                    {
+//                        elementId = int.Parse(eventProperty.Value.ToString());
+//
+//                    }
+//                    if (eventProperty.Name == "DiagramID")
+//                    {
+//                        diagramId = int.Parse(eventProperty.Value.ToString());
+//                    }
+//            }
+//
+//            try
+//            {
+//            element = repository.GetElementByID(elementId);
+//            }
+//                catch(Exception)
+//                {
+//                    //if we don't get any ID the new Diagram Object seems to be created from the toolbox, that's ok so we just allow it
+//                    return true;
+//                }
+//            var diagram = repository.GetDiagramByID(diagramId);
+//            var diagramLibrary = repository.GetPackageByID(diagram.PackageID);
+//            var elementLibrary = repository.GetPackageByID(element.PackageID);
+//            if (element.Stereotype == "ACC" && diagramLibrary.StereotypeEx =="BIELibrary")
+//            {
+//                new AbieEditor(elementLibrary.Name, element.Name, diagramLibrary.Name, diagramId, repository).ShowDialog();
+//                return false;
+//            }
+//            if(element.Stereotype == "CDT" && diagramLibrary.StereotypeEx =="BDTLibrary")
+//            {
+//                new BdtEditor(elementLibrary.Name, element.Name, diagramLibrary.Name, diagramId, repository).ShowDialog();
+//                return false;
+//            }
             return true;
         }
 

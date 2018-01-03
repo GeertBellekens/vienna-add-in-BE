@@ -70,7 +70,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         private static void AddSimpleTypeDefinition(XmlSchema schema, GeneratorContext context, IEnum enumeration)
         {
             var restrictedtype = new XmlSchemaSimpleType();
-            restrictedtype.Name = NDR.GetEnumName(enumeration);
+            restrictedtype.Name = NDR.GetBasicTypeName(enumeration);
             // enumeration with only union
             switch (enumeration.EnumerationType) 
             {
