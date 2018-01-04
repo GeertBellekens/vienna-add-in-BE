@@ -317,7 +317,7 @@ namespace VIENNAAddIn.upcc3.repo
         ///</summary>
         public string MaximumExclusive
         {
-            get { return UmlAttribute.GetTaggedValue("maximumExclusive").Value; }
+            get { return UmlAttribute.GetTaggedValue("maxExclusive").Value; }
         }
 
         ///<summary>
@@ -325,7 +325,7 @@ namespace VIENNAAddIn.upcc3.repo
         ///</summary>
         public string MaximumInclusive
         {
-            get { return UmlAttribute.GetTaggedValue("maximumInclusive").Value; }
+            get { return UmlAttribute.GetTaggedValue("maxInclusive").Value; }
         }
 
         ///<summary>
@@ -333,7 +333,7 @@ namespace VIENNAAddIn.upcc3.repo
         ///</summary>
         public string MaximumLength
         {
-            get { return UmlAttribute.GetTaggedValue("maximumLength").Value; }
+            get { return UmlAttribute.GetTaggedValue("maxLength").Value; }
         }
 
         ///<summary>
@@ -341,7 +341,7 @@ namespace VIENNAAddIn.upcc3.repo
         ///</summary>
         public string MinimumExclusive
         {
-            get { return UmlAttribute.GetTaggedValue("minimumExclusive").Value; }
+            get { return UmlAttribute.GetTaggedValue("minExclusive").Value; }
         }
 
         ///<summary>
@@ -349,7 +349,7 @@ namespace VIENNAAddIn.upcc3.repo
         ///</summary>
         public string MinimumInclusive
         {
-            get { return UmlAttribute.GetTaggedValue("minimumInclusive").Value; }
+            get { return UmlAttribute.GetTaggedValue("minInclusive").Value; }
         }
 
         ///<summary>
@@ -357,7 +357,7 @@ namespace VIENNAAddIn.upcc3.repo
         ///</summary>
         public string MinimumLength
         {
-            get { return UmlAttribute.GetTaggedValue("minimumLength").Value; }
+            get { return UmlAttribute.GetTaggedValue("minLength").Value; }
         }
 
         ///<summary>

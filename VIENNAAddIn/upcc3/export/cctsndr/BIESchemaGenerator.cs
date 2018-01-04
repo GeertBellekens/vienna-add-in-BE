@@ -177,11 +177,18 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 			{
 				var choiceElement = new XmlSchemaChoice();
 				choiceElement.Items.Add(elementBBIE);
+                bool isOptional = bbie.LowerBound == "0";
 				foreach (IBbie otherProperty in bbie.otherPropertiesInChoice) 
 				{
+                    if (!isOptional) isOptional = otherProperty.LowerBound == "0";
 					choiceElement.Items.Add(CreateBbieSchemaElement(otherProperty,context));
 					processedProperties.Add(otherProperty);
 				}
+                //set minoccurs to 0 is the choice is optional
+                if (isOptional)
+                {
+                    choiceElement.MinOccurs = 0;
+                }
 				//add the choice tot the sequence
 				sequenceBBIEs.Items.Add(choiceElement);
 			}
