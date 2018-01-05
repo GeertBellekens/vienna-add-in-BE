@@ -1,0 +1,888 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*"
+           Name="ViennaAddin_Setup"
+           Language="1033"
+           Version="1.0.0.0"
+           Manufacturer="Bellekens"
+           UpgradeCode="2f8fbb7e-5fa4-4a93-b0c9-c6ba79f41814">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of Vienna-BE is already installed." />
+    <MediaTemplate />
+
+    <Feature Id="ProductFeature" Title="ViennaAddin" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+    </Feature>
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="ViennaAddin_Setup" />
+      </Directory>
+    </Directory>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <Component Id="ViennaAddin_AddinFiles" Guid="EB8C67A3-9199-46CE-ACEC-F259BF9DC26C">
+        <File Id="VIENNAAddIn.dll" Name="VIENNAAddIn.dll" Source="..\VIENNAAddin\bin\Debug\VIENNAAddIn.dll" />
+        <File Id="VIENNAAddIn.pdb" Name="VIENNAAddIn.pdb" Source="..\VIENNAAddin\bin\Debug\VIENNAAddIn.pdb" />
+        <File Id="VIENNAAddIn.tlb" Name="VIENNAAddIn.tlb" Source="..\VIENNAAddin\bin\Debug\VIENNAAddIn.tlb" />
+        <File Id="CctsRepository.dll" Name="CctsRepository.dll" Source="..\VIENNAAddin\bin\Debug\CctsRepository.dll" />
+        <File Id="CctsRepository.pdb" Name="CctsRepository.pdb" Source="..\VIENNAAddin\bin\Debug\CctsRepository.pdb" />
+        <File Id="IBM.Data.DB2.dll" Name="IBM.Data.DB2.dll" Source="..\VIENNAAddin\bin\Debug\IBM.Data.DB2.dll" />
+        <File Id="Interop.EA.dll" Name="Interop.EA.dll" Source="..\VIENNAAddin\bin\Debug\Interop.EA.dll" />
+        <File Id="stdole.dll" Name="stdole.dll" Source="..\VIENNAAddin\bin\Debug\stdole.dll" />
+        <File Id="Upcc.dll" Name="Upcc.dll" Source="..\VIENNAAddin\bin\Debug\Upcc.dll" />
+        <File Id="Upcc.pdb" Name="Upcc.pdb" Source="..\VIENNAAddin\bin\Debug\Upcc.pdb" />
+        <File Id="VIENNAAddInUtils.dll" Name="VIENNAAddInUtils.dll" Source="..\VIENNAAddin\bin\Debug\VIENNAAddInUtils.dll" />
+        <File Id="VIENNAAddInUtils.pdb" Name="VIENNAAddInUtils.pdb" Source="..\VIENNAAddin\bin\Debug\VIENNAAddInUtils.pdb" />
+        <File Id="VIENNAAddInWpfUserControls.dll" Name="VIENNAAddInWpfUserControls.dll" Source="..\VIENNAAddin\bin\Debug\VIENNAAddInWpfUserControls.dll" />
+        <File Id="VIENNAAddInWpfUserControls.pdb" Name="VIENNAAddInWpfUserControls.pdb" Source="..\VIENNAAddin\bin\Debug\VIENNAAddInWpfUserControls.pdb" />
+        <File Id="WPFVisifire.Charts.dll" Name="WPFVisifire.Charts.dll" Source="..\VIENNAAddin\bin\Debug\WPFVisifire.Charts.dll" />
+        <Class Id="{01015F9B-5966-37A3-A3EE-338F1D137DDA}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.import.cctsndr.RootSchemaImporter" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.import.cctsndr.RootSchemaImporter" Description="VIENNAAddIn.upcc3.import.cctsndr.RootSchemaImporter" />
+        </Class>
+        <Class Id="{07266114-48CF-35A0-9F7A-C1308A5FA72A}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.cCDT" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.cCDT" Description="VIENNAAddIn.upcc3.Wizards.cCDT" />
+        </Class>
+        <Class Id="{0ECF5BBE-BC5B-3816-A735-045C7E2525FC}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.export.cctsndr.GenerationMessage" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.export.cctsndr.GenerationMessage" Description="VIENNAAddIn.upcc3.export.cctsndr.GenerationMessage" />
+        </Class>
+        <Class Id="{11993FEB-BAE6-3D6E-827A-D6678A698096}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.dev.ui.XsltGeneratorViewModel" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.dev.ui.XsltGeneratorViewModel" Description="VIENNAAddIn.upcc3.Wizards.dev.ui.XsltGeneratorViewModel" />
+        </Class>
+        <Class Id="{18943228-07D8-399B-BDDF-3C0E7AD29995}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.cABIE" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.cABIE" Description="VIENNAAddIn.upcc3.Wizards.cABIE" />
+        </Class>
+        <Class Id="{18A1B63F-1305-304A-994A-BB0A8644F9D3}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.cBIELibrary" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.cBIELibrary" Description="VIENNAAddIn.upcc3.Wizards.cBIELibrary" />
+        </Class>
+        <Class Id="{1FC82407-3D9C-3312-8BF9-9112C1C1E6AC}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.import.util.Element" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.import.util.Element" Description="VIENNAAddIn.upcc3.import.util.Element" />
+        </Class>
+        <Class Id="{22E51EA8-A371-3861-969B-E02AEC8221A5}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.uml.UmlDependencySpec" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.uml.UmlDependencySpec" Description="VIENNAAddIn.upcc3.uml.UmlDependencySpec" />
+        </Class>
+        <Class Id="{2394266C-959E-3079-8592-DD572C8A6B3F}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.uml.UmlClassSpec" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.uml.UmlClassSpec" Description="VIENNAAddIn.upcc3.uml.UmlClassSpec" />
+        </Class>
+        <Class Id="{241B9620-DA27-394C-A395-561529F83ED5}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.otf.validators.constraints.MustNotContainAnyElements" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.otf.validators.constraints.MustNotContainAnyElements" Description="VIENNAAddIn.upcc3.otf.validators.constraints.MustNotContainAnyElements" />
+        </Class>
+        <Class Id="{25668FFC-BC61-381E-8DF6-8163083B365A}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.export.cctsndr.BIESchemaGenerator" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.export.cctsndr.BIESchemaGenerator" Description="VIENNAAddIn.upcc3.export.cctsndr.BIESchemaGenerator" />
+        </Class>
+        <Class Id="{2E2D071D-F124-366E-B2AC-D62A698B06F2}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.dev.util.SchemaAnalyzerResultComparerByValue" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.dev.util.SchemaAnalyzerResultComparerByValue" Description="VIENNAAddIn.upcc3.Wizards.dev.util.SchemaAnalyzerResultComparerByValue" />
+        </Class>
+        <Class Id="{3F5ADA62-2DCB-3AEF-8510-4A65A822082E}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.uml.UmlDataTypeSpec" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.uml.UmlDataTypeSpec" Description="VIENNAAddIn.upcc3.uml.UmlDataTypeSpec" />
+        </Class>
+        <Class Id="{40EED196-7DA3-39A6-9128-8FF05172D494}" Context="InprocServer32" Description="VIENNAAddIn.Utils.SortConnector" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.Utils.SortConnector" Description="VIENNAAddIn.Utils.SortConnector" />
+        </Class>
+        <Class Id="{428F8CB5-2D11-3144-992E-70F57B8A3182}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.export.cctsndr.CDTSchemaGenerator" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.export.cctsndr.CDTSchemaGenerator" Description="VIENNAAddIn.upcc3.export.cctsndr.CDTSchemaGenerator" />
+        </Class>
+        <Class Id="{43972708-B227-3424-977C-61A20B9E49B7}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.uml.UmlAssociationSpec" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.uml.UmlAssociationSpec" Description="VIENNAAddIn.upcc3.uml.UmlAssociationSpec" />
+        </Class>
+        <Class Id="{43FA20D3-376E-3DC6-A786-B194127FF9CF}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.uml.UmlPackageSpec" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.uml.UmlPackageSpec" Description="VIENNAAddIn.upcc3.uml.UmlPackageSpec" />
+        </Class>
+        <Class Id="{4A6262F8-D323-37AB-B299-F84D7CEBCE3D}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.import.util.ComplexType" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.import.util.ComplexType" Description="VIENNAAddIn.upcc3.import.util.ComplexType" />
+        </Class>
+        <Class Id="{51E697D8-54DB-3781-86E1-C63FD5AF4865}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.otf.validators.constraints.MustNotContainAnyPackages" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.otf.validators.constraints.MustNotContainAnyPackages" Description="VIENNAAddIn.upcc3.otf.validators.constraints.MustNotContainAnyPackages" />
+        </Class>
+        <Class Id="{52A4FD55-BB85-361B-9A94-31A8DF6AF3DE}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.cACC" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.cACC" Description="VIENNAAddIn.upcc3.Wizards.cACC" />
+        </Class>
+        <Class Id="{577F5974-4B86-347D-842A-ACAE8B4A35BA}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.cItem" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.cItem" Description="VIENNAAddIn.upcc3.Wizards.cItem" />
+        </Class>
+        <Class Id="{62E6851C-F4FE-3E6B-AF24-95F6ED118D2C}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.cBDTLibrary" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.cBDTLibrary" Description="VIENNAAddIn.upcc3.Wizards.cBDTLibrary" />
+        </Class>
+        <Class Id="{6A6BEEC2-936C-30FF-96E4-22BCD4068C9E}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.dev.util.SchemaAnalyzerResults" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.dev.util.SchemaAnalyzerResults" Description="VIENNAAddIn.upcc3.Wizards.dev.util.SchemaAnalyzerResults" />
+        </Class>
+        <Class Id="{6AA857DB-AE36-3481-A31E-C464B4A03C47}" Context="InprocServer32" Description="VIENNAAddIn.Utils.SortConnectorByPosition" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.Utils.SortConnectorByPosition" Description="VIENNAAddIn.Utils.SortConnectorByPosition" />
+        </Class>
+        <Class Id="{730A48C7-A0AA-3A8D-88C8-28D18E68058E}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.otf.HierarchicalRepository" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.otf.HierarchicalRepository" Description="VIENNAAddIn.upcc3.otf.HierarchicalRepository" />
+        </Class>
+        <Class Id="{74CEDAA8-9F82-3408-AEC2-11C9CE43F7F9}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.uml.UmlEnumerationSpec" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.uml.UmlEnumerationSpec" Description="VIENNAAddIn.upcc3.uml.UmlEnumerationSpec" />
+        </Class>
+        <Class Id="{75EBB8A0-986A-3FC8-9116-06725B104474}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.cBBIE" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.cBBIE" Description="VIENNAAddIn.upcc3.Wizards.cBBIE" />
+        </Class>
+        <Class Id="{7A368887-7C75-348C-A80B-EFF86F4238A1}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.otf.validators.constraints.ParentMustBeModelOrBInformationVOrBLibrary" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.otf.validators.constraints.ParentMustBeModelOrBInformationVOrBLibrary" Description="VIENNAAddIn.upcc3.otf.validators.constraints.ParentMustBeModelOrBInformationVOrBLibrary" />
+        </Class>
+        <Class Id="{7DF52B67-3D00-3CE1-829A-E35C132E83C3}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.import.util.Include" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.import.util.Include" Description="VIENNAAddIn.upcc3.import.util.Include" />
+        </Class>
+        <Class Id="{7ED0C990-CE49-37EF-A783-46B9A5D01C8D}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.cCDTLibrary" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.cCDTLibrary" Description="VIENNAAddIn.upcc3.Wizards.cCDTLibrary" />
+        </Class>
+        <Class Id="{7F505F7C-D803-3D2E-BAFE-E7023EB45BAB}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.dev.ui.SchemaAnalyzer" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.dev.ui.SchemaAnalyzer" Description="VIENNAAddIn.upcc3.Wizards.dev.ui.SchemaAnalyzer" />
+        </Class>
+        <Class Id="{81C2D330-A5D6-34D0-8CEA-1A0677359130}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.cCON" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.cCON" Description="VIENNAAddIn.upcc3.Wizards.cCON" />
+        </Class>
+        <Class Id="{83D65533-2DD3-315D-B542-4E4BA10159DF}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.cSUP" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.cSUP" Description="VIENNAAddIn.upcc3.Wizards.cSUP" />
+        </Class>
+        <Class Id="{8AF87854-0E2F-3749-88B9-CB8D945ED60B}" Context="InprocServer32" Description="VIENNAAddIn.Utils.SortByName" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.Utils.SortByName" Description="VIENNAAddIn.Utils.SortByName" />
+        </Class>
+        <Class Id="{91E70A8F-1974-3311-96C8-C43299F49B21}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.dev.util.XMLSchemaReader" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.dev.util.XMLSchemaReader" Description="VIENNAAddIn.upcc3.Wizards.dev.util.XMLSchemaReader" />
+        </Class>
+        <Class Id="{97156102-6627-3A46-9F73-AA3252A19720}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.export.cctsndr.XSDGenerator" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.export.cctsndr.XSDGenerator" Description="VIENNAAddIn.upcc3.export.cctsndr.XSDGenerator" />
+        </Class>
+        <Class Id="{981BC007-C5D9-31BD-B447-EA9B3BB22811}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.export.cctsndr.ENUMSchemaGenerator" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.export.cctsndr.ENUMSchemaGenerator" Description="VIENNAAddIn.upcc3.export.cctsndr.ENUMSchemaGenerator" />
+        </Class>
+        <Class Id="{9E1BCE45-39B9-3646-A9DE-987AE54B91D1}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.ImporterWizardFormOld" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.ImporterWizardFormOld" Description="VIENNAAddIn.upcc3.Wizards.ImporterWizardFormOld" />
+        </Class>
+        <Class Id="{A59F88BD-40E8-39FD-B2A8-FEBE4D8700E7}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.cCCLibrary" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.cCCLibrary" Description="VIENNAAddIn.upcc3.Wizards.cCCLibrary" />
+        </Class>
+        <Class Id="{AAF5658E-906E-3202-AC97-9F498CF3F019}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.import.mapping.NullMapping" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.import.mapping.NullMapping" Description="VIENNAAddIn.upcc3.import.mapping.NullMapping" />
+        </Class>
+        <Class Id="{ACF47583-A5AE-3E11-807E-F2D88A4DDE26}" Context="InprocServer32" Description="VIENNAAddIn.menu.MenuManager" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.menu.MenuManager" Description="VIENNAAddIn.menu.MenuManager" />
+        </Class>
+        <Class Id="{AD350E21-0425-3D0C-918C-1D3A81CC92A1}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.uml.UmlAttributeSpec" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.uml.UmlAttributeSpec" Description="VIENNAAddIn.upcc3.uml.UmlAttributeSpec" />
+        </Class>
+        <Class Id="{ADFF62A3-BEB5-4F39-9F79-560989B6E48B}" Context="InprocServer32" Description="VIENNAAddIn.VIENNAAddIn" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.VIENNAAddIn" Description="VIENNAAddIn.VIENNAAddIn" />
+        </Class>
+        <Class Id="{B122F78D-D05C-3A8D-BD04-B365073225B6}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.util.DatabaseHandler" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.util.DatabaseHandler" Description="VIENNAAddIn.upcc3.Wizards.util.DatabaseHandler" />
+        </Class>
+        <Class Id="{B4D5A4D0-B63B-3D4D-BEA0-F554B4892001}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.dev.util.EditorModes" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.dev.util.EditorModes" Description="VIENNAAddIn.upcc3.Wizards.dev.util.EditorModes" />
+        </Class>
+        <Class Id="{C64C8A90-61D0-33FC-9602-1BA3EE6CCE89}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.dev.util.SchemaAnalyzerResultComparerByName" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.dev.util.SchemaAnalyzerResultComparerByName" Description="VIENNAAddIn.upcc3.Wizards.dev.util.SchemaAnalyzerResultComparerByName" />
+        </Class>
+        <Class Id="{CB4FC696-6863-38EA-B04F-726EC155E182}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.otf.ValidationService" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.otf.ValidationService" Description="VIENNAAddIn.upcc3.otf.ValidationService" />
+        </Class>
+        <Class Id="{CE61B186-E6AF-3114-9105-FD633FD68B02}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.Cache" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.Cache" Description="VIENNAAddIn.upcc3.Wizards.Cache" />
+        </Class>
+        <Class Id="{DA8F1A68-35B0-31FF-9B83-FB78FD88CD83}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.cBCC" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.cBCC" Description="VIENNAAddIn.upcc3.Wizards.cBCC" />
+        </Class>
+        <Class Id="{DED767F2-1746-3536-9FFF-49D10850FFDD}" Context="InprocServer32" Description="VIENNAAddIn.Utils.SortByPosition" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.Utils.SortByPosition" Description="VIENNAAddIn.Utils.SortByPosition" />
+        </Class>
+        <Class Id="{E4D9076C-80FC-3E6D-A166-52814F1BB799}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.util.ResourceDescriptor" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.util.ResourceDescriptor" Description="VIENNAAddIn.upcc3.Wizards.util.ResourceDescriptor" />
+        </Class>
+        <Class Id="{E54008A9-D3C1-3066-A5E8-B2923676186D}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.export.cctsndr.RootSchemaGenerator" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.export.cctsndr.RootSchemaGenerator" Description="VIENNAAddIn.upcc3.export.cctsndr.RootSchemaGenerator" />
+        </Class>
+        <Class Id="{E862D590-8810-3FB2-B471-3FC5AE23DC34}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.otf.validators.PRIMValidator" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.otf.validators.PRIMValidator" Description="VIENNAAddIn.upcc3.otf.validators.PRIMValidator" />
+        </Class>
+        <Class Id="{E95EE662-EB4A-31F4-863F-55D5E702069C}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.otf.validators.constraints.SubPackagesMustBeBusinessLibraries" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.otf.validators.constraints.SubPackagesMustBeBusinessLibraries" Description="VIENNAAddIn.upcc3.otf.validators.constraints.SubPackagesMustBeBusinessLibraries" />
+        </Class>
+        <Class Id="{EA5E4316-EE2A-3537-A246-1C9A6256AC47}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.CacheConstants" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.CacheConstants" Description="VIENNAAddIn.upcc3.Wizards.CacheConstants" />
+        </Class>
+        <Class Id="{F07EE473-11D0-3918-A18A-C92EF1A8058F}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.cBDT" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.cBDT" Description="VIENNAAddIn.upcc3.Wizards.cBDT" />
+        </Class>
+        <Class Id="{F0A39463-E827-31B4-8F40-FD6C1EFEE726}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.otf.validators.BLibraryValidator" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.otf.validators.BLibraryValidator" Description="VIENNAAddIn.upcc3.otf.validators.BLibraryValidator" />
+        </Class>
+        <Class Id="{F7CD0855-E2ED-326F-8142-559EEE741DAB}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.dev.ui.XsdImporterViewModel" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.dev.ui.XsdImporterViewModel" Description="VIENNAAddIn.upcc3.Wizards.dev.ui.XsdImporterViewModel" />
+        </Class>
+        <Class Id="{F8037E77-BCC3-371C-A922-D5B98C9BF0AC}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.import.mapping.NullComplexTypeMapping" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.import.mapping.NullComplexTypeMapping" Description="VIENNAAddIn.upcc3.import.mapping.NullComplexTypeMapping" />
+        </Class>
+        <Class Id="{F8BA1C15-0AAB-38DB-B06C-351E7B805E9D}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.otf.validators.constraints.NameMustNotBeEmpty" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.otf.validators.constraints.NameMustNotBeEmpty" Description="VIENNAAddIn.upcc3.otf.validators.constraints.NameMustNotBeEmpty" />
+        </Class>
+        <Class Id="{FB6E3CD9-E2FF-3EF8-9CB6-D54C97AFB437}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.uml.UmlEnumerationLiteralSpec" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.uml.UmlEnumerationLiteralSpec" Description="VIENNAAddIn.upcc3.uml.UmlEnumerationLiteralSpec" />
+        </Class>
+        <Class Id="{FE80BD9F-F06C-3A00-9529-18E17F614A0F}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.Wizards.cCheckItem" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="VIENNAAddIn.upcc3.Wizards.cCheckItem" Description="VIENNAAddIn.upcc3.Wizards.cCheckItem" />
+        </Class>
+        <RegistryValue Root="HKCR" Key="CLSID\{01015F9B-5966-37A3-A3EE-338F1D137DDA}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{01015F9B-5966-37A3-A3EE-338F1D137DDA}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.import.cctsndr.RootSchemaImporter" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{01015F9B-5966-37A3-A3EE-338F1D137DDA}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{01015F9B-5966-37A3-A3EE-338F1D137DDA}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{01015F9B-5966-37A3-A3EE-338F1D137DDA}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{01015F9B-5966-37A3-A3EE-338F1D137DDA}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.import.cctsndr.RootSchemaImporter" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{01015F9B-5966-37A3-A3EE-338F1D137DDA}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{01015F9B-5966-37A3-A3EE-338F1D137DDA}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{01015F9B-5966-37A3-A3EE-338F1D137DDA}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{07266114-48CF-35A0-9F7A-C1308A5FA72A}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{07266114-48CF-35A0-9F7A-C1308A5FA72A}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cCDT" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{07266114-48CF-35A0-9F7A-C1308A5FA72A}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{07266114-48CF-35A0-9F7A-C1308A5FA72A}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{07266114-48CF-35A0-9F7A-C1308A5FA72A}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{07266114-48CF-35A0-9F7A-C1308A5FA72A}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cCDT" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{07266114-48CF-35A0-9F7A-C1308A5FA72A}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{07266114-48CF-35A0-9F7A-C1308A5FA72A}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{07266114-48CF-35A0-9F7A-C1308A5FA72A}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{0ECF5BBE-BC5B-3816-A735-045C7E2525FC}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{0ECF5BBE-BC5B-3816-A735-045C7E2525FC}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.export.cctsndr.GenerationMessage" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{0ECF5BBE-BC5B-3816-A735-045C7E2525FC}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{0ECF5BBE-BC5B-3816-A735-045C7E2525FC}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{0ECF5BBE-BC5B-3816-A735-045C7E2525FC}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{0ECF5BBE-BC5B-3816-A735-045C7E2525FC}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.export.cctsndr.GenerationMessage" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{0ECF5BBE-BC5B-3816-A735-045C7E2525FC}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{0ECF5BBE-BC5B-3816-A735-045C7E2525FC}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{0ECF5BBE-BC5B-3816-A735-045C7E2525FC}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{11993FEB-BAE6-3D6E-827A-D6678A698096}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{11993FEB-BAE6-3D6E-827A-D6678A698096}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.dev.ui.XsltGeneratorViewModel" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{11993FEB-BAE6-3D6E-827A-D6678A698096}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{11993FEB-BAE6-3D6E-827A-D6678A698096}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{11993FEB-BAE6-3D6E-827A-D6678A698096}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{11993FEB-BAE6-3D6E-827A-D6678A698096}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.dev.ui.XsltGeneratorViewModel" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{11993FEB-BAE6-3D6E-827A-D6678A698096}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{11993FEB-BAE6-3D6E-827A-D6678A698096}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{11993FEB-BAE6-3D6E-827A-D6678A698096}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{18943228-07D8-399B-BDDF-3C0E7AD29995}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{18943228-07D8-399B-BDDF-3C0E7AD29995}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cABIE" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{18943228-07D8-399B-BDDF-3C0E7AD29995}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{18943228-07D8-399B-BDDF-3C0E7AD29995}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{18943228-07D8-399B-BDDF-3C0E7AD29995}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{18943228-07D8-399B-BDDF-3C0E7AD29995}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cABIE" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{18943228-07D8-399B-BDDF-3C0E7AD29995}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{18943228-07D8-399B-BDDF-3C0E7AD29995}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{18943228-07D8-399B-BDDF-3C0E7AD29995}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{18A1B63F-1305-304A-994A-BB0A8644F9D3}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{18A1B63F-1305-304A-994A-BB0A8644F9D3}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cBIELibrary" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{18A1B63F-1305-304A-994A-BB0A8644F9D3}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{18A1B63F-1305-304A-994A-BB0A8644F9D3}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{18A1B63F-1305-304A-994A-BB0A8644F9D3}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{18A1B63F-1305-304A-994A-BB0A8644F9D3}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cBIELibrary" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{18A1B63F-1305-304A-994A-BB0A8644F9D3}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{18A1B63F-1305-304A-994A-BB0A8644F9D3}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{18A1B63F-1305-304A-994A-BB0A8644F9D3}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{1FC82407-3D9C-3312-8BF9-9112C1C1E6AC}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{1FC82407-3D9C-3312-8BF9-9112C1C1E6AC}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.import.util.Element" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{1FC82407-3D9C-3312-8BF9-9112C1C1E6AC}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{1FC82407-3D9C-3312-8BF9-9112C1C1E6AC}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{1FC82407-3D9C-3312-8BF9-9112C1C1E6AC}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{1FC82407-3D9C-3312-8BF9-9112C1C1E6AC}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.import.util.Element" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{1FC82407-3D9C-3312-8BF9-9112C1C1E6AC}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{1FC82407-3D9C-3312-8BF9-9112C1C1E6AC}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{1FC82407-3D9C-3312-8BF9-9112C1C1E6AC}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{22E51EA8-A371-3861-969B-E02AEC8221A5}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{22E51EA8-A371-3861-969B-E02AEC8221A5}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.uml.UmlDependencySpec" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{22E51EA8-A371-3861-969B-E02AEC8221A5}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{22E51EA8-A371-3861-969B-E02AEC8221A5}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{22E51EA8-A371-3861-969B-E02AEC8221A5}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{22E51EA8-A371-3861-969B-E02AEC8221A5}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.uml.UmlDependencySpec" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{22E51EA8-A371-3861-969B-E02AEC8221A5}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{22E51EA8-A371-3861-969B-E02AEC8221A5}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{22E51EA8-A371-3861-969B-E02AEC8221A5}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{2394266C-959E-3079-8592-DD572C8A6B3F}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{2394266C-959E-3079-8592-DD572C8A6B3F}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.uml.UmlClassSpec" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{2394266C-959E-3079-8592-DD572C8A6B3F}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{2394266C-959E-3079-8592-DD572C8A6B3F}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{2394266C-959E-3079-8592-DD572C8A6B3F}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{2394266C-959E-3079-8592-DD572C8A6B3F}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.uml.UmlClassSpec" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{2394266C-959E-3079-8592-DD572C8A6B3F}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{2394266C-959E-3079-8592-DD572C8A6B3F}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{2394266C-959E-3079-8592-DD572C8A6B3F}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{241B9620-DA27-394C-A395-561529F83ED5}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{241B9620-DA27-394C-A395-561529F83ED5}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.otf.validators.constraints.MustNotContainAnyElements" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{241B9620-DA27-394C-A395-561529F83ED5}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{241B9620-DA27-394C-A395-561529F83ED5}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{241B9620-DA27-394C-A395-561529F83ED5}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{241B9620-DA27-394C-A395-561529F83ED5}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.otf.validators.constraints.MustNotContainAnyElements" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{241B9620-DA27-394C-A395-561529F83ED5}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{241B9620-DA27-394C-A395-561529F83ED5}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{241B9620-DA27-394C-A395-561529F83ED5}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{25668FFC-BC61-381E-8DF6-8163083B365A}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{25668FFC-BC61-381E-8DF6-8163083B365A}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.export.cctsndr.BIESchemaGenerator" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{25668FFC-BC61-381E-8DF6-8163083B365A}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{25668FFC-BC61-381E-8DF6-8163083B365A}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{25668FFC-BC61-381E-8DF6-8163083B365A}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{25668FFC-BC61-381E-8DF6-8163083B365A}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.export.cctsndr.BIESchemaGenerator" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{25668FFC-BC61-381E-8DF6-8163083B365A}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{25668FFC-BC61-381E-8DF6-8163083B365A}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{25668FFC-BC61-381E-8DF6-8163083B365A}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{2E2D071D-F124-366E-B2AC-D62A698B06F2}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{2E2D071D-F124-366E-B2AC-D62A698B06F2}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.dev.util.SchemaAnalyzerResultComparerByValue" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{2E2D071D-F124-366E-B2AC-D62A698B06F2}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{2E2D071D-F124-366E-B2AC-D62A698B06F2}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{2E2D071D-F124-366E-B2AC-D62A698B06F2}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{2E2D071D-F124-366E-B2AC-D62A698B06F2}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.dev.util.SchemaAnalyzerResultComparerByValue" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{2E2D071D-F124-366E-B2AC-D62A698B06F2}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{2E2D071D-F124-366E-B2AC-D62A698B06F2}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{2E2D071D-F124-366E-B2AC-D62A698B06F2}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{3F5ADA62-2DCB-3AEF-8510-4A65A822082E}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{3F5ADA62-2DCB-3AEF-8510-4A65A822082E}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.uml.UmlDataTypeSpec" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{3F5ADA62-2DCB-3AEF-8510-4A65A822082E}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{3F5ADA62-2DCB-3AEF-8510-4A65A822082E}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{3F5ADA62-2DCB-3AEF-8510-4A65A822082E}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{3F5ADA62-2DCB-3AEF-8510-4A65A822082E}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.uml.UmlDataTypeSpec" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{3F5ADA62-2DCB-3AEF-8510-4A65A822082E}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{3F5ADA62-2DCB-3AEF-8510-4A65A822082E}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{3F5ADA62-2DCB-3AEF-8510-4A65A822082E}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{40EED196-7DA3-39A6-9128-8FF05172D494}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{40EED196-7DA3-39A6-9128-8FF05172D494}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.Utils.SortConnector" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{40EED196-7DA3-39A6-9128-8FF05172D494}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{40EED196-7DA3-39A6-9128-8FF05172D494}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{40EED196-7DA3-39A6-9128-8FF05172D494}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{40EED196-7DA3-39A6-9128-8FF05172D494}\InprocServer32" Name="Class" Value="VIENNAAddIn.Utils.SortConnector" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{40EED196-7DA3-39A6-9128-8FF05172D494}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{40EED196-7DA3-39A6-9128-8FF05172D494}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{40EED196-7DA3-39A6-9128-8FF05172D494}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{428F8CB5-2D11-3144-992E-70F57B8A3182}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{428F8CB5-2D11-3144-992E-70F57B8A3182}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.export.cctsndr.CDTSchemaGenerator" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{428F8CB5-2D11-3144-992E-70F57B8A3182}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{428F8CB5-2D11-3144-992E-70F57B8A3182}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{428F8CB5-2D11-3144-992E-70F57B8A3182}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{428F8CB5-2D11-3144-992E-70F57B8A3182}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.export.cctsndr.CDTSchemaGenerator" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{428F8CB5-2D11-3144-992E-70F57B8A3182}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{428F8CB5-2D11-3144-992E-70F57B8A3182}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{428F8CB5-2D11-3144-992E-70F57B8A3182}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{43972708-B227-3424-977C-61A20B9E49B7}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{43972708-B227-3424-977C-61A20B9E49B7}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.uml.UmlAssociationSpec" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{43972708-B227-3424-977C-61A20B9E49B7}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{43972708-B227-3424-977C-61A20B9E49B7}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{43972708-B227-3424-977C-61A20B9E49B7}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{43972708-B227-3424-977C-61A20B9E49B7}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.uml.UmlAssociationSpec" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{43972708-B227-3424-977C-61A20B9E49B7}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{43972708-B227-3424-977C-61A20B9E49B7}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{43972708-B227-3424-977C-61A20B9E49B7}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{43FA20D3-376E-3DC6-A786-B194127FF9CF}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{43FA20D3-376E-3DC6-A786-B194127FF9CF}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.uml.UmlPackageSpec" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{43FA20D3-376E-3DC6-A786-B194127FF9CF}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{43FA20D3-376E-3DC6-A786-B194127FF9CF}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{43FA20D3-376E-3DC6-A786-B194127FF9CF}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{43FA20D3-376E-3DC6-A786-B194127FF9CF}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.uml.UmlPackageSpec" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{43FA20D3-376E-3DC6-A786-B194127FF9CF}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{43FA20D3-376E-3DC6-A786-B194127FF9CF}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{43FA20D3-376E-3DC6-A786-B194127FF9CF}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{4A6262F8-D323-37AB-B299-F84D7CEBCE3D}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{4A6262F8-D323-37AB-B299-F84D7CEBCE3D}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.import.util.ComplexType" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{4A6262F8-D323-37AB-B299-F84D7CEBCE3D}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{4A6262F8-D323-37AB-B299-F84D7CEBCE3D}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{4A6262F8-D323-37AB-B299-F84D7CEBCE3D}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{4A6262F8-D323-37AB-B299-F84D7CEBCE3D}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.import.util.ComplexType" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{4A6262F8-D323-37AB-B299-F84D7CEBCE3D}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{4A6262F8-D323-37AB-B299-F84D7CEBCE3D}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{4A6262F8-D323-37AB-B299-F84D7CEBCE3D}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{51E697D8-54DB-3781-86E1-C63FD5AF4865}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{51E697D8-54DB-3781-86E1-C63FD5AF4865}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.otf.validators.constraints.MustNotContainAnyPackages" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{51E697D8-54DB-3781-86E1-C63FD5AF4865}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{51E697D8-54DB-3781-86E1-C63FD5AF4865}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{51E697D8-54DB-3781-86E1-C63FD5AF4865}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{51E697D8-54DB-3781-86E1-C63FD5AF4865}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.otf.validators.constraints.MustNotContainAnyPackages" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{51E697D8-54DB-3781-86E1-C63FD5AF4865}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{51E697D8-54DB-3781-86E1-C63FD5AF4865}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{51E697D8-54DB-3781-86E1-C63FD5AF4865}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{52A4FD55-BB85-361B-9A94-31A8DF6AF3DE}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{52A4FD55-BB85-361B-9A94-31A8DF6AF3DE}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cACC" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{52A4FD55-BB85-361B-9A94-31A8DF6AF3DE}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{52A4FD55-BB85-361B-9A94-31A8DF6AF3DE}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{52A4FD55-BB85-361B-9A94-31A8DF6AF3DE}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{52A4FD55-BB85-361B-9A94-31A8DF6AF3DE}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cACC" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{52A4FD55-BB85-361B-9A94-31A8DF6AF3DE}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{52A4FD55-BB85-361B-9A94-31A8DF6AF3DE}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{52A4FD55-BB85-361B-9A94-31A8DF6AF3DE}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{577F5974-4B86-347D-842A-ACAE8B4A35BA}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{577F5974-4B86-347D-842A-ACAE8B4A35BA}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cItem" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{577F5974-4B86-347D-842A-ACAE8B4A35BA}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{577F5974-4B86-347D-842A-ACAE8B4A35BA}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{577F5974-4B86-347D-842A-ACAE8B4A35BA}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{577F5974-4B86-347D-842A-ACAE8B4A35BA}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cItem" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{577F5974-4B86-347D-842A-ACAE8B4A35BA}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{577F5974-4B86-347D-842A-ACAE8B4A35BA}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{577F5974-4B86-347D-842A-ACAE8B4A35BA}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{62E6851C-F4FE-3E6B-AF24-95F6ED118D2C}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{62E6851C-F4FE-3E6B-AF24-95F6ED118D2C}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cBDTLibrary" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{62E6851C-F4FE-3E6B-AF24-95F6ED118D2C}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{62E6851C-F4FE-3E6B-AF24-95F6ED118D2C}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{62E6851C-F4FE-3E6B-AF24-95F6ED118D2C}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{62E6851C-F4FE-3E6B-AF24-95F6ED118D2C}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cBDTLibrary" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{62E6851C-F4FE-3E6B-AF24-95F6ED118D2C}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{62E6851C-F4FE-3E6B-AF24-95F6ED118D2C}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{62E6851C-F4FE-3E6B-AF24-95F6ED118D2C}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{6A6BEEC2-936C-30FF-96E4-22BCD4068C9E}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{6A6BEEC2-936C-30FF-96E4-22BCD4068C9E}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.dev.util.SchemaAnalyzerResults" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{6A6BEEC2-936C-30FF-96E4-22BCD4068C9E}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{6A6BEEC2-936C-30FF-96E4-22BCD4068C9E}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{6A6BEEC2-936C-30FF-96E4-22BCD4068C9E}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{6A6BEEC2-936C-30FF-96E4-22BCD4068C9E}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.dev.util.SchemaAnalyzerResults" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{6A6BEEC2-936C-30FF-96E4-22BCD4068C9E}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{6A6BEEC2-936C-30FF-96E4-22BCD4068C9E}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{6A6BEEC2-936C-30FF-96E4-22BCD4068C9E}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{6AA857DB-AE36-3481-A31E-C464B4A03C47}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{6AA857DB-AE36-3481-A31E-C464B4A03C47}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.Utils.SortConnectorByPosition" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{6AA857DB-AE36-3481-A31E-C464B4A03C47}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{6AA857DB-AE36-3481-A31E-C464B4A03C47}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{6AA857DB-AE36-3481-A31E-C464B4A03C47}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{6AA857DB-AE36-3481-A31E-C464B4A03C47}\InprocServer32" Name="Class" Value="VIENNAAddIn.Utils.SortConnectorByPosition" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{6AA857DB-AE36-3481-A31E-C464B4A03C47}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{6AA857DB-AE36-3481-A31E-C464B4A03C47}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{6AA857DB-AE36-3481-A31E-C464B4A03C47}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{730A48C7-A0AA-3A8D-88C8-28D18E68058E}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{730A48C7-A0AA-3A8D-88C8-28D18E68058E}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.otf.HierarchicalRepository" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{730A48C7-A0AA-3A8D-88C8-28D18E68058E}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{730A48C7-A0AA-3A8D-88C8-28D18E68058E}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{730A48C7-A0AA-3A8D-88C8-28D18E68058E}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{730A48C7-A0AA-3A8D-88C8-28D18E68058E}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.otf.HierarchicalRepository" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{730A48C7-A0AA-3A8D-88C8-28D18E68058E}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{730A48C7-A0AA-3A8D-88C8-28D18E68058E}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{730A48C7-A0AA-3A8D-88C8-28D18E68058E}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{74CEDAA8-9F82-3408-AEC2-11C9CE43F7F9}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{74CEDAA8-9F82-3408-AEC2-11C9CE43F7F9}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.uml.UmlEnumerationSpec" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{74CEDAA8-9F82-3408-AEC2-11C9CE43F7F9}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{74CEDAA8-9F82-3408-AEC2-11C9CE43F7F9}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{74CEDAA8-9F82-3408-AEC2-11C9CE43F7F9}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{74CEDAA8-9F82-3408-AEC2-11C9CE43F7F9}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.uml.UmlEnumerationSpec" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{74CEDAA8-9F82-3408-AEC2-11C9CE43F7F9}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{74CEDAA8-9F82-3408-AEC2-11C9CE43F7F9}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{74CEDAA8-9F82-3408-AEC2-11C9CE43F7F9}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{75EBB8A0-986A-3FC8-9116-06725B104474}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{75EBB8A0-986A-3FC8-9116-06725B104474}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cBBIE" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{75EBB8A0-986A-3FC8-9116-06725B104474}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{75EBB8A0-986A-3FC8-9116-06725B104474}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{75EBB8A0-986A-3FC8-9116-06725B104474}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{75EBB8A0-986A-3FC8-9116-06725B104474}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cBBIE" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{75EBB8A0-986A-3FC8-9116-06725B104474}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{75EBB8A0-986A-3FC8-9116-06725B104474}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{75EBB8A0-986A-3FC8-9116-06725B104474}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7A368887-7C75-348C-A80B-EFF86F4238A1}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7A368887-7C75-348C-A80B-EFF86F4238A1}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.otf.validators.constraints.ParentMustBeModelOrBInformationVOrBLibrary" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7A368887-7C75-348C-A80B-EFF86F4238A1}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7A368887-7C75-348C-A80B-EFF86F4238A1}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7A368887-7C75-348C-A80B-EFF86F4238A1}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7A368887-7C75-348C-A80B-EFF86F4238A1}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.otf.validators.constraints.ParentMustBeModelOrBInformationVOrBLibrary" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7A368887-7C75-348C-A80B-EFF86F4238A1}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7A368887-7C75-348C-A80B-EFF86F4238A1}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7A368887-7C75-348C-A80B-EFF86F4238A1}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7DF52B67-3D00-3CE1-829A-E35C132E83C3}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7DF52B67-3D00-3CE1-829A-E35C132E83C3}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.import.util.Include" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7DF52B67-3D00-3CE1-829A-E35C132E83C3}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7DF52B67-3D00-3CE1-829A-E35C132E83C3}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7DF52B67-3D00-3CE1-829A-E35C132E83C3}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7DF52B67-3D00-3CE1-829A-E35C132E83C3}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.import.util.Include" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7DF52B67-3D00-3CE1-829A-E35C132E83C3}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7DF52B67-3D00-3CE1-829A-E35C132E83C3}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7DF52B67-3D00-3CE1-829A-E35C132E83C3}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7ED0C990-CE49-37EF-A783-46B9A5D01C8D}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7ED0C990-CE49-37EF-A783-46B9A5D01C8D}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cCDTLibrary" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7ED0C990-CE49-37EF-A783-46B9A5D01C8D}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7ED0C990-CE49-37EF-A783-46B9A5D01C8D}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7ED0C990-CE49-37EF-A783-46B9A5D01C8D}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7ED0C990-CE49-37EF-A783-46B9A5D01C8D}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cCDTLibrary" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7ED0C990-CE49-37EF-A783-46B9A5D01C8D}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7ED0C990-CE49-37EF-A783-46B9A5D01C8D}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7ED0C990-CE49-37EF-A783-46B9A5D01C8D}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7F505F7C-D803-3D2E-BAFE-E7023EB45BAB}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7F505F7C-D803-3D2E-BAFE-E7023EB45BAB}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.dev.ui.SchemaAnalyzer" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7F505F7C-D803-3D2E-BAFE-E7023EB45BAB}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7F505F7C-D803-3D2E-BAFE-E7023EB45BAB}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7F505F7C-D803-3D2E-BAFE-E7023EB45BAB}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7F505F7C-D803-3D2E-BAFE-E7023EB45BAB}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.dev.ui.SchemaAnalyzer" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7F505F7C-D803-3D2E-BAFE-E7023EB45BAB}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7F505F7C-D803-3D2E-BAFE-E7023EB45BAB}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{7F505F7C-D803-3D2E-BAFE-E7023EB45BAB}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{81C2D330-A5D6-34D0-8CEA-1A0677359130}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{81C2D330-A5D6-34D0-8CEA-1A0677359130}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cCON" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{81C2D330-A5D6-34D0-8CEA-1A0677359130}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{81C2D330-A5D6-34D0-8CEA-1A0677359130}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{81C2D330-A5D6-34D0-8CEA-1A0677359130}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{81C2D330-A5D6-34D0-8CEA-1A0677359130}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cCON" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{81C2D330-A5D6-34D0-8CEA-1A0677359130}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{81C2D330-A5D6-34D0-8CEA-1A0677359130}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{81C2D330-A5D6-34D0-8CEA-1A0677359130}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{83D65533-2DD3-315D-B542-4E4BA10159DF}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{83D65533-2DD3-315D-B542-4E4BA10159DF}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cSUP" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{83D65533-2DD3-315D-B542-4E4BA10159DF}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{83D65533-2DD3-315D-B542-4E4BA10159DF}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{83D65533-2DD3-315D-B542-4E4BA10159DF}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{83D65533-2DD3-315D-B542-4E4BA10159DF}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cSUP" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{83D65533-2DD3-315D-B542-4E4BA10159DF}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{83D65533-2DD3-315D-B542-4E4BA10159DF}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{83D65533-2DD3-315D-B542-4E4BA10159DF}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{8AF87854-0E2F-3749-88B9-CB8D945ED60B}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{8AF87854-0E2F-3749-88B9-CB8D945ED60B}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.Utils.SortByName" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{8AF87854-0E2F-3749-88B9-CB8D945ED60B}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{8AF87854-0E2F-3749-88B9-CB8D945ED60B}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{8AF87854-0E2F-3749-88B9-CB8D945ED60B}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{8AF87854-0E2F-3749-88B9-CB8D945ED60B}\InprocServer32" Name="Class" Value="VIENNAAddIn.Utils.SortByName" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{8AF87854-0E2F-3749-88B9-CB8D945ED60B}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{8AF87854-0E2F-3749-88B9-CB8D945ED60B}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{8AF87854-0E2F-3749-88B9-CB8D945ED60B}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{91E70A8F-1974-3311-96C8-C43299F49B21}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{91E70A8F-1974-3311-96C8-C43299F49B21}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.dev.util.XMLSchemaReader" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{91E70A8F-1974-3311-96C8-C43299F49B21}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{91E70A8F-1974-3311-96C8-C43299F49B21}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{91E70A8F-1974-3311-96C8-C43299F49B21}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{91E70A8F-1974-3311-96C8-C43299F49B21}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.dev.util.XMLSchemaReader" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{91E70A8F-1974-3311-96C8-C43299F49B21}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{91E70A8F-1974-3311-96C8-C43299F49B21}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{91E70A8F-1974-3311-96C8-C43299F49B21}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{97156102-6627-3A46-9F73-AA3252A19720}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{97156102-6627-3A46-9F73-AA3252A19720}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.export.cctsndr.XSDGenerator" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{97156102-6627-3A46-9F73-AA3252A19720}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{97156102-6627-3A46-9F73-AA3252A19720}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{97156102-6627-3A46-9F73-AA3252A19720}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{97156102-6627-3A46-9F73-AA3252A19720}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.export.cctsndr.XSDGenerator" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{97156102-6627-3A46-9F73-AA3252A19720}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{97156102-6627-3A46-9F73-AA3252A19720}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{97156102-6627-3A46-9F73-AA3252A19720}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{981BC007-C5D9-31BD-B447-EA9B3BB22811}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{981BC007-C5D9-31BD-B447-EA9B3BB22811}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.export.cctsndr.ENUMSchemaGenerator" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{981BC007-C5D9-31BD-B447-EA9B3BB22811}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{981BC007-C5D9-31BD-B447-EA9B3BB22811}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{981BC007-C5D9-31BD-B447-EA9B3BB22811}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{981BC007-C5D9-31BD-B447-EA9B3BB22811}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.export.cctsndr.ENUMSchemaGenerator" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{981BC007-C5D9-31BD-B447-EA9B3BB22811}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{981BC007-C5D9-31BD-B447-EA9B3BB22811}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{981BC007-C5D9-31BD-B447-EA9B3BB22811}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{9E1BCE45-39B9-3646-A9DE-987AE54B91D1}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{9E1BCE45-39B9-3646-A9DE-987AE54B91D1}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.ImporterWizardFormOld" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{9E1BCE45-39B9-3646-A9DE-987AE54B91D1}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{9E1BCE45-39B9-3646-A9DE-987AE54B91D1}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{9E1BCE45-39B9-3646-A9DE-987AE54B91D1}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{9E1BCE45-39B9-3646-A9DE-987AE54B91D1}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.ImporterWizardFormOld" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{9E1BCE45-39B9-3646-A9DE-987AE54B91D1}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{9E1BCE45-39B9-3646-A9DE-987AE54B91D1}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{9E1BCE45-39B9-3646-A9DE-987AE54B91D1}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A59F88BD-40E8-39FD-B2A8-FEBE4D8700E7}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A59F88BD-40E8-39FD-B2A8-FEBE4D8700E7}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cCCLibrary" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A59F88BD-40E8-39FD-B2A8-FEBE4D8700E7}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A59F88BD-40E8-39FD-B2A8-FEBE4D8700E7}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A59F88BD-40E8-39FD-B2A8-FEBE4D8700E7}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A59F88BD-40E8-39FD-B2A8-FEBE4D8700E7}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cCCLibrary" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A59F88BD-40E8-39FD-B2A8-FEBE4D8700E7}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A59F88BD-40E8-39FD-B2A8-FEBE4D8700E7}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A59F88BD-40E8-39FD-B2A8-FEBE4D8700E7}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AAF5658E-906E-3202-AC97-9F498CF3F019}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AAF5658E-906E-3202-AC97-9F498CF3F019}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.import.mapping.NullMapping" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AAF5658E-906E-3202-AC97-9F498CF3F019}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AAF5658E-906E-3202-AC97-9F498CF3F019}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AAF5658E-906E-3202-AC97-9F498CF3F019}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AAF5658E-906E-3202-AC97-9F498CF3F019}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.import.mapping.NullMapping" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AAF5658E-906E-3202-AC97-9F498CF3F019}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AAF5658E-906E-3202-AC97-9F498CF3F019}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AAF5658E-906E-3202-AC97-9F498CF3F019}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{ACF47583-A5AE-3E11-807E-F2D88A4DDE26}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{ACF47583-A5AE-3E11-807E-F2D88A4DDE26}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.menu.MenuManager" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{ACF47583-A5AE-3E11-807E-F2D88A4DDE26}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{ACF47583-A5AE-3E11-807E-F2D88A4DDE26}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{ACF47583-A5AE-3E11-807E-F2D88A4DDE26}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{ACF47583-A5AE-3E11-807E-F2D88A4DDE26}\InprocServer32" Name="Class" Value="VIENNAAddIn.menu.MenuManager" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{ACF47583-A5AE-3E11-807E-F2D88A4DDE26}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{ACF47583-A5AE-3E11-807E-F2D88A4DDE26}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{ACF47583-A5AE-3E11-807E-F2D88A4DDE26}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AD350E21-0425-3D0C-918C-1D3A81CC92A1}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AD350E21-0425-3D0C-918C-1D3A81CC92A1}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.uml.UmlAttributeSpec" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AD350E21-0425-3D0C-918C-1D3A81CC92A1}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AD350E21-0425-3D0C-918C-1D3A81CC92A1}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AD350E21-0425-3D0C-918C-1D3A81CC92A1}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AD350E21-0425-3D0C-918C-1D3A81CC92A1}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.uml.UmlAttributeSpec" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AD350E21-0425-3D0C-918C-1D3A81CC92A1}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AD350E21-0425-3D0C-918C-1D3A81CC92A1}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AD350E21-0425-3D0C-918C-1D3A81CC92A1}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{ADFF62A3-BEB5-4F39-9F79-560989B6E48B}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{ADFF62A3-BEB5-4F39-9F79-560989B6E48B}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.VIENNAAddIn" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{ADFF62A3-BEB5-4F39-9F79-560989B6E48B}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{ADFF62A3-BEB5-4F39-9F79-560989B6E48B}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{ADFF62A3-BEB5-4F39-9F79-560989B6E48B}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{ADFF62A3-BEB5-4F39-9F79-560989B6E48B}\InprocServer32" Name="Class" Value="VIENNAAddIn.VIENNAAddIn" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{ADFF62A3-BEB5-4F39-9F79-560989B6E48B}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{ADFF62A3-BEB5-4F39-9F79-560989B6E48B}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{ADFF62A3-BEB5-4F39-9F79-560989B6E48B}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{B122F78D-D05C-3A8D-BD04-B365073225B6}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{B122F78D-D05C-3A8D-BD04-B365073225B6}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.util.DatabaseHandler" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{B122F78D-D05C-3A8D-BD04-B365073225B6}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{B122F78D-D05C-3A8D-BD04-B365073225B6}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{B122F78D-D05C-3A8D-BD04-B365073225B6}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{B122F78D-D05C-3A8D-BD04-B365073225B6}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.util.DatabaseHandler" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{B122F78D-D05C-3A8D-BD04-B365073225B6}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{B122F78D-D05C-3A8D-BD04-B365073225B6}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{B122F78D-D05C-3A8D-BD04-B365073225B6}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{B4D5A4D0-B63B-3D4D-BEA0-F554B4892001}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{B4D5A4D0-B63B-3D4D-BEA0-F554B4892001}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.dev.util.EditorModes" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{B4D5A4D0-B63B-3D4D-BEA0-F554B4892001}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{B4D5A4D0-B63B-3D4D-BEA0-F554B4892001}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{B4D5A4D0-B63B-3D4D-BEA0-F554B4892001}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{B4D5A4D0-B63B-3D4D-BEA0-F554B4892001}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.dev.util.EditorModes" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{B4D5A4D0-B63B-3D4D-BEA0-F554B4892001}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{B4D5A4D0-B63B-3D4D-BEA0-F554B4892001}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{B4D5A4D0-B63B-3D4D-BEA0-F554B4892001}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{C64C8A90-61D0-33FC-9602-1BA3EE6CCE89}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{C64C8A90-61D0-33FC-9602-1BA3EE6CCE89}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.dev.util.SchemaAnalyzerResultComparerByName" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{C64C8A90-61D0-33FC-9602-1BA3EE6CCE89}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{C64C8A90-61D0-33FC-9602-1BA3EE6CCE89}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{C64C8A90-61D0-33FC-9602-1BA3EE6CCE89}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{C64C8A90-61D0-33FC-9602-1BA3EE6CCE89}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.dev.util.SchemaAnalyzerResultComparerByName" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{C64C8A90-61D0-33FC-9602-1BA3EE6CCE89}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{C64C8A90-61D0-33FC-9602-1BA3EE6CCE89}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{C64C8A90-61D0-33FC-9602-1BA3EE6CCE89}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{CB4FC696-6863-38EA-B04F-726EC155E182}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{CB4FC696-6863-38EA-B04F-726EC155E182}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.otf.ValidationService" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{CB4FC696-6863-38EA-B04F-726EC155E182}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{CB4FC696-6863-38EA-B04F-726EC155E182}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{CB4FC696-6863-38EA-B04F-726EC155E182}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{CB4FC696-6863-38EA-B04F-726EC155E182}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.otf.ValidationService" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{CB4FC696-6863-38EA-B04F-726EC155E182}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{CB4FC696-6863-38EA-B04F-726EC155E182}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{CB4FC696-6863-38EA-B04F-726EC155E182}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{CE61B186-E6AF-3114-9105-FD633FD68B02}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{CE61B186-E6AF-3114-9105-FD633FD68B02}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.Cache" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{CE61B186-E6AF-3114-9105-FD633FD68B02}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{CE61B186-E6AF-3114-9105-FD633FD68B02}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{CE61B186-E6AF-3114-9105-FD633FD68B02}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{CE61B186-E6AF-3114-9105-FD633FD68B02}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.Cache" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{CE61B186-E6AF-3114-9105-FD633FD68B02}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{CE61B186-E6AF-3114-9105-FD633FD68B02}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{CE61B186-E6AF-3114-9105-FD633FD68B02}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{DA8F1A68-35B0-31FF-9B83-FB78FD88CD83}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{DA8F1A68-35B0-31FF-9B83-FB78FD88CD83}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cBCC" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{DA8F1A68-35B0-31FF-9B83-FB78FD88CD83}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{DA8F1A68-35B0-31FF-9B83-FB78FD88CD83}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{DA8F1A68-35B0-31FF-9B83-FB78FD88CD83}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{DA8F1A68-35B0-31FF-9B83-FB78FD88CD83}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cBCC" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{DA8F1A68-35B0-31FF-9B83-FB78FD88CD83}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{DA8F1A68-35B0-31FF-9B83-FB78FD88CD83}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{DA8F1A68-35B0-31FF-9B83-FB78FD88CD83}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{DED767F2-1746-3536-9FFF-49D10850FFDD}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{DED767F2-1746-3536-9FFF-49D10850FFDD}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.Utils.SortByPosition" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{DED767F2-1746-3536-9FFF-49D10850FFDD}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{DED767F2-1746-3536-9FFF-49D10850FFDD}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{DED767F2-1746-3536-9FFF-49D10850FFDD}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{DED767F2-1746-3536-9FFF-49D10850FFDD}\InprocServer32" Name="Class" Value="VIENNAAddIn.Utils.SortByPosition" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{DED767F2-1746-3536-9FFF-49D10850FFDD}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{DED767F2-1746-3536-9FFF-49D10850FFDD}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{DED767F2-1746-3536-9FFF-49D10850FFDD}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E4D9076C-80FC-3E6D-A166-52814F1BB799}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E4D9076C-80FC-3E6D-A166-52814F1BB799}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.util.ResourceDescriptor" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E4D9076C-80FC-3E6D-A166-52814F1BB799}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E4D9076C-80FC-3E6D-A166-52814F1BB799}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E4D9076C-80FC-3E6D-A166-52814F1BB799}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E4D9076C-80FC-3E6D-A166-52814F1BB799}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.util.ResourceDescriptor" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E4D9076C-80FC-3E6D-A166-52814F1BB799}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E4D9076C-80FC-3E6D-A166-52814F1BB799}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E4D9076C-80FC-3E6D-A166-52814F1BB799}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E54008A9-D3C1-3066-A5E8-B2923676186D}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E54008A9-D3C1-3066-A5E8-B2923676186D}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.export.cctsndr.RootSchemaGenerator" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E54008A9-D3C1-3066-A5E8-B2923676186D}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E54008A9-D3C1-3066-A5E8-B2923676186D}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E54008A9-D3C1-3066-A5E8-B2923676186D}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E54008A9-D3C1-3066-A5E8-B2923676186D}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.export.cctsndr.RootSchemaGenerator" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E54008A9-D3C1-3066-A5E8-B2923676186D}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E54008A9-D3C1-3066-A5E8-B2923676186D}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E54008A9-D3C1-3066-A5E8-B2923676186D}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E862D590-8810-3FB2-B471-3FC5AE23DC34}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E862D590-8810-3FB2-B471-3FC5AE23DC34}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.otf.validators.PRIMValidator" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E862D590-8810-3FB2-B471-3FC5AE23DC34}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E862D590-8810-3FB2-B471-3FC5AE23DC34}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E862D590-8810-3FB2-B471-3FC5AE23DC34}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E862D590-8810-3FB2-B471-3FC5AE23DC34}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.otf.validators.PRIMValidator" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E862D590-8810-3FB2-B471-3FC5AE23DC34}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E862D590-8810-3FB2-B471-3FC5AE23DC34}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E862D590-8810-3FB2-B471-3FC5AE23DC34}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E95EE662-EB4A-31F4-863F-55D5E702069C}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E95EE662-EB4A-31F4-863F-55D5E702069C}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.otf.validators.constraints.SubPackagesMustBeBusinessLibraries" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E95EE662-EB4A-31F4-863F-55D5E702069C}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E95EE662-EB4A-31F4-863F-55D5E702069C}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E95EE662-EB4A-31F4-863F-55D5E702069C}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E95EE662-EB4A-31F4-863F-55D5E702069C}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.otf.validators.constraints.SubPackagesMustBeBusinessLibraries" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E95EE662-EB4A-31F4-863F-55D5E702069C}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E95EE662-EB4A-31F4-863F-55D5E702069C}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{E95EE662-EB4A-31F4-863F-55D5E702069C}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{EA5E4316-EE2A-3537-A246-1C9A6256AC47}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{EA5E4316-EE2A-3537-A246-1C9A6256AC47}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.CacheConstants" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{EA5E4316-EE2A-3537-A246-1C9A6256AC47}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{EA5E4316-EE2A-3537-A246-1C9A6256AC47}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{EA5E4316-EE2A-3537-A246-1C9A6256AC47}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{EA5E4316-EE2A-3537-A246-1C9A6256AC47}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.CacheConstants" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{EA5E4316-EE2A-3537-A246-1C9A6256AC47}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{EA5E4316-EE2A-3537-A246-1C9A6256AC47}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{EA5E4316-EE2A-3537-A246-1C9A6256AC47}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F07EE473-11D0-3918-A18A-C92EF1A8058F}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F07EE473-11D0-3918-A18A-C92EF1A8058F}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cBDT" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F07EE473-11D0-3918-A18A-C92EF1A8058F}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F07EE473-11D0-3918-A18A-C92EF1A8058F}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F07EE473-11D0-3918-A18A-C92EF1A8058F}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F07EE473-11D0-3918-A18A-C92EF1A8058F}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cBDT" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F07EE473-11D0-3918-A18A-C92EF1A8058F}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F07EE473-11D0-3918-A18A-C92EF1A8058F}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F07EE473-11D0-3918-A18A-C92EF1A8058F}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F0A39463-E827-31B4-8F40-FD6C1EFEE726}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F0A39463-E827-31B4-8F40-FD6C1EFEE726}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.otf.validators.BLibraryValidator" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F0A39463-E827-31B4-8F40-FD6C1EFEE726}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F0A39463-E827-31B4-8F40-FD6C1EFEE726}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F0A39463-E827-31B4-8F40-FD6C1EFEE726}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F0A39463-E827-31B4-8F40-FD6C1EFEE726}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.otf.validators.BLibraryValidator" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F0A39463-E827-31B4-8F40-FD6C1EFEE726}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F0A39463-E827-31B4-8F40-FD6C1EFEE726}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F0A39463-E827-31B4-8F40-FD6C1EFEE726}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F7CD0855-E2ED-326F-8142-559EEE741DAB}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F7CD0855-E2ED-326F-8142-559EEE741DAB}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.dev.ui.XsdImporterViewModel" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F7CD0855-E2ED-326F-8142-559EEE741DAB}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F7CD0855-E2ED-326F-8142-559EEE741DAB}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F7CD0855-E2ED-326F-8142-559EEE741DAB}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F7CD0855-E2ED-326F-8142-559EEE741DAB}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.dev.ui.XsdImporterViewModel" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F7CD0855-E2ED-326F-8142-559EEE741DAB}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F7CD0855-E2ED-326F-8142-559EEE741DAB}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F7CD0855-E2ED-326F-8142-559EEE741DAB}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F8037E77-BCC3-371C-A922-D5B98C9BF0AC}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F8037E77-BCC3-371C-A922-D5B98C9BF0AC}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.import.mapping.NullComplexTypeMapping" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F8037E77-BCC3-371C-A922-D5B98C9BF0AC}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F8037E77-BCC3-371C-A922-D5B98C9BF0AC}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F8037E77-BCC3-371C-A922-D5B98C9BF0AC}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F8037E77-BCC3-371C-A922-D5B98C9BF0AC}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.import.mapping.NullComplexTypeMapping" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F8037E77-BCC3-371C-A922-D5B98C9BF0AC}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F8037E77-BCC3-371C-A922-D5B98C9BF0AC}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F8037E77-BCC3-371C-A922-D5B98C9BF0AC}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F8BA1C15-0AAB-38DB-B06C-351E7B805E9D}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F8BA1C15-0AAB-38DB-B06C-351E7B805E9D}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.otf.validators.constraints.NameMustNotBeEmpty" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F8BA1C15-0AAB-38DB-B06C-351E7B805E9D}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F8BA1C15-0AAB-38DB-B06C-351E7B805E9D}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F8BA1C15-0AAB-38DB-B06C-351E7B805E9D}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F8BA1C15-0AAB-38DB-B06C-351E7B805E9D}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.otf.validators.constraints.NameMustNotBeEmpty" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F8BA1C15-0AAB-38DB-B06C-351E7B805E9D}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F8BA1C15-0AAB-38DB-B06C-351E7B805E9D}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{F8BA1C15-0AAB-38DB-B06C-351E7B805E9D}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{FB6E3CD9-E2FF-3EF8-9CB6-D54C97AFB437}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{FB6E3CD9-E2FF-3EF8-9CB6-D54C97AFB437}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.uml.UmlEnumerationLiteralSpec" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{FB6E3CD9-E2FF-3EF8-9CB6-D54C97AFB437}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{FB6E3CD9-E2FF-3EF8-9CB6-D54C97AFB437}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{FB6E3CD9-E2FF-3EF8-9CB6-D54C97AFB437}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{FB6E3CD9-E2FF-3EF8-9CB6-D54C97AFB437}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.uml.UmlEnumerationLiteralSpec" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{FB6E3CD9-E2FF-3EF8-9CB6-D54C97AFB437}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{FB6E3CD9-E2FF-3EF8-9CB6-D54C97AFB437}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{FB6E3CD9-E2FF-3EF8-9CB6-D54C97AFB437}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{FE80BD9F-F06C-3A00-9529-18E17F614A0F}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{FE80BD9F-F06C-3A00-9529-18E17F614A0F}\InprocServer32\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cCheckItem" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{FE80BD9F-F06C-3A00-9529-18E17F614A0F}\InprocServer32\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{FE80BD9F-F06C-3A00-9529-18E17F614A0F}\InprocServer32\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{FE80BD9F-F06C-3A00-9529-18E17F614A0F}\InprocServer32\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{FE80BD9F-F06C-3A00-9529-18E17F614A0F}\InprocServer32" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.cCheckItem" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{FE80BD9F-F06C-3A00-9529-18E17F614A0F}\InprocServer32" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{FE80BD9F-F06C-3A00-9529-18E17F614A0F}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{FE80BD9F-F06C-3A00-9529-18E17F614A0F}\InprocServer32" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{05B8040F-0776-3257-8CE2-2A1EECD64A25}\0.0.9.0" Name="Class" Value="VIENNAAddIn.constants.UMM" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{05B8040F-0776-3257-8CE2-2A1EECD64A25}\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{05B8040F-0776-3257-8CE2-2A1EECD64A25}\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{05B8040F-0776-3257-8CE2-2A1EECD64A25}\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{22AC71AD-335F-38FC-B2D4-6987C26150CE}\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.otf.ItemId+ItemType" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{22AC71AD-335F-38FC-B2D4-6987C26150CE}\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{22AC71AD-335F-38FC-B2D4-6987C26150CE}\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{22AC71AD-335F-38FC-B2D4-6987C26150CE}\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{3E468104-3266-3972-B08B-B62D5B0F5AC6}\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.ea.EaConnectorTypes" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{3E468104-3266-3972-B08B-B62D5B0F5AC6}\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{3E468104-3266-3972-B08B-B62D5B0F5AC6}\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{3E468104-3266-3972-B08B-B62D5B0F5AC6}\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{3ED705D1-9A8C-3316-9A22-B6549B111FA3}\0.0.9.0" Name="Class" Value="VIENNAAddIn.constants.CCTS_TV" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{3ED705D1-9A8C-3316-9A22-B6549B111FA3}\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{3ED705D1-9A8C-3316-9A22-B6549B111FA3}\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{3ED705D1-9A8C-3316-9A22-B6549B111FA3}\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{40D49128-68F7-3DA0-95BB-FEF1492639BB}\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.import.mapping.InputOutputKey+KeyType" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{40D49128-68F7-3DA0-95BB-FEF1492639BB}\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{40D49128-68F7-3DA0-95BB-FEF1492639BB}\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{40D49128-68F7-3DA0-95BB-FEF1492639BB}\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{630DCDE6-0C59-36E4-94A3-59854693B0A7}\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.import.mapping.ComplexTypeMapping+LibraryType" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{630DCDE6-0C59-36E4-94A3-59854693B0A7}\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{630DCDE6-0C59-36E4-94A3-59854693B0A7}\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{630DCDE6-0C59-36E4-94A3-59854693B0A7}\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{67106B74-F414-3E32-9C03-BCDB1846A732}\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.dev.util.EditorModes+AbieEditorModes" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{67106B74-F414-3E32-9C03-BCDB1846A732}\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{67106B74-F414-3E32-9C03-BCDB1846A732}\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{67106B74-F414-3E32-9C03-BCDB1846A732}\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{6DCA1567-0BC0-328B-B922-DB7A2FC13159}\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.uml.UmlDiagramType" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{6DCA1567-0BC0-328B-B922-DB7A2FC13159}\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{6DCA1567-0BC0-328B-B922-DB7A2FC13159}\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{6DCA1567-0BC0-328B-B922-DB7A2FC13159}\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{79BAC17A-4BE0-3E8E-9A32-E2AE4D399434}\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.util.VersionDescriptor" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{79BAC17A-4BE0-3E8E-9A32-E2AE4D399434}\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{79BAC17A-4BE0-3E8E-9A32-E2AE4D399434}\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{79BAC17A-4BE0-3E8E-9A32-E2AE4D399434}\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{808DB1A0-DF69-3D72-951C-056ACC1DF8EC}\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.dev.binding.BindingPropertyNames+TemporaryAbieModel" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{808DB1A0-DF69-3D72-951C-056ACC1DF8EC}\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{808DB1A0-DF69-3D72-951C-056ACC1DF8EC}\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{808DB1A0-DF69-3D72-951C-056ACC1DF8EC}\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{9FEBCEDF-B533-3670-BE93-BA83E9DD3330}\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.import.mapping.XsdObjectType" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{9FEBCEDF-B533-3670-BE93-BA83E9DD3330}\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{9FEBCEDF-B533-3670-BE93-BA83E9DD3330}\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{9FEBCEDF-B533-3670-BE93-BA83E9DD3330}\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{A7F83875-ED97-3932-B746-C38DA0B00671}\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.dev.binding.BindingPropertyNames+TemporarySubSettingModel" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{A7F83875-ED97-3932-B746-C38DA0B00671}\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{A7F83875-ED97-3932-B746-C38DA0B00671}\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{A7F83875-ED97-3932-B746-C38DA0B00671}\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{AEF09E39-663F-364F-A8C2-8BB7EDBEF574}\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.ea.EaAggregationKind" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{AEF09E39-663F-364F-A8C2-8BB7EDBEF574}\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{AEF09E39-663F-364F-A8C2-8BB7EDBEF574}\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{AEF09E39-663F-364F-A8C2-8BB7EDBEF574}\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{B5BEF2E7-EC14-3331-9AA9-AA381361D119}\0.0.9.0" Name="Class" Value="VIENNAAddIn.common.logging.LogType" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{B5BEF2E7-EC14-3331-9AA9-AA381361D119}\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{B5BEF2E7-EC14-3331-9AA9-AA381361D119}\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{B5BEF2E7-EC14-3331-9AA9-AA381361D119}\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{B6C6A270-AFC1-33BC-9639-3F0E17121FAB}\0.0.9.0" Name="Class" Value="VIENNAAddIn.menu.MenuLocation" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{B6C6A270-AFC1-33BC-9639-3F0E17121FAB}\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{B6C6A270-AFC1-33BC-9639-3F0E17121FAB}\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{B6C6A270-AFC1-33BC-9639-3F0E17121FAB}\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{C2C65AD9-5EE5-3F40-A8BF-2D3A5D10AFB4}\0.0.9.0" Name="Class" Value="VIENNAAddIn.constants.StereotypeOwnTaggedValues" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{C2C65AD9-5EE5-3F40-A8BF-2D3A5D10AFB4}\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{C2C65AD9-5EE5-3F40-A8BF-2D3A5D10AFB4}\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{C2C65AD9-5EE5-3F40-A8BF-2D3A5D10AFB4}\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{C849E7C1-BD4A-32E7-A6DE-D9266E32896C}\0.0.9.0" Name="Class" Value="VIENNAAddIn.constants.CCTS_Types" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{C849E7C1-BD4A-32E7-A6DE-D9266E32896C}\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{C849E7C1-BD4A-32E7-A6DE-D9266E32896C}\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{C849E7C1-BD4A-32E7-A6DE-D9266E32896C}\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{CF65DF28-0858-3E3E-925B-BE630F6EFCBF}\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.Wizards.dev.binding.BindingPropertyNames+TemporaryBdtModel" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{CF65DF28-0858-3E3E-925B-BE630F6EFCBF}\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{CF65DF28-0858-3E3E-925B-BE630F6EFCBF}\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{CF65DF28-0858-3E3E-925B-BE630F6EFCBF}\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{CFF002BA-1CB7-30C2-8B65-2A4EF3381603}\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.ea.RepositoryType" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{CFF002BA-1CB7-30C2-8B65-2A4EF3381603}\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{CFF002BA-1CB7-30C2-8B65-2A4EF3381603}\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{CFF002BA-1CB7-30C2-8B65-2A4EF3381603}\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{D39061AF-D2FE-3276-9536-AFF350CAF421}\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.TaggedValues" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{D39061AF-D2FE-3276-9536-AFF350CAF421}\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{D39061AF-D2FE-3276-9536-AFF350CAF421}\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{D39061AF-D2FE-3276-9536-AFF350CAF421}\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{E9F64D23-3D8F-36C1-A7AD-B8AD138AC79A}\0.0.9.0" Name="Class" Value="VIENNAAddIn.upcc3.export.cctsndr.UpccSchematype" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{E9F64D23-3D8F-36C1-A7AD-B8AD138AC79A}\0.0.9.0" Name="Assembly" Value="VIENNAAddIn, Version=0.0.9.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{E9F64D23-3D8F-36C1-A7AD-B8AD138AC79A}\0.0.9.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="Record\{E9F64D23-3D8F-36C1-A7AD-B8AD138AC79A}\0.0.9.0" Name="CodeBase" Value="file:///[#VIENNAAddIn.dll]" Type="string" Action="write" />
+      </Component>
+      <Component Id="ViennaAddin_RegistryEntry" Guid="62306464-F2AC-40D7-8F30-CF8A67A021A6">
+        <RegistryKey Root="HKLM" Key="SOFTWARE\Wow6432Node\Sparx Systems\EAAddins\Vienna-BE">
+          <RegistryValue Type="string" Value="VIENNAAddIn.VIENNAAddIn" />
+        </RegistryKey>
+        <Condition> %PROCESSOR_ARCHITECTURE="AMD64" OR %PROCESSOR_ARCHITECTURE="IE64"</Condition>
+      </Component>
+      <Component Id="ViennaAddin_RegistryEntry_x86" Guid="551777AE-189A-4CB6-934F-B989F08FA8F3">
+        <RegistryKey Root="HKLM" Key="SOFTWARE\Sparx Systems\EAAddins\Vienna-BE">
+          <RegistryValue Type="string" Value="VIENNAAddIn.VIENNAAddIn" />
+        </RegistryKey>
+        <Condition> %PROCESSOR_ARCHITECTURE="AMD64" OR %PROCESSOR_ARCHITECTURE="IE64"</Condition>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>
