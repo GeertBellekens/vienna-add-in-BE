@@ -214,7 +214,9 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 				if (bbie.Bdt.Con.BasicType != null && bbie.Bdt.Con.BasicType.IsEnum) {
 					//figure out if the set of values is restricted
 					var basicEnum = bbie.Bdt.Con.BasicType.Enum as UpccEnum;
-					if (basicEnum != null) {
+                    //use this method only if there are values specified in the basic enum. If not then we simply use the type
+                    if (basicEnum != null && basicEnum.CodelistEntries.Any())
+                    {
 						var sourceEnum = basicEnum.SourceElement as UpccEnum;
 						if (sourceEnum != null) {
 							var restrictedtype = new XmlSchemaComplexType();
