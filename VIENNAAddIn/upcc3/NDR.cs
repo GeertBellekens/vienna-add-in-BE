@@ -98,7 +98,7 @@ namespace VIENNAAddIn.upcc3
 
         public static string GetXsdElementNameFromAsbie(IAsbie asbie)
         {
-        	return asbie.Name + TrimElementName(asbie.AssociatedAbie.Name);
+        	return TrimElementName(asbie.Name + asbie.AssociatedAbie.Name);
         }
 
         public static string GetXsdElementNameFromAsma(IAsma asma)
