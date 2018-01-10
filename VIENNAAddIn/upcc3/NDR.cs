@@ -309,7 +309,19 @@ namespace VIENNAAddIn.upcc3
 				}
 			}
 		}
-		public static XmlSchemaFacet createXmlFacet(ICctsFacet facet)
+        public static void addFacets(XmlSchemaSimpleContentRestriction restriction, IEnumerable<ICctsFacet> facets)
+        {
+            foreach (var facet in facets)
+            {
+                var xmlFacet = createXmlFacet(facet);
+                if (xmlFacet != null)
+                {
+                    xmlFacet.Value = facet.content;
+                    restriction.Facets.Add(xmlFacet);
+                }
+            }
+        }
+        public static XmlSchemaFacet createXmlFacet(ICctsFacet facet)
 		{
 			XmlSchemaFacet xmlFacet = null;
 			switch (facet.name) 

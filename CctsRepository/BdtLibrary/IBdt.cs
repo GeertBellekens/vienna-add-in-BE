@@ -39,12 +39,18 @@ namespace CctsRepository.BdtLibrary
 		/// indicates that this BDT will be translated directly into it's underlying XSD datatype in the messages.
 		/// </summary>
 		bool isDirectXSDType {get;}
-		/// <summary>
-		/// Creates a(n) SUP based on the given <paramref name="specification"/>.
-		/// <param name="specification">A specification for a(n) SUP.</param>
-		/// <returns>The newly created SUP.</returns>
-		/// </summary>
-		IBdtSup CreateBdtSup(BdtSupSpec specification);
+
+        /// <summary>
+        /// the XSD type name that can be used to represent this primitive type
+        /// </summary>
+        string xsdType { get; }
+
+        /// <summary>
+        /// Creates a(n) SUP based on the given <paramref name="specification"/>.
+        /// <param name="specification">A specification for a(n) SUP.</param>
+        /// <returns>The newly created SUP.</returns>
+        /// </summary>
+        IBdtSup CreateBdtSup(BdtSupSpec specification);
 
 		/// <summary>
 		/// Updates a(n) SUP to match the given <paramref name="specification"/>.

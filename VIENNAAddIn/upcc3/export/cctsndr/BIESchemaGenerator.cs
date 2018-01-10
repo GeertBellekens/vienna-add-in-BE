@@ -46,29 +46,29 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         private const string NSPREFIX_BIE = "bie";
         private const string NSPREFIX_DOC = "ccts";
         private const string NSPREFIX_XBT = "xbt";
-		private const string NSPREFIX_XSD = "xsd";
-		
+        private const string NSPREFIX_XSD = "xsd";
+
         private const string NS_DOC = "urn:un:unece:uncefact:documentation:common:3:standard:CoreComponentsTechnicalSpecification:3";
-        private const string NS_XBT = "urn:un:unece:uncefact:data:common:1:draft"; 
+        private const string NS_XBT = "urn:un:unece:uncefact:data:common:1:draft";
         private const string NS_XSD = "http://www.w3.org/2001/XMLSchema";
-        
+
         private static List<String> globalASBIEs;
-		
-        public static void GenerateXSD(GeneratorContext context, GeneratorContext genericContext,  IEnumerable<IAbie> abies)
+
+        public static void GenerateXSD(GeneratorContext context, GeneratorContext genericContext, IEnumerable<IAbie> abies)
         {
-        	genericContext.AddElements(abies);
-        	context.AddElements(abies);
-        	GenerateXSD(context);
+            genericContext.AddElements(abies);
+            context.AddElements(abies);
+            GenerateXSD(context);
         }
 
         public static void GenerateXSD(GeneratorContext context)
         {
-        	// Create XML schema file and prepare the XML schema header
+            // Create XML schema file and prepare the XML schema header
             // R 88E2: all XML schema files must use UTF-8 encoding
             // R B387: every XML schema must have a declared target namespace
             globalASBIEs = new List<String>();
 
-            var schema = new XmlSchema {TargetNamespace = context.TargetNamespace};
+            var schema = new XmlSchema { TargetNamespace = context.TargetNamespace };
             schema.Namespaces.Add(NSPREFIX_BIE, context.TargetNamespace);
             schema.Version = context.VersionID.DefaultTo("1");
 
@@ -80,15 +80,15 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 
             // R 9B18: all XML schemas must utilize the xsd prefix when referring to the W3C XML schema namespace            
             schema.Namespaces.Add(NSPREFIX_XSD, NS_XSD);
-			//add namespace for documentation
+            //add namespace for documentation
             schema.Namespaces.Add(NSPREFIX_DOC, NS_DOC);
             // add namespace ns1
             schema.Namespaces.Add(NSPREFIX_NS1, context.BaseURN);
             //add namespace xbt
             schema.Namespaces.Add(NSPREFIX_XBT, NS_XBT);
- 
 
-			string schemaFileName = getSchemaFileName(context);
+
+            string schemaFileName = getSchemaFileName(context);
             // R 8FE2: include BDT XML schema file
             AddIncludes(schema, context, schemaFileName);
 
@@ -103,32 +103,32 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                 // R B27B: every ABIE global element declaration must be of the complexType that represents
                 //         the ABIE
                 // Global element definitions are apparently not required
-//                XmlSchemaElement elementBIE = new XmlSchemaElement();
-//                elementBIE.Name = abie.Name;
-//                elementBIE.SchemaTypeName = new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.TrimElementName(abie.Name) + "Type");
-//                schema.Items.Add(elementBIE);
+                //                XmlSchemaElement elementBIE = new XmlSchemaElement();
+                //                elementBIE.Name = abie.Name;
+                //                elementBIE.SchemaTypeName = new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.TrimElementName(abie.Name) + "Type");
+                //                schema.Items.Add(elementBIE);
             }
 
             context.AddSchema(schema, schemaFileName, UpccSchematype.BIE);
         }
         private static string getSchemaFileName(GeneratorContext context)
         {
-        	var mainVersion = context.VersionID.Split('.').FirstOrDefault();
-        	var minorVersion = context.VersionID.Split('.').LastOrDefault();
-        	var docRootName =  context.DocRootName;
-        	var bSlash = System.IO.Path.DirectorySeparatorChar;
-        	var docOrGeneric = context.isGeneric ? "generic" : "document" + bSlash
-        											+ docRootName ;
-        	//TODO set "ebIX" prefix via settings?
-        	string filename = context.OutputDirectory + bSlash + docOrGeneric + bSlash //directories
-        		+ "ebIX_MessageBusinessInformationEntities_"; // filename
-        	if (! context.isGeneric) filename += docRootName +"_";
-        	filename += mainVersion + "p" + minorVersion + ".xsd";
-        	return  filename;
+            var mainVersion = context.VersionID.Split('.').FirstOrDefault();
+            var minorVersion = context.VersionID.Split('.').LastOrDefault();
+            var docRootName = context.DocRootName;
+            var bSlash = System.IO.Path.DirectorySeparatorChar;
+            var docOrGeneric = context.isGeneric ? "generic" : "document" + bSlash
+                                                    + docRootName;
+            //TODO set "ebIX" prefix via settings?
+            string filename = context.OutputDirectory + bSlash + docOrGeneric + bSlash //directories
+                + "ebIX_MessageBusinessInformationEntities_"; // filename
+            if (!context.isGeneric) filename += docRootName + "_";
+            filename += mainVersion + "p" + minorVersion + ".xsd";
+            return filename;
         }
-		private static void AddIncludes(XmlSchema schema, GeneratorContext context, string schemaFileName)
+        private static void AddIncludes(XmlSchema schema, GeneratorContext context, string schemaFileName)
         {
-			foreach (var incSchemaInfo in context.Schemas.Where(x => x.Schematype == UpccSchematype.BDT))
+            foreach (var incSchemaInfo in context.Schemas.Where(x => x.Schematype == UpccSchematype.BDT))
             {
                 var include = new XmlSchemaInclude();
                 include.SchemaLocation = NDR.GetRelativePath(schemaFileName, incSchemaInfo.FileName);
@@ -152,17 +152,17 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             var processedProperties = new List<ICctsProperty>();
             // create the sequence for the BBIEs within the ABIE
             XmlSchemaSequence sequenceBBIEs = new XmlSchemaSequence();
-			//attributes and associations are mixed in a user defined order
+            //attributes and associations are mixed in a user defined order
             foreach (var property in abie.Properties)
-			{
-            	if (! processedProperties.Contains(property))
-            	{
-	            	IAsbie asbie = property as IAsbie;
-	            	if (asbie != null) AddAsbie(asbie,sequenceBBIEs,context,schema, processedProperties);
-	            	IBbie bbie = property as IBbie;
-	            	if (bbie != null) AddBbie(bbie, sequenceBBIEs, context,processedProperties);
-            	}
-			}
+            {
+                if (!processedProperties.Contains(property))
+                {
+                    IAsbie asbie = property as IAsbie;
+                    if (asbie != null) AddAsbie(asbie, sequenceBBIEs, context, schema, processedProperties);
+                    IBbie bbie = property as IBbie;
+                    if (bbie != null) AddBbie(bbie, sequenceBBIEs, context, processedProperties);
+                }
+            }
 
             // add the sequence created to the complex type
             complexTypeBIE.Particle = sequenceBBIEs;
@@ -170,134 +170,163 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         }
 
         static void AddBbie(IBbie bbie, XmlSchemaSequence sequenceBBIEs, GeneratorContext context
-                            ,List<ICctsProperty> processedProperties)
-		{
-			var elementBBIE = CreateBbieSchemaElement(bbie, context);
-			if (bbie.otherPropertiesInChoice.Any())
-			{
-				var choiceElement = new XmlSchemaChoice();
-				choiceElement.Items.Add(elementBBIE);
+                            , List<ICctsProperty> processedProperties)
+        {
+            var elementBBIE = CreateBbieSchemaElement(bbie, context);
+            if (bbie.otherPropertiesInChoice.Any())
+            {
+                var choiceElement = new XmlSchemaChoice();
+                choiceElement.Items.Add(elementBBIE);
                 bool isOptional = bbie.LowerBound == "0";
-				foreach (IBbie otherProperty in bbie.otherPropertiesInChoice) 
-				{
+                foreach (IBbie otherProperty in bbie.otherPropertiesInChoice)
+                {
                     if (!isOptional) isOptional = otherProperty.LowerBound == "0";
-					choiceElement.Items.Add(CreateBbieSchemaElement(otherProperty,context));
-					processedProperties.Add(otherProperty);
-				}
+                    choiceElement.Items.Add(CreateBbieSchemaElement(otherProperty, context));
+                    processedProperties.Add(otherProperty);
+                }
                 //set minoccurs to 0 is the choice is optional
                 if (isOptional)
                 {
                     choiceElement.MinOccurs = 0;
                 }
-				//add the choice tot the sequence
-				sequenceBBIEs.Items.Add(choiceElement);
-			}
-			else
-			{
-				// add the element created to the sequence
-            	sequenceBBIEs.Items.Add(elementBBIE);
-			}
-			// add the property to the list of processed properties
-			processedProperties.Add(bbie);
-		}
+                //add the choice tot the sequence
+                sequenceBBIEs.Items.Add(choiceElement);
+            }
+            else
+            {
+                // add the element created to the sequence
+                sequenceBBIEs.Items.Add(elementBBIE);
+            }
+            // add the property to the list of processed properties
+            processedProperties.Add(bbie);
+        }
 
-		static XmlSchemaElement CreateBbieSchemaElement(IBbie bbie, GeneratorContext context)
-		{
-			// R 89A6: for every BBIE a named element must be locally declared
-			XmlSchemaElement elementBBIE = new XmlSchemaElement();
-			// R AEFE, R 96D9, R9A40, R A34A are implemented in GetXsdElementNameFromBbie(...)
-			elementBBIE.Name = NDR.GetXsdElementNameFromBbie(bbie);
-			// R 8B85: every BBIE type must be named the property term and qualifiers and the
-			//         representation term of the basic business information entity (BBIE) it represents
-			//         with the word 'Type' appended. 
-			if (bbie.Bdt != null && bbie.Bdt.Con != null) {
-				if (bbie.Bdt.Con.BasicType != null && bbie.Bdt.Con.BasicType.IsEnum) {
-					//figure out if the set of values is restricted
-					var basicEnum = bbie.Bdt.Con.BasicType.Enum as UpccEnum;
+        static XmlSchemaElement CreateBbieSchemaElement(IBbie bbie, GeneratorContext context)
+        {
+            // R 89A6: for every BBIE a named element must be locally declared
+            XmlSchemaElement elementBBIE = new XmlSchemaElement();
+            // R AEFE, R 96D9, R9A40, R A34A are implemented in GetXsdElementNameFromBbie(...)
+            elementBBIE.Name = NDR.GetXsdElementNameFromBbie(bbie);
+            // R 8B85: every BBIE type must be named the property term and qualifiers and the
+            //         representation term of the basic business information entity (BBIE) it represents
+            //         with the word 'Type' appended. 
+            if (bbie.Bdt != null && bbie.Bdt.Con != null)
+            {
+                if (bbie.Bdt.Con.BasicType != null && bbie.Bdt.Con.BasicType.IsEnum)
+                {
+                    //figure out if the set of values is restricted
+                    var basicEnum = bbie.Bdt.Con.BasicType.Enum as UpccEnum;
                     //use this method only if there are values specified in the basic enum. If not then we simply use the type
                     if (basicEnum != null && basicEnum.CodelistEntries.Any())
                     {
-						var sourceEnum = basicEnum.SourceElement as UpccEnum;
-						if (sourceEnum != null) {
-							var restrictedtype = new XmlSchemaComplexType();
-							var sympleContent = new XmlSchemaSimpleContent();
-							var restriction = new XmlSchemaSimpleContentRestriction();
-							restriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.GetXsdTypeNameFromBdt(bbie.Bdt));
-							addEnumerationValues(restriction, basicEnum);
-							//add restriction to simplecontent
-							sympleContent.Content = restriction;
-							//add the restriction to the simple type
-							restrictedtype.ContentModel = sympleContent;
-							//set the type of the BBIE
-							elementBBIE.SchemaType = restrictedtype;
-						}
-					}
-				}
-				if (bbie.Bdt.isDirectXSDType) {
-					var basicTypePrim = bbie.Bdt.Con.BasicType.Prim;
-					if (basicTypePrim != null) {
-						var XSDtype = basicTypePrim.xsdType;
-						if (!string.IsNullOrEmpty(XSDtype)) {
-							if (bbie.Bdt.Con.AllFacets.Any()) {
-								//add facets
-								var restrictedtype = new XmlSchemaSimpleType();
-								var restriction = new XmlSchemaSimpleTypeRestriction();
-								restriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_XSD + ":" + XSDtype);
-								NDR.addFacets(restriction, bbie.Bdt.Con.AllFacets);
-								//add the restriction to the simple type
-								restrictedtype.Content = restriction;
-								//set the type of the BBIE
-								elementBBIE.SchemaType = restrictedtype;
-							} else {
-								elementBBIE.SchemaTypeName = new XmlQualifiedName(NSPREFIX_XSD + ":" + XSDtype);
-							}
-						}
-					}
-				}
-				if (bbie.Facets.Any()) {
-					//add facets
-					var restrictedtype = new XmlSchemaSimpleType();
-					var restriction = new XmlSchemaSimpleTypeRestriction();
-					restriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.GetXsdTypeNameFromBdt(bbie.Bdt));
-					NDR.addFacets(restriction, bbie.Facets);
-					//add the restriction to the simple type
-					restrictedtype.Content = restriction;
-					//set the type of the BBIE
-					elementBBIE.SchemaType = restrictedtype;
-				}
-				if (elementBBIE.SchemaType == null && elementBBIE.SchemaTypeName.IsEmpty) {
-					//use type without facets
-					elementBBIE.SchemaTypeName = new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.GetXsdTypeNameFromBdt(bbie.Bdt));
-				}
-			}
-			// R 90F9: cardinality of elements within the ABIE
-			elementBBIE.MinOccursString = AdjustLowerBound(bbie.LowerBound);
-			elementBBIE.MaxOccursString = AdjustUpperBound(bbie.UpperBound);
-			if (context.Annotate) {
-				elementBBIE.Annotation = GetBBIEAnnotation(bbie);
-			}
-			return elementBBIE;
-		}
+                        var sourceEnum = basicEnum.SourceElement as UpccEnum;
+                        if (sourceEnum != null)
+                        {
+                            var restrictedtype = new XmlSchemaComplexType();
+                            var sympleContent = new XmlSchemaSimpleContent();
+                            var restriction = new XmlSchemaSimpleContentRestriction();
+                            restriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.GetXsdTypeNameFromBdt(bbie.Bdt));
+                            addEnumerationValues(restriction, basicEnum);
+                            //add restriction to simplecontent
+                            sympleContent.Content = restriction;
+                            //add the restriction to the simple type
+                            restrictedtype.ContentModel = sympleContent;
+                            //set the type of the BBIE
+                            elementBBIE.SchemaType = restrictedtype;
+                        }
+                    }
+                }
+                if (bbie.Bdt.isDirectXSDType)
+                {
+                    var XSDtype = bbie.Bdt.xsdType;
+                    if (!string.IsNullOrEmpty(XSDtype))
+                    {
+                        if (bbie.Bdt.Con.AllFacets.Any())
+                        {
+                            //add facets
+                            var restrictedtype = new XmlSchemaSimpleType();
+                            var restriction = new XmlSchemaSimpleTypeRestriction();
+                            restriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_XSD + ":" + XSDtype);
+                            NDR.addFacets(restriction, bbie.Bdt.Con.AllFacets);
+                            //add the restriction to the simple type
+                            restrictedtype.Content = restriction;
+                            //set the type of the BBIE
+                            elementBBIE.SchemaType = restrictedtype;
+                        }
+                        else
+                        {
+                            elementBBIE.SchemaTypeName = new XmlQualifiedName(NSPREFIX_XSD + ":" + XSDtype);
+                        }
+                    }
+                }
+                if (bbie.Facets.Any())
+                {
+                    //add facets
+                    if (bbie.Bdt.Sups.Any())
+                    {
+                        //create a complex type
+                        var complexType = new XmlSchemaComplexType();
+                        //add the simple content extension
+                        var simpleContent = new XmlSchemaSimpleContent();
+                        var restriction = new XmlSchemaSimpleContentRestriction();
+                        restriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.GetXsdTypeNameFromBdt(bbie.Bdt));
+                        //add the facets
+                        NDR.addFacets(restriction, bbie.Facets);
+                        //add the simple content to the complex object
+                        simpleContent.Content = restriction;
+                        complexType.ContentModel = simpleContent;
+                        //add the complex type to the element
+                        elementBBIE.SchemaType = complexType;
+                    }
+                    else
+                    { 
+                        //create a simple type
+                        var restrictedtype = new XmlSchemaSimpleType();
+                        var restriction = new XmlSchemaSimpleTypeRestriction();
+                        restriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.GetXsdTypeNameFromBdt(bbie.Bdt));
+                        NDR.addFacets(restriction, bbie.Facets);
+                        //add the restriction to the simple type
+                        restrictedtype.Content = restriction;
+                        //set the type of the BBIE
+                        elementBBIE.SchemaType = restrictedtype;
+                    }
+                }
+                if (elementBBIE.SchemaType == null && elementBBIE.SchemaTypeName.IsEmpty)
+                {
+                    //use type without facets
+                    elementBBIE.SchemaTypeName = new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.GetXsdTypeNameFromBdt(bbie.Bdt));
+                }
+            }
+            // R 90F9: cardinality of elements within the ABIE
+            elementBBIE.MinOccursString = AdjustLowerBound(bbie.LowerBound);
+            elementBBIE.MaxOccursString = AdjustUpperBound(bbie.UpperBound);
+            if (context.Annotate)
+            {
+                elementBBIE.Annotation = GetBBIEAnnotation(bbie);
+            }
+            return elementBBIE;
+        }
 
-		static void addEnumerationValues(XmlSchemaSimpleContentRestriction restriction, UpccEnum basicEnum)
-		{
-			foreach (var codeListEntry in basicEnum.CodelistEntries) {
-				var xmlEnum = new XmlSchemaEnumerationFacet();
-				xmlEnum.Value = codeListEntry.Name;
-				restriction.Facets.Add(xmlEnum);
-			}
-		}
+        static void addEnumerationValues(XmlSchemaSimpleContentRestriction restriction, UpccEnum basicEnum)
+        {
+            foreach (var codeListEntry in basicEnum.CodelistEntries)
+            {
+                var xmlEnum = new XmlSchemaEnumerationFacet();
+                xmlEnum.Value = codeListEntry.Name;
+                restriction.Facets.Add(xmlEnum);
+            }
+        }
 
-		
-		static void AddAsbie(IAsbie asbie, XmlSchemaSequence sequenceBBIEs, GeneratorContext context, XmlSchema schema
-		                     ,List<ICctsProperty> processedProperties)
-		{
+
+        static void AddAsbie(IAsbie asbie, XmlSchemaSequence sequenceBBIEs, GeneratorContext context, XmlSchema schema
+                             , List<ICctsProperty> processedProperties)
+        {
             XmlSchemaElement elementASBIE = new XmlSchemaElement();
 
             // R A08A: name of the ASBIE
             elementASBIE.Name = NDR.GetXsdElementNameFromAsbie(asbie);
             elementASBIE.SchemaTypeName =
-            	new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.TrimElementName(asbie.AssociatedAbie.Name));
+                new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.TrimElementName(asbie.AssociatedAbie.Name));
 
             if (context.Annotate)
             {
@@ -326,7 +355,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                 //        associated ABIE must be declared in the associating ABIE complex type.
                 sequenceBBIEs.Items.Add(elementASBIE);
             }
-		}
+        }
         ///<summary>
         ///</summary>
         ///<param name="bbie"></param>
@@ -348,7 +377,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             AddDocumentation(documentation, "AcronymCode", "BBIE");
 
             XmlSchemaAnnotation annotation = new XmlSchemaAnnotation();
-            annotation.Items.Add(new XmlSchemaDocumentation {Language = "en", Markup = documentation.ToArray()});
+            annotation.Items.Add(new XmlSchemaDocumentation { Language = "en", Markup = documentation.ToArray() });
 
             return annotation;
         }
@@ -371,7 +400,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             AddDocumentation(documentation, "AcronymCode", "ABIE");
 
             XmlSchemaAnnotation annotation = new XmlSchemaAnnotation();
-            annotation.Items.Add(new XmlSchemaDocumentation {Language = "en", Markup = documentation.ToArray()});
+            annotation.Items.Add(new XmlSchemaDocumentation { Language = "en", Markup = documentation.ToArray() });
 
             return annotation;
         }
@@ -413,7 +442,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 
 
             XmlSchemaAnnotation annotation = new XmlSchemaAnnotation();
-            annotation.Items.Add(new XmlSchemaDocumentation {Language = "en", Markup = documentation.ToArray()});
+            annotation.Items.Add(new XmlSchemaDocumentation { Language = "en", Markup = documentation.ToArray() });
 
             return annotation;
         }

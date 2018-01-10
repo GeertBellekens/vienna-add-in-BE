@@ -114,18 +114,7 @@ namespace VIENNAAddIn
 
         internal static bool IsUmm2Model(this Repository repository)
         {
-            if (repository == null)
-            {
-                return false;
-            }
-            foreach (ProjectIssues issue in repository.Issues)
-            {
-                if (issue.Name.Equals("UMM2Model"))
-                {
-                    return true;
-                }
-            }
-            return false;
+            return repository != null;
         }
 
         /// <summary>

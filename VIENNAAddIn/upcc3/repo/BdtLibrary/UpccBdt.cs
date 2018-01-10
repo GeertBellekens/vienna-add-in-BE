@@ -43,9 +43,21 @@ namespace VIENNAAddIn.upcc3.repo.BdtLibrary
 				return this.UmlClass.GetTaggedValue("directXSDType").Value.Equals("true",System.StringComparison.InvariantCultureIgnoreCase);
 			}
 		}
+        /// <summary>
+        /// the xsdType that corresponds to this BDT.
+        /// Only valid for direct xsd types
+        /// </summary>
+        public string xsdType
+        {
+            get
+            {
+                var baseType = this.UmlClassifier.BaseClassifiers.FirstOrDefault();
+                return baseType != null ? baseType.Name : string.Empty;
+            }
+        }
 
-       	#region implemented abstract members of UpccElement
-		protected override UpccElement createSimilarElement(IUmlClassifier otherclassifier)
+        #region implemented abstract members of UpccElement
+        protected override UpccElement createSimilarElement(IUmlClassifier otherclassifier)
 		{
 			var otherClass = otherclassifier as IUmlClass;
 			return otherClass != null ? new UpccBdt(otherClass) : null;
