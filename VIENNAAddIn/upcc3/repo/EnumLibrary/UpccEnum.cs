@@ -46,12 +46,12 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
 				{
 					if (this.UmlEnumeration.Stereotypes.Contains("Assembled"))
 						_enumerationType = EnumerationType.Assembled;
-					else if (this.UmlEnumeration.Stereotypes.Contains("Original"))
+                    else if (this.UmlEnumeration.Stereotypes.Contains("Subset"))
+                        _enumerationType = EnumerationType.Subset;
+                    else if (this.UmlEnumeration.Stereotypes.Contains("Original"))
 						_enumerationType = EnumerationType.Original;
 					else if (this.UmlEnumeration.Stereotypes.Contains("Qualifier"))
 						_enumerationType = EnumerationType.Qualifier;
-					else if (this.UmlEnumeration.Stereotypes.Contains("Subset"))
-						_enumerationType = EnumerationType.Subset;
 					else  _enumerationType = EnumerationType.Regular;
 				}
 				return _enumerationType.Value;

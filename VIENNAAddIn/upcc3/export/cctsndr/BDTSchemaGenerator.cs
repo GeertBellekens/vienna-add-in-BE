@@ -36,7 +36,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         {
             var schema = new XmlSchema {TargetNamespace = context.TargetNamespace};
             //add namespaces
-            schema.Namespaces.Add(context.NamespacePrefix, context.TargetNamespace);
+            schema.Namespaces.Add(NSPREFIX_BDT, context.TargetNamespace);
             // R 9B18: all XML schemas must utilize the xsd prefix when referring to the W3C XML schema namespace            
             schema.Namespaces.Add(NSPREFIX_XSD, NS_XSD);
 			//add namespace for documentation
@@ -47,9 +47,13 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             schema.Namespaces.Add(NSPREFIX_XBT, NS_XBT);
 			//add version
             schema.Version = context.VersionID.DefaultTo("1");
-            
+            // R A0E5: all XML schemas must contain elementFormDefault and set it to qualified     
+            schema.ElementFormDefault = XmlSchemaForm.Qualified;
+            // R A9C5: All XML schemas must contain attributeFormDefault and set it to unqualified
+            schema.AttributeFormDefault = XmlSchemaForm.Unqualified;
+
             //define list of enumeration xsd's to import
-            var enumImports = new List<SchemaInfo>();
+            var enumImports = new Dictionary<string, SchemaInfo>();
 			string schemaFileName = getSchemaFileName(context);
 			//loop the bdt's
 			foreach (IBdt bdt in context.Elements
@@ -94,7 +98,8 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                         && bdt.Con.BasicType != null
                         && bdt.Con.BasicType.Enum != null)
                     {
-                    	enumImports.Add(ENUMSchemaGenerator.GenerateXSD(genericContext,bdt.Con.BasicType.Enum));
+                        if(!enumImports.ContainsKey(bdt.Con.BasicType.Enum.Name))
+                    	    enumImports.Add(bdt.Con.BasicType.Enum.Name, ENUMSchemaGenerator.GenerateXSD(genericContext,bdt.Con.BasicType.Enum));
                     }
                 	//add the simple content extension
                     var simpleContent = new XmlSchemaSimpleContent();
@@ -118,10 +123,12 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 		            			var sourceEnum = basicEnum.SourceElement as UpccEnum;
 		            			if (sourceEnum != null)
 		            			{
-		            				//add the source enum to the imports as well
-		            				enumImports.Add(ENUMSchemaGenerator.GenerateXSD(genericContext,sourceEnum));
+                                    //add the source enum to the imports as well
+                                    if (!enumImports.ContainsKey(sourceEnum.Name))
+                                            enumImports.Add(sourceEnum.Name, ENUMSchemaGenerator.GenerateXSD(genericContext,sourceEnum));
 		            				//add the restriction         
-		            			    if( sourceEnum.CodelistEntries.Count() != basicEnum.CodelistEntries.Count())
+		            			    if(basicEnum.CodelistEntries.Any()
+                                        && sourceEnum.CodelistEntries.Count() != basicEnum.CodelistEntries.Count())
 				            		{
 				            			var restrictedtype = new XmlSchemaSimpleType();
 						            	var restriction = new XmlSchemaSimpleTypeRestriction();
@@ -165,7 +172,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                 }
             }
 			//add the imports
-			foreach (var enumImport in enumImports) 
+			foreach (var enumImport in enumImports.Values.OrderBy(x => x.FileName)) 
 			{
 				var schemaImport = new XmlSchemaImport();
 				schemaImport.Namespace = enumImport.Schema.TargetNamespace;
