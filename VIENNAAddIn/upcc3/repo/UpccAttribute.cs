@@ -412,7 +412,7 @@ namespace VIENNAAddIn.upcc3.repo
         ///</summary>
        	public string SequencingKey 
        	{
-			get { return UmlAttribute.GetTaggedValue("SequencingKey").Value; }
+			get { return UmlAttribute.GetTaggedValue("sequencingKey").Value; }
 		}
 		///<summary>
         /// Tagged value 'whiteSpace'.
