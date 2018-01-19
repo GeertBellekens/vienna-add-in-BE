@@ -17,7 +17,8 @@ namespace VIENNAAddIn.upcc3.repo
 		protected UpccAttribute(IUmlAttribute umlAttribute)
 		{
 			UmlAttribute = umlAttribute;
-			this.position = umlAttribute.position * 100;
+            int attributePosition;
+            this.position = int.TryParse(this.SequencingKey, out attributePosition) ? attributePosition : umlAttribute.position;
 		}
 		      
         public int Id
