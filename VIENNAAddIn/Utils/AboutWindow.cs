@@ -26,8 +26,8 @@ namespace VIENNAAddIn.Utils
 		/// </sUMM2ary>
 		private String VERSION = typeof(VIENNAAddIn).Assembly.GetName().Name +
 			" " + typeof(VIENNAAddIn).Assembly.GetName().Version;
-        private const String WEBSITE = "http://vienna-add-in.googlecode.com/";
-        private const String BUG_REPORT = "http://code.google.com/p/vienna-add-in/issues/list"; 		
+        private const String WEBSITE = "https://bellekens.com/";
+        private const String BUG_REPORT = "https://github.com/GeertBellekens/vienna-add-in-BE/issues"; 		
         private const String COPYRIGHT = "Licensed under GNU General Public License v3";
         private const String UMMVERSION = "2.0";
 
@@ -45,8 +45,6 @@ namespace VIENNAAddIn.Utils
         private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label UMM2VersionLabel;
 		private System.Windows.Forms.TextBox UMM2TextBox;
-        private Label label3;
-        private LinkLabel linkLabel1;
         private LinkLabel linkLabel2;
         private LinkLabel linkLabel3;
 		
@@ -96,8 +94,6 @@ namespace VIENNAAddIn.Utils
             this.Support = new System.Windows.Forms.GroupBox();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.VIENNAAddIn = new System.Windows.Forms.GroupBox();
@@ -120,7 +116,7 @@ namespace VIENNAAddIn.Utils
             this.tabControl.Location = new System.Drawing.Point(18, 13);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(427, 306);
+            this.tabControl.Size = new System.Drawing.Size(466, 265);
             this.tabControl.TabIndex = 0;
             // 
             // tabPage1
@@ -129,7 +125,7 @@ namespace VIENNAAddIn.Utils
             this.tabPage1.Controls.Add(this.VIENNAAddIn);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(419, 280);
+            this.tabPage1.Size = new System.Drawing.Size(458, 239);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "VIENNAAddIn";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -138,13 +134,11 @@ namespace VIENNAAddIn.Utils
             // 
             this.Support.Controls.Add(this.linkLabel3);
             this.Support.Controls.Add(this.linkLabel2);
-            this.Support.Controls.Add(this.linkLabel1);
-            this.Support.Controls.Add(this.label3);
             this.Support.Controls.Add(this.label2);
             this.Support.Controls.Add(this.label1);
             this.Support.Location = new System.Drawing.Point(16, 136);
             this.Support.Name = "Support";
-            this.Support.Size = new System.Drawing.Size(393, 129);
+            this.Support.Size = new System.Drawing.Size(429, 89);
             this.Support.TabIndex = 13;
             this.Support.TabStop = false;
             this.Support.Text = "Support";
@@ -154,10 +148,10 @@ namespace VIENNAAddIn.Utils
             this.linkLabel3.AutoSize = true;
             this.linkLabel3.Location = new System.Drawing.Point(112, 48);
             this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(251, 13);
+            this.linkLabel3.Size = new System.Drawing.Size(291, 13);
             this.linkLabel3.TabIndex = 21;
             this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "http://code.google.com/p/vienna-add-in/issues/list";
+            this.linkLabel3.Text = "https://github.com/GeertBellekens/vienna-add-in-BE/issues";
             this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
             // 
             // linkLabel2
@@ -165,31 +159,11 @@ namespace VIENNAAddIn.Utils
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.Location = new System.Drawing.Point(112, 24);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(187, 13);
+            this.linkLabel2.Size = new System.Drawing.Size(115, 13);
             this.linkLabel2.TabIndex = 20;
             this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "http://vienna-add-in.googlecode.com";
+            this.linkLabel2.Text = "https://bellekens.com/";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(112, 75);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(131, 13);
-            this.linkLabel1.TabIndex = 19;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "http://www.umm-dev.org";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 75);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 13);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "UMM Information";
             // 
             // label2
             // 
@@ -217,7 +191,7 @@ namespace VIENNAAddIn.Utils
             this.VIENNAAddIn.Controls.Add(this.copyrightTextBox);
             this.VIENNAAddIn.Location = new System.Drawing.Point(16, 8);
             this.VIENNAAddIn.Name = "VIENNAAddIn";
-            this.VIENNAAddIn.Size = new System.Drawing.Size(393, 110);
+            this.VIENNAAddIn.Size = new System.Drawing.Size(429, 110);
             this.VIENNAAddIn.TabIndex = 12;
             this.VIENNAAddIn.TabStop = false;
             this.VIENNAAddIn.Text = "VIENNAAddIn";
@@ -273,7 +247,7 @@ namespace VIENNAAddIn.Utils
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(163, 325);
+            this.buttonClose.Location = new System.Drawing.Point(202, 293);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(100, 24);
             this.buttonClose.TabIndex = 1;
@@ -283,10 +257,10 @@ namespace VIENNAAddIn.Utils
             // AboutWindow
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
-            this.ClientSize = new System.Drawing.Size(457, 361);
+            this.ClientSize = new System.Drawing.Size(506, 324);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.tabControl);
-            this.Font = new System.Drawing.Font("Tahoma", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "AboutWindow";
             this.Text = "About...";
             this.tabControl.ResumeLayout(false);
@@ -318,20 +292,16 @@ namespace VIENNAAddIn.Utils
 		}
         
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("http://www.umm-dev.org");
-        }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://vienna-add-in.googlecode.com");
+            Process.Start("https://bellekens.com/");
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
-            Process.Start("http://code.google.com/p/vienna-add-in/issues/list");
+            Process.Start("https://github.com/GeertBellekens/vienna-add-in-BE/issues");
         }
 
 	    public static void ShowForm(AddInContext context)

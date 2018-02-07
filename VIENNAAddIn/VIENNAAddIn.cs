@@ -82,13 +82,13 @@ namespace VIENNAAddIn
                                       // TODO: revert this to reenable UML Class Customizer
                                       //+ "&Uml Class Customizer".OnClick(UmlClassCustomizer.ShowCreateDialog)
                                       //+ "Generate &XML Schema (old)".OnClick(GeneratorWizardForm.ShowGeneratorWizard)
-                                      + "&Generate XML Schema".OnClick(ExporterForm.ShowForm)
+//                                      + "&Generate XML Schema".OnClick(ExporterForm.ShowForm)
 //                                      + "&Import XML Schemas".OnClick(XsdImporterForm.ShowForm)
 //                                      + "&XSLT Generator".OnClick(XsltGeneratorForm.ShowForm)
 //                                      //+ "Import XML Schemas (old)".OnClick(ImporterWizardFormOld.ShowImporterWizard)
 //                                      + _____
 //                                      + "&Transformer Wizard".OnClick(TransformerWizard.ShowForm)
-                                      + "&Sub&setting Wizard".OnClick(SubSettingWizard.ShowForm)
+//                                      + "&Sub&setting Wizard".OnClick(SubSettingWizard.ShowForm)
 //                                      + "&Schema Anal&yzer".OnClick(SchemaAnalyzer.ShowForm)
 //                                      + "&WSDL Generator".OnClick(WSDLGenerator.ShowForm)
 //                                      )
@@ -163,25 +163,6 @@ namespace VIENNAAddIn
             return true;
         }
 
-        /// <summary>
-        /// Connect
-        /// </summary>
-        /// <param name="repository"></param>
-        /// <returns></returns>
-        public string EA_Connect(Repository repository)
-        {
-            try
-            {
-                AddInSettings.LoadRegistryEntries();
-            }
-            catch (Exception e)
-            {
-                String err = string.Format("Error loading settings from registry:\n{0}.\n Please reinstall the AddIn.",
-                                           e.Message);
-                MessageBox.Show(err, "AddIn Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return null;
-        }
 
         /// <summary>
         /// Disconnect

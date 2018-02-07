@@ -8,12 +8,6 @@ namespace VIENNAAddIn
     [Guid("AC600C85-5BFE-45d5-9D5C-EEE1B5BE852B")]
     public interface VIENNAAddInInterface
     {
-        /// <summary>
-        /// Connect
-        /// </summary>
-        /// <param name="repository"></param>
-        /// <returns></returns>
-        string EA_Connect(Repository repository);
 
         /// <summary>
         /// Disconnect
