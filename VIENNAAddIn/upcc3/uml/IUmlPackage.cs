@@ -10,6 +10,7 @@ namespace VIENNAAddIn.upcc3.uml
         string Stereotype { get; }
         string[] Stereotypes {get;}
         IEnumerable<IUmlPackage> Packages {get;}
+        
 
         IUmlPackage Parent { get; }
 
@@ -19,6 +20,7 @@ namespace VIENNAAddIn.upcc3.uml
         IEnumerable<IUmlEnumeration> Enumerations { get; }
 
         IUmlTaggedValue GetTaggedValue(string name);
+        List<string> getPackageTreeIDs();
 
         IEnumerable<IUmlClass> GetClassesByStereotype(string stereotype);
         IUmlClass CreateClass(UmlClassSpec spec);

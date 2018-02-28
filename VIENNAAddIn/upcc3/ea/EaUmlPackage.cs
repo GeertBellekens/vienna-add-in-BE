@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Xml;
 using EA;
 using VIENNAAddIn.upcc3.uml;
 using uppc3=VIENNAAddIn.upcc3;
@@ -48,7 +49,14 @@ namespace VIENNAAddIn.upcc3.ea
 				return _packages;
 			}
 		}
-
+        /// <summary>
+        /// returns a comma separated list of package ID's of this package an all subPackages
+        /// </summary>
+        public List<string> getPackageTreeIDs()
+        {
+            List<string> packageIDs = new List<string>() { this.eaPackage.PackageID.ToString() };
+            return getSubPackageTreeIDs(packageIDs);
+        }
         public IEnumerable<IUmlDataType> GetDataTypesByStereotype(string stereotype)
         {
             return GetClassifiersByStereotype<IUmlDataType>(stereotype);
@@ -214,6 +222,27 @@ namespace VIENNAAddIn.upcc3.ea
 
         #endregion
 
+
+        private List<string> getSubPackageTreeIDs(List<string> packageIDs)
+        {
+            var subPackageIDs = new List<string>();
+            //return if nothing in the list
+            if (packageIDs.Count == 0) return subPackageIDs;
+            //create SQL query
+            string idQuery = "select p.Package_ID from t_package p where p.Parent_ID in (" + string.Join(",", packageIDs) + ")";
+            XmlDocument results = new XmlDocument();
+            results.LoadXml(eaRepository.SQLQuery(idQuery));
+            //get the package id's from the query results
+            foreach (XmlNode packageIDNode in results.SelectNodes("//Package_ID"))
+            {
+                subPackageIDs.Add(packageIDNode.InnerText);
+            }
+            //go one level deeper
+            subPackageIDs = getSubPackageTreeIDs(subPackageIDs);
+            //add the subPackageID's to the packageID's
+            packageIDs.AddRange(subPackageIDs);
+            return packageIDs;
+        }
         private EaUmlClassifier CreateEaUmlClassifier(UmlClassifierSpec spec)
         {
             var eaElement = (Element) eaPackage.Elements.AddNew(spec.Name, "Class");

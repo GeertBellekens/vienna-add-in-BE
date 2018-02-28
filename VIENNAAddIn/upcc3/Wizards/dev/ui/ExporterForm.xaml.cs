@@ -11,11 +11,11 @@ using Microsoft.Win32;
 using VIENNAAddIn.menu;
 using VIENNAAddIn.upcc3.export.cctsndr;
 using VIENNAAddIn.upcc3.export.mapping;
-using CheckBox=System.Windows.Controls.CheckBox;
-using ComboBox=System.Windows.Controls.ComboBox;
-using Cursors=System.Windows.Input.Cursors;
-using ListBox=System.Windows.Controls.ListBox;
-using MessageBox=System.Windows.Forms.MessageBox;
+using CheckBox = System.Windows.Controls.CheckBox;
+using ComboBox = System.Windows.Controls.ComboBox;
+using Cursors = System.Windows.Input.Cursors;
+using ListBox = System.Windows.Controls.ListBox;
+using MessageBox = System.Windows.Forms.MessageBox;
 using System.Linq;
 
 namespace VIENNAAddIn.upcc3.Wizards.dev.ui
@@ -33,7 +33,7 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
         private string outputDirectory = "";
         private EA.Package selectedPackage;
 
-        public ExporterForm(ICctsRepository cctsRepository,EA.Package selectedPackage)
+        public ExporterForm(ICctsRepository cctsRepository, EA.Package selectedPackage)
         {
             cctsR = cctsRepository;
             this.selectedPackage = selectedPackage;
@@ -60,31 +60,27 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
 
         public static void ShowForm(AddInContext context)
         {
-        	var exporterForm = new ExporterForm(context.CctsRepository,context.SelectedPackage);
-        	var mainWindowHandle = context.GetmainWindowHandle();
-        	if (mainWindowHandle != IntPtr.Zero)
-        	{
-        		WindowInteropHelper wih = new WindowInteropHelper(exporterForm);
-        		wih.Owner = context.GetmainWindowHandle();
-        	}
-        	exporterForm.Show();
+            var exporterForm = new ExporterForm(context.CctsRepository, context.SelectedPackage);
+            var mainWindowHandle = context.GetmainWindowHandle();
+            if (mainWindowHandle != IntPtr.Zero)
+            {
+                WindowInteropHelper wih = new WindowInteropHelper(exporterForm);
+                wih.Owner = context.GetmainWindowHandle();
+            }
+            exporterForm.Show();
         }
 
         private void MirrorDOCsToUI()
         {
-            foreach (var biv in cache.BIVs.Values) 
+            foreach (var biv in cache.BIVs.Values)
             {
-            	cDOC doc = biv.DOC;
-            	if (doc != null)
-	            {
-	                var newItem = new CheckBox
-	                                  {
-	                                      Content = doc.Name,
-	                                      IsChecked = (doc.State == CheckState.Checked ? true : false)
-	                                  };
-	                newItem.Tag = doc;
-	                documentsListBox.Items.Add(newItem);
-	            }
+                var newItem = new CheckBox
+                {
+                    Content = biv.Name,
+                    IsChecked = true
+                };
+                newItem.Tag = biv;
+                documentsListBox.Items.Add(newItem);
             }
             EnableDisable();
             selectAlldocuments(true);
@@ -97,14 +93,14 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
 
         private void EnableDisable()
         {
-        	var validOutputdirectory = System.IO.Directory.Exists(textboxOutputDirectory.DirectoryName);
+            var validOutputdirectory = System.IO.Directory.Exists(textboxOutputDirectory.DirectoryName);
             textboxOutputDirectory.IsEnabled = documentsListBox.Items.Count > 0;
-            buttonExport.IsEnabled = ! string.IsNullOrEmpty(textboxOutputDirectory.DirectoryName)
-            						&& validOutputdirectory;
-            textboxOutputDirectory.Foreground = validOutputdirectory  ? Brushes.Red : Brushes.Black;
+            buttonExport.IsEnabled = !string.IsNullOrEmpty(textboxOutputDirectory.DirectoryName)
+                                    && validOutputdirectory;
+            textboxOutputDirectory.Foreground = validOutputdirectory ? Brushes.Red : Brushes.Black;
         }
 
- 
+
 
         private void buttonClose_Click(object sender, RoutedEventArgs e)
         {
@@ -117,21 +113,22 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
             textBoxStatus.Text = "Starting to generate XML schemas ...\n\n";
             GatherUserInput();
             var generationContexts = new List<GeneratorContext>();
-            foreach (var cDoc in this.documentsListBox.Items
-                     					.OfType<CheckBox>()
-                     					.Where(x => x.IsChecked.HasValue && x.IsChecked.Value)
-                     					.Select(y => y.Tag as cDOC))
+            foreach (var cBiv in this.documentsListBox.Items
+                                         .OfType<CheckBox>()
+                                         .Where(x => x.IsChecked.HasValue && x.IsChecked.Value)
+                                         .Select(y => y.Tag as cBIV))
             {
-                if (cDoc != null && cDoc.State == CheckState.Checked)
+                var cDoc = cBiv.DOC;
+                if (cDoc != null)
                 {
-                	var generationContext = new GeneratorContext(cctsR, cDoc.TargetNamespace, cDoc.BaseUrn, 
+                    var generationContext = new GeneratorContext(cctsR, cDoc.TargetNamespace, cDoc.BaseUrn,
                                                              cDoc.TargetNamespacePrefix, false, true,
                                                              outputDirectory, cDoc.BIV.DocL);
-	                generationContext.SchemaAdded += HandleSchemaAdded;
-	                generationContexts.Add(generationContext);
+                    generationContext.SchemaAdded += HandleSchemaAdded;
+                    generationContexts.Add(generationContext);
                 }
             }
-           	XSDGenerator.GenerateSchemas(generationContexts);
+            XSDGenerator.GenerateSchemas(generationContexts);
 
             textBoxStatus.Text += "\nGenerating XML schemas completed!";
             Cursor = Cursors.Arrow;
@@ -145,27 +142,25 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
 
         private void textboxOutputDirectory_DirectoryNameChanged(object sender, RoutedEventArgs e)
         {
-        	EnableDisable();
+            EnableDisable();
         }
 
         private void selectAlldocuments(bool isChecked)
         {
-        	foreach (CheckBox item in documentsListBox.Items) 
-			{
-				item.IsChecked = isChecked;
-				var doc = item.Tag as cDOC;
-				if (doc != null) doc.State = isChecked ? CheckState.Checked : CheckState.Unchecked;
-			}
+            foreach (CheckBox item in documentsListBox.Items)
+            {
+                item.IsChecked = isChecked;
+            }
         }
 
-		void selectNoneButton_Click(object sender, RoutedEventArgs e)
-		{
-			selectAlldocuments(false);
-		}
-		void selectAllButton_Click(object sender, RoutedEventArgs e)
-		{
-			selectAlldocuments(true);
-		}
+        void selectNoneButton_Click(object sender, RoutedEventArgs e)
+        {
+            selectAlldocuments(false);
+        }
+        void selectAllButton_Click(object sender, RoutedEventArgs e)
+        {
+            selectAlldocuments(true);
+        }
     }
 
 
