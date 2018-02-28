@@ -143,12 +143,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CctsRepository\CctsRepository.csproj">
-      <Project>{D788A632-CD92-4C8A-AE54-A37CD5871368}</Project>
-      <Name>CctsRepository</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Ressource\generate.png" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +161,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CctsRepository\CctsRepository.csproj">
+      <Project>{D788A632-CD92-4C8A-AE54-A37CD5871368}</Project>
+      <Name>CctsRepository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2003
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIENNAAddIn", "VIENNAAddIn\VIENNAAddIn.csproj", "{5642201A-D4A3-4F3B-9BC5-71C3A0DB7EA3}"
 EndProject
@@ -19,6 +19,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Upcc", "UpccModel\Upcc.csproj", "{45CFA9B7-56EC-4986-BEAF-079F86A56B0C}"
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "ViennaAddin_Setup", "ViennaAddin_Setup\ViennaAddin_Setup.wixproj", "{0A9EBB05-53FD-49DF-BE61-958E7BEAD3BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViennaStandalone", "ViennaStandalone\ViennaStandalone.csproj", "{DF7BF2B3-676F-4E7F-8F20-CF3FFBE5701A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,6 +84,14 @@ Global
 		{0A9EBB05-53FD-49DF-BE61-958E7BEAD3BD}.Release|Any CPU.ActiveCfg = Release|x86
 		{0A9EBB05-53FD-49DF-BE61-958E7BEAD3BD}.Release|x86.ActiveCfg = Release|x86
 		{0A9EBB05-53FD-49DF-BE61-958E7BEAD3BD}.Release|x86.Build.0 = Release|x86
+		{DF7BF2B3-676F-4E7F-8F20-CF3FFBE5701A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF7BF2B3-676F-4E7F-8F20-CF3FFBE5701A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF7BF2B3-676F-4E7F-8F20-CF3FFBE5701A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DF7BF2B3-676F-4E7F-8F20-CF3FFBE5701A}.Debug|x86.Build.0 = Debug|Any CPU
+		{DF7BF2B3-676F-4E7F-8F20-CF3FFBE5701A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF7BF2B3-676F-4E7F-8F20-CF3FFBE5701A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF7BF2B3-676F-4E7F-8F20-CF3FFBE5701A}.Release|x86.ActiveCfg = Release|Any CPU
+		{DF7BF2B3-676F-4E7F-8F20-CF3FFBE5701A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

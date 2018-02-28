@@ -64,7 +64,10 @@ namespace VIENNAAddIn.menu
         {
         	get
         	{
-        		return SelectedItem as Package;
+        		var selectedPackage =  SelectedItem as Package;
+                if (selectedPackage == null)
+                    selectedPackage = EARepository.GetTreeSelectedPackage();
+                return selectedPackage;
         	}
         }
 
