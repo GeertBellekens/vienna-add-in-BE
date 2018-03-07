@@ -159,7 +159,7 @@ namespace VIENNAAddIn.upcc3
                         && enumeration.CodeListIdentifier != string.Empty ?
                             enumeration.CodeListIdentifier + "_"
                             : string.Empty;
-        	return prefix + listID + enumeration.Name;
+        	return prefix + listID + enumeration.CodeListName;
         }
         public static string GetXsdAttributeNameFromSup(IBdtSup sup)
         {

@@ -98,7 +98,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                         && bdt.Con.BasicType != null
                         && bdt.Con.BasicType.Enum != null)
                     {
-                        if(!enumImports.ContainsKey(bdt.Con.BasicType.Enum.Name))
+                        if(!enumImports.ContainsKey(bdt.Con.BasicType.Enum.CodeListName))
                     	    enumImports.Add(bdt.Con.BasicType.Enum.Name, ENUMSchemaGenerator.GenerateXSD(genericContext,bdt.Con.BasicType.Enum));
                     }
                 	//add the simple content extension
@@ -124,7 +124,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 		            			if (sourceEnum != null)
 		            			{
                                     //add the source enum to the imports as well
-                                    if (!enumImports.ContainsKey(sourceEnum.Name))
+                                    if (!enumImports.ContainsKey(sourceEnum.CodeListName))
                                             enumImports.Add(sourceEnum.Name, ENUMSchemaGenerator.GenerateXSD(genericContext,sourceEnum));
 		            				//add the restriction         
 		            			    if(basicEnum.CodelistEntries.Any()
