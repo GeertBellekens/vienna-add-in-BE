@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using CctsRepository;
 using EA;
 using VIENNAAddIn.upcc3.uml;
@@ -60,13 +61,13 @@ namespace VIENNAAddIn.upcc3.ea
             get { return Cardinality.LowerBound; }
         }
 
-		public string[] Stereotypes 
-		{
-			get 
-			{
-				return eaConnector.StereotypeEx.Split(new []{","},StringSplitOptions.RemoveEmptyEntries);
-			}
-		}
+        public string[] Stereotypes
+        {
+            get
+            {
+                return eaConnector.StereotypeEx.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+            }
+        }
         public IUmlClassifier AssociatedClassifier
         {
             get { return new EaUmlClassifier(eaRepository, eaRepository.GetElementByID(AssociatedElementId)); }
@@ -77,9 +78,9 @@ namespace VIENNAAddIn.upcc3.ea
             get
             {
                 int value = AssociatingConnectorEnd.Aggregation;
-                if (Enum.IsDefined(typeof (AggregationKind), value))
+                if (Enum.IsDefined(typeof(AggregationKind), value))
                 {
-                    return (AggregationKind) Enum.ToObject(typeof (AggregationKind), value);
+                    return (AggregationKind)Enum.ToObject(typeof(AggregationKind), value);
                 }
                 return AggregationKind.Composite;
             }
@@ -90,7 +91,7 @@ namespace VIENNAAddIn.upcc3.ea
             try
             {
                 var eaConnectorTag = eaConnector.TaggedValues.GetByName(name) as ConnectorTag;
-                return eaConnectorTag == null ? (IUmlTaggedValue) new UndefinedTaggedValue(name) : new EaConnectorTag(eaConnectorTag);
+                return eaConnectorTag == null ? (IUmlTaggedValue)new UndefinedTaggedValue(name) : new EaConnectorTag(eaConnectorTag);
             }
             catch (Exception)
             {
@@ -102,7 +103,7 @@ namespace VIENNAAddIn.upcc3.ea
 
         private void CreateTaggedValue(UmlTaggedValueSpec taggedValueSpec)
         {
-            var eaConnectorTag = (ConnectorTag) eaConnector.TaggedValues.AddNew(taggedValueSpec.Name, String.Empty);
+            var eaConnectorTag = (ConnectorTag)eaConnector.TaggedValues.AddNew(taggedValueSpec.Name, String.Empty);
             eaConnectorTag.Value = taggedValueSpec.Value ?? taggedValueSpec.DefaultValue;
             eaConnectorTag.Update();
         }
@@ -111,7 +112,7 @@ namespace VIENNAAddIn.upcc3.ea
         {
             eaConnector.Stereotype = spec.Stereotype;
             eaConnector.ClientID = associatingElementId;
-            eaConnector.ClientEnd.Aggregation = (int) spec.AggregationKind;
+            eaConnector.ClientEnd.Aggregation = (int)spec.AggregationKind;
             eaConnector.SupplierID = spec.AssociatedClassifier.Id;
             eaConnector.SupplierEnd.Role = spec.Name;
             eaConnector.SupplierEnd.Cardinality = new EaCardinality(spec.LowerBound, spec.UpperBound).ToString();
@@ -130,7 +131,7 @@ namespace VIENNAAddIn.upcc3.ea
         {
             eaConnector.Stereotype = spec.Stereotype;
             eaConnector.ClientID = associatingElementId;
-            eaConnector.ClientEnd.Aggregation = (int) spec.AggregationKind;
+            eaConnector.ClientEnd.Aggregation = (int)spec.AggregationKind;
             eaConnector.SupplierID = spec.AssociatedClassifier.Id;
             eaConnector.SupplierEnd.Role = spec.Name;
             eaConnector.SupplierEnd.Cardinality = new EaCardinality(spec.LowerBound, spec.UpperBound).ToString();
@@ -160,13 +161,66 @@ namespace VIENNAAddIn.upcc3.ea
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof (EaUmlAssociation)) return false;
-            return Equals((EaUmlAssociation) obj);
+            if (obj.GetType() != typeof(EaUmlAssociation)) return false;
+            return Equals((EaUmlAssociation)obj);
         }
 
         public override int GetHashCode()
         {
             return (eaConnector != null ? eaConnector.ConnectorID : 0);
+        }
+
+        public IEnumerable<IUmlAttribute> ReferencedAttributes(string tagName)
+        {
+            List<EaUmlAttribute> foundAttributes = new List<EaUmlAttribute>();
+            foreach (var tagGUID in GetTaggedValue(tagName).Value
+                     .Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                Guid attributeGUID;
+                if (Guid.TryParse(tagGUID, out attributeGUID))
+                {
+                    try
+                    {
+                        var refAttribute = eaRepository.GetAttributeByGuid(tagGUID);
+                        if (refAttribute != null)
+                            foundAttributes.Add(new EaUmlAttribute(eaRepository, refAttribute));
+                    }
+                    catch (Exception)
+                    {
+                        //do nothing if attribute found found.
+                    }
+                }
+            }
+            return foundAttributes;
+        }
+
+        public IEnumerable<IUmlAssociation> ReferencedAssociations(string tagName)
+        {
+            var foundConnectors = new List<EaUmlAssociation>();
+            foreach (var tagGUID in GetTaggedValue(tagName).Value
+                     .Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                Guid connectorGUID;
+                if (Guid.TryParse(tagGUID, out connectorGUID))
+                {
+                    try
+                    {
+                        var refConnector = eaRepository.GetConnectorByGuid(tagGUID);
+                        if (refConnector != null)
+                            if (refConnector.Type == EaConnectorTypes.Association.ToString() || refConnector.Type == EaConnectorTypes.Aggregation.ToString())
+                            {
+                                //determine the "owner"
+                                int ownerID = refConnector.SupplierEnd.Aggregation != (int)EaAggregationKind.None ? refConnector.SupplierID : refConnector.ClientID;
+                                foundConnectors.Add(new EaUmlAssociation(eaRepository, refConnector, ownerID));
+                            }
+                    }
+                    catch (Exception)
+                    {
+                        //do nothing if connector not found
+                    }
+                }
+            }
+            return foundConnectors;
         }
 
         public static bool operator ==(EaUmlAssociation left, EaUmlAssociation right)

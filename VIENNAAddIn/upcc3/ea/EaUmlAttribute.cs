@@ -86,7 +86,35 @@ namespace VIENNAAddIn.upcc3.ea
 			}
 			return foundAttributes;
 		}
-        
+        public IEnumerable<IUmlAssociation> ReferencedAssociations(string tagName)
+        {
+            var foundConnectors = new List<EaUmlAssociation>();
+            foreach (var tagGUID in GetTaggedValue(tagName).Value
+                     .Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                Guid connectorGUID;
+                if (Guid.TryParse(tagGUID, out connectorGUID))
+                {
+                    try
+                    {
+                        var refConnector = eaRepository.GetConnectorByGuid(tagGUID);
+                        if (refConnector != null)
+                            if (refConnector.Type == EaConnectorTypes.Association.ToString() || refConnector.Type == EaConnectorTypes.Aggregation.ToString())
+                            {
+                                //determine the "owner"
+                                int ownerID = refConnector.SupplierEnd.Aggregation != (int)EaAggregationKind.None ? refConnector.SupplierID : refConnector.ClientID;
+                                foundConnectors.Add(new EaUmlAssociation(eaRepository, refConnector, ownerID));
+                            }
+                    }
+                    catch (Exception)
+                    {
+                        //do nothing if connector not found
+                    }
+                }
+            }
+            return foundConnectors;
+        }
+
         public IEnumerable<IUmlTaggedValue> GetTaggedValues()
         {
             foreach (AttributeTag eaAttributeTag in eaAttribute.TaggedValues)

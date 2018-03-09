@@ -33,15 +33,27 @@ namespace VIENNAAddIn.upcc3.repo
 			get {return this.AssociatingElement;}
 		}
 
-		public IEnumerable<ICctsProperty> otherPropertiesInChoice 
-		{
-			get 
-			{
-				//TODO: check if also needed for associations
-				throw new NotImplementedException();
-			}
-		}
-		public int Id
+        List<ICctsProperty> _otherPropertiesInChoice;
+        public IEnumerable<ICctsProperty> otherPropertiesInChoice
+        {
+            get
+            {
+                if (_otherPropertiesInChoice == null)
+                {
+                    _otherPropertiesInChoice = new List<ICctsProperty>();
+                    foreach (var otherUMLassociation in this.UmlAssociation.ReferencedAssociations("Choice"))
+                    {
+                        var otherAssociation = this.Owner.Associations.FirstOrDefault(x => x.Id == otherUMLassociation.Id);
+                        if (otherAssociation != null)
+                        {
+                            _otherPropertiesInChoice.Add(otherAssociation);
+                        }
+                    }
+                }
+                return _otherPropertiesInChoice;
+            }
+        }
+        public int Id
         {
             get { return UmlAssociation.Id; }
         }

@@ -156,12 +156,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             foreach (var property in abie.Properties)
             {
                 if (!processedProperties.Contains(property))
-                {
-                    IAsbie asbie = property as IAsbie;
-                    if (asbie != null) AddAsbie(asbie, sequenceBBIEs, context, schema, processedProperties);
-                    IBbie bbie = property as IBbie;
-                    if (bbie != null) AddBbie(bbie, sequenceBBIEs, context, processedProperties);
-                }
+                    AddProperty(property, sequenceBBIEs, context, schema, processedProperties);
             }
 
             // add the sequence created to the complex type
@@ -169,19 +164,18 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             return complexTypeBIE;
         }
 
-        static void AddBbie(IBbie bbie, XmlSchemaSequence sequenceBBIEs, GeneratorContext context
-                            , List<ICctsProperty> processedProperties)
+        static void AddProperty(ICctsProperty property, XmlSchemaSequence propertiesSequence, GeneratorContext context, XmlSchema schema, List<ICctsProperty> processedProperties)
         {
-            var elementBBIE = CreateBbieSchemaElement(bbie, context);
-            if (bbie.otherPropertiesInChoice.Any())
+            var elementProperty = CreatePropertyElement(property, context, schema);
+            if (property.otherPropertiesInChoice.Any())
             {
                 var choiceElement = new XmlSchemaChoice();
-                choiceElement.Items.Add(elementBBIE);
-                bool isOptional = bbie.LowerBound == "0";
-                foreach (IBbie otherProperty in bbie.otherPropertiesInChoice)
+                choiceElement.Items.Add(elementProperty);
+                bool isOptional = property.LowerBound == "0";
+                foreach (var otherProperty in property.otherPropertiesInChoice)
                 {
                     if (!isOptional) isOptional = otherProperty.LowerBound == "0";
-                    choiceElement.Items.Add(CreateBbieSchemaElement(otherProperty, context));
+                    choiceElement.Items.Add(CreatePropertyElement(otherProperty, context, schema));
                     processedProperties.Add(otherProperty);
                 }
                 //set minoccurs to 0 is the choice is optional
@@ -190,17 +184,60 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                     choiceElement.MinOccurs = 0;
                 }
                 //add the choice tot the sequence
-                sequenceBBIEs.Items.Add(choiceElement);
+                propertiesSequence.Items.Add(choiceElement);
             }
             else
             {
                 // add the element created to the sequence
-                sequenceBBIEs.Items.Add(elementBBIE);
+                propertiesSequence.Items.Add(elementProperty);
             }
             // add the property to the list of processed properties
-            processedProperties.Add(bbie);
+            processedProperties.Add(property);
         }
+        static XmlSchemaElement CreatePropertyElement(ICctsProperty property, GeneratorContext context, XmlSchema schema)
+        {
+            if (property is IBbie) return CreateBbieSchemaElement((IBbie)property, context);
+            if (property is IAsbie) return CreateAsbieSchemaElement((IAsbie)property, context, schema);
+            throw new ArgumentException("Invalid type of argument property. Expected IBbie or IAsbie");
+        }
+        static XmlSchemaElement CreateAsbieSchemaElement(IAsbie asbie, GeneratorContext context, XmlSchema schema)
+        {
+            XmlSchemaElement elementASBIE = new XmlSchemaElement();
 
+            // R A08A: name of the ASBIE
+            elementASBIE.Name = NDR.GetXsdElementNameFromAsbie(asbie);
+            elementASBIE.SchemaTypeName =
+                new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.TrimElementName(asbie.AssociatedAbie.Name));
+
+            if (context.Annotate)
+            {
+                elementASBIE.Annotation = GetASBIEAnnotiation(asbie);
+            }
+
+            if (asbie.AggregationKind == AggregationKind.Shared)
+            {
+                XmlSchemaElement refASBIE = new XmlSchemaElement();
+                refASBIE.RefName = new XmlQualifiedName(NSPREFIX_BIE + ":" + elementASBIE.Name);
+                refASBIE.MinOccursString = AdjustBound(asbie.LowerBound);
+                refASBIE.MaxOccursString = AdjustBound(asbie.UpperBound);
+
+                // every shared ASCC may only appear once in the XSD file
+                if (!globalASBIEs.Contains(elementASBIE.Name))
+                {
+                    // R 9241: for ASBIEs with AggregationKind = shared a global element must be declared.   
+                    schema.Items.Add(elementASBIE);
+                    globalASBIEs.Add(elementASBIE.Name);
+                }
+                return refASBIE;
+            }
+            else
+            {
+                //R 9025: ASBIEs with Aggregation Kind = composite a local element for the
+                //        associated ABIE must be declared in the associating ABIE complex type.
+                return elementASBIE;
+            }
+
+        }
         static XmlSchemaElement CreateBbieSchemaElement(IBbie bbie, GeneratorContext context)
         {
             // R 89A6: for every BBIE a named element must be locally declared
@@ -318,44 +355,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         }
 
 
-        static void AddAsbie(IAsbie asbie, XmlSchemaSequence sequenceBBIEs, GeneratorContext context, XmlSchema schema
-                             , List<ICctsProperty> processedProperties)
-        {
-            XmlSchemaElement elementASBIE = new XmlSchemaElement();
-
-            // R A08A: name of the ASBIE
-            elementASBIE.Name = NDR.GetXsdElementNameFromAsbie(asbie);
-            elementASBIE.SchemaTypeName =
-                new XmlQualifiedName(NSPREFIX_BIE + ":" + NDR.TrimElementName(asbie.AssociatedAbie.Name));
-
-            if (context.Annotate)
-            {
-                elementASBIE.Annotation = GetASBIEAnnotiation(asbie);
-            }
-
-            if (asbie.AggregationKind == AggregationKind.Shared)
-            {
-                XmlSchemaElement refASBIE = new XmlSchemaElement();
-                refASBIE.RefName = new XmlQualifiedName(NSPREFIX_BIE + ":" + elementASBIE.Name);
-                refASBIE.MinOccursString = AdjustBound(asbie.LowerBound);
-                refASBIE.MaxOccursString = AdjustBound(asbie.UpperBound);
-
-                // every shared ASCC may only appear once in the XSD file
-                if (!globalASBIEs.Contains(elementASBIE.Name))
-                {
-                    // R 9241: for ASBIEs with AggregationKind = shared a global element must be declared.   
-                    schema.Items.Add(elementASBIE);
-                    globalASBIEs.Add(elementASBIE.Name);
-                }
-                sequenceBBIEs.Items.Add(refASBIE);
-            }
-            else
-            {
-                //R 9025: ASBIEs with Aggregation Kind = composite a local element for the
-                //        associated ABIE must be declared in the associating ABIE complex type.
-                sequenceBBIEs.Items.Add(elementASBIE);
-            }
-        }
+        
         ///<summary>
         ///</summary>
         ///<param name="bbie"></param>

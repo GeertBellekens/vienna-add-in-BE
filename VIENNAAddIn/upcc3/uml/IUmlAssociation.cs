@@ -1,4 +1,5 @@
 using CctsRepository;
+using System.Collections.Generic;
 
 namespace VIENNAAddIn.upcc3.uml
 {
@@ -12,5 +13,7 @@ namespace VIENNAAddIn.upcc3.uml
         IUmlClassifier AssociatedClassifier { get; }
         AggregationKind AggregationKind { get; }
         IUmlTaggedValue GetTaggedValue(string name);
+        IEnumerable<IUmlAssociation> ReferencedAssociations(string tagName);
+        IEnumerable<IUmlAttribute> ReferencedAttributes(string tagName);
     }
 }

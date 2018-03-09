@@ -149,6 +149,11 @@ namespace VIENNAAddIn.upcc3.ea
             return (eaAttribute != null ? eaAttribute.AttributeID : 0);
         }
 
+        public IEnumerable<IUmlAssociation> ReferencedAssociations(string tagName)
+        {
+            return new List<IUmlAssociation>();
+        }
+
         public static bool operator ==(EaUmlEnumerationLiteral left, EaUmlEnumerationLiteral right)
         {
             return Equals(left, right);
