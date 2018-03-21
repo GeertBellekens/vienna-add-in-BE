@@ -41,7 +41,8 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             schema.Namespaces.Add(NSPREFIX_XSD, NS_XSD);
             //add namespace for documentation
             schema.Namespaces.Add(NSPREFIX_DOC, NS_DOC);
-            // add namespace ns1
+            //TODO: the ns1, ns2, etc.. namespaces are the namespaces used by the enumerations. 
+            // A prefix will need to be added for each namepace used by the used enumerations
             schema.Namespaces.Add(NSPREFIX_NS1, context.BaseURN);
             //add namespace xbt
             schema.Namespaces.Add(NSPREFIX_XBT, NS_XBT);
@@ -104,7 +105,17 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                     //add the simple content extension
                     var simpleContent = new XmlSchemaSimpleContent();
                     var simpleContentExtension = new XmlSchemaSimpleContentExtension();
-                    simpleContentExtension.BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt), context);
+                    //get the xsd type if the con is a primitive
+                    if (bdt.Con.BasicType != null
+                        && bdt.Con.BasicType.Prim != null)
+                    {
+                        simpleContentExtension.BaseTypeName = GetXmlQualifiedName(bdt.Con.BasicType.Prim.xsdType,context);
+                    }
+                    else
+                    {
+                        simpleContentExtension.BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt), context);
+                    }
+                    
                     foreach (IBdtSup sup in sups)
                     {
                         var attribute = new XmlSchemaAttribute();
