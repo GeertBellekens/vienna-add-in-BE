@@ -41,9 +41,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             schema.Namespaces.Add(NSPREFIX_XSD, NS_XSD);
             //add namespace for documentation
             schema.Namespaces.Add(NSPREFIX_DOC, NS_DOC);
-            //TODO: the ns1, ns2, etc.. namespaces are the namespaces used by the enumerations. 
-            // A prefix will need to be added for each namepace used by the used enumerations
-            schema.Namespaces.Add(NSPREFIX_NS1, context.BaseURN);
+
             //add namespace xbt
             schema.Namespaces.Add(NSPREFIX_XBT, NS_XBT);
             //add version
@@ -55,6 +53,8 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 
             //define list of enumeration xsd's to import
             var enumImports = new Dictionary<string, SchemaInfo>();
+            //define list of nsx namespaces and their prefixes
+            var enumNamespacePrefixes = new Dictionary<string, string>();
             string schemaFileName = getSchemaFileName(context);
             //loop the bdt's
             foreach (IBdt bdt in context.Elements
@@ -95,12 +95,9 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                     var complexType = new XmlSchemaComplexType();
                     complexType.Name = NDR.GetXsdTypeNameFromBdt(bdt);
                     //Generate the base enum schema and add it to the imports
-                    if (bdt.Con != null
-                        && bdt.Con.BasicType != null
-                        && bdt.Con.BasicType.Enum != null)
+                    if (bdt.Con?.BasicType?.Enum != null)
                     {
-                        if (!enumImports.ContainsKey(bdt.Con.BasicType.Enum.CodeListName))
-                            enumImports.Add(bdt.Con.BasicType.Enum.Name, ENUMSchemaGenerator.GenerateXSD(genericContext, bdt.Con.BasicType.Enum));
+                        AddEnumImport(genericContext, enumImports,enumNamespacePrefixes, bdt.Con.BasicType.Enum);
                     }
                     //add the simple content extension
                     var simpleContent = new XmlSchemaSimpleContent();
@@ -113,7 +110,14 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                     }
                     else
                     {
-                        simpleContentExtension.BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt), context);
+                        if (bdt.Con?.BasicType?.Enum != null)
+                        {
+                            simpleContentExtension.BaseTypeName = new XmlQualifiedName(enumNamespacePrefixes[enumImports[bdt.Con.BasicType.Enum.CodeListName].Schema.TargetNamespace] + ":" + NDR.GetBasicTypeName(bdt.Con.BasicType.Enum));
+                        }
+                        else
+                        {
+                            simpleContentExtension.BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt), context);
+                        }
                     }
                     
                     foreach (IBdtSup sup in sups)
@@ -135,15 +139,14 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                                 if (sourceEnum != null)
                                 {
                                     //add the source enum to the imports as well
-                                    if (!enumImports.ContainsKey(sourceEnum.CodeListName))
-                                        enumImports.Add(sourceEnum.Name, ENUMSchemaGenerator.GenerateXSD(genericContext, sourceEnum));
+                                    AddEnumImport(genericContext, enumImports, enumNamespacePrefixes, sourceEnum);
                                     //add the restriction         
                                     if (basicEnum.CodelistEntries.Any()
                                         && sourceEnum.CodelistEntries.Count() != basicEnum.CodelistEntries.Count())
                                     {
                                         var restrictedtype = new XmlSchemaSimpleType();
                                         var restriction = new XmlSchemaSimpleTypeRestriction();
-                                        restriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_NS1 + ":" + NDR.GetBasicTypeName(sourceEnum));
+                                        restriction.BaseTypeName = new XmlQualifiedName(enumNamespacePrefixes[enumImports[sourceEnum.CodeListName].Schema.TargetNamespace] + ":" + NDR.GetBasicTypeName(sourceEnum));
                                         addEnumerationValues(restriction, basicEnum);
                                         //add the restriction to the simple type
                                         restrictedtype.Content = restriction;
@@ -152,7 +155,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                                     }
                                     else
                                     {
-                                        attribute.SchemaTypeName = new XmlQualifiedName(NSPREFIX_NS1 + ":" + NDR.GetBasicTypeName(sourceEnum));
+                                        attribute.SchemaTypeName = new XmlQualifiedName(enumNamespacePrefixes[enumImports[sourceEnum.CodeListName].Schema.TargetNamespace] + ":" + NDR.GetBasicTypeName(sourceEnum));
                                     }
                                 }
 
@@ -190,10 +193,29 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                 schemaImport.SchemaLocation = NDR.GetRelativePath(schemaFileName, enumImport.FileName);
                 schema.Includes.Add(schemaImport);
             }
-
+            //add the enum namespace prefixes
+            foreach(var keyValue in enumNamespacePrefixes)
+            {
+                schema.Namespaces.Add(keyValue.Value, keyValue.Key);
+            }
             //add the schema to the context
             context.AddSchema(schema, schemaFileName, UpccSchematype.BDT);
         }
+
+        private static void AddEnumImport(GeneratorContext genericContext, Dictionary<string, SchemaInfo> enumImports,Dictionary<string, string> enumNamespaces , IEnum enumeration)
+        {
+            
+            if (!enumImports.ContainsKey(enumeration.CodeListName))
+            {
+                var enumSchema = ENUMSchemaGenerator.GenerateXSD(genericContext, enumeration);
+                enumImports.Add(enumeration.CodeListName, enumSchema);
+                if (!enumNamespaces.ContainsKey(enumSchema.Schema.TargetNamespace))
+                {
+                    enumNamespaces.Add(enumSchema.Schema.TargetNamespace, "ns" + (enumNamespaces.Count + 1).ToString());
+                }
+            }                
+        }
+
         static void addEnumerationValues(XmlSchemaSimpleTypeRestriction restriction, UpccEnum basicEnum)
         {
             foreach (var codeListEntry in basicEnum.CodelistEntries)

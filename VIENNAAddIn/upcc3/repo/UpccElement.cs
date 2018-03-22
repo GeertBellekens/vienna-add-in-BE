@@ -29,7 +29,7 @@ namespace VIENNAAddIn.upcc3.repo
             get { return UmlClassifier.Name; }
 		}
         UpccElement _SourceElement;
-        public UpccElement SourceElement 
+        public ICctsElement SourceElement 
         {
         	get
         	{

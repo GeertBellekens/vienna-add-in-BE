@@ -23,6 +23,11 @@ namespace CctsRepository
         /// Tagged value 'businessTerm'.
         ///</summary>
 		IEnumerable<string> BusinessTerms { get; }
+                
+        /// <summary>
+        /// the element this element is derived from
+        /// </summary>
+        ICctsElement SourceElement { get; }
 
         ///<summary>
         /// Tagged value 'definition'.

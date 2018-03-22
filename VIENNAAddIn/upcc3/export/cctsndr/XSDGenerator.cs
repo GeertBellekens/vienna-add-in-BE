@@ -80,8 +80,9 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 				}
 				var xmlWriterSettings = new XmlWriterSettings {
 					Indent = true,
-					Encoding = Encoding.UTF8,
+					Encoding = Encoding.UTF8
 				};
+                
 				using (XmlWriter xmlWriter = XmlWriter.Create(schemaInfo.FileName, xmlWriterSettings)) {
 					schemaInfo.Schema.Write(xmlWriter);
 					xmlWriter.Close();

@@ -33,9 +33,13 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         
         public static SchemaInfo GenerateXSD(GeneratorContext context, IEnum enumeration)
         {
-			var schema = new XmlSchema {TargetNamespace = enumeration.EnumLibrary.BaseURN};
+            var schema = new XmlSchema();
+            //set targetnamespace
+            schema.TargetNamespace = (enumeration.SourceElement as IEnum) != null 
+                                    ? ((IEnum)enumeration.SourceElement).EnumLibrary.BaseURN
+                                    : enumeration.EnumLibrary.BaseURN;
             //add namespaces
-            schema.Namespaces.Add(NDR.getEnumPrefixname(enumeration), enumeration.EnumLibrary.BaseURN);
+            schema.Namespaces.Add(NDR.getEnumPrefixname(enumeration), schema.TargetNamespace);
             // R 9B18: all XML schemas must utilize the xsd prefix when referring to the W3C XML schema namespace            
             schema.Namespaces.Add(NSPREFIX_XSD, NS_XSD);
 			//add namespace for documentation
