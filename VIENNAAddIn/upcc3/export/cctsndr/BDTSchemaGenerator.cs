@@ -112,7 +112,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                     {
                         if (bdt.Con?.BasicType?.Enum != null)
                         {
-                            simpleContentExtension.BaseTypeName = new XmlQualifiedName(enumNamespacePrefixes[enumImports[bdt.Con.BasicType.Enum.CodeListName].Schema.TargetNamespace] + ":" + NDR.GetBasicTypeName(bdt.Con.BasicType.Enum));
+                            simpleContentExtension.BaseTypeName = new XmlQualifiedName(enumNamespacePrefixes[enumImports[NDR.GetEnumName(bdt.Con.BasicType.Enum)].Schema.TargetNamespace] + ":" + NDR.GetBasicTypeName(bdt.Con.BasicType.Enum));
                         }
                         else
                         {
@@ -146,7 +146,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                                     {
                                         var restrictedtype = new XmlSchemaSimpleType();
                                         var restriction = new XmlSchemaSimpleTypeRestriction();
-                                        restriction.BaseTypeName = new XmlQualifiedName(enumNamespacePrefixes[enumImports[sourceEnum.CodeListName].Schema.TargetNamespace] + ":" + NDR.GetBasicTypeName(sourceEnum));
+                                        restriction.BaseTypeName = new XmlQualifiedName(enumNamespacePrefixes[enumImports[NDR.GetEnumName(sourceEnum)].Schema.TargetNamespace] + ":" + NDR.GetBasicTypeName(sourceEnum));
                                         addEnumerationValues(restriction, basicEnum);
                                         //add the restriction to the simple type
                                         restrictedtype.Content = restriction;
@@ -155,10 +155,9 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                                     }
                                     else
                                     {
-                                        attribute.SchemaTypeName = new XmlQualifiedName(enumNamespacePrefixes[enumImports[sourceEnum.CodeListName].Schema.TargetNamespace] + ":" + NDR.GetBasicTypeName(sourceEnum));
+                                        attribute.SchemaTypeName = new XmlQualifiedName(enumNamespacePrefixes[enumImports[NDR.GetEnumName(sourceEnum)].Schema.TargetNamespace] + ":" + NDR.GetBasicTypeName(sourceEnum));
                                     }
                                 }
-
                             }
                         }
                         //set regular type name if not restricted
@@ -205,10 +204,10 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         private static void AddEnumImport(GeneratorContext genericContext, Dictionary<string, SchemaInfo> enumImports,Dictionary<string, string> enumNamespaces , IEnum enumeration)
         {
             
-            if (!enumImports.ContainsKey(enumeration.CodeListName))
+            if (!enumImports.ContainsKey(NDR.GetEnumName(enumeration)))
             {
                 var enumSchema = ENUMSchemaGenerator.GenerateXSD(genericContext, enumeration);
-                enumImports.Add(enumeration.CodeListName, enumSchema);
+                enumImports.Add(NDR.GetEnumName(enumeration), enumSchema);
                 if (!enumNamespaces.ContainsKey(enumSchema.Schema.TargetNamespace))
                 {
                     enumNamespaces.Add(enumSchema.Schema.TargetNamespace, "ns" + (enumNamespaces.Count + 1).ToString());
