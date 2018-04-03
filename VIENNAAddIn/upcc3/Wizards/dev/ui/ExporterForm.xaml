@@ -5,54 +5,19 @@
 	Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
 	ShowInTaskbar="True"
 	ResizeMode="NoResize"
-	Title="Exporter"
+	Title="Generate XSD's"
 	FontSize="11"
-	Height="349"
-	Width="572"
+	Height="379"
+	Width="569"
 	WindowStartupLocation="CenterOwner">
 	<DockPanel
-		Margin="5,5,5,5"
-		Height="305">
-		<StackPanel
-			DockPanel.Dock="Bottom"
-			Orientation="Horizontal"
-			HorizontalAlignment="Center"
-			Margin="5,10,5,5">
-			<Button
-				KeyboardNavigation.TabIndex="9"
-				HorizontalAlignment="Left"
-				Height="23"
-				Name="buttonExport"
-				Width="175"
-				Click="buttonExport_Click">_Export XML Schema</Button>
-			<Button
-				KeyboardNavigation.TabIndex="10"
-				HorizontalAlignment="Left"
-				Height="23"
-				Name="buttonClose"
-				Width="75"
-				Margin="30,0,0,0"
-				Click="buttonClose_Click">_Close</Button>
-		</StackPanel>
-		<TextBox
-			Name="textBoxStatus"
-			DockPanel.Dock="Bottom"
-			Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
-			Height="80"
-			IsReadOnly="True"
-			IsUndoEnabled="False"
-			TextWrapping="Wrap"
-			VerticalContentAlignment="Top"
-			VerticalScrollBarVisibility="Auto" />
-		<Label
-			Margin="0,5,0,0"
-			DockPanel.Dock="Bottom"
-			Name="label2"
-			Height="23"
-			HorizontalAlignment="Left">Status:</Label>
-		<StackPanel
+		Margin="5,5,8,5">
+
+        
+        <StackPanel
 			DockPanel.Dock="Top"
-			Orientation="Horizontal">
+			Orientation="Horizontal"
+            Margin="5,5,5,5">
 			<Label
 				Height="23"
 				Width="160"
@@ -64,12 +29,12 @@
 				IsEnabled="False"
 				HorizontalContentAlignment="Left"
 				HorizontalAlignment="Stretch"
-				Width="388" />
+				Width="368" />
 		</StackPanel>
 		<StackPanel
 			DockPanel.Dock="Top"
 			Orientation="Horizontal"
-			Margin="0,5,0,0">
+			Margin="5,5,5,5">
 			<Label
 				Height="75"
 				Width="160">Documents to be generated:</Label>
@@ -78,7 +43,7 @@
 				Name="documentsListBox"
 				Height="75"
 				SelectionMode="Multiple"
-				Width="388">
+				Width="369">
 				<ListBox.Resources>
 					<SolidColorBrush
 						x:Key="{x:Static SystemColors.HighlightBrushKey}"
@@ -92,7 +57,7 @@
 		<StackPanel
 			DockPanel.Dock="Top"
 			Orientation="Horizontal"
-			Margin="0,5,0,0"
+			Margin="5,5,5,5"
 			HorizontalAlignment="Right"
 			Width="213">
 			<Button
@@ -110,12 +75,12 @@
 				HorizontalAlignment="Right"
 				Margin="30,0,0,0"
 				Click="selectNoneButton_Click"
-				Width="75">_None</Button>
+				Width="70">_None</Button>
 		</StackPanel>
 		<StackPanel
 			DockPanel.Dock="Top"
 			Orientation="Horizontal"
-			Margin="0,5,0,0">
+			Margin="5,5,5,5">
 			<Label
 				Height="23"
 				Width="160">XML Schema output directory:</Label>
@@ -124,8 +89,48 @@
 				Name="textboxOutputDirectory"
 				DirectoryNameChanged="textboxOutputDirectory_DirectoryNameChanged"
 				VerticalContentAlignment="Stretch"
-				Width="388"
-				ShowNewFolderButton="True" />
+				ShowNewFolderButton="True" IsManipulationEnabled="True" Width="369" />
 		</StackPanel>
-	</DockPanel>
+        <StackPanel
+            DockPanel.Dock="Top"
+			Orientation="Vertical"
+            Margin="5,5,5,5">
+            <Label
+			Margin="0,0,0,0"
+			Name="label2"
+			Height="23"
+			HorizontalAlignment="Left">Status:</Label>
+            <TextBox
+			Name="textBoxStatus"
+			DockPanel.Dock="Bottom"
+			Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+			Height="80"
+			IsReadOnly="True"
+			IsUndoEnabled="False"
+			TextWrapping="Wrap"
+			VerticalContentAlignment="Top"
+			VerticalScrollBarVisibility="Auto" />
+        </StackPanel>
+        <StackPanel
+			DockPanel.Dock="Bottom"
+			Orientation="Horizontal"
+			HorizontalAlignment="Center"
+			Margin="5,5,5,5">
+            <Button
+				KeyboardNavigation.TabIndex="9"
+				HorizontalAlignment="Left"
+				Height="23"
+				Name="buttonExport"
+				Width="175"
+				Click="buttonExport_Click">_Export XML Schema</Button>
+            <Button
+				KeyboardNavigation.TabIndex="10"
+				HorizontalAlignment="Left"
+				Height="23"
+				Name="buttonClose"
+				Width="75"
+				Margin="30,0,0,0"
+				Click="buttonClose_Click">_Close</Button>
+        </StackPanel>
+    </DockPanel>
 </Window>

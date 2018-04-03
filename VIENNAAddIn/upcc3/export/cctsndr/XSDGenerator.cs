@@ -41,20 +41,12 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
     			//start generating
     			GenerateSchemas(context, genericContext);
     		}
-    		//now start generating the genericContexts
+    		//now write the generic schemas
     		foreach (var genericContext in genericContexts) 
     		{
-    			GenerateGenericSchemas(genericContext);
+                WriteSchemas(genericContext);
     		}
     	}
-
-		public static void GenerateGenericSchemas(GeneratorContext genericContext)
-		{
-			BDTSchemaGenerator.GenerateXSD(genericContext, genericContext);
-            BIESchemaGenerator.GenerateXSD(genericContext);
-            
-            WriteSchemas(genericContext);
-		}
 
         ///<summary>
         ///</summary>
