@@ -70,7 +70,7 @@ namespace VIENNAAddIn.upcc3.ea
         }
         public IUmlClassifier AssociatedClassifier
         {
-            get { return new EaUmlClassifier(eaRepository, eaRepository.GetElementByID(AssociatedElementId)); }
+            get { return new EaUmlClassifier(eaRepository, EaUmlRepository.getRepository(eaRepository).GetElementByID(AssociatedElementId)); }
         }
 
         public AggregationKind AggregationKind

@@ -12,8 +12,19 @@ namespace VIENNAAddIn.upcc3.ea
     {
         private readonly Repository eaRepository;
         private RepositoryType? _repositoryType;
+        private Dictionary<int, EA.Element> elementCache = new Dictionary<int, Element>();
 
-        public EaUmlRepository(Repository eaRepository)
+        private static Dictionary<string, EaUmlRepository> repositories = new Dictionary<string, EaUmlRepository>();
+        public static EaUmlRepository getRepository(EA.Repository eaRepository)
+        {
+            if (repositories.ContainsKey(eaRepository.ProjectGUID))
+                return repositories[eaRepository.ProjectGUID];
+            //not in list yet
+            var newRepository = new EaUmlRepository(eaRepository);
+            repositories.Add(eaRepository.ProjectGUID, newRepository);
+            return newRepository;
+        }
+        private EaUmlRepository(Repository eaRepository)
         {
             this.eaRepository = eaRepository;
         }
@@ -30,6 +41,26 @@ namespace VIENNAAddIn.upcc3.ea
                     this._repositoryType = getRepositoryType();
                 }
                 return _repositoryType.Value;
+            }
+        }
+        public EA.Element GetElementByID(int elementID)
+        {
+            if (elementCache.ContainsKey(elementID))
+                return elementCache[elementID];
+            //not in cache, get it from the repository
+            try
+            {
+                var newElement = this.eaRepository.GetElementByID(elementID);
+                if (newElement != null)
+                {
+                    elementCache.Add(elementID, newElement);
+                }
+                return newElement;
+            }
+            catch (Exception)
+            {
+                //not found return null;
+                return null;
             }
         }
 
@@ -78,7 +109,7 @@ namespace VIENNAAddIn.upcc3.ea
                 }
                 return values;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 //swallow exception, return empty list
                 return values;
@@ -144,7 +175,7 @@ namespace VIENNAAddIn.upcc3.ea
 
         public IUmlDataType GetDataTypeById(int id)
         {
-            return new EaUmlClassifier(eaRepository, eaRepository.GetElementByID(id));
+            return new EaUmlClassifier(eaRepository, this.GetElementByID(id));
         }
 
         public IUmlDataType GetDataTypeByPath(Path path)
@@ -154,7 +185,7 @@ namespace VIENNAAddIn.upcc3.ea
 
         public IUmlEnumeration GetEnumerationById(int id)
         {
-            return new EaUmlClassifier(eaRepository, eaRepository.GetElementByID(id));
+            return new EaUmlClassifier(eaRepository, this.GetElementByID(id));
         }
 
         public IUmlEnumeration GetEnumerationByPath(Path path)
@@ -164,7 +195,7 @@ namespace VIENNAAddIn.upcc3.ea
 
         public IUmlClass GetClassById(int id)
         {
-            return new EaUmlClassifier(eaRepository, eaRepository.GetElementByID(id));
+            return new EaUmlClassifier(eaRepository, this.GetElementByID(id));
         }
 
         public IUmlClass GetClassByPath(Path path)

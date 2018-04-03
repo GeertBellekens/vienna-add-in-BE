@@ -39,7 +39,7 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
         {
             repo = repository;
             InitializeComponent();
-            eaUmlRepo = new EaUmlRepository(repo);
+            eaUmlRepo = EaUmlRepository.getRepository(repo);
             foreach (var umlPackage in eaUmlRepo.GetPackagesByStereotype("bChoreographyV"))
             {
                 comboBoxBusinessChoreographyView.Items.Add(umlPackage.Name);

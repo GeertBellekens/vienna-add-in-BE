@@ -10,11 +10,13 @@ namespace VIENNAAddIn.upcc3.ea
     {
         private readonly Attribute eaAttribute;
         private readonly Repository eaRepository;
+        protected EaUmlRepository repository { get; set; }
 
         public EaUmlAttribute(Repository eaRepository, Attribute eaAttribute)
         {
             this.eaRepository = eaRepository;
             this.eaAttribute = eaAttribute;
+            this.repository = EaUmlRepository.getRepository(eaRepository);
         }
 
         #region IUmlAttribute Members
@@ -58,7 +60,7 @@ namespace VIENNAAddIn.upcc3.ea
         	get 
         	{ 
         		if (eaAttribute.ClassifierID > 0)
-        			return new EaUmlClassifier(eaRepository, eaRepository.GetElementByID(eaAttribute.ClassifierID)); 
+        			return new EaUmlClassifier(eaRepository, this.repository.GetElementByID(eaAttribute.ClassifierID)); 
         		return null;
         	}
         }

@@ -9,7 +9,7 @@ namespace VIENNAAddIn.upcc3
     {
         public static ICctsRepository CreateCctsRepository(Repository eaRepository)
         {
-            return new UpccRepository(new EaUmlRepository(eaRepository));
+            return new UpccRepository(EaUmlRepository.getRepository(eaRepository));
             //return new CCRepository(eaRepository);
         }
     }

@@ -17,7 +17,7 @@ namespace VIENNAAddIn.upcc3.ea
         {
             this.eaRepository = eaRepository;
             this.eaElement = eaElement;
-            this.repository = new EaUmlRepository(eaRepository);
+            this.repository = EaUmlRepository.getRepository(eaRepository);
         }
 		
         public bool isEnumeration

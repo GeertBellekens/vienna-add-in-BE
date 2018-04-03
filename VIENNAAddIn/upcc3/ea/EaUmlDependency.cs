@@ -21,7 +21,7 @@ namespace VIENNAAddIn.upcc3.ea
         {
             get
             {
-                Element targetElement = eaRepository.GetElementByID(eaConnector.SupplierID);
+                Element targetElement = EaUmlRepository.getRepository(eaRepository).GetElementByID(eaConnector.SupplierID);
                 return new EaUmlClassifier(eaRepository, targetElement);
             }
         }
