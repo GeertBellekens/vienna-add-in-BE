@@ -96,17 +96,19 @@ namespace VIENNAAddIn.upcc3.ea
 				if(_Traces == null)
 				{
 					_Traces = new List<IUmlDependency>();
-					foreach (Connector eaConnector in eaElement.Connectors)
-		            {
-		                if (eaConnector.Type == EaConnectorTypes.Abstraction.ToString())
-		                {
-		                	if (eaConnector.StereotypeEx.Split(',').Contains("trace"))
-		                    {
-		                		_Traces.Add( new EaUmlDependency(eaRepository, eaConnector));
-		                    }
-		                }
-		            }
-				}
+                    string getTracesQuery = @"select c.ea_guid from t_connector c
+                                            where c.Connector_Type = 'Abstraction'
+                                            and c.Stereotype = 'trace'
+                                            and c.Start_Object_ID = " + this.Id;
+                    foreach (var associationID in this.repository.getSQLValues(getTracesQuery))
+                    {
+                        var eaConnector = this.eaRepository.GetConnectorByGuid(associationID);
+                        if (eaConnector != null)
+                        {
+                            _Traces.Add(new EaUmlDependency(this.eaRepository, eaConnector));
+                        }
+                    }
+                }
 				return _Traces;
 			}
 		}
