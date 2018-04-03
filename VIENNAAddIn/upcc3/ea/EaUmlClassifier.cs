@@ -11,11 +11,13 @@ namespace VIENNAAddIn.upcc3.ea
     {
         private readonly Element eaElement;
         private readonly Repository eaRepository;
+        protected EaUmlRepository repository { get; set; }
 
         public EaUmlClassifier(Repository eaRepository, Element eaElement)
         {
             this.eaRepository = eaRepository;
             this.eaElement = eaElement;
+            this.repository = new EaUmlRepository(eaRepository);
         }
 		
         public bool isEnumeration
@@ -216,17 +218,24 @@ namespace VIENNAAddIn.upcc3.ea
 				if (_associations == null)
 				{
 					_associations = new List<IUmlAssociation>();
-					foreach (Connector eaConnector in eaElement.Connectors)
-		            {
-		                if (eaConnector.Type == EaConnectorTypes.Association.ToString() || eaConnector.Type == EaConnectorTypes.Aggregation.ToString())
-		                {
-	                        if ((eaConnector.ClientID == Id && eaConnector.ClientEnd.Aggregation != (int) EaAggregationKind.None) ||
-	                            (eaConnector.SupplierID == Id && eaConnector.SupplierEnd.Aggregation != (int) EaAggregationKind.None))
-	                        {
-		                		_associations.Add(new EaUmlAssociation(eaRepository, eaConnector, Id));
-	                        }
-		                }
-		            }
+                    string getAssociationsQuery = @"select c.ea_guid from t_connector c
+                                                    where c.Connector_Type in ('Association', 'Aggregation')
+                                                    and
+                                                    (
+                                                        (c.Start_Object_ID = "+ this.Id + @"
+                                                        and c.SourceIsAggregate > 0)
+                                                        or
+                                                        (c.End_Object_ID = " + this.Id + @"
+                                                        and c.DestIsAggregate > 0)
+                                                    )";
+                    foreach (var associationID in this.repository.getSQLValues(getAssociationsQuery))
+                    {
+                        var eaConnector = this.eaRepository.GetConnectorByGuid(associationID);
+                        if (eaConnector != null)
+                        {
+                            _associations.Add(new EaUmlAssociation(this.eaRepository, eaConnector, this.Id));
+                        }
+                    }
 				}
 				return _associations;
 			}

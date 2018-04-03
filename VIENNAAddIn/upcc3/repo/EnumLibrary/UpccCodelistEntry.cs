@@ -41,6 +41,12 @@ namespace VIENNAAddIn.upcc3.repo.EnumLibrary
        	{
        		get {return this.Enum;}
 		}
+        
+        protected override int getPosition()
+        {
+            //don't need sequencingkey here
+            return this.UmlAttribute.position;
+        }
 
         ///<summary>
         /// Tagged value 'codeName'.

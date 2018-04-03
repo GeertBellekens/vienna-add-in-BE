@@ -54,7 +54,36 @@ namespace VIENNAAddIn.upcc3.ea
             }
             return foundPackages;
         }
-
+        /// <summary>
+        /// returns a single list of the selected values of the given sql query.
+        /// Most often used to get the ID's of a set of items.
+        /// </summary>
+        /// <param name="sqlQuery">the query selecting a single list of values</param>
+        /// <returns>the list of values</returns>
+        public IEnumerable<string> getSQLValues(string sqlQuery)
+        {
+            var values = new List<string>();
+            try
+            {
+                XmlDocument results = new XmlDocument();
+                results.LoadXml(eaRepository.SQLQuery(formatSQL(sqlQuery)));
+                //get the row nodes
+                foreach (XmlNode rowNode in results.SelectNodes("//Row"))
+                {
+                    if (rowNode.HasChildNodes)
+                    {
+                        var fieldNode = rowNode.ChildNodes[0];
+                        values.Add(fieldNode.InnerText);
+                    }
+                }
+                return values;
+            }
+            catch(Exception)
+            {
+                //swallow exception, return empty list
+                return values;
+            }
+        }
         /// <summary>
         /// returns all packages owned by the package with the vgiven ID or below having one of the p
         /// </summary>
