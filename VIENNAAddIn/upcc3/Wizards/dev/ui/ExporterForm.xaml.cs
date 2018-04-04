@@ -109,6 +109,7 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
 
         private void buttonExport_Click(object sender, RoutedEventArgs e)
         {
+            var startTime = DateTime.Now;
             Cursor = Cursors.Wait;
             textBoxStatus.Text = "Starting to generate XML schemas ...\n\n";
             GatherUserInput();
@@ -130,7 +131,8 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
             }
             XSDGenerator.GenerateSchemas(generationContexts);
 
-            textBoxStatus.Text += "\nGenerating XML schemas completed!";
+            textBoxStatus.Text += "\nGenerating XML schemas completed in " + (DateTime.Now - startTime).TotalSeconds + " seconds";
+
             Cursor = Cursors.Arrow;
         }
 
