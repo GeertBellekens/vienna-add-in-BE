@@ -54,8 +54,12 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         }
 
         public ICctsRepository Repository { get; private set; }
-        
-        
+
+        /// <summary>
+        /// contains the namespace prefixes and namespaces for the namspaces of the enums
+        /// </summary>
+        public Dictionary<string, string> enumNamespacesAndPrefixes { get; set; }
+
         public IEnumerable<ICctsElement> Elements 
         {
         	get {return _elements;}

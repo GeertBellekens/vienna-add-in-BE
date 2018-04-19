@@ -197,6 +197,8 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             {
                 schema.Namespaces.Add(keyValue.Value, keyValue.Key);
             }
+            //and add them to the context
+            context.enumNamespacesAndPrefixes = enumNamespacePrefixes;
             //add the schema to the context
             context.AddSchema(schema, schemaFileName, UpccSchematype.BDT);
         }

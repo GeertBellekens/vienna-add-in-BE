@@ -42,7 +42,6 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
     ///</summary>
     public class BIESchemaGenerator
     {
-        private const string NSPREFIX_NS1 = "ns1";
         private const string NSPREFIX_BIE = "bie";
         private const string NSPREFIX_DOC = "ccts";
         private const string NSPREFIX_XBT = "xbt";
@@ -82,8 +81,12 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             schema.Namespaces.Add(NSPREFIX_XSD, NS_XSD);
             //add namespace for documentation
             schema.Namespaces.Add(NSPREFIX_DOC, NS_DOC);
-            // add namespace ns1
-            schema.Namespaces.Add(NSPREFIX_NS1, context.BaseURN);
+            // Enum namespaces (ns1, ns2) are actually never used in the BIE schema, so we don't put them here.
+            ////add the enum namespace prefixes
+            //foreach (var keyValue in context.enumNamespacesAndPrefixes)
+            //{
+            //    schema.Namespaces.Add(keyValue.Value, keyValue.Key);
+            //}
             //add namespace xbt
             schema.Namespaces.Add(NSPREFIX_XBT, NS_XBT);
 
