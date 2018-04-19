@@ -51,9 +51,23 @@ namespace VIENNAAddIn.menu
         ///<summary>
         /// A CctsRepository wrapped around the EA repository.
         ///</summary>
+        private ICctsRepository _CctsRepository;
         public ICctsRepository CctsRepository
         {
-            get { return CctsRepositoryFactory.CreateCctsRepository(EARepository); }
+            get
+            {
+                if (this._CctsRepository == null)
+                   this._CctsRepository = CctsRepositoryFactory.CreateCctsRepository(EARepository);
+                return _CctsRepository;
+            }
+            
+        }
+        /// <summary>
+        /// make sure the repository is reloaded and all cached elements are cleared
+        /// </summary>
+        public void reloadRepository()
+        {
+            this._CctsRepository = null;
         }
 
         ///<summary>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Schema;
 using CctsRepository;
+using CctsRepository.BdtLibrary;
 using CctsRepository.DocLibrary;
 
 namespace VIENNAAddIn.upcc3.export.cctsndr
@@ -61,7 +62,22 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         }
         public void AddElements(IEnumerable<ICctsElement> newElements)
         {
-        	_elements.AddRange(newElements.Where( x => ! this.Elements.Any(y => x.Equals(y))));
+            foreach (var newElement in newElements)
+            { 
+                //make sure the element doesn't exist in the list yet
+                if (! _elements.Any(x => x.Equals(newElement)))
+                {
+                    //in case of a BDT make sure the is not yet one with the name name
+                    var newBDT = newElement as IBdt;
+                    var bdtName = NDR.GetXsdTypeNameFromBdt(newBDT);
+                    if (newBDT == null || ! _elements
+                                          .OfType<IBdt>()
+                                          .Any(x => NDR.GetXsdTypeNameFromBdt(x) == bdtName))
+                    {
+                        _elements.Add(newElement);
+                    }
+                }
+            }
         }
         public bool isGeneric 
         {

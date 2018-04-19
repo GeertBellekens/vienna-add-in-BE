@@ -15,6 +15,7 @@ namespace VIENNAAddIn.upcc3.ea
         private Dictionary<int, EA.Element> elementCache = new Dictionary<int, Element>();
 
         private static Dictionary<string, EaUmlRepository> repositories = new Dictionary<string, EaUmlRepository>();
+
         public static EaUmlRepository getRepository(EA.Repository eaRepository)
         {
             if (repositories.ContainsKey(eaRepository.ProjectGUID))
@@ -23,6 +24,16 @@ namespace VIENNAAddIn.upcc3.ea
             var newRepository = new EaUmlRepository(eaRepository);
             repositories.Add(eaRepository.ProjectGUID, newRepository);
             return newRepository;
+        }
+        public static EaUmlRepository getNewRepository(EA.Repository eaRepository)
+        {
+            //replace the Repository
+            if (repositories.ContainsKey(eaRepository.ProjectGUID))
+            {
+                repositories.Remove(eaRepository.ProjectGUID);
+            }
+            //use the regular operation
+            return getRepository(eaRepository);
         }
         private EaUmlRepository(Repository eaRepository)
         {

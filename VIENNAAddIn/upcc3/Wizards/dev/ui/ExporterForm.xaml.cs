@@ -60,6 +60,9 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
 
         public static void ShowForm(AddInContext context)
         {
+            //clear the cache
+            context.reloadRepository();
+            //start
             var exporterForm = new ExporterForm(context.CctsRepository, context.SelectedPackage);
             var mainWindowHandle = context.GetmainWindowHandle();
             if (mainWindowHandle != IntPtr.Zero)

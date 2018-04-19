@@ -204,8 +204,10 @@ namespace VIENNAAddIn.upcc3
         public static string GetXsdTypeNameFromBdt(IBdt bdt)
         {
         	if ( bdt == null) return "Error_No_BDT";
-        	
-        	return TrimElementName(bdt.Name) + "_" + bdt.UniqueIdentifier;
+            //use the source element name in case the BDT is redefined in the subset
+            var bdtName = bdt.SourceElement.Name != null ?
+                          bdt.SourceElement.Name : bdt.Name;
+        	return TrimElementName(bdtName) + "_" + bdt.UniqueIdentifier;
         }
         public static string getConBasicTypeName(IBdt bdt)
         {

@@ -126,6 +126,11 @@ namespace VIENNAAddIn
 //                                   + validate));
         }
 
+        private void startXmlGeneration()
+        {
+
+        }
+
         #region VIENNAAddInInterface Members
 
         /// <summary>
