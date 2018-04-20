@@ -112,7 +112,10 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                     {
                         if (bdt.Con?.BasicType?.Enum != null)
                         {
-                            simpleContentExtension.BaseTypeName = new XmlQualifiedName(enumNamespacePrefixes[enumImports[NDR.GetEnumName(bdt.Con.BasicType.Enum)].Schema.TargetNamespace] + ":" + NDR.GetBasicTypeName(bdt.Con.BasicType.Enum));
+                            //define which enum to use to determine the name
+                            var nameEnum = bdt.Con.BasicType.Enum.SourceElement as IEnum;
+                            if (nameEnum == null) nameEnum = bdt.Con?.BasicType?.Enum;
+                            simpleContentExtension.BaseTypeName = new XmlQualifiedName(enumNamespacePrefixes[enumImports[NDR.GetEnumName(bdt.Con.BasicType.Enum)].Schema.TargetNamespace] + ":" + NDR.GetBasicTypeName(nameEnum));
                         }
                         else
                         {
