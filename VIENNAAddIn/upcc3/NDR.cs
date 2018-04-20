@@ -301,68 +301,75 @@ namespace VIENNAAddIn.upcc3
 		}
 		public static void addFacets(XmlSchemaSimpleTypeRestriction restriction, IEnumerable<ICctsFacet> facets)
 		{
-			foreach (var facet in facets) 
-			{
-				var xmlFacet = createXmlFacet(facet);
-				if (xmlFacet != null)
-				{
-					xmlFacet.Value = facet.content;
-					restriction.Facets.Add(xmlFacet);
-				}
-			}
-		}
+            foreach (var xmlFacet in createXmlFacets(facets))
+            {
+                restriction.Facets.Add(xmlFacet);
+            }
+        }
         public static void addFacets(XmlSchemaSimpleContentRestriction restriction, IEnumerable<ICctsFacet> facets)
         {
+            foreach (var xmlFacet in createXmlFacets(facets))
+            {
+               restriction.Facets.Add(xmlFacet);
+            }
+        }
+        public static IEnumerable<XmlSchemaFacet> createXmlFacets(IEnumerable<ICctsFacet> facets)
+		{
+            var xmlFacets = new List<XmlSchemaFacet>();
             foreach (var facet in facets)
             {
-                var xmlFacet = createXmlFacet(facet);
+                XmlSchemaFacet xmlFacet = null;
+                switch (facet.name)
+                {
+                    case "fractionDigit":
+                        xmlFacet = new XmlSchemaFractionDigitsFacet();
+                        break;
+                    case "length":
+                        xmlFacet = new XmlSchemaLengthFacet();
+                        break;
+                    case "maxExclusive":
+                        xmlFacet = new XmlSchemaMaxExclusiveFacet();
+                        break;
+                    case "maxInclusive":
+                        xmlFacet = new XmlSchemaMaxInclusiveFacet();
+                        break;
+                    case "maxLength":
+                        xmlFacet = new XmlSchemaMaxLengthFacet();
+                        break;
+                    case "minExclusive":
+                        xmlFacet = new XmlSchemaMinExclusiveFacet();
+                        break;
+                    case "minInclusive":
+                        xmlFacet = new XmlSchemaMinInclusiveFacet();
+                        break;
+                    case "minLength":
+                        xmlFacet = new XmlSchemaMinLengthFacet();
+                        break;
+                    case "pattern":
+                        xmlFacet = new XmlSchemaPatternFacet();
+                        break;
+                    case "totalDigits":
+                        xmlFacet = new XmlSchemaTotalDigitsFacet();
+                        break;
+                    case "whiteSpace":
+                        xmlFacet = new XmlSchemaWhiteSpaceFacet();
+                        break;
+                    case "enumeration":
+                        foreach(var enumValue in facet.content.Split('|'))
+                        {
+                            var enumerationFacet = new XmlSchemaEnumerationFacet();
+                            enumerationFacet.Value = enumValue;
+                            xmlFacets.Add(enumerationFacet);
+                        }
+                        break;
+                }
                 if (xmlFacet != null)
                 {
                     xmlFacet.Value = facet.content;
-                    restriction.Facets.Add(xmlFacet);
+                    xmlFacets.Add(xmlFacet);
                 }
             }
-        }
-        public static XmlSchemaFacet createXmlFacet(ICctsFacet facet)
-		{
-			XmlSchemaFacet xmlFacet = null;
-			switch (facet.name) 
-			{
-				case "fractionDigit":
-					xmlFacet = new XmlSchemaFractionDigitsFacet();
-					break;
-				case "length": 
-					xmlFacet = new XmlSchemaLengthFacet();
-					break;
-				case "maxExclusive":
-					xmlFacet = new XmlSchemaMaxExclusiveFacet();
-					break;
-				case "maxInclusive":
-					xmlFacet = new XmlSchemaMaxInclusiveFacet();
-					break;
-				case "maxLength":
-					xmlFacet = new XmlSchemaMaxLengthFacet();
-					break;
-				case "minExclusive":
-					xmlFacet = new XmlSchemaMinExclusiveFacet();
-					break;
-				case "minInclusive":
-					xmlFacet = new XmlSchemaMinInclusiveFacet();
-					break;
-				case "minLength":
-					xmlFacet = new XmlSchemaMinLengthFacet();
-					break;
-				case "pattern":
-					xmlFacet = new XmlSchemaPatternFacet();
-					break;
-				case "totalDigits":
-					xmlFacet = new XmlSchemaTotalDigitsFacet();
-					break;
-				case "whiteSpace":
-					xmlFacet = new XmlSchemaWhiteSpaceFacet();
-					break;
-			}
-			return xmlFacet;
+			return xmlFacets;
 		}
 		private static string AppendDirectorySeparatorChar(string path)
 		{

@@ -158,6 +158,7 @@ namespace VIENNAAddIn.upcc3.repo
                 addFacet("pattern");
                 addFacet("totalDigits");
                 addFacet("whiteSpace");
+                addFacet("enumeration");
             }
         }
         void addFacet(string facetName)
@@ -276,12 +277,22 @@ namespace VIENNAAddIn.upcc3.repo
                         _facets.Add(facet);
                     }
                     break;
+                case "enumeration":
+                    facetValue = this.Enumeration;
+                    if (!string.IsNullOrEmpty(facetValue))
+                    {
+                        var facet = new UpccFacet(facetName, facetValue);
+                        _allFacets.Add(facet);
+                        //if ((noSource || SourceAttribute.WhiteSpace != facetValue))
+                        _facets.Add(facet);
+                    }
+                    break;
             }
         }
 
         public string Length
         {
-            get { return UmlAttribute.GetTaggedValue("length").Value; }
+            get { return getFacetTaggedValue("length").Value; }
         }
 
         ///<summary>
@@ -313,7 +324,7 @@ namespace VIENNAAddIn.upcc3.repo
         ///</summary>
         public string Enumeration
         {
-            get { return UmlAttribute.GetTaggedValue("enumeration").Value; }
+            get { return getFacetTaggedValue("enumeration").Value; }
         }
 
         ///<summary>
@@ -321,7 +332,7 @@ namespace VIENNAAddIn.upcc3.repo
         ///</summary>
         public string FractionDigits
         {
-            get { return UmlAttribute.GetTaggedValue("fractionDigits").Value; }
+            get { return getFacetTaggedValue("fractionDigits").Value; }
         }
 
         ///<summary>
@@ -337,7 +348,7 @@ namespace VIENNAAddIn.upcc3.repo
         ///</summary>
         public string MaximumExclusive
         {
-            get { return UmlAttribute.GetTaggedValue("maxExclusive").Value; }
+            get { return getFacetTaggedValue("maxExclusive").Value; }
         }
 
         ///<summary>
@@ -345,7 +356,7 @@ namespace VIENNAAddIn.upcc3.repo
         ///</summary>
         public string MaximumInclusive
         {
-            get { return UmlAttribute.GetTaggedValue("maxInclusive").Value; }
+            get { return getFacetTaggedValue("maxInclusive").Value; }
         }
 
         ///<summary>
@@ -353,7 +364,7 @@ namespace VIENNAAddIn.upcc3.repo
         ///</summary>
         public string MaximumLength
         {
-            get { return UmlAttribute.GetTaggedValue("maxLength").Value; }
+            get { return getFacetTaggedValue("maxLength").Value; }
         }
 
         ///<summary>
@@ -361,7 +372,7 @@ namespace VIENNAAddIn.upcc3.repo
         ///</summary>
         public string MinimumExclusive
         {
-            get { return UmlAttribute.GetTaggedValue("minExclusive").Value; }
+            get { return getFacetTaggedValue("minExclusive").Value; }
         }
 
         ///<summary>
@@ -369,7 +380,7 @@ namespace VIENNAAddIn.upcc3.repo
         ///</summary>
         public string MinimumInclusive
         {
-            get { return UmlAttribute.GetTaggedValue("minInclusive").Value; }
+            get { return getFacetTaggedValue("minInclusive").Value; }
         }
 
         ///<summary>
@@ -377,9 +388,18 @@ namespace VIENNAAddIn.upcc3.repo
         ///</summary>
         public string MinimumLength
         {
-            get { return UmlAttribute.GetTaggedValue("minLength").Value; }
+            get { return getFacetTaggedValue("minLength").Value; }
         }
 
+        public IUmlTaggedValue getFacetTaggedValue(string tagname)
+        {
+            //first check if there is an overridden version
+            var overriddenTagName = "override_" + tagname;
+            var overriddentag = UmlAttribute.GetTaggedValue(overriddenTagName);
+            return overriddentag.IsDefined ?
+                    overriddentag :
+                    UmlAttribute.GetTaggedValue(tagname);
+        }
         ///<summary>
         /// Tagged value 'modificationAllowedIndicator'.
         ///</summary>
@@ -393,7 +413,7 @@ namespace VIENNAAddIn.upcc3.repo
         ///</summary>
         public string Pattern
         {
-            get { return UmlAttribute.GetTaggedValue("pattern").Value; }
+            get { return getFacetTaggedValue("pattern").Value; }
         }
 
         ///<summary>
@@ -401,7 +421,7 @@ namespace VIENNAAddIn.upcc3.repo
         ///</summary>
         public string TotalDigits
         {
-            get { return UmlAttribute.GetTaggedValue("totalDigits").Value; }
+            get { return getFacetTaggedValue("totalDigits").Value; }
         }
 
         ///<summary>
@@ -439,7 +459,7 @@ namespace VIENNAAddIn.upcc3.repo
         ///</summary>
         public string WhiteSpace
         {
-            get { return UmlAttribute.GetTaggedValue("whiteSpace").Value; }
+            get { return getFacetTaggedValue("whiteSpace").Value; }
         }
     }
 }

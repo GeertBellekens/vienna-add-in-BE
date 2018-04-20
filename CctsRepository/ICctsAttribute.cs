@@ -16,11 +16,11 @@ namespace CctsRepository
         /// Tagged value 'modificationAllowedIndicator'.
         ///</summary>
 		string ModificationAllowedIndicator { get; }
-		
-		///<summary>
+
+        ///<summary>
         /// Tagged value 'enumeration'.
         ///</summary>
-		string Enumeration { get; }
+        string Enumeration { get; }
 
         ///<summary>
         /// Tagged value 'fractionDigits'.
