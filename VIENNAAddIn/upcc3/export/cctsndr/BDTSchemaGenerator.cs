@@ -164,7 +164,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                             }
                         }
                         //set regular type name if not restricted
-                        if (attribute.SchemaTypeName == null
+                        if (attribute.SchemaTypeName.IsEmpty
                            && attribute.SchemaType == null)
                         {
                             attribute.SchemaTypeName = GetXmlQualifiedName(NDR.GetBasicTypeName(sup as UpccAttribute), context);

@@ -14,6 +14,7 @@ using VIENNAAddIn.upcc3.export.cctsndr;
 using VIENNAAddIn.upcc3.import.util;
 using VIENNAAddIn.upcc3.repo;
 using VIENNAAddIn.upcc3.repo.EnumLibrary;
+using VIENNAAddIn.upcc3.repo.PrimLibrary;
 using VIENNAAddInUtils;
 
 namespace VIENNAAddIn.upcc3
@@ -137,11 +138,18 @@ namespace VIENNAAddIn.upcc3
         	//assembled types have a different naming convention
         	if (enumType != null)
         		return GetEnumName(enumType) + "ContentType";
+            var primType = element as UpccPrim;
+            if (primType != null)
+                return primType.xsdType;
         	return element.Name + element.UniqueIdentifier;
         }
-        public static string GetEnumName(IEnum enumeration)
+        public static string GetEnumName(IEnum originalEnumeration)
         {
-        	string prefix = string.Empty;
+            var enumeration = originalEnumeration.SourceElement != null ?
+                        (IEnum)originalEnumeration.SourceElement :
+                        originalEnumeration;
+            
+            string prefix = string.Empty;
         	switch (enumeration.EnumerationType) 
         	{
         		case EnumerationType.Assembled:
