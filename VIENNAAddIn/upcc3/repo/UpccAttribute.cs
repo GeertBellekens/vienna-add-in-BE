@@ -117,6 +117,14 @@ namespace VIENNAAddIn.upcc3.repo
                             _otherPropertiesInChoice.Add(otherAttribute);
                         }
                     }
+                    foreach (var otherUMLassociation in this.UmlAttribute.ReferencedAssociations("Choice"))
+                    {
+                        var otherAssociation = this.Owner.Associations.FirstOrDefault(x => x.Id == otherUMLassociation.Id);
+                        if (otherAssociation != null)
+                        {
+                            _otherPropertiesInChoice.Add(otherAssociation);
+                        }
+                    }
                 }
                 return _otherPropertiesInChoice;
             }

@@ -49,6 +49,14 @@ namespace VIENNAAddIn.upcc3.repo
                             _otherPropertiesInChoice.Add(otherAssociation);
                         }
                     }
+                    foreach (var otherUmlAttribute in this.UmlAssociation.ReferencedAttributes("Choice"))
+                    {
+                        var otherAttribute = this.Owner.Attributes.FirstOrDefault(x => x.Id == otherUmlAttribute.Id);
+                        if (otherAttribute != null)
+                        {
+                            _otherPropertiesInChoice.Add(otherAttribute);
+                        }
+                    }
                 }
                 return _otherPropertiesInChoice;
             }
