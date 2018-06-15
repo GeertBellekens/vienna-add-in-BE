@@ -24,21 +24,14 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         private static string NSPREFIX_BDT = "bdt";
         private static string NSPREFIX_BIE = "bie";
 
-        ///<summary>
-        ///</summary>
-        ///<param name="context"></param>
-        public static void GenerateXSD(GeneratorContext context, GeneratorContext genericContext)
-        {
-        	GenerateXSD(context, genericContext, false);
-        	//GenerateXSD(context, genericContext, true);
-        }
-        public static void GenerateXSD(GeneratorContext context, GeneratorContext genericContext, bool generic)
+
+        public static XmlSchema GenerateXSD(GeneratorContext context)
         {
         	//set bdt and bie prefixes
         	NSPREFIX_BDT = context.NamespacePrefix;
         	NSPREFIX_BIE = context.NamespacePrefix;
         	
-        	string targetNameSpace = NDR.getTargetNameSpace(context, generic);
+        	string targetNameSpace = NDR.getTargetNameSpace(context, false);
             globalAsmas = new List<string>();
             IMa documentRoot = context.DocLibrary.DocumentRoot;
             var schema = new XmlSchema
@@ -58,10 +51,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 			//version
             schema.Version = context.DocLibrary.VersionIdentifier.DefaultTo("1");
             
-            string schemaFileName = getSchemaFileName(context,generic);
-
-            AddImports(schema, context, context.DocLibrary);
-            AddIncludes(schema, context, context.DocLibrary, schemaFileName,generic);
+            string schemaFileName = getSchemaFileName(context,false);
 
             AddRootElementDeclaration(schema, documentRoot, context);
             GenerateComplexTypeForMa( context, schema, documentRoot);
@@ -72,6 +62,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             AddGlobalElementDeclarations(schema, nonRootDocLibraryElements, context);
             
             context.AddSchema(schema, schemaFileName, UpccSchematype.ROOT );
+            return schema;
         }
         private static string getSchemaFileName(GeneratorContext context, bool generic = false)
         {
@@ -167,8 +158,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                 sequence.Items.Add(refAsma);
             }
             maType.Particle = sequence;
-            if (context.Annotate)
-                maType.Annotation = GetMaAnnotation(ma);
+
 
             //add the maType to the schema
             schema.Items.Add(maType);
@@ -189,8 +179,6 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                                SchemaTypeName =
                                    new XmlQualifiedName(context.NamespacePrefix + ":" + ma.Name + "Type")
                            };
-            if (context.Annotate)
-                root.Annotation = GetMaAnnotation(ma);
             schema.Items.Add(root);
         }
 
@@ -245,20 +233,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             }
         }
 
-        private static XmlSchemaAnnotation GetMaAnnotation(IMa ma)
-        {
-
-            // Contains all the documentation items such as DictionaryEntryName
-            IList<XmlNode> documentation = new List<XmlNode>();
-
-            BIESchemaGenerator.AddDocumentation(documentation, "ObjectClassTermName", ma.Name);
-            BIESchemaGenerator.AddDocumentation(documentation, "AcronymCode", "MA");
- 
-            var annotation = new XmlSchemaAnnotation();
-            annotation.Items.Add(new XmlSchemaDocumentation { Language = "en", Markup = documentation.ToArray() });
-
-            return annotation;
-        }
+       
 
         private static string AdjustBound(string bound)
         {

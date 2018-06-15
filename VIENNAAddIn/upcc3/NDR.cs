@@ -143,12 +143,8 @@ namespace VIENNAAddIn.upcc3
                 return primType.xsdType;
         	return element.Name + element.UniqueIdentifier;
         }
-        public static string GetEnumName(IEnum originalEnumeration)
-        {
-            var enumeration = originalEnumeration.SourceElement != null ?
-                        (IEnum)originalEnumeration.SourceElement :
-                        originalEnumeration;
-            
+        public static string GetEnumName(IEnum enumeration)
+        {            
             string prefix = string.Empty;
         	switch (enumeration.EnumerationType) 
         	{
@@ -162,12 +158,7 @@ namespace VIENNAAddIn.upcc3
         			prefix = "Subset";
         			break;
         	}
-            //list ID is only used in Original or Subset enums
-            string listID = enumeration.EnumerationType != EnumerationType.Assembled
-                        && enumeration.CodeListIdentifier != string.Empty ?
-                            enumeration.CodeListIdentifier + "_"
-                            : string.Empty;
-        	return prefix + listID + enumeration.Name;
+        	return prefix + enumeration.Name;
         }
         public static string GetXsdAttributeNameFromSup(IBdtSup sup)
         {
@@ -212,10 +203,7 @@ namespace VIENNAAddIn.upcc3
         public static string GetXsdTypeNameFromBdt(IBdt bdt)
         {
         	if ( bdt == null) return "Error_No_BDT";
-            //use the source element name in case the BDT is redefined in the subset
-            var bdtName = bdt.SourceElement.Name != null ?
-                          bdt.SourceElement.Name : bdt.Name;
-        	return TrimElementName(bdtName) + "_" + bdt.UniqueIdentifier;
+        	return TrimElementName(bdt.Name) + "_" + bdt.UniqueIdentifier;
         }
         public static string getConBasicTypeName(IBdt bdt)
         {

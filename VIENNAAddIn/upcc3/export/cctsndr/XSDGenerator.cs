@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Schema;
 using CctsRepository.BdtLibrary;
 using CctsRepository.BieLibrary;
 using CctsRepository.CcLibrary;
@@ -52,10 +53,10 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         ///</summary>
         public static void GenerateSchemas(GeneratorContext context, GeneratorContext genericContext)
         {
-            BDTSchemaGenerator.GenerateXSD(context, genericContext, CollectBDTs(context));
-            BIESchemaGenerator.GenerateXSD(context, genericContext, CollectABIEs(context));
-            RootSchemaGenerator.GenerateXSD(context, genericContext);
-            
+            XmlSchema schema  = RootSchemaGenerator.GenerateXSD(context);
+            BIESchemaGenerator.GenerateXSD(context, CollectABIEs(context), schema);
+            BDTSchemaGenerator.GenerateXSD(context, CollectBDTs(context), schema);
+            ENUMSchemaGenerator.GenerateXSD(context, schema);
             WriteSchemas(context);
         }
 
