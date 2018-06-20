@@ -93,12 +93,13 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                         if (sup.BasicType != null
                            && sup.BasicType.IsEnum)
                         {
-                            //figure out if the set of values is restricted - Removed
+                            //figure out if the set of values is restricted
                             var basicEnum = sup.BasicType.Enum as UpccEnum;
-                            if (basicEnum != null)
+                            //add the enum to the list
+                            if (!enums.Any(x => x.Name == basicEnum.Name)) enums.Add(basicEnum);
+                            if (basicEnum.CodelistEntries.Any())
                             {
-                                //add the enum to the list
-                                if (!enums.Any(x => x.Name == basicEnum.Name)) enums.Add(basicEnum);
+
                                 //add the restrictions
                                 var restrictedtype = new XmlSchemaSimpleType();
                                 var restriction = new XmlSchemaSimpleTypeRestriction();
@@ -108,6 +109,10 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                                 restrictedtype.Content = restriction;
                                 //set the type of the attribute
                                 attribute.SchemaType = restrictedtype;
+                            }
+                            else
+                            {
+                                attribute.SchemaTypeName = new XmlQualifiedName(context.NamespacePrefix + ":" + NDR.GetBasicTypeName(basicEnum));
                             }
                         }
                         //set regular type name if not restricted

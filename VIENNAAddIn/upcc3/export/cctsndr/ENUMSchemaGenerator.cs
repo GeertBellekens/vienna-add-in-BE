@@ -98,8 +98,12 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             public List<ICodelistEntry> codelistEntries { get; private set; } = new List<ICodelistEntry>();
             public void addCodeListentries (IEnum enumeration)
             {
+                //if the enum doesn't contain any values that means that all values are allowed and thus all values of the source enum should be used.
+                var enumToUse = enumeration.CodelistEntries.Any() && (enumeration.SourceElement as IEnum) != null ?
+                                enumeration :
+                                enumeration.SourceElement as IEnum;
                 //do not add duplicates
-                foreach(var codeListentry in enumeration.CodelistEntries)
+                foreach(var codeListentry in enumToUse.CodelistEntries)
                 {
                     if (!this.codelistEntries.Any(x => x.Name == codeListentry.Name))
                         this.codelistEntries.Add(codeListentry);
