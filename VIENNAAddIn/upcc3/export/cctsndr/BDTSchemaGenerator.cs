@@ -25,118 +25,129 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         public static void GenerateXSD(GeneratorContext context, XmlSchema schema)
         {
             var enums = new List<IEnum>();
+            var generatedBDTs = new List<string>();
             //loop the bdt's
             foreach (IBdt bdt in context.Elements
                                  .OfType<IBdt>().Where(x => !x.isDirectXSDType))
             {
-                var sups = new List<IBdtSup>(bdt.Sups);
-                if (!sups.Any())
+                var xsdBdtName = NDR.GetXsdTypeNameFromBdt(bdt);
+                //get the enum from the CON attribute and add it to the enums list.
+                var enumToAdd = bdt.Con?.BasicType?.Enum;
+                if (enumToAdd != null && !enums.Any(x => x.Name == enumToAdd.Name)) enums.Add(enumToAdd);
+                //make sure we don't generate two BDT's witht he same xsdBdtName
+                if (!generatedBDTs.Contains(xsdBdtName))
                 {
-                    var simpleType = new XmlSchemaSimpleType { Name = NDR.GetXsdTypeNameFromBdt(bdt) };
-                    var simpleTypeRestriction = new XmlSchemaSimpleTypeRestriction();
-                    simpleTypeRestriction.BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt), context);
-                    simpleType.Content = simpleTypeRestriction;
-                    if (bdt.Con != null
-                        && bdt.Con.BasicType != null
-                        && bdt.Con.BasicType.Prim != null)
-                    {
-                        var XSDtype = bdt.Con.BasicType.Prim.xsdType;
-                        if (!string.IsNullOrEmpty(XSDtype))
-                        {
-                            simpleTypeRestriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_XSD + ":" + XSDtype);
-                        }
-                    }
+                    //add the xsdBdtName to the list
+                    generatedBDTs.Add(xsdBdtName);
 
-                    if (context.Annotate)
+                    var sups = new List<IBdtSup>(bdt.Sups);
+                    if (!sups.Any())
                     {
-                        simpleType.Annotation = GetTypeAnnotation(bdt);
-                    }
-                    schema.Items.Add(simpleType);
-                }
-                else
-                {
-                    //create the complex type
-                    var complexType = new XmlSchemaComplexType();
-                    complexType.Name = NDR.GetXsdTypeNameFromBdt(bdt);
-                    //add the simple content extension
-                    var simpleContent = new XmlSchemaSimpleContent();
-                    var simpleContentExtension = new XmlSchemaSimpleContentExtension();
-                    //get the xsd type if the con is a primitive
-                    if (bdt.Con.BasicType != null
-                        && bdt.Con.BasicType.Prim != null)
-                    {
-                        simpleContentExtension.BaseTypeName = GetXmlQualifiedName(bdt.Con.BasicType.Prim.xsdType, context);
+                        var simpleType = new XmlSchemaSimpleType { Name = xsdBdtName };
+                        var simpleTypeRestriction = new XmlSchemaSimpleTypeRestriction();
+                        simpleTypeRestriction.BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt), context);
+                        simpleType.Content = simpleTypeRestriction;
+                        if (bdt.Con != null
+                            && bdt.Con.BasicType != null
+                            && bdt.Con.BasicType.Prim != null)
+                        {
+                            var XSDtype = bdt.Con.BasicType.Prim.xsdType;
+                            if (!string.IsNullOrEmpty(XSDtype))
+                            {
+                                simpleTypeRestriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_XSD + ":" + XSDtype);
+                            }
+                        }
+
+                        if (context.Annotate)
+                        {
+                            simpleType.Annotation = GetTypeAnnotation(bdt);
+                        }
+                        schema.Items.Add(simpleType);
                     }
                     else
                     {
-                        var basicEnum = bdt.Con?.BasicType?.Enum;
-                        if (basicEnum != null)
+                        //create the complex type
+                        var complexType = new XmlSchemaComplexType();
+                        complexType.Name = xsdBdtName;
+                        //add the simple content extension
+                        var simpleContent = new XmlSchemaSimpleContent();
+                        var simpleContentExtension = new XmlSchemaSimpleContentExtension();
+                        //get the xsd type if the con is a primitive
+                        if (bdt.Con.BasicType != null
+                            && bdt.Con.BasicType.Prim != null)
                         {
-                            //add the enum to the list
-                            if (!enums.Any(x => x.Name == basicEnum.Name)) enums.Add(basicEnum);
-                            simpleContentExtension.BaseTypeName = new XmlQualifiedName(context.NamespacePrefix + ":" + NDR.GetBasicTypeName(basicEnum));
+                            simpleContentExtension.BaseTypeName = GetXmlQualifiedName(bdt.Con.BasicType.Prim.xsdType, context);
                         }
                         else
                         {
-                            simpleContentExtension.BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt), context);
-                        }
-                    }
-
-                    foreach (IBdtSup sup in sups)
-                    {
-                        var attribute = new XmlSchemaAttribute();
-                        // Deviation from rule [R ABC1]: Using only attribute name and type as xml attribute name (instead of complete DEN), following the examples given in the specification.
-                        attribute.Name = sup.Name;
-                        //set optional or required
-                        attribute.Use = sup.IsOptional() ? XmlSchemaUse.Optional : XmlSchemaUse.Required;
-                        //set the type of the attribute                                   
-                        if (sup.BasicType != null
-                           && sup.BasicType.IsEnum)
-                        {
-                            //figure out if the set of values is restricted
-                            var basicEnum = sup.BasicType.Enum as UpccEnum;
-                            //add the enum to the list
-                            if (!enums.Any(x => x.Name == basicEnum.Name)) enums.Add(basicEnum);
-                            if (basicEnum.CodelistEntries.Any())
+                            var basicEnum = bdt.Con?.BasicType?.Enum;
+                            if (basicEnum != null)
                             {
-
-                                //add the restrictions
-                                var restrictedtype = new XmlSchemaSimpleType();
-                                var restriction = new XmlSchemaSimpleTypeRestriction();
-                                restriction.BaseTypeName = new XmlQualifiedName(context.NamespacePrefix + ":" + NDR.GetBasicTypeName(basicEnum));
-                                addEnumerationValues(restriction, basicEnum);
-                                //add the restriction to the simple type
-                                restrictedtype.Content = restriction;
-                                //set the type of the attribute
-                                attribute.SchemaType = restrictedtype;
+                                //enum was already added tot he list above
+                                simpleContentExtension.BaseTypeName = new XmlQualifiedName(context.NamespacePrefix + ":" + NDR.GetBasicTypeName(basicEnum));
                             }
                             else
                             {
-                                attribute.SchemaTypeName = new XmlQualifiedName(context.NamespacePrefix + ":" + NDR.GetBasicTypeName(basicEnum));
+                                simpleContentExtension.BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt), context);
                             }
                         }
-                        //set regular type name if not restricted
-                        if (attribute.SchemaTypeName.IsEmpty
-                           && attribute.SchemaType == null)
+
+                        foreach (IBdtSup sup in sups)
                         {
-                            attribute.SchemaTypeName = GetXmlQualifiedName(NDR.GetBasicTypeName(sup as UpccAttribute), context);
+                            var attribute = new XmlSchemaAttribute();
+                            // Deviation from rule [R ABC1]: Using only attribute name and type as xml attribute name (instead of complete DEN), following the examples given in the specification.
+                            attribute.Name = sup.Name;
+                            //set optional or required
+                            attribute.Use = sup.IsOptional() ? XmlSchemaUse.Optional : XmlSchemaUse.Required;
+                            //set the type of the attribute                                   
+                            if (sup.BasicType != null
+                               && sup.BasicType.IsEnum)
+                            {
+                                //figure out if the set of values is restricted
+                                var basicEnum = sup.BasicType.Enum as UpccEnum;
+                                //add the enum to the list
+                                if (!enums.Any(x => x.Name == basicEnum.Name)) enums.Add(basicEnum);
+                                if (basicEnum.CodelistEntries.Any())
+                                {
+
+                                    //add the restrictions
+                                    var restrictedtype = new XmlSchemaSimpleType();
+                                    var restriction = new XmlSchemaSimpleTypeRestriction();
+                                    restriction.BaseTypeName = new XmlQualifiedName(context.NamespacePrefix + ":" + NDR.GetBasicTypeName(basicEnum));
+                                    addEnumerationValues(restriction, basicEnum);
+                                    //add the restriction to the simple type
+                                    restrictedtype.Content = restriction;
+                                    //set the type of the attribute
+                                    attribute.SchemaType = restrictedtype;
+                                }
+                                else
+                                {
+                                    attribute.SchemaTypeName = new XmlQualifiedName(context.NamespacePrefix + ":" + NDR.GetBasicTypeName(basicEnum));
+                                }
+                            }
+                            //set regular type name if not restricted
+                            if (attribute.SchemaTypeName.IsEmpty
+                               && attribute.SchemaType == null)
+                            {
+                                attribute.SchemaTypeName = GetXmlQualifiedName(NDR.GetBasicTypeName(sup as UpccAttribute), context);
+                            }
+                            //annotate if needed
+                            if (context.Annotate)
+                            {
+                                attribute.Annotation = GetAttributeAnnotation(sup);
+                            }
+                            //add the attribute
+                            simpleContentExtension.Attributes.Add(attribute);
                         }
-                        //annotate if needed
+
+                        simpleContent.Content = simpleContentExtension;
+                        complexType.ContentModel = simpleContent;
                         if (context.Annotate)
                         {
-                            attribute.Annotation = GetAttributeAnnotation(sup);
+                            complexType.Annotation = GetTypeAnnotation(bdt);
                         }
-                        //add the attribute
-                        simpleContentExtension.Attributes.Add(attribute);
+                        schema.Items.Add(complexType);
                     }
-
-                    simpleContent.Content = simpleContentExtension;
-                    complexType.ContentModel = simpleContent;
-                    if (context.Annotate)
-                    {
-                        complexType.Annotation = GetTypeAnnotation(bdt);
-                    }
-                    schema.Items.Add(complexType);
                 }
             }
             context.AddElements(enums);

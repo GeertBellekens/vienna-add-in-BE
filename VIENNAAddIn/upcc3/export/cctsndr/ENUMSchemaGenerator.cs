@@ -66,7 +66,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 		{
         	var restriction = new XmlSchemaSimpleTypeRestriction();
 		    restriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_XSD + ":token");
-			foreach (var codeListEntry in tempEnum.codelistEntries.OrderBy(x => x.position) )
+			foreach (var codeListEntry in tempEnum.codelistEntries.OrderBy(x => x.Name) )
 			{
 				var xmlEnum = new XmlSchemaEnumerationFacet();
 				xmlEnum.Value = codeListEntry.Name;

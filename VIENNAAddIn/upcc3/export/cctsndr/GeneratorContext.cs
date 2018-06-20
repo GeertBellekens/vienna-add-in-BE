@@ -71,15 +71,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                 //make sure the element doesn't exist in the list yet
                 if (! _elements.Any(x => x.Equals(newElement)))
                 {
-                    //in case of a BDT make sure the is not yet one with the name name
-                    var newBDT = newElement as IBdt;
-                    var bdtName = NDR.GetXsdTypeNameFromBdt(newBDT);
-                    if (newBDT == null || ! _elements
-                                          .OfType<IBdt>()
-                                          .Any(x => NDR.GetXsdTypeNameFromBdt(x) == bdtName))
-                    {
-                        _elements.Add(newElement);
-                    }
+                    _elements.Add(newElement);
                 }
             }
         }
