@@ -28,29 +28,45 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 
         public static void GenerateXSD(GeneratorContext context, XmlSchema schema)
         {
+            var enums = new Dictionary<int, TempEnum>();
             foreach (var enumeration in context.Elements.OfType<IEnum>())
             {
-                AddSimpleTypeDefinition(schema, context, enumeration);
+                var sourceEnum = enumeration.SourceElement as IEnum;
+                if (sourceEnum != null)
+                {
+                    if (!enums.ContainsKey(sourceEnum.Id))
+                        enums.Add(sourceEnum.Id, new TempEnum(sourceEnum));
+                    //add the values
+                    enums[sourceEnum.Id].addCodeListentries(enumeration);
+
+                }
             }
+            //go over the tempEnums and create the actual enum definitions
+            foreach (var tempEnum in enums.Values )
+            {
+                AddSimpleTypeDefinition(schema, context, tempEnum);
+            }
+            
         }
 
-        private static void AddSimpleTypeDefinition(XmlSchema schema, GeneratorContext context, IEnum enumeration)
+        
+        private static void AddSimpleTypeDefinition(XmlSchema schema, GeneratorContext context, TempEnum tempEnum)
         {
             var restrictedtype = new XmlSchemaSimpleType();
-            restrictedtype.Name = NDR.GetBasicTypeName(enumeration);
+            restrictedtype.Name = NDR.GetBasicTypeName(tempEnum.sourceEnum);
 
             // enumeration with actual values
-		    addEnumRestriction(restrictedtype, enumeration);
+		    addEnumRestriction(restrictedtype, tempEnum);
 
             //add the restrictedType to the schema
             schema.Items.Add(restrictedtype);
         }
         
-        static void addEnumRestriction(XmlSchemaSimpleType restrictedtype, IEnum basicEnum )
+        static void addEnumRestriction(XmlSchemaSimpleType restrictedtype, TempEnum tempEnum )
 		{
         	var restriction = new XmlSchemaSimpleTypeRestriction();
 		    restriction.BaseTypeName = new XmlQualifiedName(NSPREFIX_XSD + ":token");
-			foreach (var codeListEntry in basicEnum.CodelistEntries) 
+			foreach (var codeListEntry in tempEnum.codelistEntries.OrderBy(x => x.position) )
 			{
 				var xmlEnum = new XmlSchemaEnumerationFacet();
 				xmlEnum.Value = codeListEntry.Name;
@@ -72,5 +88,24 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             ann.Items.Add(new XmlSchemaDocumentation {Language = "en", Markup = annNodes.ToArray()});
             return ann;
         }
+        class TempEnum
+        {
+            public TempEnum(IEnum sourceEnum)
+            {
+                this.sourceEnum = sourceEnum;
+            }
+            public IEnum sourceEnum { get; private set; }
+            public List<ICodelistEntry> codelistEntries { get; private set; } = new List<ICodelistEntry>();
+            public void addCodeListentries (IEnum enumeration)
+            {
+                //do not add duplicates
+                foreach(var codeListentry in enumeration.CodelistEntries)
+                {
+                    if (!this.codelistEntries.Any(x => x.Name == codeListentry.Name))
+                        this.codelistEntries.Add(codeListentry);
+                }
+            }
+        }
     }
+
 }

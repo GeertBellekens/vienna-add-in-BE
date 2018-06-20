@@ -144,9 +144,12 @@ namespace VIENNAAddIn.upcc3
         	return element.Name + element.UniqueIdentifier;
         }
         public static string GetEnumName(IEnum enumeration)
-        {            
+        {
+            //check if there is a source Enum. In that case we use the source enum
+            var enumToUse = enumeration.SourceElement as IEnum;
+            if (enumToUse == null) enumToUse = enumeration;
             string prefix = string.Empty;
-        	switch (enumeration.EnumerationType) 
+        	switch (enumToUse.EnumerationType) 
         	{
         		case EnumerationType.Assembled:
         			prefix = "Assembled";
@@ -158,7 +161,7 @@ namespace VIENNAAddIn.upcc3
         			prefix = "Subset";
         			break;
         	}
-        	return prefix + enumeration.Name;
+        	return prefix + enumToUse.Name;
         }
         public static string GetXsdAttributeNameFromSup(IBdtSup sup)
         {
