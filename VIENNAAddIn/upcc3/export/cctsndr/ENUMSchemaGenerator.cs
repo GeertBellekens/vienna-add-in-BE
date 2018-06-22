@@ -23,7 +23,6 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
     {
 
 		private const string NSPREFIX_XSD = "xsd";
-        private const string NS_DOC = "urn:un:unece:uncefact:documentation:common:3:standard:CoreComponentsTechnicalSpecification:3";
         private const string NS_XSD = "http://www.w3.org/2001/XMLSchema";
 
         public static void GenerateXSD(GeneratorContext context, XmlSchema schema)
@@ -48,8 +47,6 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             }
             
         }
-
-        
         private static void AddSimpleTypeDefinition(XmlSchema schema, GeneratorContext context, TempEnum tempEnum)
         {
             var restrictedtype = new XmlSchemaSimpleType();
@@ -70,24 +67,10 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 			{
 				var xmlEnum = new XmlSchemaEnumerationFacet();
 				xmlEnum.Value = codeListEntry.Name;
-				//add annoation
-				xmlEnum.Annotation = GetCodeListentryAnnotation(codeListEntry);
-				restriction.Facets.Add(xmlEnum);
 			}
 			//add the restriction to the simple type
 		    restrictedtype.Content = restriction;
 		}
-        private static XmlSchemaAnnotation GetCodeListentryAnnotation(ICodelistEntry codeListEntry)
-        {
-            var xml = new XmlDocument();
-            // Deviation from rule [R 9C95]: Generating only a subset of the defined annotations and added some additional annotations.
-            var annNodes = new List<XmlNode>();
-            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "Name", codeListEntry.Name);
-            SchemaGeneratorUtils.AddAnnotation(xml, annNodes, "Description", codeListEntry.CodeName);
-            var ann = new XmlSchemaAnnotation();
-            ann.Items.Add(new XmlSchemaDocumentation {Language = "en", Markup = annNodes.ToArray()});
-            return ann;
-        }
         class TempEnum
         {
             public TempEnum(IEnum sourceEnum)

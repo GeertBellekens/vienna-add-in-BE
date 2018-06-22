@@ -20,19 +20,10 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
     ///</summary>
     public class RootSchemaGenerator
     {
-        private static List<string> globalAsmas;
-        private static string NSPREFIX_BDT = "bdt";
-        private static string NSPREFIX_BIE = "bie";
-
-
         public static XmlSchema GenerateXSD(GeneratorContext context)
         {
-            //set bdt and bie prefixes
-            NSPREFIX_BDT = context.NamespacePrefix;
-            NSPREFIX_BIE = context.NamespacePrefix;
 
             string targetNameSpace = NDR.getTargetNameSpace(context, false);
-            globalAsmas = new List<string>();
             IMa documentRoot = context.DocLibrary.DocumentRoot;
             var schema = new XmlSchema
             {
@@ -41,10 +32,6 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             //namespaces
             schema.Namespaces.Add("xsd", "http://www.w3.org/2001/XMLSchema");
             schema.Namespaces.Add(context.NamespacePrefix, targetNameSpace);
-            //TODO make additional namespaces variable via setting
-            schema.Namespaces.Add("ccts",
-                                  "urn:un:unece:uncefact:documentation:common:3:standard:CoreComponentsTechnicalSpecification:3");
-            schema.Namespaces.Add("xbt", "urn:un:unece:uncefact:data:common:1:draft");
             //qualifiedSetting
             schema.ElementFormDefault = XmlSchemaForm.Qualified;
             schema.AttributeFormDefault = XmlSchemaForm.Unqualified;
@@ -132,55 +119,6 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
             };
             schema.Items.Add(root);
         }
-
-        private static void UpdateElementTypePrefix(XmlSchema schema, GeneratorContext context, String name)
-        {
-            String temp = "";
-            XmlSchemaElement element;
-            foreach (XmlSchemaObject item in schema.Items)
-            {
-                element = item as XmlSchemaElement;
-                if (element != null)
-                {
-                    if (name.Contains(element.Name))
-                    {
-                        temp = element.SchemaTypeName.ToString();
-                        temp = temp.Replace(NSPREFIX_BIE, context.NamespacePrefix);
-                        element.SchemaTypeName = new XmlQualifiedName(temp);
-                        return;
-                    }
-                }
-            }
-        }
-
-        private static void AddImports(XmlSchema schema, GeneratorContext context, IDocLibrary docLibrary)
-        {
-            //            if (context.Annotate)
-            //            {
-            //                var import = new XmlSchemaImport
-            //                                 {
-            //                                     Namespace = "urn:un:unece:uncefact:documentation:standard:XMLNDRDocumentation:3",
-            //                                     SchemaLocation = "documentation/standard/XMLNDR_Documentation_3p0.xsd"
-            //                                 };
-            //
-            //                schema.Includes.Add(import);
-            //            }
-        }
-
-        private static void AddIncludes(XmlSchema schema, GeneratorContext context, IDocLibrary docLibrary, string schemaFileName, bool generic)
-        {
-            foreach (SchemaInfo si in context.Schemas.Where(x => x.Schematype == UpccSchematype.BIE
-                                                           || x.Schematype == UpccSchematype.BDT))
-            {
-                var include = new XmlSchemaInclude();
-                include.SchemaLocation = generic ?
-                    System.IO.Path.GetFileName(si.FileName).Replace(context.DocRootName + "_", string.Empty) :
-                                NDR.GetRelativePath(schemaFileName, si.FileName);
-                schema.Includes.Add(include);
-            }
-        }
-
-
 
         private static string AdjustBound(string bound)
         {
