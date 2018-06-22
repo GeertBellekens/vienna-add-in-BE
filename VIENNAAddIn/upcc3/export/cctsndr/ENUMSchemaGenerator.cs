@@ -28,7 +28,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         public static void GenerateXSD(GeneratorContext context, XmlSchema schema)
         {
             var enums = new Dictionary<int, TempEnum>();
-            foreach (var enumeration in context.Elements.OfType<IEnum>())
+            foreach (var enumeration in context.Elements.OfType<IEnum>().OrderBy(x => x.Name))
             {
                 var sourceEnum = enumeration.SourceElement as IEnum;
                 if (sourceEnum != null)
