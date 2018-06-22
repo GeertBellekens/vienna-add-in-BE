@@ -125,30 +125,12 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         }
         static XmlSchemaElement CreateAsbieSchemaElement(IAsbie asbie, GeneratorContext context, XmlSchema schema)
         {
-            XmlSchemaElement elementASBIE = new XmlSchemaElement();
-
-            // R A08A: name of the ASBIE
-            elementASBIE.Name = NDR.GetXsdElementNameFromAsbie(asbie);
-            elementASBIE.SchemaTypeName =
-                new XmlQualifiedName(context.NamespacePrefix + ":" + NDR.TrimElementName(asbie.AssociatedAbie.Name));
-
-            if (asbie.AggregationKind == AggregationKind.Shared)
-            {
-                XmlSchemaElement refASBIE = new XmlSchemaElement();
-                refASBIE.RefName = new XmlQualifiedName(context.NamespacePrefix + ":" + elementASBIE.Name);
-                refASBIE.MinOccursString = AdjustBound(asbie.LowerBound);
-                refASBIE.MaxOccursString = AdjustBound(asbie.UpperBound);
-                // R 9241: for ASBIEs with AggregationKind = shared a global element must be declared.   
-                schema.Items.Add(elementASBIE);
-                return refASBIE;
-            }
-            else
-            {
-                //R 9025: ASBIEs with Aggregation Kind = composite a local element for the
-                //        associated ABIE must be declared in the associating ABIE complex type.
-                return elementASBIE;
-            }
-
+            XmlSchemaElement refASBIE = new XmlSchemaElement();
+            refASBIE.Name = NDR.GetXsdElementNameFromAsbie(asbie);
+            refASBIE.SchemaTypeName = new XmlQualifiedName(context.NamespacePrefix + ":" + NDR.TrimElementName(asbie.AssociatedAbie.Name));
+            refASBIE.MinOccursString = AdjustBound(asbie.LowerBound);
+            refASBIE.MaxOccursString = AdjustBound(asbie.UpperBound);
+            return refASBIE;
         }
         static XmlSchemaElement CreateBbieSchemaElement(IBbie bbie, GeneratorContext context)
         {
