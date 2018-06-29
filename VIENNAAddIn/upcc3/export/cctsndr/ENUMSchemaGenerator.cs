@@ -67,7 +67,9 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
 			{
 				var xmlEnum = new XmlSchemaEnumerationFacet();
 				xmlEnum.Value = codeListEntry.Name;
-			}
+                //add facet
+                restriction.Facets.Add(xmlEnum);
+            }
 			//add the restriction to the simple type
 		    restrictedtype.Content = restriction;
 		}

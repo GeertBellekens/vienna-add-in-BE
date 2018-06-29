@@ -45,7 +45,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                     {
                         var simpleType = new XmlSchemaSimpleType { Name = xsdBdtName };
                         var simpleTypeRestriction = new XmlSchemaSimpleTypeRestriction();
-                        simpleTypeRestriction.BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt), context);
+                        simpleTypeRestriction.BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt), context, bdt.Con?.BasicType);
                         simpleType.Content = simpleTypeRestriction;
                         if (bdt.Con != null
                             && bdt.Con.BasicType != null
@@ -76,7 +76,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                         if (bdt.Con.BasicType != null
                             && bdt.Con.BasicType.Prim != null)
                         {
-                            simpleContentExtension.BaseTypeName = GetXmlQualifiedName(bdt.Con.BasicType.Prim.xsdType, context);
+                            simpleContentExtension.BaseTypeName = GetXmlQualifiedName(bdt.Con.BasicType.Prim.xsdType, context, bdt.Con.BasicType);
                         }
                         else
                         {
@@ -88,7 +88,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                             }
                             else
                             {
-                                simpleContentExtension.BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt), context);
+                                simpleContentExtension.BaseTypeName = GetXmlQualifiedName(NDR.getConBasicTypeName(bdt), context, bdt.Con.BasicType);
                             }
                         }
 
@@ -129,7 +129,7 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
                             if (attribute.SchemaTypeName.IsEmpty
                                && attribute.SchemaType == null)
                             {
-                                attribute.SchemaTypeName = GetXmlQualifiedName(NDR.GetBasicTypeName(sup as UpccAttribute), context);
+                                attribute.SchemaTypeName = GetXmlQualifiedName(NDR.GetBasicTypeName(sup as UpccAttribute), context, sup.BasicType);
                             }
                             //annotate if needed
                             if (context.Annotate)
@@ -206,9 +206,9 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
         }
 
 
-        private static XmlQualifiedName GetXmlQualifiedName(string basicTypeName, GeneratorContext context)
+        private static XmlQualifiedName GetXmlQualifiedName(string basicTypeName, GeneratorContext context, BasicType basicType)
         {
-            if (basicTypeName.StartsWith("Assembled", System.StringComparison.InvariantCulture))
+            if (basicType is IEnum)
             {
                 return new XmlQualifiedName(basicTypeName, context.BaseURN);
             }

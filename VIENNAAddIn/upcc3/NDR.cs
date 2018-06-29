@@ -137,7 +137,7 @@ namespace VIENNAAddIn.upcc3
         	var enumType = element as UpccEnum;
         	//assembled types have a different naming convention
         	if (enumType != null)
-        		return GetEnumName(enumType) + "ContentType";
+        		return GetEnumName(enumType) ;
             var primType = element as UpccPrim;
             if (primType != null)
                 return primType.xsdType;
@@ -148,20 +148,7 @@ namespace VIENNAAddIn.upcc3
             //check if there is a source Enum. In that case we use the source enum
             var enumToUse = enumeration.SourceElement as IEnum;
             if (enumToUse == null) enumToUse = enumeration;
-            string prefix = string.Empty;
-        	switch (enumToUse.EnumerationType) 
-        	{
-        		case EnumerationType.Assembled:
-        			prefix = "Assembled";
-        			break;
-        		case EnumerationType.Original:
-        			prefix = "Original";
-        			break;
-        		case EnumerationType.Subset:
-        			prefix = "Subset";
-        			break;
-        	}
-        	return prefix + enumToUse.Name;
+        	return enumToUse.Name;
         }
         public static string GetXsdAttributeNameFromSup(IBdtSup sup)
         {
