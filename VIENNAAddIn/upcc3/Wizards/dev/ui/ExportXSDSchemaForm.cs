@@ -27,24 +27,16 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
         public ExportXSDSchemaForm(ICctsRepository cctsRepository, EA.Package selectedPackage, ViennaAddinSettings settings)
         {
             this.settings = settings;
-            this.destinationFolderTextBox.Text = settings.lastUsedExportPath;
             InitializeComponent();
             cctsR = cctsRepository;
+            this.destinationFolderTextBox.Text = settings.lastUsedExportPath;
             this.init(selectedPackage);
         }
         private void init(EA.Package selectedPackage)
         {
             this.selectedPackage = selectedPackage;
-            try
-            {
-                if (cache == null) cache = new Cache();
-                cache.LoadBIVs(cctsR, selectedPackage);
-            }
-            catch (CacheException ce)
-            {
-                MessageBox.Show(ce.Message, "VIENNA Add-In Information", MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
-            }
+            if (cache == null) cache = new Cache();
+            cache.LoadBIVs(cctsR, selectedPackage);
             this.selectedPackageTextBox.Text = selectedPackage.Name;
             MirrorDOCsToUI();
         }
