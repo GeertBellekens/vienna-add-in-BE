@@ -9,7 +9,6 @@ namespace VIENNAAddIn.upcc3.ea
 {
     internal class EaUmlPackage : IUmlPackage, IEquatable<EaUmlPackage>
     {
-        private readonly Package eaPackage;
         private readonly Repository eaRepository;
         private List<IUmlPackage> _packages;
 
@@ -18,6 +17,7 @@ namespace VIENNAAddIn.upcc3.ea
             this.eaRepository = eaRepository;
             this.eaPackage = eaPackage;
         }
+        public Package eaPackage { get; private set; }
 
         #region IUmlPackage Members
 

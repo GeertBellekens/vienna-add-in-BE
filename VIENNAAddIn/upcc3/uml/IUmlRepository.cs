@@ -21,5 +21,6 @@ namespace VIENNAAddIn.upcc3.uml
 
         IEnumerable<Path> GetRootLocations();
         IUmlPackage CreateRootPackage(Path rootLocation, UmlPackageSpec spec);
+        IUmlPackage getUserSelectedPackage(string defaultSelectionGUID = null);
     }
 }

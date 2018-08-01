@@ -338,5 +338,10 @@ namespace VIENNAAddIn.upcc3.otf
             contentLoader.LoadPackageByID(id);
             validationService.Validate();
         }
+
+        public void getUserSelectedPackage()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

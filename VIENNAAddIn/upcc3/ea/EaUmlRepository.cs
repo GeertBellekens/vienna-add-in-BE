@@ -178,6 +178,10 @@ namespace VIENNAAddIn.upcc3.ea
         {
             return new EaUmlPackage(eaRepository, eaRepository.GetPackageByID(id));
         }
+        private IUmlPackage GetPackageByGUID(string packageGUID)
+        {
+            return new EaUmlPackage(eaRepository, eaRepository.GetPackageByGuid(packageGUID));
+        }
 
         public IUmlPackage GetPackageByPath(Path path)
         {
@@ -452,6 +456,67 @@ namespace VIENNAAddIn.upcc3.ea
                 }
             }
             return repoType;
+        }
+        /// <summary>
+        /// Show a dialog to the user that allows him to select a package from the model
+        /// </summary>
+        /// <returns></returns>
+        public IUmlPackage getUserSelectedPackage(string defaultSelectionGUID = null)
+        {
+            var allowedtypes = new List<string>();
+            allowedtypes.Add("Package");
+            var selectedElement = this.getUserSelectedElement(allowedtypes, defaultSelectionGUID);
+            return selectedElement != null ? 
+                this.GetPackageByGUID(selectedElement.GUID) : 
+                null;
+        }
+        
+        /// <summary>
+        /// Lets the user select an element from the model and return that
+        /// </summary>
+        /// <param name="allowedTypes">the subtypes of UML.Classes.Kernel.Element that should be used as a filter</param>
+        /// <returns>the selected element</returns>
+        public IUmlClassifier getUserSelectedElement(List<string> allowedTypes, string defaultSelectionGUID = null)
+        {
+            return this.getUserSelectedElement(allowedTypes, null, defaultSelectionGUID);
+        }
+
+        /// <summary>
+        /// Lets the user select an element from the model and return that
+        /// </summary>
+        /// <param name="allowedTypes">the subtypes of UML.Classes.Kernel.Element that should be used as a filter</param>
+        /// <returns>the selected element</returns>
+        /// <param name = "allowedStereotypes"> the list of stereotypes to filter on</param>
+        public IUmlClassifier getUserSelectedElement(List<string> allowedTypes, List<string> allowedStereotypes, string defaultSelectionGUID = null)
+        {
+            //construct the include string
+            string includeString = "IncludedTypes=";
+            includeString += string.Join(",", allowedTypes);
+            //close section
+            includeString += ";";
+            if (allowedStereotypes != null && allowedStereotypes.Any())
+            {
+                //add stereotype filter
+                includeString += "StereoType="
+                                  + string.Join(",", allowedStereotypes)
+                                + ";";
+            }
+            if (string.IsNullOrEmpty(defaultSelectionGUID))
+            {
+                defaultSelectionGUID = this.eaRepository.GetTreeSelectedPackage()?.PackageGUID;
+            }
+            if (!string.IsNullOrEmpty(defaultSelectionGUID))
+            {
+                includeString += "Selection="
+                            + defaultSelectionGUID
+                            + ";";
+            }
+            //currenlty only supported for ElementWrappers
+            int EAElementID = this.eaRepository.InvokeConstructPicker(includeString);
+            var selectedElement = this.GetElementByID(EAElementID);
+            return selectedElement != null ?
+                new EaUmlClassifier(this.eaRepository,selectedElement )
+                : null;
         }
     }
     /// <summary>

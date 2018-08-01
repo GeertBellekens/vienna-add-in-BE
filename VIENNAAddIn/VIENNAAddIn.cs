@@ -38,6 +38,7 @@ namespace VIENNAAddIn
 //        private ValidatingCCRepository validatingCCRepository;
         private const bool AllowDeletion = true;
         private const bool ItemNotUpdated = false;
+        private ViennaAddinSettings settings = new ViennaAddinSettings();
 
         ///<summary>
         ///</summary>
@@ -96,7 +97,7 @@ namespace VIENNAAddIn
                                    + ("&About " + AddInSettings.AddInName).OnClick(AboutWindow.ShowForm)));
             menuManager.AddMenu((MenuLocation.TreeView | MenuLocation.Diagram)
                                 + (AddInSettings.AddInName
-                                   + "&Generate XML Schema".OnClick(ExporterForm.ShowForm)))
+                                   + "&Generate XML Schema".OnClick(ExportXSDSchemaForm.ShowForm)))
                 .ShowIf(context => context.SelectedPackage != null);
 //            //menuManager.AddMenu((MenuLocation.TreeView | MenuLocation.Diagram)
 //            //                    + (AddInSettings.AddInName
@@ -220,7 +221,7 @@ namespace VIENNAAddIn
             	        && !this.context.MenuLocation.ToString().Equals(menuLocation)))
                 {
                     // this is the first (top-level) invocation of this method for the current mouse click
-                    context = new AddInContext(repository, menuLocation);
+                    context = new AddInContext(repository, menuLocation, this.settings);
                 }
                 return menuManager.GetMenuItems(context, menuName);
             }

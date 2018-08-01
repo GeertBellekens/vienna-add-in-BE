@@ -573,5 +573,10 @@ namespace VIENNAAddIn.upcc3.repo
         	}
 			return foundDocLibraries;
 		}
+
+        public void getUserSelectedPackage()
+        {
+            this.UmlRepository.getUserSelectedPackage();
+        }
     }
 }

@@ -60,12 +60,12 @@ namespace CctsRepository
 		/// </summary>
 		IBieLibrary GetBieLibraryById(int id);
 
-		/// <summary>
-		/// Retrieves a BIELibrary by <see cref="Path"/>.
-		/// <param name="path">A BIELibrary's <see cref="Path"/>.</param>
-		/// <returns>The BIELibrary with the given <paramref name="path"/> or <c>null</c> if no such BIELibrary is found.</returns>
-		/// </summary>
-		IBieLibrary GetBieLibraryByPath(Path path);
+        /// <summary>
+        /// Retrieves a BIELibrary by <see cref="Path"/>.
+        /// <param name="path">A BIELibrary's <see cref="Path"/>.</param>
+        /// <returns>The BIELibrary with the given <paramref name="path"/> or <c>null</c> if no such BIELibrary is found.</returns>
+        /// </summary>
+        IBieLibrary GetBieLibraryByPath(Path path);
 
 		/// <returns>
 		/// All bLibraries contained in this repository.

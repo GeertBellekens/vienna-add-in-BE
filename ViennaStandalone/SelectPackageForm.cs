@@ -61,7 +61,7 @@ namespace ViennaStandalone
 
         private void GenerateButton_Click(object sender, EventArgs e)
         {
-            var addinContext = new AddInContext(this.repo, "TreeView");
+            var addinContext = new AddInContext(this.repo, "TreeView", null);
             ExporterForm.ShowForm(addinContext); 
         }
         private EA.Repository GetRepository()

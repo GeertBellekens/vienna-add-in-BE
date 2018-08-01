@@ -51,7 +51,7 @@ namespace VIENNAAddIn.upcc3.ea
 
         public string GUID
         {
-            get { return eaElement.ElementGUID; }
+            get { return eaElement?.ElementGUID; }
         }
 
         public string Name

@@ -88,6 +88,9 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Word" />
+    <Reference Include="ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\ObjectListView.Official.2.9.1\lib\net20\ObjectListView.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
@@ -95,6 +98,7 @@
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -257,6 +261,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="upcc3\TaggedValues.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TaggedValues.cs</LastGenOutput>
@@ -561,6 +566,12 @@
     <Compile Include="upcc3\Wizards\dev\ui\BdtEditor.xaml.cs">
       <DependentUpon>BdtEditor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="upcc3\Wizards\dev\ui\ExportXSDSchemaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="upcc3\Wizards\dev\ui\ExportXSDSchemaForm.Designer.cs">
+      <DependentUpon>ExportXSDSchemaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="upcc3\Wizards\dev\ui\UmlClassCustomizer.xaml.cs">
       <DependentUpon>UmlClassCustomizer.xaml</DependentUpon>
     </Compile>
@@ -659,6 +670,7 @@
     <Compile Include="upcc3\import\cctsndr\XSDImporter.cs" />
     <Compile Include="upcc3\import\cctsndr\ImporterContext.cs" />
     <Compile Include="upcc3\import\util\CustomSchemaReader.cs" />
+    <Compile Include="Utils\AddinSettings.cs" />
     <Compile Include="Utils\DictionaryExtensions.cs" />
     <Compile Include="Settings\AddInSettings.cs" />
     <None Include="Settings\SynchTaggedValuesGenerated.tt">
@@ -779,6 +791,7 @@
     <Compile Include="Utils\SortAttribute.cs" />
     <Compile Include="VIENNAAddInEvents.cs" />
     <Compile Include="VIENNAAddInInterface.cs" />
+    <Compile Include="ViennaAddinSettings.cs" />
     <Compile Include="workflow\InitialPackageStructureCreator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -786,6 +799,9 @@
       <DependentUpon>InitialPackageStructureCreator.cs</DependentUpon>
     </Compile>
     <Compile Include="workflow\ModelStructureCreator.cs" />
+    <None Include="ViennaAddin.dll.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>xcopy /Y /E /I "$(ProjectDir)images" "$(TargetDir)\images"
@@ -816,6 +832,9 @@
     <EmbeddedResource Include="upcc3\Wizards\BDTWizardForm.resx">
       <DependentUpon>BDTWizardForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="upcc3\Wizards\dev\ui\ExportXSDSchemaForm.resx">
+      <DependentUpon>ExportXSDSchemaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="upcc3\Wizards\dev\ui\StereoTypeTransformer.resx">
       <DependentUpon>StereoTypeTransformer.cs</DependentUpon>

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Windows.Forms;
 using CctsRepository;
 using EA;
 using VIENNAAddIn.upcc3;
@@ -13,9 +14,11 @@ namespace VIENNAAddIn.menu
     ///</summary>
     public class AddInContext
     {
-        public AddInContext(Repository eaRepository, string menuLocation)
+        public ViennaAddinSettings settings { get; private set; }
+        public AddInContext(Repository eaRepository, string menuLocation, ViennaAddinSettings settings)
         {
             EARepository = eaRepository;
+            this.settings = settings;
 
             MenuLocation = (MenuLocation) Enum.Parse(typeof (MenuLocation), menuLocation);
 
@@ -112,6 +115,31 @@ namespace VIENNAAddIn.menu
 	   		Process proc = allProcesses.Find(pr => pr.ProcessName == "EA");
 	     	//if we don't find the process then we set the mainwindow to null
 	   		return proc != null ? proc.MainWindowHandle : IntPtr.Zero;
+        }
+        /// <summary>
+        /// the main EA window to use when opening dialogs
+        /// </summary>
+        public IWin32Window GetMainEAWindow()
+        {
+            var windowHandle = this.GetmainWindowHandle();
+            return windowHandle != IntPtr.Zero ? new WindowWrapper(windowHandle) : null;
+        }
+        /// <summary>
+        /// windowWrapper class
+        /// </summary>
+        class WindowWrapper : System.Windows.Forms.IWin32Window
+        {
+            public WindowWrapper(IntPtr handle)
+            {
+                _hwnd = handle;
+            }
+
+            public IntPtr Handle
+            {
+                get { return _hwnd; }
+            }
+
+            private IntPtr _hwnd;
         }
     }
 }

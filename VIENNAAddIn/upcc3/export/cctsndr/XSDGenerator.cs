@@ -28,30 +28,16 @@ namespace VIENNAAddIn.upcc3.export.cctsndr
     {
     	public static void GenerateSchemas(IEnumerable<GeneratorContext> contexts)
     	{
-    		//keep a list of all generic contexts, one for each main version.
-    		List<GeneratorContext> genericContexts = new List<GeneratorContext>();
     		foreach (var context in contexts) 
     		{
-    			//get or add a generic context
-    			var genericContext = genericContexts.FirstOrDefault(x => x.BaseURN == context.BaseURN);
-    			if (genericContext == null)
-    			{
-    				genericContext = new GeneratorContext(context);
-    				genericContexts.Add(genericContext);
-    			}
     			//start generating
-    			GenerateSchemas(context, genericContext);
-    		}
-    		//now write the generic schemas
-    		foreach (var genericContext in genericContexts) 
-    		{
-                WriteSchemas(genericContext);
+    			GenerateSchemas(context);
     		}
     	}
 
         ///<summary>
         ///</summary>
-        public static void GenerateSchemas(GeneratorContext context, GeneratorContext genericContext)
+        public static void GenerateSchemas(GeneratorContext context)
         {
             XmlSchema schema  = RootSchemaGenerator.GenerateXSD(context);
             BIESchemaGenerator.GenerateXSD(context, CollectABIEs(context), schema);
