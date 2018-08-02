@@ -40,6 +40,9 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
             this.destinationFolderLabel = new System.Windows.Forms.Label();
             this.browseDestinationFolderButton = new System.Windows.Forms.Button();
             this.destinationFolderTextBox = new System.Windows.Forms.TextBox();
+            this.StatusLabel = new System.Windows.Forms.Label();
+            this.GenerateBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.closeButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.messagesListView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,6 +67,8 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
             this.messagesListView.UseFilterIndicator = true;
             this.messagesListView.UseFiltering = true;
             this.messagesListView.View = System.Windows.Forms.View.Details;
+            this.messagesListView.SubItemChecking += new System.EventHandler<BrightIdeasSoftware.SubItemCheckingEventArgs>(this.messagesListView_SubItemChecking);
+            this.messagesListView.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.messagesListView_FormatRow);
             this.messagesListView.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.messagesListView_ItemChecked);
             // 
             // nameColumn
@@ -108,8 +113,7 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
             // generateButton
             // 
             this.generateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.generateButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.generateButton.Location = new System.Drawing.Point(265, 367);
+            this.generateButton.Location = new System.Drawing.Point(184, 367);
             this.generateButton.Name = "generateButton";
             this.generateButton.Size = new System.Drawing.Size(75, 23);
             this.generateButton.TabIndex = 4;
@@ -120,7 +124,7 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(346, 367);
+            this.cancelButton.Location = new System.Drawing.Point(265, 367);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 4;
@@ -158,13 +162,43 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
             this.destinationFolderTextBox.TabIndex = 5;
             this.destinationFolderTextBox.TextChanged += new System.EventHandler(this.destinationFolderTextBox_TextChanged);
             // 
+            // StatusLabel
+            // 
+            this.StatusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.StatusLabel.AutoSize = true;
+            this.StatusLabel.Location = new System.Drawing.Point(22, 372);
+            this.StatusLabel.Name = "StatusLabel";
+            this.StatusLabel.Size = new System.Drawing.Size(0, 13);
+            this.StatusLabel.TabIndex = 8;
+            // 
+            // GenerateBackgroundWorker
+            // 
+            this.GenerateBackgroundWorker.WorkerReportsProgress = true;
+            this.GenerateBackgroundWorker.WorkerSupportsCancellation = true;
+            this.GenerateBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.GenerateBackgroundWorker_DoWork);
+            this.GenerateBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.GenerateBackgroundWorker_ProgressChanged);
+            this.GenerateBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.GenerateBackgroundWorker_RunWorkerCompleted);
+            // 
+            // closeButton
+            // 
+            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.closeButton.Location = new System.Drawing.Point(346, 367);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(75, 23);
+            this.closeButton.TabIndex = 9;
+            this.closeButton.Text = "Close";
+            this.closeButton.UseVisualStyleBackColor = true;
+            // 
             // ExportXSDSchemaForm
             // 
             this.AcceptButton = this.generateButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.generateButton;
+            this.CancelButton = this.closeButton;
             this.ClientSize = new System.Drawing.Size(433, 402);
+            this.Controls.Add(this.closeButton);
+            this.Controls.Add(this.StatusLabel);
             this.Controls.Add(this.destinationFolderLabel);
             this.Controls.Add(this.browseDestinationFolderButton);
             this.Controls.Add(this.destinationFolderTextBox);
@@ -174,7 +208,9 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
             this.Controls.Add(this.selectPackageButton);
             this.Controls.Add(this.selectedPackageTextBox);
             this.Controls.Add(this.messagesListView);
+            this.MinimumSize = new System.Drawing.Size(449, 441);
             this.Name = "ExportXSDSchemaForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Generate XSD\'s";
             ((System.ComponentModel.ISupportInitialize)(this.messagesListView)).EndInit();
             this.ResumeLayout(false);
@@ -194,5 +230,8 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
         private System.Windows.Forms.Label destinationFolderLabel;
         private System.Windows.Forms.Button browseDestinationFolderButton;
         private System.Windows.Forms.TextBox destinationFolderTextBox;
+        private System.Windows.Forms.Label StatusLabel;
+        private System.ComponentModel.BackgroundWorker GenerateBackgroundWorker;
+        private System.Windows.Forms.Button closeButton;
     }
 }

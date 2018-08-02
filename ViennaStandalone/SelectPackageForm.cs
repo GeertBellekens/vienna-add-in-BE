@@ -15,6 +15,7 @@ namespace ViennaStandalone
 {
     public partial class SelectPackageForm : Form
     {
+        private VIENNAAddIn.ViennaAddinSettings settings = new VIENNAAddIn.ViennaAddinSettings();
         public SelectPackageForm()
         {
             InitializeComponent();
@@ -61,8 +62,8 @@ namespace ViennaStandalone
 
         private void GenerateButton_Click(object sender, EventArgs e)
         {
-            var addinContext = new AddInContext(this.repo, "TreeView", null);
-            ExporterForm.ShowForm(addinContext); 
+            var addinContext = new AddInContext(this.repo, "TreeView", settings);
+            ExportXSDSchemaForm.ShowForm(addinContext); 
         }
         private EA.Repository GetRepository()
         {

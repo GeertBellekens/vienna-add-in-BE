@@ -36,9 +36,17 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
         {
             this.selectedPackage = selectedPackage;
             if (cache == null) cache = new Cache();
-            cache.LoadBIVs(cctsR, selectedPackage);
-            this.selectedPackageTextBox.Text = selectedPackage.Name;
-            MirrorDOCsToUI();
+            if (this.selectedPackage != null)
+            {
+                cache.LoadBIVs(cctsR, selectedPackage);
+                this.selectedPackageTextBox.Text = selectedPackage.Name;
+                MirrorDOCsToUI();
+            }
+            else
+            {
+                this.selectedPackageTextBox.Clear();
+                this.messagesListView.ClearObjects();
+            }
         }
         private void MirrorDOCsToUI()
         {
@@ -49,7 +57,9 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
         private void EnableDisable()
         {
             this.generateButton.Enabled = System.IO.Directory.Exists(this.destinationFolderTextBox.Text)
-                                           && this.messagesListView.CheckedObjects.Count > 0;
+                                           && this.messagesListView.CheckedObjects.Count > 0
+                                           && !this.GenerateBackgroundWorker.IsBusy;
+            this.cancelButton.Enabled = this.GenerateBackgroundWorker.IsBusy;
         }
 
         public static void ShowForm(AddInContext context)
@@ -83,34 +93,32 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
             this.destinationFolderTextBox.Text = ofd1.SelectedPath;
         }
 
-        private void cancelButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         private void generateButton_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
+            //reset status on messages
+            this.resetStatus();
+            //set status
+            this.StatusLabel.Text = "Generating..";
             //save the last used folder
             this.settings.save();
             //actually generate the xsd's
             var generationContexts = new List<GeneratorContext>();
-            foreach (var cBiv in this.messagesListView.Objects.Cast<cBIV>())
-            {
-                var cDoc = cBiv.DOC;
-                if (cDoc != null)
-                {
-                    var generationContext = new GeneratorContext(cctsR, cDoc.TargetNamespace, cDoc.BaseUrn,
-                                                             cDoc.TargetNamespacePrefix, false, true,
-                                                             this.destinationFolderTextBox.Text, cDoc.BIV.DocL);
-                    XSDGenerator.GenerateSchemas(generationContext);
-                    //change the color of the item //TODO: find the correct item
-                    this.messagesListView.Items[0].BackColor = Color.Green;
-                }
-            }
-            Cursor.Current = Cursors.Default;
+            var rows = this.messagesListView.CheckedObjects.Cast<cBIV>();
+            //start the generation process
+            this.GenerateBackgroundWorker.RunWorkerAsync(rows);
+            this.EnableDisable();
         }
 
+        private void resetStatus()
+        {
+            foreach (var row in this.messagesListView.Objects.Cast<cBIV>())
+            {
+                row.status = string.Empty;
+                this.messagesListView.RefreshObject(row);
+            }
+        }
 
         private void destinationFolderTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -122,6 +130,89 @@ namespace VIENNAAddIn.upcc3.Wizards.dev.ui
         private void messagesListView_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
             EnableDisable();
+        }
+
+        private void messagesListView_FormatRow(object sender, BrightIdeasSoftware.FormatRowEventArgs e)
+        {
+            var row = e.Model as cBIV;
+            switch (row.status)
+            {
+                case "Finished":
+                    e.Item.BackColor = Color.LightGreen;
+                    break;
+                case "Generating":
+                    e.Item.BackColor = Color.LightGoldenrodYellow;
+                    break;
+                default:
+                    e.Item.BackColor = Color.White;
+                    break;
+            }
+        }
+
+        private void GenerateBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var rows = (IEnumerable<cBIV>)e.Argument;
+            int i = 0;
+            foreach (var row in rows)
+            {
+                if (GenerateBackgroundWorker.CancellationPending)
+                    break;
+                //set status
+                row.status = "Generating";
+                GenerateBackgroundWorker.ReportProgress((i * 100 / rows.Count() * 100) / 100, row);
+                var cDoc = row.DOC;
+                if (cDoc != null)
+                {
+                    var generationContext = new GeneratorContext(cctsR, cDoc.TargetNamespace, cDoc.BaseUrn,
+                                                             cDoc.TargetNamespacePrefix, false, true,
+                                                             this.destinationFolderTextBox.Text, cDoc.BIV.DocL);
+                    XSDGenerator.GenerateSchemas(generationContext);
+                }
+                i++;
+                //set status
+                row.status = "Finished";
+                GenerateBackgroundWorker.ReportProgress((i * 100 / rows.Count() * 100) / 100, row);
+            }
+        }
+
+        private void GenerateBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                this.StatusLabel.Text = "Error!";
+                throw e.Error;
+            }
+            else if (e.Cancelled)
+            {
+                this.StatusLabel.Text = "Cancelled!";
+            }
+            else
+            {
+                //set status
+                this.StatusLabel.Text = "Finished!";
+            }
+            this.EnableDisable();
+            //set cursor back to normal
+            Cursor.Current = Cursors.Default;
+        }
+
+        private void GenerateBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            var row = (cBIV)e.UserState;
+            this.messagesListView.RefreshObject(row);
+            // set overall progress
+            this.StatusLabel.Text = $"Generating .. {e.ProgressPercentage} %";
+        }
+
+        private void messagesListView_SubItemChecking(object sender, BrightIdeasSoftware.SubItemCheckingEventArgs e)
+        {
+            this.EnableDisable();
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            if (this.GenerateBackgroundWorker.IsBusy)
+                this.GenerateBackgroundWorker.CancelAsync();
         }
     }
 }

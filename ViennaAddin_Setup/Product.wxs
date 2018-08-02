@@ -3,20 +3,20 @@
   <Product Id="*"
            Name="Vienna BE Addin"
            Language="1033"
-           Version="2.0.4.0"
+           Version="2.1.0.0"
            Manufacturer="Bellekens"
            UpgradeCode="2f8fbb7e-5fa4-4a93-b0c9-c6ba79f41814">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
     <Media Id="1" Cabinet="contents.cab" EmbedCab="yes" CompressionLevel="high"/>
     <Upgrade Id="2f8fbb7e-5fa4-4a93-b0c9-c6ba79f41814">
-      <UpgradeVersion Minimum="2.0.4.0"
+      <UpgradeVersion Minimum="2.1.0.0"
                     IncludeMinimum="no"
                     OnlyDetect="yes"
                     Language="1033"
                     Property="NEWPRODUCTFOUND" />
       <UpgradeVersion Minimum="0.1.0.0"
                       IncludeMinimum="yes"
-                      Maximum="2.0.4.0"
+                      Maximum="2.1.0.0"
                       IncludeMaximum="no"
                       Language="1033"
                       Property="UPGRADEFOUND" />
@@ -82,6 +82,8 @@
         <File Id="VIENNAAddInWpfUserControls.dll" Name="VIENNAAddInWpfUserControls.dll" Source="..\VIENNAAddin\bin\Debug\VIENNAAddInWpfUserControls.dll" />
         <File Id="VIENNAAddInWpfUserControls.pdb" Name="VIENNAAddInWpfUserControls.pdb" Source="..\VIENNAAddin\bin\Debug\VIENNAAddInWpfUserControls.pdb" />
         <File Id="WPFVisifire.Charts.dll" Name="WPFVisifire.Charts.dll" Source="..\VIENNAAddin\bin\Debug\WPFVisifire.Charts.dll" />
+        <File Id="ObjectListView.dll" Name="ObjectListView.dll" Source="..\VIENNAAddin\bin\Debug\ObjectListView.dlll" />
+        <File Id="VIENNAAddIn.dll.config" Name="VIENNAAddIn.dll.config" Source="..\VIENNAAddin\bin\Debug\VIENNAAddIn.dll.config" />
         <Class Id="{01015F9B-5966-37A3-A3EE-338F1D137DDA}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.import.cctsndr.RootSchemaImporter" ThreadingModel="both" ForeignServer="mscoree.dll">
           <ProgId Id="VIENNAAddIn.upcc3.import.cctsndr.RootSchemaImporter" Description="VIENNAAddIn.upcc3.import.cctsndr.RootSchemaImporter" />
         </Class>

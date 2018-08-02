@@ -575,6 +575,7 @@ namespace VIENNAAddIn.upcc3.Wizards
 				_DOC = value;
 			}
 		}
+        public string status { get; set; }
 		
         public IDocLibrary DocL
         {
