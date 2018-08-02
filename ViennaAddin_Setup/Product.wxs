@@ -82,7 +82,7 @@
         <File Id="VIENNAAddInWpfUserControls.dll" Name="VIENNAAddInWpfUserControls.dll" Source="..\VIENNAAddin\bin\Debug\VIENNAAddInWpfUserControls.dll" />
         <File Id="VIENNAAddInWpfUserControls.pdb" Name="VIENNAAddInWpfUserControls.pdb" Source="..\VIENNAAddin\bin\Debug\VIENNAAddInWpfUserControls.pdb" />
         <File Id="WPFVisifire.Charts.dll" Name="WPFVisifire.Charts.dll" Source="..\VIENNAAddin\bin\Debug\WPFVisifire.Charts.dll" />
-        <File Id="ObjectListView.dll" Name="ObjectListView.dll" Source="..\VIENNAAddin\bin\Debug\ObjectListView.dlll" />
+        <File Id="ObjectListView.dll" Name="ObjectListView.dll" Source="..\VIENNAAddin\bin\Debug\ObjectListView.dll" />
         <File Id="VIENNAAddIn.dll.config" Name="VIENNAAddIn.dll.config" Source="..\VIENNAAddin\bin\Debug\VIENNAAddIn.dll.config" />
         <Class Id="{01015F9B-5966-37A3-A3EE-338F1D137DDA}" Context="InprocServer32" Description="VIENNAAddIn.upcc3.import.cctsndr.RootSchemaImporter" ThreadingModel="both" ForeignServer="mscoree.dll">
           <ProgId Id="VIENNAAddIn.upcc3.import.cctsndr.RootSchemaImporter" Description="VIENNAAddIn.upcc3.import.cctsndr.RootSchemaImporter" />
