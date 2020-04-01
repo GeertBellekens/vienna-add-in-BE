@@ -19,8 +19,16 @@ namespace VIENNAAddIn.menu
         {
             EARepository = eaRepository;
             this.settings = settings;
+            MenuLocation parsedMenuLocation;
+            if (Enum.TryParse<MenuLocation>(menuLocation, out parsedMenuLocation))
+            {
+                this.MenuLocation = parsedMenuLocation;
+            }
+            else
+            {
+                this.MenuLocation = MenuLocation.Undefined;
+            }
 
-            MenuLocation = (MenuLocation) Enum.Parse(typeof (MenuLocation), menuLocation);
 
             if (MenuLocation == MenuLocation.TreeView)
             {
